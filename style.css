@@ -105,9 +105,17 @@ footer {
 
 .home-subtitle {
   margin: 20px auto 0;
-  max-width: 760px;
+  max-width: 900px;
   font-size: 1.15rem;
   color: #475569;
+}
+
+.home-subtitle span {
+  display: block;
+}
+
+.home-subtitle span + span {
+  margin-top: 6px;
 }
 
 @media (max-width: 900px) {
