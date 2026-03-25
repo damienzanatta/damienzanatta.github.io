@@ -92,3 +92,26 @@ footer {
     align-items: flex-start;
   }
 }
+.home-main {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+}
+
+.home-hero {
+  text-align: center;
+  padding: 70px 40px;
+}
+
+.home-name {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  color: #0f172a;
+}
+
+.home-subtitle {
+  margin: 20px auto 0;
+  max-width: 760px;
+  font-size: 1.15rem;
+  color: #475569;
+}
