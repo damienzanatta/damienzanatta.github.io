@@ -86,12 +86,6 @@ footer {
   padding: 24px 0 40px;
 }
 
-@media (max-width: 900px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
 .home-main {
   min-height: calc(100vh - 180px);
   display: flex;
@@ -114,4 +108,19 @@ footer {
   max-width: 760px;
   font-size: 1.15rem;
   color: #475569;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-hero {
+    padding: 50px 20px;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
 }
