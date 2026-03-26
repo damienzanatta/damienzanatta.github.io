@@ -77,7 +77,24 @@ main {
 
 h1 {
   margin-top: 0;
+  margin-bottom: 10px;
   color: #0f172a;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+p {
+  margin-top: 0;
 }
 
 footer {
@@ -85,6 +102,8 @@ footer {
   color: #475569;
   padding: 24px 0 40px;
 }
+
+/* Page d'accueil */
 
 .home-main {
   min-height: calc(100vh - 180px);
@@ -118,6 +137,76 @@ footer {
   margin-top: 6px;
 }
 
+/* Page Profil et parcours */
+
+.page-intro {
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+  color: #475569;
+}
+
+.content-section + .content-section {
+  margin-top: 40px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.info-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.info-item h3 {
+  font-size: 1rem;
+  color: #1d4ed8;
+}
+
+.info-item p {
+  margin: 0;
+  color: #1f2937;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.timeline-content {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.timeline-content h3 {
+  margin: 0;
+}
+
+/* Responsive */
+
 @media (max-width: 900px) {
   .navbar {
     flex-direction: column;
@@ -130,5 +219,13 @@ footer {
 
   .home-subtitle {
     font-size: 1rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
   }
 }
