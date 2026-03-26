@@ -25,96 +25,161 @@
       <section class="page-box">
         <h1>Présentation</h1>
 
-        <p class="page-intro">
-          Cette page présente ma situation actuelle ainsi que les principales étapes de mon parcours de formation.
-        </p>
+        <div class="tab-grid" role="tablist" aria-label="Contenu de présentation">
+          <button class="tab-card active" id="tab-situation" role="tab" aria-selected="true" aria-controls="panel-situation" data-tab="situation">
+            Situation
+          </button>
 
-        <section class="content-section">
-          <h2>Situation</h2>
+          <button class="tab-card" id="tab-parcours" role="tab" aria-selected="false" aria-controls="panel-parcours" data-tab="parcours">
+            Parcours
+          </button>
 
-          <div class="info-grid">
-            <div class="info-item">
-              <h3>Formation</h3>
-              <p>BTS Services Informatiques aux Organisations</p>
+          <button class="tab-card" id="tab-formation" role="tab" aria-selected="false" aria-controls="panel-formation" data-tab="formation">
+            Formation
+          </button>
+
+          <button class="tab-card" id="tab-entreprise" role="tab" aria-selected="false" aria-controls="panel-entreprise" data-tab="entreprise">
+            Entreprise
+          </button>
+        </div>
+
+        <div class="tab-panels">
+          <section class="tab-panel active" id="panel-situation" role="tabpanel" aria-labelledby="tab-situation">
+            <h2>Situation</h2>
+
+            <div class="info-grid">
+              <div class="info-item">
+                <h3>Statut</h3>
+                <p>Étudiant en alternance</p>
+              </div>
+
+              <div class="info-item">
+                <h3>Poste</h3>
+                <p>Technicien systèmes d'information et support IT</p>
+              </div>
+
+              <div class="info-item">
+                <h3>Type de contrat</h3>
+                <p>Contrat d'apprentissage</p>
+              </div>
+
+              <div class="info-item">
+                <h3>Structure d'accueil</h3>
+                <p>École de Biologie Industrielle (95800, Cergy)</p>
+              </div>
             </div>
+          </section>
 
-            <div class="info-item">
-              <h3>Option</h3>
-              <p>Solutions d'Infrastructure, Systèmes et Réseaux</p>
+          <section class="tab-panel" id="panel-parcours" role="tabpanel" aria-labelledby="tab-parcours">
+            <h2>Parcours</h2>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-date">Septembre 2017 - Août 2020</div>
+                <div class="timeline-content">
+                  <h3>Bac Pro Systèmes Numériques</h3>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">Septembre 2020 - Août 2022</div>
+                <div class="timeline-content">
+                  <h3>Validation de projet professionnel</h3>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">Septembre 2022 - Août 2024</div>
+                <div class="timeline-content">
+                  <h3>BTS Comptabilité et Gestion</h3>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">Septembre 2024 - Août 2026</div>
+                <div class="timeline-content">
+                  <h3>BTS SIO option SISR</h3>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">Septembre 2026 - Août 2028</div>
+                <div class="timeline-content">
+                  <h3>Bachelor Data / IA</h3>
+                </div>
+              </div>
             </div>
+          </section>
 
-            <div class="info-item">
-              <h3>Période</h3>
-              <p>2024 - 2026</p>
-            </div>
+          <section class="tab-panel" id="panel-formation" role="tabpanel" aria-labelledby="tab-formation">
+            <h2>Formation</h2>
 
-            <div class="info-item">
-              <h3>Organisme de formation</h3>
-              <p>H3 Campus (78300, Poissy)</p>
-            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <h3>Formation</h3>
+                <p>BTS Services Informatiques aux Organisations</p>
+              </div>
 
-            <div class="info-item">
-              <h3>Statut</h3>
-              <p>Étudiant en alternance</p>
-            </div>
+              <div class="info-item">
+                <h3>Option</h3>
+                <p>Solutions d'Infrastructure, Systèmes et Réseaux</p>
+              </div>
 
-            <div class="info-item">
-              <h3>Structure d'accueil</h3>
-              <p>École de Biologie Industrielle (95800, Cergy)</p>
-            </div>
+              <div class="info-item">
+                <h3>Période</h3>
+                <p>2024 - 2026</p>
+              </div>
 
-            <div class="info-item">
-              <h3>Type de contrat</h3>
-              <p>Contrat d'apprentissage</p>
-            </div>
-
-            <div class="info-item">
-              <h3>Poste</h3>
-              <p>Technicien systèmes d'information et support IT</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="content-section">
-          <h2>Parcours</h2>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">Septembre 2017 - Août 2020</div>
-              <div class="timeline-content">
-                <h3>Bac Pro Systèmes Numériques</h3>
+              <div class="info-item">
+                <h3>Organisme de formation</h3>
+                <p>H3 Campus (78300, Poissy)</p>
               </div>
             </div>
 
-            <div class="timeline-item">
-              <div class="timeline-date">Septembre 2020 - Août 2022</div>
-              <div class="timeline-content">
-                <h3>Validation de projet professionnel</h3>
+            <div class="text-box">
+              <p>
+                Je prépare actuellement le BTS Services Informatiques aux Organisations,
+                option SISR, en alternance. Cette formation me permet de développer
+                des compétences dans les domaines des systèmes, des réseaux
+                et du support informatique.
+              </p>
+            </div>
+          </section>
+
+          <section class="tab-panel" id="panel-entreprise" role="tabpanel" aria-labelledby="tab-entreprise">
+            <h2>Entreprise</h2>
+
+            <div class="info-grid">
+              <div class="info-item">
+                <h3>Structure</h3>
+                <p>École de Biologie Industrielle</p>
+              </div>
+
+              <div class="info-item">
+                <h3>Localisation</h3>
+                <p>95800, Cergy</p>
+              </div>
+
+              <div class="info-item">
+                <h3>Fonction</h3>
+                <p>Technicien systèmes d'information et support IT</p>
+              </div>
+
+              <div class="info-item">
+                <h3>Cadre</h3>
+                <p>Alternance en contrat d'apprentissage</p>
               </div>
             </div>
 
-            <div class="timeline-item">
-              <div class="timeline-date">Septembre 2022 - Août 2024</div>
-              <div class="timeline-content">
-                <h3>BTS Comptabilité et Gestion</h3>
-              </div>
+            <div class="text-box">
+              <p>
+                J'effectue mon alternance au sein de l'École de Biologie Industrielle.
+                Cette expérience me permet d'évoluer dans un environnement professionnel
+                concret, en lien avec les systèmes d'information et le support informatique.
+              </p>
             </div>
-
-            <div class="timeline-item">
-              <div class="timeline-date">Septembre 2024 - Août 2026</div>
-              <div class="timeline-content">
-                <h3>BTS SIO option SISR</h3>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-date">Septembre 2026 - Août 2027</div>
-              <div class="timeline-content">
-                <h3>Bachelor Data / IA</h3>
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </section>
     </div>
   </main>
@@ -124,5 +189,33 @@
       <p>© 2026 Damien Zanatta - Portfolio</p>
     </div>
   </footer>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-card");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach((btn) => {
+          btn.classList.remove("active");
+          btn.setAttribute("aria-selected", "false");
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-selected", "true");
+
+        const targetPanel = document.getElementById("panel-" + target);
+        if (targetPanel) {
+          targetPanel.classList.add("active");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
