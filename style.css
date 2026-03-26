@@ -255,18 +255,23 @@ footer {
   margin-bottom: 0;
 }
 
-.stacked-row {
+.aligned-row {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 145px 1fr;
   gap: 8px;
   margin: 0 0 8px;
+  align-items: start;
 }
 
-.stacked-row strong {
+.aligned-row strong {
   color: #0f172a;
 }
 
-.stacked-values div + div {
+.aligned-values div {
+  margin: 0;
+}
+
+.aligned-values div + div {
   margin-top: 6px;
 }
 
@@ -298,7 +303,7 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .stacked-row {
+  .aligned-row {
     grid-template-columns: 1fr;
   }
 }
