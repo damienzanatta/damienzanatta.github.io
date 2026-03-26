@@ -255,23 +255,27 @@ footer {
   margin-bottom: 0;
 }
 
-.aligned-row {
-  display: grid;
-  grid-template-columns: 145px 1fr;
-  gap: 8px;
+.label-stack {
   margin: 0 0 8px;
+}
+
+.label-line {
+  display: grid;
+  grid-template-columns: max-content 1fr;
   align-items: start;
 }
 
-.aligned-row strong {
+.line-label,
+.line-spacer {
+  font-weight: 700;
   color: #0f172a;
 }
 
-.aligned-values div {
-  margin: 0;
+.line-spacer {
+  visibility: hidden;
 }
 
-.aligned-values div + div {
+.label-line + .label-line {
   margin-top: 6px;
 }
 
@@ -303,8 +307,12 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .aligned-row {
+  .label-line {
     grid-template-columns: 1fr;
+  }
+
+  .line-spacer {
+    display: none;
   }
 }
 
