@@ -5,6 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Réalisations professionnelles | Damien Zanatta</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .projects-tab-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .projects-intro {
+      margin-bottom: 8px;
+      color: var(--text-soft);
+    }
+
+    .placeholder-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .placeholder-card {
+      background: linear-gradient(180deg, rgba(9, 22, 42, 0.96), rgba(7, 17, 33, 0.96));
+      border: 1px solid rgba(32, 227, 255, 0.18);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .placeholder-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--cyan), var(--blue));
+      box-shadow: 0 0 12px rgba(32, 227, 255, 0.28);
+    }
+
+    .placeholder-card h3 {
+      margin: 0 0 8px;
+      color: #ecfbff;
+    }
+
+    .placeholder-card p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .pdf-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      margin-bottom: 18px;
+    }
+
+    .pdf-button {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #00141a;
+      background: linear-gradient(135deg, #14dfff, #49efff);
+      box-shadow: 0 0 18px rgba(32, 227, 255, 0.24);
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 900px;
+      border: 1px solid rgba(32, 227, 255, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    @media (max-width: 900px) {
+      .projects-tab-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .placeholder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pdf-frame {
+        height: 700px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -22,9 +108,113 @@
 
   <main>
     <div class="container">
-      <section class="page-box">
+      <section class="page-box presentation-box">
         <h1>Réalisations professionnelles</h1>
-        <p>Contenu à venir.</p>
+
+        <div class="tab-grid projects-tab-grid" role="tablist" aria-label="Contenu des réalisations professionnelles">
+          <button class="tab-card" id="tab-training" role="tab" aria-selected="false" aria-controls="panel-training" data-tab="training">
+            En formation
+          </button>
+
+          <button class="tab-card" id="tab-company" role="tab" aria-selected="false" aria-controls="panel-company" data-tab="company">
+            En entreprise
+          </button>
+
+          <button class="tab-card" id="tab-summary" role="tab" aria-selected="false" aria-controls="panel-summary" data-tab="summary">
+            Tableau de synthèse
+          </button>
+        </div>
+
+        <div class="tab-panels">
+          <section class="tab-panel" id="panel-training" role="tabpanel" aria-labelledby="tab-training">
+            <div class="timeline">
+              <div class="timeline-content">
+                <h3>Réalisations en formation</h3>
+                <p class="projects-intro">
+                  Cet onglet présentera les travaux réalisés au centre de formation dans le cadre du BTS SIO.
+                </p>
+              </div>
+
+              <div class="placeholder-grid">
+                <div class="placeholder-card">
+                  <h3>Travaux techniques</h3>
+                  <p>Serveurs, Active Directory, DNS, DHCP, virtualisation, scripts, sécurisation, etc.</p>
+                </div>
+
+                <div class="placeholder-card">
+                  <h3>Captures et preuves</h3>
+                  <p>Captures d’écran, schémas, configurations, comptes rendus et documents associés.</p>
+                </div>
+
+                <div class="placeholder-card">
+                  <h3>Compétences mobilisées</h3>
+                  <p>Compétences du BTS SIO mises en œuvre dans chaque réalisation.</p>
+                </div>
+
+                <div class="placeholder-card">
+                  <h3>Contexte pédagogique</h3>
+                  <p>Objectif du travail, environnement utilisé, période et résultats obtenus.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="tab-panel" id="panel-company" role="tabpanel" aria-labelledby="tab-company">
+            <div class="timeline">
+              <div class="timeline-content">
+                <h3>Réalisations en entreprise</h3>
+                <p class="projects-intro">
+                  Cet onglet présentera les travaux et missions réalisés en environnement professionnel à l’EBI.
+                </p>
+              </div>
+
+              <div class="placeholder-grid">
+                <div class="placeholder-card">
+                  <h3>Support et assistance</h3>
+                  <p>Interventions de niveau 1, accompagnement des utilisateurs et résolution d’incidents courants.</p>
+                </div>
+
+                <div class="placeholder-card">
+                  <h3>Équipements et déploiements</h3>
+                  <p>Préparation, installation, tests et mise en service de nouveaux matériels et équipements.</p>
+                </div>
+
+                <div class="placeholder-card">
+                  <h3>Documentation et communication</h3>
+                  <p>Procédures d’utilisation, mails d’information, affiches de sensibilisation et supports internes.</p>
+                </div>
+
+                <div class="placeholder-card">
+                  <h3>Sujets cybersécurité</h3>
+                  <p>Suivi de points cyber, coordination, sensibilisation et participation aux comités informatiques.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="tab-panel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary">
+            <div class="timeline">
+              <div class="timeline-content">
+                <h3>Tableau de synthèse</h3>
+                <p>
+                  Ce document regroupe l’ensemble des réalisations professionnelles présentées dans le cadre de l’épreuve E5.
+                </p>
+
+                <div class="pdf-actions">
+                  <a class="pdf-button" href="tableau-synthese-bts-sio-2026.pdf" target="_blank">
+                    Ouvrir le PDF
+                  </a>
+                </div>
+
+                <iframe
+                  class="pdf-frame"
+                  src="tableau-synthese-bts-sio-2026.pdf#view=FitH"
+                  title="Tableau de synthèse BTS SIO">
+                </iframe>
+              </div>
+            </div>
+          </section>
+        </div>
       </section>
     </div>
   </main>
@@ -34,5 +224,33 @@
       <p>© 2026 Damien Zanatta - Portfolio</p>
     </div>
   </footer>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-card");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+        const targetPanel = document.getElementById("panel-" + target);
+        const isAlreadyActive = button.classList.contains("active");
+
+        tabButtons.forEach((btn) => {
+          btn.classList.remove("active");
+          btn.setAttribute("aria-selected", "false");
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.remove("active");
+        });
+
+        if (!isAlreadyActive && targetPanel) {
+          button.classList.add("active");
+          button.setAttribute("aria-selected", "true");
+          targetPanel.classList.add("active");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
