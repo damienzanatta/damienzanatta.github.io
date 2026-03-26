@@ -22,11 +22,9 @@
 
   <main>
     <div class="container">
-      <section class="page-box">
-        <h1>Présentation</h1>
-
+      <section class="page-box presentation-box">
         <div class="tab-grid" role="tablist" aria-label="Contenu de présentation">
-          <button class="tab-card active" id="tab-situation" role="tab" aria-selected="true" aria-controls="panel-situation" data-tab="situation">
+          <button class="tab-card" id="tab-situation" role="tab" aria-selected="false" aria-controls="panel-situation" data-tab="situation">
             Situation
           </button>
 
@@ -44,7 +42,7 @@
         </div>
 
         <div class="tab-panels">
-          <section class="tab-panel active" id="panel-situation" role="tabpanel" aria-labelledby="tab-situation">
+          <section class="tab-panel" id="panel-situation" role="tabpanel" aria-labelledby="tab-situation">
             <h2>Situation</h2>
 
             <div class="info-grid">
@@ -135,15 +133,6 @@
                 <p>H3 Campus (78300, Poissy)</p>
               </div>
             </div>
-
-            <div class="text-box">
-              <p>
-                Je prépare actuellement le BTS Services Informatiques aux Organisations,
-                option SISR, en alternance. Cette formation me permet de développer
-                des compétences dans les domaines des systèmes, des réseaux
-                et du support informatique.
-              </p>
-            </div>
           </section>
 
           <section class="tab-panel" id="panel-entreprise" role="tabpanel" aria-labelledby="tab-entreprise">
@@ -170,14 +159,6 @@
                 <p>Alternance en contrat d'apprentissage</p>
               </div>
             </div>
-
-            <div class="text-box">
-              <p>
-                J'effectue mon alternance au sein de l'École de Biologie Industrielle.
-                Cette expérience me permet d'évoluer dans un environnement professionnel
-                concret, en lien avec les systèmes d'information et le support informatique.
-              </p>
-            </div>
           </section>
         </div>
       </section>
@@ -197,6 +178,8 @@
     tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const target = button.dataset.tab;
+        const targetPanel = document.getElementById("panel-" + target);
+        const isAlreadyActive = button.classList.contains("active");
 
         tabButtons.forEach((btn) => {
           btn.classList.remove("active");
@@ -207,11 +190,9 @@
           panel.classList.remove("active");
         });
 
-        button.classList.add("active");
-        button.setAttribute("aria-selected", "true");
-
-        const targetPanel = document.getElementById("panel-" + target);
-        if (targetPanel) {
+        if (!isAlreadyActive && targetPanel) {
+          button.classList.add("active");
+          button.setAttribute("aria-selected", "true");
           targetPanel.classList.add("active");
         }
       });
