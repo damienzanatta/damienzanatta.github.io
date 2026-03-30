@@ -49,7 +49,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Motif techno de fond */
+/* Motifs de fond type circuits imprimés */
 body::before {
   content: "";
   position: fixed;
@@ -57,36 +57,29 @@ body::before {
   pointer-events: none;
   z-index: 0;
   opacity: 0.5;
-  background:
-    linear-gradient(90deg, transparent 0 8%, rgba(32, 227, 255, 0.08) 8% 8.15%, transparent 8.15% 100%),
-    linear-gradient(transparent 0 12%, rgba(32, 227, 255, 0.06) 12% 12.15%, transparent 12.15% 100%),
-    linear-gradient(90deg, transparent 0 72%, rgba(47, 124, 255, 0.08) 72% 72.15%, transparent 72.15% 100%),
-    linear-gradient(transparent 0 68%, rgba(47, 124, 255, 0.06) 68% 68.15%, transparent 68.15% 100%);
-  background-size: 220px 220px, 220px 220px, 320px 320px, 320px 320px;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'><g fill='none' stroke='%2320e3ff' stroke-opacity='.16' stroke-width='2'><path d='M0,110H150V190H290V120H430'/><path d='M800,160H620V250H500V330H380'/><path d='M60,420H220V500H360'/><path d='M800,520H610V430H480V360'/><path d='M140,800V640H250V560H390'/><path d='M640,0V140H560V240H470'/><path d='M300,800V680H420V600H540V520'/><path d='M0,650H120V580H210V510'/></g><g fill='%2320e3ff' fill-opacity='.24'><circle cx='150' cy='110' r='4'/><circle cx='150' cy='190' r='4'/><circle cx='290' cy='190' r='4'/><circle cx='290' cy='120' r='4'/><circle cx='620' cy='160' r='4'/><circle cx='620' cy='250' r='4'/><circle cx='500' cy='250' r='4'/><circle cx='500' cy='330' r='4'/><circle cx='220' cy='420' r='4'/><circle cx='220' cy='500' r='4'/><circle cx='610' cy='520' r='4'/><circle cx='610' cy='430' r='4'/><circle cx='480' cy='430' r='4'/><circle cx='250' cy='640' r='4'/><circle cx='250' cy='560' r='4'/><circle cx='560' cy='140' r='4'/><circle cx='560' cy='240' r='4'/><circle cx='420' cy='680' r='4'/><circle cx='420' cy='600' r='4'/><circle cx='540' cy='600' r='4'/><circle cx='120' cy='650' r='4'/><circle cx='120' cy='580' r='4'/></g></svg>"),
+    radial-gradient(circle at 18% 22%, rgba(32, 227, 255, 0.1), transparent 20%),
+    radial-gradient(circle at 80% 18%, rgba(47, 124, 255, 0.08), transparent 22%),
+    radial-gradient(circle at 52% 82%, rgba(32, 227, 255, 0.06), transparent 18%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 900px 900px, auto, auto, auto;
+  background-position: center top, 0 0, 0 0, 0 0;
 }
 
-/* Lignes style circuit */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.22;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 120px,
-      rgba(32, 227, 255, 0.08) 120px 122px,
-      transparent 122px 240px
-    ),
-    repeating-linear-gradient(
-      180deg,
-      transparent 0 140px,
-      rgba(32, 227, 255, 0.05) 140px 142px,
-      transparent 142px 280px
-    );
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.6));
+  opacity: 0.28;
+  mix-blend-mode: screen;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'><g fill='none' stroke='%232f7cff' stroke-opacity='.12' stroke-width='1.6'><path d='M80,80H260V40H420'/><path d='M420,760V620H520V540H700'/><path d='M760,260H640V180H520V120'/><path d='M40,300H160V360H300V440H420'/><path d='M760,620H650V700H520'/><path d='M180,760V620H120V500H40'/><path d='M700,40V160H620V260H540'/></g><g fill='%232f7cff' fill-opacity='.18'><circle cx='260' cy='80' r='3.5'/><circle cx='260' cy='40' r='3.5'/><circle cx='420' cy='620' r='3.5'/><circle cx='520' cy='620' r='3.5'/><circle cx='520' cy='540' r='3.5'/><circle cx='640' cy='260' r='3.5'/><circle cx='640' cy='180' r='3.5'/><circle cx='520' cy='180' r='3.5'/><circle cx='160' cy='300' r='3.5'/><circle cx='160' cy='360' r='3.5'/><circle cx='300' cy='360' r='3.5'/><circle cx='300' cy='440' r='3.5'/><circle cx='650' cy='620' r='3.5'/><circle cx='650' cy='700' r='3.5'/><circle cx='120' cy='620' r='3.5'/><circle cx='120' cy='500' r='3.5'/><circle cx='620' cy='160' r='3.5'/><circle cx='620' cy='260' r='3.5'/></g></svg>");
+  background-repeat: repeat;
+  background-size: 980px 980px;
+  background-position: 120px 60px;
 }
 
 a {
@@ -301,7 +294,7 @@ footer {
   margin-top: 8px;
 }
 
-/* Présentation */
+/* Présentation / Pages à onglets */
 
 .tab-grid {
   display: grid;
