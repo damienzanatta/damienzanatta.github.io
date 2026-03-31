@@ -45,7 +45,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 1. Le fond bleu nuit profond */
+/* Le fond bleu nuit profond */
 body::after {
   content: "";
   position: fixed;
@@ -55,27 +55,28 @@ body::after {
   background: radial-gradient(circle at 50% 50%, #091426 0%, #030812 100%);
 }
 
-/* 2. Le motif dynamique : Lignes fixes + Données qui transitent + Masque central */
+/* Le motif Circuit Imprimé Asymétrique et Fluide (Sans "cut") */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.85;
+  opacity: 0.9;
   
-  /* C'est ici que l'animation est intégrée au SVG encodé */
-  background-image: url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes flow1%7Bfrom%7Bstroke-dashoffset:40%7Dto%7Bstroke-dashoffset:0%7D%7D@keyframes flow2%7Bfrom%7Bstroke-dashoffset:60%7Dto%7Bstroke-dashoffset:0%7D%7D@keyframes pulse%7B0%25,100%25%7Bopacity:0.3%7D50%25%7Bopacity:1%7D%7D.p1%7Bstroke-dasharray:6 24;animation:flow1 2s linear infinite;stroke-linecap:round%7D.p2%7Bstroke-dasharray:4 36;animation:flow2 3s linear infinite reverse;stroke-linecap:round%7D.d%7Banimation:pulse 2s ease-in-out infinite%7D%3C/style%3E%3Cpath d='M10,10 L20,20 V50 M30,0 V20 L40,30 H70 M50,50 L60,40 H90 M0,70 H20 L30,80 V100 M80,100 V80 L90,70 H100 M70,50 V70 L60,80 M40,100 V90 L50,80 H70' stroke='rgba(32,227,255,0.12)' stroke-width='1.5' fill='none'/%3E%3Cpath class='p1' d='M10,10 L20,20 V50 M30,0 V20 L40,30 H70 M50,50 L60,40 H90 M0,70 H20 L30,80 V100 M80,100 V80 L90,70 H100 M70,50 V70 L60,80 M40,100 V90 L50,80 H70' stroke='%2320e3ff' stroke-width='1.5' fill='none'/%3E%3Cpath d='M20,0 V10 L10,20 M0,40 H10 L20,50 V70 L10,80 H0 M100,20 H80 L70,30 V40 L80,50 M50,0 V10 L60,20 H80 M100,50 H90 L80,60 V80 L90,90 H100' stroke='rgba(47,124,255,0.15)' stroke-width='1' fill='none'/%3E%3Cpath class='p2' d='M20,0 V10 L10,20 M0,40 H10 L20,50 V70 L10,80 H0 M100,20 H80 L70,30 V40 L80,50 M50,0 V10 L60,20 H80 M100,50 H90 L80,60 V80 L90,90 H100' stroke='%232f7cff' stroke-width='1' fill='none'/%3E%3Cg class='d'%3E%3Ccircle cx='10' cy='10' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='20' cy='50' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='30' cy='0' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='50' cy='50' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='90' cy='40' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='0' cy='70' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='30' cy='100' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='80' cy='100' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='100' cy='70' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='70' cy='50' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='60' cy='80' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='40' cy='100' r='2' fill='%2320e3ff'/%3E%3Ccircle cx='20' cy='0' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='10' cy='20' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='0' cy='40' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='20' cy='70' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='10' cy='80' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='100' cy='20' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='70' cy='40' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='80' cy='50' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='50' cy='0' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='80' cy='20' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='100' cy='50' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='80' cy='80' r='1.5' fill='%232f7cff'/%3E%3Ccircle cx='90' cy='90' r='1.5' fill='%232f7cff'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 160px 160px;
+  /* On appelle le même motif asymétrique DEUX fois pour casser l'effet de répétition */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes f1%7B0%25%7Bstroke-dashoffset:150;%7D100%25%7Bstroke-dashoffset:0;%7D%7D@keyframes f2%7B0%25%7Bstroke-dashoffset:150;%7D100%25%7Bstroke-dashoffset:0;%7D%7D.bg%7Bstroke:rgba(32,227,255,0.15);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;%7D.d1%7Bstroke:%2320e3ff;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:15 135;animation:f1 4s linear infinite;%7D.d2%7Bstroke:%232f7cff;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20 130;animation:f2 5s linear infinite reverse;%7D.dot%7Bfill:%2320e3ff;opacity:0.8;%7D@keyframes p%7B0%25,100%25%7Bopacity:0.3;%7D50%25%7Bopacity:1;%7D%7D%3C/style%3E%3Cpath class='bg' d='M20,20 h30 l20,20 v40 l-15,15 h-35 l-10,-10 v-20 M180,40 v30 l-20,20 h-40 l-20,-20 v-30 l20,-20 h30 M50,180 l20,-20 h40 l20,-20 v-40 M10,120 h20 l20,-20 v-30 M190,160 h-30 l-20,20 v20 M100,120 l20,20 h40 l15,-15 M40,160 l-20,20 v20 M160,10 l20,20 v20'/%3E%3Cpath class='d1' d='M20,20 h30 l20,20 v40 l-15,15 h-35 l-10,-10 v-20 M180,40 v30 l-20,20 h-40 l-20,-20 v-30 l20,-20 h30 M50,180 l20,-20 h40 l20,-20 v-40 M10,120 h20 l20,-20 v-30 M190,160 h-30 l-20,20 v20 M100,120 l20,20 h40 l15,-15 M40,160 l-20,20 v20 M160,10 l20,20 v20'/%3E%3Cpath class='bg' d='M10,60 l20,20 h20 M70,10 v20 l20,20 h30 M120,180 v-20 l-20,-20 h-20 M150,150 l20,-20 v-30 M50,100 h-30 l-10,10 M80,140 l20,20 h20 M140,80 l20,-20 h30 M30,190 h20 l20,-20 v-20 M180,190 v-20 l-20,-20'/%3E%3Cpath class='d2' d='M10,60 l20,20 h20 M70,10 v20 l20,20 h30 M120,180 v-20 l-20,-20 h-20 M150,150 l20,-20 v-30 M50,100 h-30 l-10,10 M80,140 l20,20 h20 M140,80 l20,-20 h30 M30,190 h20 l20,-20 v-20 M180,190 v-20 l-20,-20'/%3E%3Cg style='animation: p 3s ease-in-out infinite alternate'%3E%3Ccircle cx='20' cy='20' r='2' class='dot'/%3E%3Ccircle cx='180' cy='40' r='2' class='dot'/%3E%3Ccircle cx='50' cy='180' r='2' class='dot'/%3E%3Ccircle cx='10' cy='120' r='2' class='dot'/%3E%3Ccircle cx='190' cy='160' r='2' class='dot'/%3E%3Ccircle cx='100' cy='120' r='2' class='dot'/%3E%3Ccircle cx='40' cy='160' r='2' class='dot'/%3E%3Ccircle cx='160' cy='10' r='2' class='dot'/%3E%3Ccircle cx='10' cy='60' r='2' class='dot'/%3E%3Ccircle cx='70' cy='10' r='2' class='dot'/%3E%3Ccircle cx='120' cy='180' r='2' class='dot'/%3E%3Ccircle cx='150' cy='150' r='2' class='dot'/%3E%3Ccircle cx='50' cy='100' r='2' class='dot'/%3E%3Ccircle cx='80' cy='140' r='2' class='dot'/%3E%3Ccircle cx='140' cy='80' r='2' class='dot'/%3E%3Ccircle cx='30' cy='190' r='2' class='dot'/%3E%3Ccircle cx='180' cy='190' r='2' class='dot'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes f1%7B0%25%7Bstroke-dashoffset:150;%7D100%25%7Bstroke-dashoffset:0;%7D%7D@keyframes f2%7B0%25%7Bstroke-dashoffset:150;%7D100%25%7Bstroke-dashoffset:0;%7D%7D.bg%7Bstroke:rgba(32,227,255,0.15);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;%7D.d1%7Bstroke:%2320e3ff;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:15 135;animation:f1 4s linear infinite;%7D.d2%7Bstroke:%232f7cff;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20 130;animation:f2 5s linear infinite reverse;%7D.dot%7Bfill:%2320e3ff;opacity:0.8;%7D@keyframes p%7B0%25,100%25%7Bopacity:0.3;%7D50%25%7Bopacity:1;%7D%7D%3C/style%3E%3Cpath class='bg' d='M20,20 h30 l20,20 v40 l-15,15 h-35 l-10,-10 v-20 M180,40 v30 l-20,20 h-40 l-20,-20 v-30 l20,-20 h30 M50,180 l20,-20 h40 l20,-20 v-40 M10,120 h20 l20,-20 v-30 M190,160 h-30 l-20,20 v20 M100,120 l20,20 h40 l15,-15 M40,160 l-20,20 v20 M160,10 l20,20 v20'/%3E%3Cpath class='d1' d='M20,20 h30 l20,20 v40 l-15,15 h-35 l-10,-10 v-20 M180,40 v30 l-20,20 h-40 l-20,-20 v-30 l20,-20 h30 M50,180 l20,-20 h40 l20,-20 v-40 M10,120 h20 l20,-20 v-30 M190,160 h-30 l-20,20 v20 M100,120 l20,20 h40 l15,-15 M40,160 l-20,20 v20 M160,10 l20,20 v20'/%3E%3Cpath class='bg' d='M10,60 l20,20 h20 M70,10 v20 l20,20 h30 M120,180 v-20 l-20,-20 h-20 M150,150 l20,-20 v-30 M50,100 h-30 l-10,10 M80,140 l20,20 h20 M140,80 l20,-20 h30 M30,190 h20 l20,-20 v-20 M180,190 v-20 l-20,-20'/%3E%3Cpath class='d2' d='M10,60 l20,20 h20 M70,10 v20 l20,20 h30 M120,180 v-20 l-20,-20 h-20 M150,150 l20,-20 v-30 M50,100 h-30 l-10,10 M80,140 l20,20 h20 M140,80 l20,-20 h30 M30,190 h20 l20,-20 v-20 M180,190 v-20 l-20,-20'/%3E%3Cg style='animation: p 3s ease-in-out infinite alternate'%3E%3Ccircle cx='20' cy='20' r='2' class='dot'/%3E%3Ccircle cx='180' cy='40' r='2' class='dot'/%3E%3Ccircle cx='50' cy='180' r='2' class='dot'/%3E%3Ccircle cx='10' cy='120' r='2' class='dot'/%3E%3Ccircle cx='190' cy='160' r='2' class='dot'/%3E%3Ccircle cx='100' cy='120' r='2' class='dot'/%3E%3Ccircle cx='40' cy='160' r='2' class='dot'/%3E%3Ccircle cx='160' cy='10' r='2' class='dot'/%3E%3Ccircle cx='10' cy='60' r='2' class='dot'/%3E%3Ccircle cx='70' cy='10' r='2' class='dot'/%3E%3Ccircle cx='120' cy='180' r='2' class='dot'/%3E%3Ccircle cx='150' cy='150' r='2' class='dot'/%3E%3Ccircle cx='50' cy='100' r='2' class='dot'/%3E%3Ccircle cx='80' cy='140' r='2' class='dot'/%3E%3Ccircle cx='140' cy='80' r='2' class='dot'/%3E%3Ccircle cx='30' cy='190' r='2' class='dot'/%3E%3Ccircle cx='180' cy='190' r='2' class='dot'/%3E%3C/g%3E%3C/svg%3E");
   
-  /* L'image se répète sur tout l'écran de manière fluide */
-  background-position: center center;
+  /* L'un est grand, l'autre petit et décalé : adieu l'effet "grille ordonnée" ! */
+  background-size: 400px 400px, 220px 220px;
+  background-position: 0 0, 50px 50px;
   background-attachment: fixed;
-  background-repeat: repeat;
   
-  /* LE MASQUE MAGIQUE : Rend le centre totalement transparent et fluide vers les bords */
-  -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
-  mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+  /* Le masque central pour la lisibilité des textes */
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 25%, black 80%);
+  mask-image: radial-gradient(ellipse at center, transparent 25%, black 80%);
 }
 
 a {
@@ -141,12 +142,7 @@ button {
   border-radius: 999px;
   color: var(--text-soft);
   border: 1px solid transparent;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
 .nav-links a:hover {
@@ -202,16 +198,11 @@ main {
   height: 12px;
   border-radius: 50%;
   background: var(--cyan);
-  box-shadow:
-    0 0 10px rgba(32, 227, 255, 0.7),
-    0 0 20px rgba(32, 227, 255, 0.35);
+  box-shadow: 0 0 10px rgba(32, 227, 255, 0.7), 0 0 20px rgba(32, 227, 255, 0.35);
   opacity: 0.75;
 }
 
-.presentation-box {
-  min-height: 320px;
-}
-
+.presentation-box { min-height: 320px; }
 h1, h2, h3 { color: var(--text-main); }
 h1 { margin-top: 0; margin-bottom: 26px; font-size: clamp(2rem, 3vw, 2.8rem); letter-spacing: -0.02em; color: #f4fbff; text-shadow: 0 0 14px rgba(32, 227, 255, 0.14); }
 h2 { margin-top: 0; margin-bottom: 20px; }
