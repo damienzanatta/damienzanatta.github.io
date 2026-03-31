@@ -45,67 +45,32 @@ body {
   overflow-x: hidden;
 }
 
-/* Génération du motif "Carte Mère" 100% en CSS pur */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.9;
-
-  /* Combinaison de points de soudure et de pistes à 0, 45 et 90 degrés */
-  background-image:
-    /* Noeuds lumineux (points) */
-    radial-gradient(circle at 39px 39px, var(--cyan) 1px, rgba(32, 227, 255, 0.35) 3px, transparent 6px),
-    radial-gradient(circle at 109px 109px, var(--blue) 1.5px, rgba(47, 124, 255, 0.35) 4px, transparent 7px),
-    radial-gradient(circle at 39px 109px, var(--cyan) 1px, rgba(32, 227, 255, 0.25) 3px, transparent 5px),
-
-    /* Pistes obliques 45° */
-    repeating-linear-gradient(45deg,
-      transparent 0, transparent 20px,
-      rgba(32, 227, 255, 0.18) 21px, rgba(32, 227, 255, 0.18) 22px,
-      transparent 23px, transparent 48px,
-      rgba(47, 124, 255, 0.15) 49px, rgba(47, 124, 255, 0.15) 50px,
-      transparent 51px, transparent 70px
-    ),
-    /* Pistes obliques -45° */
-    repeating-linear-gradient(-45deg,
-      transparent 0, transparent 35px,
-      rgba(32, 227, 255, 0.12) 36px, rgba(32, 227, 255, 0.12) 37px,
-      transparent 38px, transparent 65px,
-      rgba(47, 124, 255, 0.15) 66px, rgba(47, 124, 255, 0.15) 67px,
-      transparent 68px, transparent 100px
-    ),
-    /* Pistes horizontales et verticales */
-    repeating-linear-gradient(90deg,
-      transparent 0, transparent 38px,
-      rgba(32, 227, 255, 0.22) 39px, rgba(32, 227, 255, 0.22) 40px,
-      transparent 41px, transparent 108px,
-      rgba(47, 124, 255, 0.18) 109px, rgba(47, 124, 255, 0.18) 110px,
-      transparent 111px, transparent 140px
-    ),
-    repeating-linear-gradient(0deg,
-      transparent 0, transparent 38px,
-      rgba(32, 227, 255, 0.22) 39px, rgba(32, 227, 255, 0.22) 40px,
-      transparent 41px, transparent 108px,
-      rgba(47, 124, 255, 0.18) 109px, rgba(47, 124, 255, 0.18) 110px,
-      transparent 111px, transparent 140px
-    );
-  
-  /* Taille de la grille de répétition du motif */
-  background-size: 140px 140px;
-}
-
-/* Masque radial sombre pour vider le centre et mettre en valeur le contenu */
+/* 1. Le fond bleu nuit profond */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
-  /* Assombrit fortement le centre de l'écran, et s'estompe vers les bords extérieurs */
-  background: radial-gradient(ellipse at center, rgba(5, 11, 22, 0.95) 15%, rgba(5, 11, 22, 0.4) 60%, transparent 100%);
+  z-index: -2;
+  background: radial-gradient(circle at 50% 50%, #091426 0%, #030812 100%);
+}
+
+/* 2. Le motif vectoriel 100% CODE (SVG Data URI) avec masque central */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.8;
+  
+  /* C'est ici qu'est encodé le dessin du circuit imprimé en texte pur */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cg stroke='rgba(32, 227, 255, 0.35)' stroke-width='1.5' fill='none'%3E%3Cpath d='M30 0 v80 l40 40 h80 l40 -40 v-80' /%3E%3Cpath d='M0 220 h80 l40 -40 v-80 l-40 -40 H0' stroke='rgba(47, 124, 255, 0.3)' /%3E%3Cpath d='M300 80 h-80 l-40 40 v80 l40 40 h80' stroke='rgba(47, 124, 255, 0.3)' /%3E%3Cpath d='M270 300 v-80 l-40 -40 h-80 l-40 40 v80' /%3E%3Cpath d='M80 80 l 40 40 v 60' stroke='rgba(32, 227, 255, 0.15)' /%3E%3Cpath d='M220 220 l -40 -40 v -60' stroke='rgba(32, 227, 255, 0.15)' /%3E%3Ccircle cx='70' cy='120' r='3' fill='%2320e3ff' /%3E%3Ccircle cx='230' cy='180' r='3' fill='%232f7cff' /%3E%3Ccircle cx='150' cy='220' r='3' fill='%2320e3ff' /%3E%3Ccircle cx='150' cy='80' r='3' fill='%232f7cff' /%3E%3Ccircle cx='120' cy='120' r='2' fill='%2320e3ff' /%3E%3Ccircle cx='180' cy='180' r='2' fill='%232f7cff' /%3E%3C/g%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  
+  /* LE MASQUE MAGIQUE : Efface dynamiquement le centre du motif */
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 25%, black 75%);
+  mask-image: radial-gradient(ellipse at center, transparent 25%, black 75%);
 }
 
 a {
@@ -209,6 +174,8 @@ main {
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .page-box::before {
@@ -240,11 +207,7 @@ main {
   min-height: 320px;
 }
 
-h1,
-h2,
-h3 {
-  color: var(--text-main);
-}
+h1, h2, h3 { color: var(--text-main); }
 
 h1 {
   margin-top: 0;
@@ -255,24 +218,10 @@ h1 {
   text-shadow: 0 0 14px rgba(32, 227, 255, 0.14);
 }
 
-h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-h3 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-p {
-  margin-top: 0;
-  color: var(--text-soft);
-}
-
-strong {
-  color: #eafcff;
-}
+h2 { margin-top: 0; margin-bottom: 20px; }
+h3 { margin-top: 0; margin-bottom: 8px; }
+p { margin-top: 0; color: var(--text-soft); }
+strong { color: #eafcff; }
 
 footer {
   text-align: center;
@@ -312,13 +261,8 @@ footer {
   color: #b6d5ea;
 }
 
-.home-subtitle span {
-  display: block;
-}
-
-.home-subtitle span + span {
-  margin-top: 8px;
-}
+.home-subtitle span { display: block; }
+.home-subtitle span + span { margin-top: 8px; }
 
 /* Présentation */
 
@@ -338,11 +282,7 @@ footer {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   position: relative;
   overflow: hidden;
 }
@@ -358,31 +298,19 @@ footer {
 .tab-card:hover {
   transform: translateY(-3px);
   border-color: rgba(32, 227, 255, 0.4);
-  box-shadow:
-    0 14px 28px rgba(0, 0, 0, 0.28),
-    0 0 16px rgba(32, 227, 255, 0.12);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28), 0 0 16px rgba(32, 227, 255, 0.12);
 }
 
 .tab-card.active {
   color: #00141a;
   background: linear-gradient(135deg, #14dfff, #49efff);
   border-color: rgba(255, 255, 255, 0.18);
-  box-shadow:
-    0 16px 30px rgba(0, 0, 0, 0.28),
-    0 0 22px rgba(32, 227, 255, 0.28);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.28), 0 0 22px rgba(32, 227, 255, 0.28);
 }
 
-.tab-panels {
-  margin-top: 30px;
-}
-
-.tab-panel {
-  display: none;
-}
-
-.tab-panel.active {
-  display: block;
-}
+.tab-panels { margin-top: 30px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
 
 .info-grid {
   display: grid;
@@ -416,10 +344,7 @@ footer {
   text-shadow: 0 0 10px rgba(32, 227, 255, 0.08);
 }
 
-.info-item p {
-  margin: 0;
-  color: var(--text-soft);
-}
+.info-item p { margin: 0; color: var(--text-soft); }
 
 .timeline {
   display: flex;
@@ -441,9 +366,7 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-sm);
   padding: 14px 16px;
-  box-shadow:
-    0 12px 24px rgba(0, 0, 0, 0.25),
-    0 0 18px rgba(32, 227, 255, 0.22);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 18px rgba(32, 227, 255, 0.22);
 }
 
 .timeline-content {
@@ -465,19 +388,9 @@ footer {
   box-shadow: 0 0 12px rgba(32, 227, 255, 0.28);
 }
 
-.timeline-content h3 {
-  margin: 0 0 10px;
-  color: #ecfbff;
-}
-
-.timeline-content p {
-  margin: 0 0 8px;
-  color: var(--text-soft);
-}
-
-.timeline-content p:last-child {
-  margin-bottom: 0;
-}
+.timeline-content h3 { margin: 0 0 10px; color: #ecfbff; }
+.timeline-content p { margin: 0 0 8px; color: var(--text-soft); }
+.timeline-content p:last-child { margin-bottom: 0; }
 
 .hanging-block {
   display: grid;
@@ -487,59 +400,23 @@ footer {
   margin: 0 0 8px;
 }
 
-.hanging-label {
-  font-weight: 700;
-  color: #f1fcff;
-  white-space: nowrap;
-}
-
-.hanging-content div {
-  color: var(--text-soft);
-}
-
-.hanging-content div + div {
-  margin-top: 6px;
-}
+.hanging-label { font-weight: 700; color: #f1fcff; white-space: nowrap; }
+.hanging-content div { color: var(--text-soft); }
+.hanging-content div + div { margin-top: 6px; }
 
 /* Responsive */
 
 @media (max-width: 900px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .home-hero {
-    padding: 54px 22px;
-  }
-
-  .home-subtitle {
-    font-size: 1rem;
-  }
-
-  .tab-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline-item {
-    grid-template-columns: 1fr;
-  }
-
-  .hanging-block {
-    grid-template-columns: 1fr;
-  }
+  .navbar { flex-direction: column; align-items: flex-start; }
+  .home-hero { padding: 54px 22px; }
+  .home-subtitle { font-size: 1rem; }
+  .tab-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .info-grid { grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; }
+  .hanging-block { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
-  .tab-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-box {
-    padding: 24px 18px;
-  }
+  .tab-grid { grid-template-columns: 1fr; }
+  .page-box { padding: 24px 18px; }
 }
