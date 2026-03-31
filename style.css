@@ -45,31 +45,67 @@ body {
   overflow-x: hidden;
 }
 
-/* Intégration de l'image de carte mère en fond */
+/* Génération du motif "Carte Mère" 100% en CSS pur */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.55;
-  background-image: url('27122187-abstrait-numerique-avec-texture-de-circuit-imprime-de-technologie-illustration-de-la-carte-mere-electronique-concept-de-communication-et-d-ingenierie-illustrationle-vectoriel.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  opacity: 0.9;
+
+  /* Combinaison de points de soudure et de pistes à 0, 45 et 90 degrés */
+  background-image:
+    /* Noeuds lumineux (points) */
+    radial-gradient(circle at 39px 39px, var(--cyan) 1px, rgba(32, 227, 255, 0.35) 3px, transparent 6px),
+    radial-gradient(circle at 109px 109px, var(--blue) 1.5px, rgba(47, 124, 255, 0.35) 4px, transparent 7px),
+    radial-gradient(circle at 39px 109px, var(--cyan) 1px, rgba(32, 227, 255, 0.25) 3px, transparent 5px),
+
+    /* Pistes obliques 45° */
+    repeating-linear-gradient(45deg,
+      transparent 0, transparent 20px,
+      rgba(32, 227, 255, 0.18) 21px, rgba(32, 227, 255, 0.18) 22px,
+      transparent 23px, transparent 48px,
+      rgba(47, 124, 255, 0.15) 49px, rgba(47, 124, 255, 0.15) 50px,
+      transparent 51px, transparent 70px
+    ),
+    /* Pistes obliques -45° */
+    repeating-linear-gradient(-45deg,
+      transparent 0, transparent 35px,
+      rgba(32, 227, 255, 0.12) 36px, rgba(32, 227, 255, 0.12) 37px,
+      transparent 38px, transparent 65px,
+      rgba(47, 124, 255, 0.15) 66px, rgba(47, 124, 255, 0.15) 67px,
+      transparent 68px, transparent 100px
+    ),
+    /* Pistes horizontales et verticales */
+    repeating-linear-gradient(90deg,
+      transparent 0, transparent 38px,
+      rgba(32, 227, 255, 0.22) 39px, rgba(32, 227, 255, 0.22) 40px,
+      transparent 41px, transparent 108px,
+      rgba(47, 124, 255, 0.18) 109px, rgba(47, 124, 255, 0.18) 110px,
+      transparent 111px, transparent 140px
+    ),
+    repeating-linear-gradient(0deg,
+      transparent 0, transparent 38px,
+      rgba(32, 227, 255, 0.22) 39px, rgba(32, 227, 255, 0.22) 40px,
+      transparent 41px, transparent 108px,
+      rgba(47, 124, 255, 0.18) 109px, rgba(47, 124, 255, 0.18) 110px,
+      transparent 111px, transparent 140px
+    );
+  
+  /* Taille de la grille de répétition du motif */
+  background-size: 140px 140px;
 }
 
-/* Filtre par-dessus l'image pour fondre les bords et garder l'ambiance néon cyan/bleu */
+/* Masque radial sombre pour vider le centre et mettre en valeur le contenu */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(32, 227, 255, 0.12), transparent 25%),
-    radial-gradient(circle at 80% 15%, rgba(47, 124, 255, 0.12), transparent 25%),
-    linear-gradient(180deg, rgba(3, 9, 21, 0.2) 0%, rgba(6, 17, 33, 0.9) 100%);
+  /* Assombrit fortement le centre de l'écran, et s'estompe vers les bords extérieurs */
+  background: radial-gradient(ellipse at center, rgba(5, 11, 22, 0.95) 15%, rgba(5, 11, 22, 0.4) 60%, transparent 100%);
 }
 
 a {
