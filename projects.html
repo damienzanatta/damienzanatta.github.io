@@ -151,7 +151,7 @@
             En formation
           </button>
 
-          <button class="tab-card active" id="tab-company" role="tab" aria-selected="true" aria-controls="panel-company" data-tab="company">
+          <button class="tab-card" id="tab-company" role="tab" aria-selected="false" aria-controls="panel-company" data-tab="company">
             En entreprise
           </button>
 
@@ -189,7 +189,7 @@
             </div>
           </section>
 
-          <section class="tab-panel active" id="panel-company" role="tabpanel" aria-labelledby="tab-company">
+          <section class="tab-panel" id="panel-company" role="tabpanel" aria-labelledby="tab-company">
             <div class="project-list">
               <a class="project-card" href="auto-inventory-glpi.html">
                 <div class="project-card-header">
@@ -287,6 +287,7 @@
       button.addEventListener("click", () => {
         const target = button.dataset.tab;
         const targetPanel = document.getElementById("panel-" + target);
+        const isAlreadyActive = button.classList.contains("active");
 
         tabButtons.forEach((btn) => {
           btn.classList.remove("active");
@@ -297,7 +298,7 @@
           panel.classList.remove("active");
         });
 
-        if (targetPanel) {
+        if (!isAlreadyActive && targetPanel) {
           button.classList.add("active");
           button.setAttribute("aria-selected", "true");
           targetPanel.classList.add("active");
