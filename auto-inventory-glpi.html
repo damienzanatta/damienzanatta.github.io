@@ -7,11 +7,14 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    .project-pager-wrapper {
+      margin-top: 22px;
+    }
+
     .project-pager {
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      margin-top: 6px;
     }
 
     .pager-button {
@@ -155,16 +158,15 @@
               pourront être ajoutés ultérieurement dans cette section.
             </p>
           </div>
-
-          <div class="timeline-content">
-            <h3>Navigation entre les réalisations</h3>
-            <nav class="project-pager" aria-label="Navigation entre les réalisations professionnelles">
-              <span class="pager-button is-disabled">← Réalisation précédente</span>
-              <span class="pager-button is-disabled">Réalisation suivante →</span>
-            </nav>
-          </div>
         </div>
       </section>
+
+      <div class="project-pager-wrapper">
+        <nav class="project-pager" aria-label="Navigation entre les réalisations professionnelles">
+          <span class="pager-button is-disabled">← Réalisation précédente</span>
+          <span class="pager-button is-disabled">Réalisation suivante →</span>
+        </nav>
+      </div>
     </div>
   </main>
 
