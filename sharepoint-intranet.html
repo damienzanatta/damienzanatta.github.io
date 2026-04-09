@@ -50,47 +50,55 @@
     }
 
     .project-page-title {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      grid-template-rows: 88px auto;
+      column-gap: 20px;
+      row-gap: 16px;
+      align-items: stretch;
       margin-bottom: 18px;
     }
 
     .project-page-logo {
+      grid-column: 1;
+      grid-row: 1;
       width: 88px;
       height: 88px;
       object-fit: contain;
-      flex-shrink: 0;
       padding: 10px;
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(32, 227, 255, 0.16);
       box-shadow: 0 0 18px rgba(32, 227, 255, 0.08);
-    }
-
-    .project-page-heading {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-width: 0;
-    }
-
-    .project-page-heading h1 {
-      margin: 0;
-      line-height: 1.15;
+      align-self: stretch;
+      justify-self: stretch;
     }
 
     .project-number {
-      display: inline-block;
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 88px;
       width: max-content;
-      padding: 6px 12px;
-      border-radius: 999px;
+      min-width: 150px;
+      padding: 0 22px;
+      border-radius: 18px;
       background: rgba(32, 227, 255, 0.12);
       border: 1px solid rgba(32, 227, 255, 0.18);
       color: #7feeff;
-      font-size: 0.9rem;
+      font-size: 1.15rem;
       font-weight: 700;
       line-height: 1;
+      box-shadow: 0 0 18px rgba(32, 227, 255, 0.08);
+    }
+
+    .project-page-title h1 {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      margin: 0;
+      line-height: 1.12;
     }
 
     .project-pager-wrapper {
@@ -123,12 +131,24 @@
 
     @media (max-width: 700px) {
       .project-page-title {
-        align-items: flex-start;
+        grid-template-columns: 72px minmax(0, 1fr);
+        grid-template-rows: 72px auto;
+        column-gap: 16px;
+        row-gap: 14px;
       }
 
       .project-page-logo {
         width: 72px;
         height: 72px;
+        padding: 8px;
+      }
+
+      .project-number {
+        height: 72px;
+        min-width: 120px;
+        padding: 0 18px;
+        font-size: 1rem;
+        border-radius: 16px;
       }
 
       .project-pager {
@@ -162,10 +182,8 @@
         <div class="project-hero">
           <div class="project-page-title">
             <img src="sharepoint-logo.jpg" alt="Logo SharePoint" class="project-page-logo">
-            <div class="project-page-heading">
-              <div class="project-number">Projet 2</div>
-              <h1>Création d'une base de connaissances et d'un portail Intranet</h1>
-            </div>
+            <div class="project-number">Projet 2</div>
+            <h1>Création d'une base de connaissances et d'un portail Intranet</h1>
           </div>
 
           <p>
