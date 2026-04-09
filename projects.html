@@ -27,6 +27,12 @@
       color: #00141a;
       background: linear-gradient(135deg, #14dfff, #49efff);
       box-shadow: 0 0 18px rgba(32, 227, 255, 0.24);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pdf-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(32, 227, 255, 0.34);
     }
 
     .pdf-frame {
@@ -67,12 +73,18 @@
       <section class="page-box presentation-box">
         <h1>Réalisations professionnelles</h1>
 
+        <p class="page-intro">
+          Cette rubrique présente les activités professionnelles que je mobilise dans le cadre de l’épreuve E5.
+          Les réalisations sont classées selon leur contexte : <strong>en formation</strong> et <strong>en entreprise</strong>.
+          Chaque activité dispose d’une page dédiée détaillant le contexte, les objectifs, les étapes de mise en œuvre et les compétences mobilisées.
+        </p>
+
         <div class="tab-grid projects-tab-grid" role="tablist" aria-label="Contenu des réalisations professionnelles">
           <button class="tab-card" id="tab-training" role="tab" aria-selected="false" aria-controls="panel-training" data-tab="training">
             En formation
           </button>
 
-          <button class="tab-card" id="tab-company" role="tab" aria-selected="false" aria-controls="panel-company" data-tab="company">
+          <button class="tab-card active" id="tab-company" role="tab" aria-selected="true" aria-controls="panel-company" data-tab="company">
             En entreprise
           </button>
 
@@ -83,9 +95,59 @@
 
         <div class="tab-panels">
           <section class="tab-panel" id="panel-training" role="tabpanel" aria-labelledby="tab-training">
+            <div class="project-list">
+              <a class="project-card" href="#">
+                <div class="project-meta">Formation</div>
+                <h3>Projet à ajouter</h3>
+                <p>
+                  Cette zone est prévue pour accueillir une réalisation effectuée en centre de formation.
+                  Tu pourras remplacer ce contenu par ton premier projet d’atelier, de TP ou de laboratoire réseau/système.
+                </p>
+                <span class="project-link">Page à créer</span>
+              </a>
+
+              <a class="project-card" href="#">
+                <div class="project-meta">Formation</div>
+                <h3>Projet à ajouter</h3>
+                <p>
+                  Tu peux conserver cette deuxième carte comme modèle afin d’ajouter rapidement tes prochaines réalisations de formation.
+                </p>
+                <span class="project-link">Page à créer</span>
+              </a>
+            </div>
           </section>
 
-          <section class="tab-panel" id="panel-company" role="tabpanel" aria-labelledby="tab-company">
+          <section class="tab-panel active" id="panel-company" role="tabpanel" aria-labelledby="tab-company">
+            <div class="project-list">
+              <a class="project-card" href="automatisation-inventaire-glpi.html">
+                <div class="project-meta">Entreprise</div>
+                <h3>Automatisation de l'inventaire du parc informatique (GLPI)</h3>
+                <p>
+                  Mettre en place et configurer une solution centralisée (GLPI), couplée à une stratégie de groupe (GPO),
+                  afin d'automatiser la remontée d'informations de l'ensemble des postes du réseau.
+                </p>
+                <span class="project-link">Consulter la page du projet</span>
+              </a>
+
+              <a class="project-card" href="#">
+                <div class="project-meta">Entreprise</div>
+                <h3>Projet à ajouter</h3>
+                <p>
+                  Cette carte peut être remplacée par une autre activité réalisée en entreprise, par exemple liée à Active Directory,
+                  à la sauvegarde, à la virtualisation, au support ou à la cybersécurité.
+                </p>
+                <span class="project-link">Page à créer</span>
+              </a>
+
+              <a class="project-card" href="#">
+                <div class="project-meta">Entreprise</div>
+                <h3>Projet à ajouter</h3>
+                <p>
+                  Utilise cette structure pour ajouter progressivement les autres travaux techniques que tu présenteras à l’épreuve.
+                </p>
+                <span class="project-link">Page à créer</span>
+              </a>
+            </div>
           </section>
 
           <section class="tab-panel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary">
@@ -97,7 +159,7 @@
                 </p>
 
                 <div class="pdf-actions">
-                  <a class="pdf-button" href="tableau-synthese-bts-sio-2026.pdf" target="_blank">
+                  <a class="pdf-button" href="tableau-synthese-bts-sio-2026.pdf" target="_blank" rel="noopener noreferrer">
                     Ouvrir le PDF
                   </a>
                 </div>
@@ -129,7 +191,6 @@
       button.addEventListener("click", () => {
         const target = button.dataset.tab;
         const targetPanel = document.getElementById("panel-" + target);
-        const isAlreadyActive = button.classList.contains("active");
 
         tabButtons.forEach((btn) => {
           btn.classList.remove("active");
@@ -140,7 +201,7 @@
           panel.classList.remove("active");
         });
 
-        if (!isAlreadyActive && targetPanel) {
+        if (targetPanel) {
           button.classList.add("active");
           button.setAttribute("aria-selected", "true");
           targetPanel.classList.add("active");
