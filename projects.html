@@ -17,55 +17,6 @@
       color: var(--text-soft);
     }
 
-    .project-card-header {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 12px;
-    }
-
-    .project-card-header--textonly {
-      gap: 0;
-    }
-
-    .project-title-block {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      min-width: 0;
-    }
-
-    .project-number {
-      display: inline-block;
-      width: max-content;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(32, 227, 255, 0.12);
-      border: 1px solid rgba(32, 227, 255, 0.18);
-      color: #7feeff;
-      font-size: 0.9rem;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .project-logo {
-      width: 68px;
-      height: 68px;
-      object-fit: contain;
-      flex-shrink: 0;
-      padding: 8px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(32, 227, 255, 0.16);
-      box-shadow: 0 0 16px rgba(32, 227, 255, 0.08);
-    }
-
-    .project-card h3 {
-      margin: 0;
-      color: #ecfbff;
-      line-height: 1.3;
-    }
-
     .pdf-actions {
       display: flex;
       gap: 12px;
@@ -105,17 +56,6 @@
 
       .pdf-frame {
         height: 700px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .project-card-header {
-        align-items: flex-start;
-      }
-
-      .project-logo {
-        width: 58px;
-        height: 58px;
       }
     }
   </style>
