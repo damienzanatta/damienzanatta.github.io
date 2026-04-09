@@ -49,6 +49,24 @@
       box-shadow: 0 0 18px rgba(32, 227, 255, 0.24);
     }
 
+    .project-top-return {
+      margin-right: 6px;
+    }
+
+    .project-top-separator {
+      width: 1px;
+      height: 30px;
+      flex: 0 0 auto;
+      margin: 0 6px 0 2px;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(32, 227, 255, 0.34),
+        transparent
+      );
+      box-shadow: 0 0 10px rgba(32, 227, 255, 0.12);
+    }
+
     .project-page-title {
       display: flex;
       align-items: center;
@@ -129,6 +147,14 @@
     }
 
     @media (max-width: 700px) {
+      .project-top-return {
+        margin-right: 0;
+      }
+
+      .project-top-separator {
+        display: none;
+      }
+
       .project-page-title {
         gap: 16px;
         align-items: center;
@@ -161,7 +187,8 @@
       <div class="site-title">Damien Zanatta</div>
 
       <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
-        <a href="projects.html" class="project-top-link">Retour</a>
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
         <a href="auto-inventory-glpi.html" class="project-top-link active" aria-current="page">Projet 1</a>
         <a href="sharepoint-intranet.html" class="project-top-link">Projet 2</a>
         <a href="user-onboarding-powershell.html" class="project-top-link">Projet 3</a>
