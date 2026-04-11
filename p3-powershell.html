@@ -5,181 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Intégration automatisée des utilisateurs | Damien Zanatta</title>
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .project-top-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .project-top-link,
-    .pager-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: 700;
-      color: #7feeff;
-      background: linear-gradient(180deg, rgba(10, 25, 48, 0.95), rgba(8, 19, 37, 0.95));
-      border: 1px solid rgba(32, 227, 255, 0.18);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .project-top-link:hover,
-    .pager-button:hover {
-      transform: translateY(-2px);
-      color: #ffffff;
-      background: rgba(32, 227, 255, 0.14);
-      border-color: rgba(32, 227, 255, 0.30);
-      box-shadow: 0 0 18px rgba(32, 227, 255, 0.16);
-    }
-
-    .project-top-link.active {
-      color: #00141a;
-      background: linear-gradient(135deg, #14dfff, #49efff);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 0 18px rgba(32, 227, 255, 0.24);
-    }
-
-    .project-top-return {
-      margin-right: 6px;
-    }
-
-    .project-top-separator {
-      width: 1px;
-      height: 30px;
-      flex: 0 0 auto;
-      margin: 0 6px 0 2px;
-      background: linear-gradient(
-        180deg,
-        transparent,
-        rgba(32, 227, 255, 0.34),
-        transparent
-      );
-      box-shadow: 0 0 10px rgba(32, 227, 255, 0.12);
-    }
-
-    .project-page-title {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 18px;
-    }
-
-    .project-page-logo {
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-      flex-shrink: 0;
-      padding: 10px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(32, 227, 255, 0.16);
-      box-shadow: 0 0 18px rgba(32, 227, 255, 0.08);
-    }
-
-    .project-page-heading {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 10px;
-      min-width: 0;
-    }
-
-    .project-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: max-content;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: rgba(32, 227, 255, 0.12);
-      border: 1px solid rgba(32, 227, 255, 0.18);
-      color: #7feeff;
-      font-size: 0.95rem;
-      font-weight: 700;
-      line-height: 1;
-      box-shadow: 0 0 18px rgba(32, 227, 255, 0.08);
-    }
-
-    .project-page-heading h1 {
-      margin: 0;
-      line-height: 1.08;
-      white-space: nowrap;
-      font-size: 1.95rem;
-      letter-spacing: -0.01em;
-    }
-
-    .project-pager-wrapper {
-      margin-top: 22px;
-    }
-
-    .project-pager {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .pager-button.is-disabled {
-      pointer-events: none;
-      opacity: 0.42;
-      color: var(--text-soft);
-      box-shadow: none;
-    }
-
-    @media (max-width: 980px) {
-      .navbar {
-        align-items: flex-start;
-      }
-
-      .project-top-nav {
-        justify-content: flex-start;
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .project-top-return {
-        margin-right: 0;
-      }
-
-      .project-top-separator {
-        display: none;
-      }
-
-      .project-page-title {
-        gap: 16px;
-        align-items: center;
-      }
-
-      .project-page-logo {
-        width: 78px;
-        height: 78px;
-        padding: 8px;
-      }
-
-      .project-page-heading h1 {
-        white-space: normal;
-        font-size: 1.55rem;
-      }
-
-      .project-pager {
-        flex-direction: column;
-      }
-
-      .pager-button {
-        width: 100%;
-      }
-    }
-  </style>
 </head>
 <body>
   <header class="site-header">
@@ -216,77 +41,77 @@
         </div>
 
         <div class="timeline">
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Contexte</h3>
             <p>
               À compléter.
             </p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Problématique</h3>
             <p>
               À compléter.
             </p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Objectif</h3>
             <p>
               Concevoir et déployer un script d'automatisation en PowerShell dédié au processus d'intégration des nouveaux collaborateurs.
             </p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Environnement technique</h3>
             <p>
               PowerShell, Active Directory, postes Windows, comptes utilisateurs, automatisation de tâches administratives.
             </p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Étapes réalisées</h3>
-            <p>
-              - Analyse des actions à automatiser<br>
-              - Rédaction du script PowerShell<br>
-              - Paramétrage des entrées nécessaires<br>
-              - Tests sur environnement prévu<br>
-              - Vérification des créations/modifications attendues<br>
-              - Documentation de la solution
-            </p>
-          </div>
+            <ul class="content-list">
+              <li>Analyse des actions à automatiser</li>
+              <li>Rédaction du script PowerShell</li>
+              <li>Paramétrage des entrées nécessaires</li>
+              <li>Tests sur environnement prévu</li>
+              <li>Vérification des créations/modifications attendues</li>
+              <li>Documentation de la solution</li>
+            </ul>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Difficultés rencontrées</h3>
             <p>
               À compléter.
             </p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Résultats obtenus</h3>
             <p>
               À compléter.
             </p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Compétences mobilisées</h3>
-            <p>
-              - Scripting PowerShell<br>
-              - Automatisation des tâches<br>
-              - Administration des utilisateurs<br>
-              - Tests et validation<br>
-              - Documentation technique
-            </p>
-          </div>
+            <ul class="content-list">
+              <li>Scripting PowerShell</li>
+              <li>Automatisation des tâches</li>
+              <li>Administration des utilisateurs</li>
+              <li>Tests et validation</li>
+              <li>Documentation technique</li>
+            </ul>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Documentation / preuves</h3>
             <p>
               Les captures d’écran, extraits du script, exemples d’exécution et documents de preuve pourront être ajoutés ultérieurement.
             </p>
-          </div>
+          </article>
         </div>
       </section>
 
