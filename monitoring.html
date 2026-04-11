@@ -3,54 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Veille informatique de Damien Zanatta sur l'AIOps appliqué à la supervision d'infrastructure.">
+  <meta name="theme-color" content="#050b16">
   <title>Veille informatique | Damien Zanatta</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
   <header class="site-header">
     <div class="container navbar">
-      <div class="site-title">Damien Zanatta</div>
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
 
       <nav class="nav-links" aria-label="Navigation principale">
         <a href="index.html" class="nav-home-link">Accueil</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <a href="about.html">Présentation</a>
         <a href="projects.html">Réalisations professionnelles</a>
-        <a href="monitoring.html" class="active">Veille informatique</a>
+        <a href="monitoring.html" class="active" aria-current="page">Veille informatique</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="container">
-      <section class="page-box presentation-box">
-        <h1>Veille informatique</h1>
+      <section class="page-box presentation-box" aria-labelledby="monitoring-title">
+        <h1 id="monitoring-title">Veille informatique</h1>
 
         <div class="timeline">
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Sujet de veille</h3>
             <p>L’AIOps au service de la supervision d’infrastructure.</p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Problématique</h3>
             <p>Comment l’AIOps peut-il améliorer la supervision d’infrastructure en réduisant le bruit des alertes, en détectant les anomalies et en accélérant l’identification des causes d’incident&nbsp;?</p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Objectif général</h3>
             <p>Suivre l’évolution des outils et des méthodes d’observabilité afin de comprendre comment l’intelligence artificielle peut améliorer la supervision des serveurs, des services et des réseaux.</p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Intérêt pour le BTS SIO SISR</h3>
             <p>Ce sujet permet d’aborder des notions directement liées à l’option SISR, comme la supervision, l’exploitation, la disponibilité des services, la gestion des alertes, le diagnostic d’incident et l’automatisation de l’analyse.</p>
-          </div>
+          </article>
 
-          <div class="timeline-content">
+          <article class="timeline-content">
             <h3>Résultat attendu</h3>
             <p>Être capable d’expliquer l’évolution entre supervision classique, observabilité et AIOps, puis d’identifier les apports concrets de ces approches pour une équipe d’exploitation informatique.</p>
-          </div>
+          </article>
         </div>
       </section>
     </div>
