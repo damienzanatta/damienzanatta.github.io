@@ -3,16 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio numérique de Damien Zanatta, étudiant en BTS SIO option SISR pour la session 2026.">
+  <meta name="theme-color" content="#050b16">
   <title>Accueil | Damien Zanatta</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
   <header class="site-header">
     <div class="container navbar">
-      <div class="site-title">Damien Zanatta</div>
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
 
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="index.html" class="nav-home-link active">Accueil</a>
+        <a href="index.html" class="nav-home-link active" aria-current="page">Accueil</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <a href="about.html">Présentation</a>
         <a href="projects.html">Réalisations professionnelles</a>
@@ -21,10 +27,10 @@
     </div>
   </header>
 
-  <main class="home-main">
+  <main id="main-content" class="home-main">
     <div class="container">
-      <section class="page-box home-hero">
-        <h1 class="home-name">Damien Zanatta</h1>
+      <section class="page-box home-hero" aria-labelledby="home-title">
+        <h1 id="home-title" class="home-name">Damien Zanatta</h1>
         <p class="home-subtitle">
           <span>Étudiant en BTS Services Informatiques aux Organisations</span>
           <span>Option Solutions d'Infrastructure, Systèmes et Réseaux</span>
