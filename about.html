@@ -3,233 +3,308 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Présentation de Damien Zanatta, de son parcours, de sa formation BTS SIO SISR et de son entreprise d'accueil.">
+  <meta name="theme-color" content="#050b16">
   <title>Présentation | Damien Zanatta</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
   <header class="site-header">
     <div class="container navbar">
-      <div class="site-title">Damien Zanatta</div>
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
 
       <nav class="nav-links" aria-label="Navigation principale">
         <a href="index.html" class="nav-home-link">Accueil</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
-        <a href="about.html" class="active">Présentation</a>
+        <a href="about.html" class="active" aria-current="page">Présentation</a>
         <a href="projects.html">Réalisations professionnelles</a>
         <a href="monitoring.html">Veille informatique</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="container">
-      <section class="page-box presentation-box">
-        <h1>Présentation</h1>
+      <section class="page-box presentation-box" aria-labelledby="about-title">
+        <h1 id="about-title">Présentation</h1>
 
-        <div class="tab-grid" role="tablist" aria-label="Contenu de présentation">
-          <button class="tab-card" id="tab-situation" role="tab" aria-selected="false" aria-controls="panel-situation" data-tab="situation">
-            Situation
-          </button>
+        <div data-tabs>
+          <div class="tab-grid" role="tablist" aria-label="Contenu de présentation">
+            <button
+              class="tab-card active"
+              id="tab-situation"
+              role="tab"
+              type="button"
+              aria-selected="true"
+              aria-controls="panel-situation"
+              tabindex="0">
+              Situation
+            </button>
 
-          <button class="tab-card" id="tab-parcours" role="tab" aria-selected="false" aria-controls="panel-parcours" data-tab="parcours">
-            Parcours
-          </button>
+            <button
+              class="tab-card"
+              id="tab-parcours"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-parcours"
+              tabindex="-1">
+              Parcours
+            </button>
 
-          <button class="tab-card" id="tab-formation" role="tab" aria-selected="false" aria-controls="panel-formation" data-tab="formation">
-            Formation
-          </button>
+            <button
+              class="tab-card"
+              id="tab-formation"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-formation"
+              tabindex="-1">
+              Formation
+            </button>
 
-          <button class="tab-card" id="tab-entreprise" role="tab" aria-selected="false" aria-controls="panel-entreprise" data-tab="entreprise">
-            Entreprise
-          </button>
-        </div>
+            <button
+              class="tab-card"
+              id="tab-entreprise"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-entreprise"
+              tabindex="-1">
+              Entreprise
+            </button>
+          </div>
 
-        <div class="tab-panels">
-          <section class="tab-panel" id="panel-situation" role="tabpanel" aria-labelledby="tab-situation">
-            <div class="info-grid">
-              <div class="info-item">
-                <h3>Période</h3>
-                <p>Septembre 2024 - Août 2026</p>
-              </div>
-
-              <div class="info-item">
-                <h3>Statut</h3>
-                <p>Étudiant en alternance</p>
-              </div>
-
-              <div class="info-item">
-                <h3>Formation</h3>
-                <p>BTS Services Informatiques aux Organisations</p>
-              </div>
-
-              <div class="info-item">
-                <h3>Option</h3>
-                <p>Solutions d'Infrastructure, Systèmes et Réseaux</p>
-              </div>
-
-              <div class="info-item">
-                <h3>Structure de formation</h3>
-                <p>H3 Campus (78300, Poissy)</p>
-              </div>
-
-              <div class="info-item">
-                <h3>Structure d'accueil</h3>
-                <p>École de Biologie Industrielle (95800, Cergy)</p>
-              </div>
-            </div>
-          </section>
-
-          <section class="tab-panel" id="panel-parcours" role="tabpanel" aria-labelledby="tab-parcours">
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-date">Septembre 2017 - Août 2020</div>
-                <div class="timeline-content">
-                  <h3>Bac Professionnel Systèmes Numériques</h3>
-                  <p><strong>Option :</strong> Réseaux Informatiques et Systèmes Communicants</p>
-                  <p><strong>Structure de formation :</strong> CFA Orléans Métropole (45000, Orléans)</p>
-                  <p><strong>Structure d'accueil :</strong> Netfective Technology (92250, La Garenne-Colombes)</p>
+          <div class="tab-panels">
+            <section
+              class="tab-panel active"
+              id="panel-situation"
+              role="tabpanel"
+              aria-labelledby="tab-situation"
+              tabindex="0">
+              <dl class="info-grid">
+                <div class="info-item">
+                  <dt>Période</dt>
+                  <dd>Septembre 2024 - Août 2026</dd>
                 </div>
-              </div>
 
-              <div class="timeline-item">
-                <div class="timeline-date">Septembre 2020 - Août 2022</div>
-                <div class="timeline-content">
-                  <h3>Validation du projet professionnel</h3>
-                  <p><strong>Structures d'accompagnement :</strong> Pôle Emploi et Cité des Métiers (60000, Beauvais)</p>
-                  <p><strong>Modalités :</strong> Ateliers, stages et missions d'intérim</p>
-                  <p><strong>Domaines explorés :</strong> Vente, logistique, gestion administrative</p>
-                  <p><strong>Structures d'accueil :</strong> Sport 2000, Stago, Lycée professionnel, etc.</p>
+                <div class="info-item">
+                  <dt>Statut</dt>
+                  <dd>Étudiant en alternance</dd>
                 </div>
-              </div>
 
-              <div class="timeline-item">
-                <div class="timeline-date">Septembre 2022 - Août 2024</div>
-                <div class="timeline-content">
-                  <h3>BTS Comptabilité et Gestion</h3>
-                  <p><strong>Structure de formation :</strong> H3 Campus (95310, Saint-Ouen-l'Aumône)</p>
-                  <p><strong>Structure d'accueil :</strong> Consultants Associés Européens (95310, Saint-Ouen-l'Aumône)</p>
+                <div class="info-item">
+                  <dt>Formation</dt>
+                  <dd>BTS Services Informatiques aux Organisations</dd>
                 </div>
-              </div>
 
-              <div class="timeline-item">
-                <div class="timeline-date">Septembre 2024 - Août 2026</div>
-                <div class="timeline-content">
+                <div class="info-item">
+                  <dt>Option</dt>
+                  <dd>Solutions d'Infrastructure, Systèmes et Réseaux</dd>
+                </div>
+
+                <div class="info-item">
+                  <dt>Structure de formation</dt>
+                  <dd>H3 Campus (78300, Poissy)</dd>
+                </div>
+
+                <div class="info-item">
+                  <dt>Structure d'accueil</dt>
+                  <dd>École de Biologie Industrielle (95800, Cergy)</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-parcours"
+              role="tabpanel"
+              aria-labelledby="tab-parcours"
+              tabindex="0"
+              hidden>
+              <ol class="timeline">
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2017-09">Septembre 2017</time> -
+                    <time datetime="2020-08">Août 2020</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Bac Professionnel Systèmes Numériques</h3>
+                    <p><strong>Option :</strong> Réseaux Informatiques et Systèmes Communicants</p>
+                    <p><strong>Structure de formation :</strong> CFA Orléans Métropole (45000, Orléans)</p>
+                    <p><strong>Structure d'accueil :</strong> Netfective Technology (92250, La Garenne-Colombes)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2020-09">Septembre 2020</time> -
+                    <time datetime="2022-08">Août 2022</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Validation du projet professionnel</h3>
+                    <p><strong>Structures d'accompagnement :</strong> Pôle Emploi et Cité des Métiers (60000, Beauvais)</p>
+                    <p><strong>Modalités :</strong> Ateliers, stages et missions d'intérim</p>
+                    <p><strong>Domaines explorés :</strong> Vente, logistique, gestion administrative</p>
+                    <p><strong>Structures d'accueil :</strong> Sport 2000, Stago, Lycée professionnel, etc.</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2022-09">Septembre 2022</time> -
+                    <time datetime="2024-08">Août 2024</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>BTS Comptabilité et Gestion</h3>
+                    <p><strong>Structure de formation :</strong> H3 Campus (95310, Saint-Ouen-l'Aumône)</p>
+                    <p><strong>Structure d'accueil :</strong> Consultants Associés Européens (95310, Saint-Ouen-l'Aumône)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2024-09">Septembre 2024</time> -
+                    <time datetime="2026-08">Août 2026</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>BTS Services Informatiques aux Organisations</h3>
+                    <p><strong>Option :</strong> Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                    <p><strong>Structure de formation :</strong> H3 Campus (78300, Poissy)</p>
+                    <p><strong>Structure d'accueil :</strong> École de Biologie Industrielle (95800, Cergy)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2026-09">Septembre 2026</time> -
+                    <time datetime="2027-08">Août 2027</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Bachelor Data et IA</h3>
+                    <p><strong>Structure de formation :</strong> H3 Hitema (75015, Paris)</p>
+                  </article>
+                </li>
+              </ol>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-formation"
+              role="tabpanel"
+              aria-labelledby="tab-formation"
+              tabindex="0"
+              hidden>
+              <div class="timeline">
+                <article class="timeline-content">
                   <h3>BTS Services Informatiques aux Organisations</h3>
-                  <p><strong>Option :</strong> Solutions d'Infrastructure, Systèmes et Réseaux</p>
-                  <p><strong>Structure de formation :</strong> H3 Campus (78300, Poissy)</p>
-                  <p><strong>Structure d'accueil :</strong> École de Biologie Industrielle (95800, Cergy)</p>
-                </div>
-              </div>
+                  <p><strong>Niveau :</strong> 5 (Bac+2)</p>
+                  <p><strong>Durée :</strong> 2 ans</p>
+                  <p><strong>Objectif :</strong> Former des techniciens capables de participer à la production et à la fourniture de services informatiques</p>
 
-              <div class="timeline-item">
-                <div class="timeline-date">Septembre 2026 - Août 2027</div>
-                <div class="timeline-content">
-                  <h3>Bachelor Data et IA</h3>
-                  <p><strong>Structure de formation :</strong> H3 Hitema (75015, Paris)</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="tab-panel" id="panel-formation" role="tabpanel" aria-labelledby="tab-formation">
-            <div class="timeline">
-              <div class="timeline-content">
-                <h3>BTS Services Informatiques aux Organisations</h3>
-                <p><strong>Niveau :</strong> 5 (Bac+2)</p>
-                <p><strong>Durée :</strong> 2 ans</p>
-                <p><strong>Objectif :</strong> Former des techniciens capables de participer à la production et à la fourniture de services informatiques</p>
-
-                <div class="hanging-block">
-                  <span class="hanging-label">Options :&nbsp;</span>
-                  <div class="hanging-content">
-                    <div>SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</div>
-                    <div>SLAM (Solutions Logicielles et Applications Métiers)</div>
+                  <div class="hanging-block">
+                    <p class="hanging-label">Options :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</li>
+                      <li>SLAM (Solutions Logicielles et Applications Métiers)</li>
+                    </ul>
                   </div>
-                </div>
-              </div>
+                </article>
 
-              <div class="timeline-content">
-                <h3>Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</h3>
-                <p><strong>Objectif :</strong> Former des spécialistes capables d'installer, administrer, superviser et maintenir les systèmes et réseaux</p>
+                <article class="timeline-content">
+                  <h3>Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</h3>
+                  <p><strong>Objectif :</strong> Former des spécialistes capables d'installer, administrer, superviser et maintenir les systèmes et réseaux</p>
 
-                <div class="hanging-block">
-                  <span class="hanging-label">Blocs principaux :&nbsp;</span>
-                  <div class="hanging-content">
-                    <div>Bloc n°1 : Support et mise à disposition de services informatiques</div>
-                    <div>Bloc n°2 : Administration des systèmes et des réseaux</div>
-                    <div>Bloc n°3 : Cybersécurité des services informatiques</div>
+                  <div class="hanging-block">
+                    <p class="hanging-label">Blocs principaux :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Bloc n°1 : Support et mise à disposition de services informatiques</li>
+                      <li>Bloc n°2 : Administration des systèmes et des réseaux</li>
+                      <li>Bloc n°3 : Cybersécurité des services informatiques</li>
+                    </ul>
                   </div>
-                </div>
 
-                <p><strong>Débouchés :</strong> Technicien/Administrateur systèmes et réseaux, Technicien réseaux et télécom, Technicien développement et exploitation</p>
+                  <p><strong>Débouchés :</strong> Technicien/Administrateur systèmes et réseaux, Technicien réseaux et télécom, Technicien développement et exploitation</p>
+                </article>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section class="tab-panel" id="panel-entreprise" role="tabpanel" aria-labelledby="tab-entreprise">
-            <div class="timeline">
-              <div class="timeline-content">
-                <h3>EBI (École de Biologie Industrielle)</h3>
-                <p><strong>Type :</strong> École d'ingénieurs en biologie</p>
-                <p><strong>Fondation :</strong> 1992</p>
-                <p><strong>Localisation :</strong> Cergy (95800)</p>
+            <section
+              class="tab-panel"
+              id="panel-entreprise"
+              role="tabpanel"
+              aria-labelledby="tab-entreprise"
+              tabindex="0"
+              hidden>
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h3>EBI (École de Biologie Industrielle)</h3>
+                  <p><strong>Type :</strong> École d'ingénieurs en biologie</p>
+                  <p><strong>Fondation :</strong> 1992</p>
+                  <p><strong>Localisation :</strong> Cergy (95800)</p>
 
-                <div class="hanging-block">
-                  <span class="hanging-label">Formations :&nbsp;</span>
-                  <div class="hanging-content">
-                    <div>Bachelor Biotechnologie (Bac+3)</div>
-                    <div>Programme Ingénieur Grande École (Bac+5)</div>
-                    <div>Mastères Spécialisés® (Bac+6)</div>
+                  <div class="hanging-block">
+                    <p class="hanging-label">Formations :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Bachelor Biotechnologie (Bac+3)</li>
+                      <li>Programme Ingénieur Grande École (Bac+5)</li>
+                      <li>Mastères Spécialisés® (Bac+6)</li>
+                    </ul>
                   </div>
-                </div>
 
-                <div class="hanging-block">
-                  <span class="hanging-label">Secteurs :&nbsp;</span>
-                  <div class="hanging-content">
-                    <div>Pharmaceutique</div>
-                    <div>Cosmétique</div>
-                    <div>Agro-alimentaire</div>
-                    <div>Environnement</div>
+                  <div class="hanging-block">
+                    <p class="hanging-label">Secteurs :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Pharmaceutique</li>
+                      <li>Cosmétique</li>
+                      <li>Agro-alimentaire</li>
+                      <li>Environnement</li>
+                    </ul>
                   </div>
-                </div>
+                </article>
+
+                <article class="timeline-content">
+                  <h3>Service informatique</h3>
+                  <p><strong>Effectif :</strong> 3 personnes (responsable informatique, prestataire présent sur site, alternant)</p>
+                  <p><strong>Rôle :</strong> Assurer le bon fonctionnement des équipements et services informatiques de l'école</p>
+                  <p><strong>Public accompagné :</strong> Étudiants, enseignants permanents, intervenants extérieurs et personnels administratifs</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Prestataires :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>DEiiS : systèmes et réseaux</li>
+                      <li>AISI : cybersécurité</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-content">
+                  <h3>Fonction</h3>
+                  <p><strong>Statut :</strong> Alternant au sein du service informatique</p>
+                  <p><strong>Type de contrat :</strong> Contrat d'apprentissage (2 ans)</p>
+                  <p><strong>Poste :</strong> Technicien systèmes d'information et support IT</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Missions quotidiennes :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Recherche de nouveaux matériels et solutions pour l'établissement</li>
+                      <li>Tests, installation et mise en service des équipements informatiques</li>
+                      <li>Assistance aux utilisateurs et support de niveau 1</li>
+                      <li>Rédaction de procédures d'utilisation du matériel informatique</li>
+                      <li>Diffusion de messages d'information et de sensibilisation</li>
+                      <li>Participation aux comités informatiques mensuels</li>
+                      <li>Suivi de sujets cybersécurité avec l'assureur Stoïk</li>
+                    </ul>
+                  </div>
+                </article>
               </div>
-
-              <div class="timeline-content">
-                <h3>Service informatique</h3>
-                <p><strong>Effectif :</strong> 3 personnes (responsable informatique, prestataire présent sur site, alternant)</p>
-                <p><strong>Rôle :</strong> Assurer le bon fonctionnement des équipements et services informatiques de l'école</p>
-                <p><strong>Public accompagné :</strong> Étudiants, enseignants permanents, intervenants extérieurs et personnels administratifs</p>
-
-                <div class="hanging-block">
-                  <span class="hanging-label">Prestataires :&nbsp;</span>
-                  <div class="hanging-content">
-                    <div>DEiiS : systèmes et réseaux</div>
-                    <div>AISI : cybersécurité</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="timeline-content">
-                <h3>Fonction</h3>
-                <p><strong>Statut :</strong> Alternant au sein du service informatique</p>
-                <p><strong>Type de contrat :</strong> Contrat d'apprentissage (2 ans)</p>
-                <p><strong>Poste :</strong> Technicien systèmes d'information et support IT</p>
-
-                <div class="hanging-block">
-                  <span class="hanging-label">Missions quotidiennes :&nbsp;</span>
-                  <div class="hanging-content">
-                    <div>Recherche de nouveaux matériels et solutions pour l'établissement</div>
-                    <div>Tests, installation et mise en service des équipements informatiques</div>
-                    <div>Assistance aux utilisateurs et support de niveau 1</div>
-                    <div>Rédaction de procédures d'utilisation du matériel informatique</div>
-                    <div>Diffusion de messages d'information et de sensibilisation</div>
-                    <div>Participation aux comités informatiques mensuels</div>
-                    <div>Suivi de sujets cybersécurité avec l'assureur Stoïk</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </section>
     </div>
@@ -240,33 +315,5 @@
       <p>© 2026 Damien Zanatta - Portfolio</p>
     </div>
   </footer>
-
-  <script>
-    const tabButtons = document.querySelectorAll(".tab-card");
-    const tabPanels = document.querySelectorAll(".tab-panel");
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const target = button.dataset.tab;
-        const targetPanel = document.getElementById("panel-" + target);
-        const isAlreadyActive = button.classList.contains("active");
-
-        tabButtons.forEach((btn) => {
-          btn.classList.remove("active");
-          btn.setAttribute("aria-selected", "false");
-        });
-
-        tabPanels.forEach((panel) => {
-          panel.classList.remove("active");
-        });
-
-        if (!isAlreadyActive && targetPanel) {
-          button.classList.add("active");
-          button.setAttribute("aria-selected", "true");
-          targetPanel.classList.add("active");
-        }
-      });
-    });
-  </script>
 </body>
 </html>
