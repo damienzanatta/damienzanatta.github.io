@@ -3,13 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet SharePoint de Damien Zanatta : conception d'une base de connaissances Intranet pour centraliser la documentation technique.">
+  <meta name="theme-color" content="#050b16">
   <title>Base de connaissances Intranet | Damien Zanatta</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
   <header class="site-header">
     <div class="container navbar">
-      <div class="site-title">Damien Zanatta</div>
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
 
       <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
         <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
@@ -22,15 +28,15 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="container">
-      <section class="page-box presentation-box">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
         <div class="project-hero">
           <div class="project-page-title">
-            <img src="p2-sharepoint-logo.jpg" alt="Logo SharePoint" class="project-page-logo">
+            <img src="p2-sharepoint-logo.jpg" alt="Logo SharePoint" class="project-page-logo" width="96" height="96">
             <div class="project-page-heading">
               <div class="project-number">Projet 2</div>
-              <h1>Base de connaissances Intranet</h1>
+              <h1 id="project-title">Base de connaissances Intranet</h1>
             </div>
           </div>
 
