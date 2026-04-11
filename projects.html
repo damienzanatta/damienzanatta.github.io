@@ -3,199 +3,243 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Réalisations professionnelles de Damien Zanatta dans le cadre du BTS SIO SISR, en formation et en entreprise.">
+  <meta name="theme-color" content="#050b16">
   <title>Réalisations professionnelles | Damien Zanatta</title>
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .projects-tab-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .pdf-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-      margin-bottom: 18px;
-    }
-
-    .pdf-button {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: 700;
-      color: #00141a;
-      background: linear-gradient(135deg, #14dfff, #49efff);
-      box-shadow: 0 0 18px rgba(32, 227, 255, 0.24);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .pdf-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 22px rgba(32, 227, 255, 0.34);
-    }
-
-    .pdf-frame {
-      width: 100%;
-      height: 900px;
-      border: 1px solid rgba(32, 227, 255, 0.22);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.98);
-    }
-
-    @media (max-width: 900px) {
-      .projects-tab-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .pdf-frame {
-        height: 700px;
-      }
-    }
-  </style>
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
   <header class="site-header">
     <div class="container navbar">
-      <div class="site-title">Damien Zanatta</div>
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
 
       <nav class="nav-links" aria-label="Navigation principale">
         <a href="index.html" class="nav-home-link">Accueil</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <a href="about.html">Présentation</a>
-        <a href="projects.html" class="active">Réalisations professionnelles</a>
+        <a href="projects.html" class="active" aria-current="page">Réalisations professionnelles</a>
         <a href="monitoring.html">Veille informatique</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="container">
-      <section class="page-box presentation-box">
-        <h1>Réalisations professionnelles</h1>
+      <section class="page-box presentation-box" aria-labelledby="projects-title">
+        <h1 id="projects-title">Réalisations professionnelles</h1>
 
-        <div class="tab-grid projects-tab-grid" role="tablist" aria-label="Contenu des réalisations professionnelles">
-          <button class="tab-card" id="tab-training" role="tab" aria-selected="false" aria-controls="panel-training" data-tab="training">
-            En formation
-          </button>
+        <div data-tabs>
+          <div class="tab-grid projects-tab-grid" role="tablist" aria-label="Contenu des réalisations professionnelles">
+            <button
+              class="tab-card active"
+              id="tab-training"
+              role="tab"
+              type="button"
+              aria-selected="true"
+              aria-controls="panel-training"
+              tabindex="0">
+              En formation
+            </button>
 
-          <button class="tab-card" id="tab-company" role="tab" aria-selected="false" aria-controls="panel-company" data-tab="company">
-            En entreprise
-          </button>
+            <button
+              class="tab-card"
+              id="tab-company"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-company"
+              tabindex="-1">
+              En entreprise
+            </button>
 
-          <button class="tab-card" id="tab-summary" role="tab" aria-selected="false" aria-controls="panel-summary" data-tab="summary">
-            Tableau de synthèse
-          </button>
-        </div>
+            <button
+              class="tab-card"
+              id="tab-summary"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-summary"
+              tabindex="-1">
+              Tableau de synthèse
+            </button>
+          </div>
 
-        <div class="tab-panels">
-          <section class="tab-panel" id="panel-training" role="tabpanel" aria-labelledby="tab-training">
-            <div class="project-list">
-              <a class="project-card" href="#">
-                <div class="project-card-header project-card-header--textonly">
-                  <div class="project-title-block">
-                    <div class="project-number">Projet 1</div>
-                    <h3>Titre du projet de formation à ajouter</h3>
-                  </div>
-                </div>
-                <p>
-                  Cette zone est prévue pour accueillir une réalisation effectuée en centre de formation.
-                </p>
-              </a>
+          <div class="tab-panels">
+            <section
+              class="tab-panel active"
+              id="panel-training"
+              role="tabpanel"
+              aria-labelledby="tab-training"
+              tabindex="0">
+              <ul class="project-list">
+                <li>
+                  <article class="project-card project-card--static">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 1</div>
+                        <h3>Titre du projet de formation à ajouter</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Cette zone est prévue pour accueillir une réalisation effectuée en centre de formation.
+                    </p>
+                  </article>
+                </li>
 
-              <a class="project-card" href="#">
-                <div class="project-card-header project-card-header--textonly">
-                  <div class="project-title-block">
-                    <div class="project-number">Projet 2</div>
-                    <h3>Titre du projet de formation à ajouter</h3>
-                  </div>
-                </div>
-                <p>
-                  Tu pourras ajouter ici une autre activité réalisée à l’école.
-                </p>
-              </a>
-            </div>
-          </section>
+                <li>
+                  <article class="project-card project-card--static">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 2</div>
+                        <h3>Titre du projet de formation à ajouter</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Tu pourras ajouter ici une autre activité réalisée à l’école.
+                    </p>
+                  </article>
+                </li>
+              </ul>
+            </section>
 
-          <section class="tab-panel" id="panel-company" role="tabpanel" aria-labelledby="tab-company">
-            <div class="project-list">
-              <a class="project-card" href="p1-glpi.html">
-                <div class="project-card-header">
-                  <img src="p1-glpi-logo.jpg" alt="Logo GLPI" class="project-logo">
-                  <div class="project-title-block">
-                    <div class="project-number">Projet 1</div>
-                    <h3>Inventaire automatisé du parc</h3>
-                  </div>
-                </div>
-                <p>
-                  Mettre en place et configurer une solution centralisée (GLPI), couplée à une stratégie de groupe (GPO),
-                  afin d'automatiser la remontée d'informations de l'ensemble des postes du réseau.
-                </p>
-              </a>
-
-              <a class="project-card" href="p2-sharepoint.html">
-                <div class="project-card-header">
-                  <img src="p2-sharepoint-logo.jpg" alt="Logo SharePoint" class="project-logo">
-                  <div class="project-title-block">
-                    <div class="project-number">Projet 2</div>
-                    <h3>Base de connaissances Intranet</h3>
-                  </div>
-                </div>
-                <p>
-                  Concevoir et structurer un espace collaboratif interne via SharePoint, destiné à centraliser la documentation technique et les procédures informatiques.
-                </p>
-              </a>
-
-              <a class="project-card" href="p3-powershell.html">
-                <div class="project-card-header">
-                  <img src="p3-powershell-logo.jpg" alt="Logo PowerShell" class="project-logo">
-                  <div class="project-title-block">
-                    <div class="project-number">Projet 3</div>
-                    <h3>Intégration automatisée des utilisateurs</h3>
-                  </div>
-                </div>
-                <p>
-                  Concevoir et déployer un script d'automatisation en PowerShell dédié au processus d'intégration des nouveaux collaborateurs.
-                </p>
-              </a>
-
-              <a class="project-card" href="p4-vpn.html">
-                <div class="project-card-header">
-                  <img src="p4-vpn-logo.jpg" alt="Logo VPN" class="project-logo">
-                  <div class="project-title-block">
-                    <div class="project-number">Projet 4</div>
-                    <h3>Accès distants sécurisés par VPN</h3>
-                  </div>
-                </div>
-                <p>
-                  Configurer et sécuriser une solution d'accès distant pour faciliter le télétravail et les déplacements des collaborateurs dans un environnement de confiance.
-                </p>
-              </a>
-            </div>
-          </section>
-
-          <section class="tab-panel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary">
-            <div class="timeline">
-              <div class="timeline-content">
-                <h3>Tableau de synthèse</h3>
-                <p>
-                  Ce document regroupe l’ensemble des réalisations professionnelles présentées dans le cadre de l’épreuve E5.
-                </p>
-
-                <div class="pdf-actions">
-                  <a class="pdf-button" href="tableau-synthese-bts-sio-2026.pdf" target="_blank" rel="noopener noreferrer">
-                    Ouvrir le PDF
+            <section
+              class="tab-panel"
+              id="panel-company"
+              role="tabpanel"
+              aria-labelledby="tab-company"
+              tabindex="0"
+              hidden>
+              <ul class="project-list">
+                <li>
+                  <a class="project-card" href="p1-glpi.html" aria-label="Ouvrir le projet 1 : Inventaire automatisé du parc">
+                    <div class="project-card-header">
+                      <img
+                        src="p1-glpi-logo.jpg"
+                        alt="Logo GLPI"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 1</div>
+                        <h3>Inventaire automatisé du parc</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Mettre en place et configurer une solution centralisée (GLPI), couplée à une stratégie de groupe (GPO),
+                      afin d'automatiser la remontée d'informations de l'ensemble des postes du réseau.
+                    </p>
                   </a>
-                </div>
+                </li>
 
-                <iframe
-                  class="pdf-frame"
-                  src="tableau-synthese-bts-sio-2026.pdf#view=FitH"
-                  title="Tableau de synthèse BTS SIO">
-                </iframe>
+                <li>
+                  <a class="project-card" href="p2-sharepoint.html" aria-label="Ouvrir le projet 2 : Base de connaissances Intranet">
+                    <div class="project-card-header">
+                      <img
+                        src="p2-sharepoint-logo.jpg"
+                        alt="Logo SharePoint"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 2</div>
+                        <h3>Base de connaissances Intranet</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Concevoir et structurer un espace collaboratif interne via SharePoint, destiné à centraliser la documentation technique et les procédures informatiques.
+                    </p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="p3-powershell.html" aria-label="Ouvrir le projet 3 : Intégration automatisée des utilisateurs">
+                    <div class="project-card-header">
+                      <img
+                        src="p3-powershell-logo.jpg"
+                        alt="Logo PowerShell"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 3</div>
+                        <h3>Intégration automatisée des utilisateurs</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Concevoir et déployer un script d'automatisation en PowerShell dédié au processus d'intégration des nouveaux collaborateurs.
+                    </p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="p4-vpn.html" aria-label="Ouvrir le projet 4 : Accès distants sécurisés par VPN">
+                    <div class="project-card-header">
+                      <img
+                        src="p4-vpn-logo.jpg"
+                        alt="Logo VPN"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 4</div>
+                        <h3>Accès distants sécurisés par VPN</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Configurer et sécuriser une solution d'accès distant pour faciliter le télétravail et les déplacements des collaborateurs dans un environnement de confiance.
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-summary"
+              role="tabpanel"
+              aria-labelledby="tab-summary"
+              tabindex="0"
+              hidden>
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h3>Tableau de synthèse</h3>
+                  <p>
+                    Ce document regroupe l’ensemble des réalisations professionnelles présentées dans le cadre de l’épreuve E5.
+                  </p>
+
+                  <div class="pdf-actions">
+                    <a
+                      class="pdf-button"
+                      href="tableau-synthese-bts-sio-2026.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      Ouvrir le PDF
+                    </a>
+                  </div>
+
+                  <iframe
+                    class="pdf-frame"
+                    src="tableau-synthese-bts-sio-2026.pdf#view=FitH"
+                    title="Tableau de synthèse BTS SIO"
+                    loading="lazy">
+                  </iframe>
+                </article>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </section>
     </div>
@@ -206,33 +250,5 @@
       <p>© 2026 Damien Zanatta - Portfolio</p>
     </div>
   </footer>
-
-  <script>
-    const tabButtons = document.querySelectorAll(".tab-card");
-    const tabPanels = document.querySelectorAll(".tab-panel");
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const target = button.dataset.tab;
-        const targetPanel = document.getElementById("panel-" + target);
-        const isAlreadyActive = button.classList.contains("active");
-
-        tabButtons.forEach((btn) => {
-          btn.classList.remove("active");
-          btn.setAttribute("aria-selected", "false");
-        });
-
-        tabPanels.forEach((panel) => {
-          panel.classList.remove("active");
-        });
-
-        if (!isAlreadyActive && targetPanel) {
-          button.classList.add("active");
-          button.setAttribute("aria-selected", "true");
-          targetPanel.classList.add("active");
-        }
-      });
-    });
-  </script>
 </body>
 </html>
