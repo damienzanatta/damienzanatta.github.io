@@ -28,6 +28,9 @@
   --radius-md: 16px;
   --radius-sm: 12px;
   --radius-xs: 8px;
+
+  --parallax-pattern-offset: 0px;
+  --parallax-glow-offset: 0px;
 }
 
 *,
@@ -51,12 +54,16 @@ body {
     radial-gradient(circle at top, rgba(114, 231, 222, 0.05), transparent 28%),
     linear-gradient(180deg, #07100d 0%, #040807 100%);
   position: relative;
+  isolation: isolate;
 }
 
 body::before {
   content: "";
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: -18vh;
+  right: 0;
+  bottom: -18vh;
+  left: 0;
   z-index: -2;
   pointer-events: none;
   background-image:
@@ -71,14 +78,18 @@ body::before {
     center top,
     center top,
     center top;
-  background-attachment: fixed;
   opacity: 0.96;
+  transform: translate3d(0, var(--parallax-pattern-offset), 0);
+  will-change: transform;
 }
 
 body::after {
   content: "";
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: -18vh;
+  right: 0;
+  bottom: -18vh;
+  left: 0;
   z-index: -1;
   pointer-events: none;
   background:
@@ -86,6 +97,8 @@ body::after {
     radial-gradient(circle at 84% 24%, rgba(114, 231, 222, 0.05), transparent 22%),
     radial-gradient(circle at 70% 76%, rgba(214, 179, 114, 0.05), transparent 18%),
     linear-gradient(180deg, rgba(2, 5, 4, 0.16), rgba(2, 5, 4, 0.42));
+  transform: translate3d(0, var(--parallax-glow-offset), 0);
+  will-change: transform;
 }
 
 img {
@@ -880,5 +893,10 @@ footer {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  body::before,
+  body::after {
+    transform: none !important;
   }
 }
