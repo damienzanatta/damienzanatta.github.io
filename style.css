@@ -1,44 +1,1311 @@
+Je suis étudiant en deuxième année de BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d'Infrastructure, Systèmes et Réseaux) pour la session 2026.
+
+Dans le cadre de l'épreuve E5 (Support et mise à disposition des services informatiques), j'ai mis en place un portfolio numérique via GitHub, hébergé sur GitHub Pages à l'adresse suivante : https://damienzanatta.github.io/
+
+Ci-dessous, je te transmets tous les fichiers HTML, CSS et JS nécessaires à la conception du site.
+
+index.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio numérique de Damien Zanatta, étudiant en BTS SIO option SISR pour la session 2026.">
+  <meta name="theme-color" content="#050b16">
+  <title>Accueil | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html" class="nav-home-link active" aria-current="page">Accueil</a>
+        <span class="nav-main-separator" aria-hidden="true"></span>
+        <a href="about.html">Présentation</a>
+        <a href="projects.html">Réalisations professionnelles</a>
+        <a href="monitoring.html">Veille informatique</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="home-main">
+    <div class="container">
+      <section class="page-box home-hero" aria-labelledby="home-title">
+        <h1 id="home-title" class="home-name">Damien Zanatta</h1>
+        <p class="home-subtitle">
+          <span>Étudiant en BTS Services Informatiques aux Organisations</span>
+          <span>Option Solutions d'Infrastructure, Systèmes et Réseaux</span>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+about.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Présentation de Damien Zanatta, de son parcours, de sa formation BTS SIO SISR et de son entreprise d'accueil.">
+  <meta name="theme-color" content="#050b16">
+  <title>Présentation | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html" class="nav-home-link">Accueil</a>
+        <span class="nav-main-separator" aria-hidden="true"></span>
+        <a href="about.html" class="active" aria-current="page">Présentation</a>
+        <a href="projects.html">Réalisations professionnelles</a>
+        <a href="monitoring.html">Veille informatique</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="about-title">
+        <h1 id="about-title">Présentation</h1>
+
+        <div data-tabs>
+          <div class="tab-grid" role="tablist" aria-label="Contenu de présentation">
+            <button
+              class="tab-card active"
+              id="tab-situation"
+              role="tab"
+              type="button"
+              aria-selected="true"
+              aria-controls="panel-situation"
+              tabindex="0">
+              Situation
+            </button>
+
+            <button
+              class="tab-card"
+              id="tab-parcours"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-parcours"
+              tabindex="-1">
+              Parcours
+            </button>
+
+            <button
+              class="tab-card"
+              id="tab-formation"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-formation"
+              tabindex="-1">
+              Formation
+            </button>
+
+            <button
+              class="tab-card"
+              id="tab-entreprise"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-entreprise"
+              tabindex="-1">
+              Entreprise
+            </button>
+          </div>
+
+          <div class="tab-panels">
+            <section
+              class="tab-panel active"
+              id="panel-situation"
+              role="tabpanel"
+              aria-labelledby="tab-situation"
+              tabindex="0">
+              <dl class="info-grid">
+                <div class="info-item">
+                  <dt>Période</dt>
+                  <dd>Septembre 2024 - Août 2026</dd>
+                </div>
+
+                <div class="info-item">
+                  <dt>Statut</dt>
+                  <dd>Étudiant en alternance</dd>
+                </div>
+
+                <div class="info-item">
+                  <dt>Formation</dt>
+                  <dd>BTS Services Informatiques aux Organisations</dd>
+                </div>
+
+                <div class="info-item">
+                  <dt>Option</dt>
+                  <dd>Solutions d'Infrastructure, Systèmes et Réseaux</dd>
+                </div>
+
+                <div class="info-item">
+                  <dt>Structure de formation</dt>
+                  <dd>H3 Campus (78300, Poissy)</dd>
+                </div>
+
+                <div class="info-item">
+                  <dt>Structure d'accueil</dt>
+                  <dd>École de Biologie Industrielle (95800, Cergy)</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-parcours"
+              role="tabpanel"
+              aria-labelledby="tab-parcours"
+              tabindex="0"
+              hidden>
+              <ol class="timeline">
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2017-09">Septembre 2017</time> -
+                    <time datetime="2020-08">Août 2020</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Bac Professionnel Systèmes Numériques</h3>
+                    <p><strong>Option :</strong> Réseaux Informatiques et Systèmes Communicants</p>
+                    <p><strong>Structure de formation :</strong> CFA Orléans Métropole (45000, Orléans)</p>
+                    <p><strong>Structure d'accueil :</strong> Netfective Technology (92250, La Garenne-Colombes)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2020-09">Septembre 2020</time> -
+                    <time datetime="2022-08">Août 2022</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Validation du projet professionnel</h3>
+                    <p><strong>Structures d'accompagnement :</strong> Pôle Emploi et Cité des Métiers (60000, Beauvais)</p>
+                    <p><strong>Modalités :</strong> Ateliers, stages et missions d'intérim</p>
+                    <p><strong>Domaines explorés :</strong> Vente, logistique, gestion administrative</p>
+                    <p><strong>Structures d'accueil :</strong> Sport 2000, Stago, Lycée professionnel, etc.</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2022-09">Septembre 2022</time> -
+                    <time datetime="2024-08">Août 2024</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>BTS Comptabilité et Gestion</h3>
+                    <p><strong>Structure de formation :</strong> H3 Campus (95310, Saint-Ouen-l'Aumône)</p>
+                    <p><strong>Structure d'accueil :</strong> Consultants Associés Européens (95310, Saint-Ouen-l'Aumône)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2024-09">Septembre 2024</time> -
+                    <time datetime="2026-08">Août 2026</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>BTS Services Informatiques aux Organisations</h3>
+                    <p><strong>Option :</strong> Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                    <p><strong>Structure de formation :</strong> H3 Campus (78300, Poissy)</p>
+                    <p><strong>Structure d'accueil :</strong> École de Biologie Industrielle (95800, Cergy)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time datetime="2026-09">Septembre 2026</time> -
+                    <time datetime="2027-08">Août 2027</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Bachelor Data et IA</h3>
+                    <p><strong>Structure de formation :</strong> H3 Hitema (75015, Paris)</p>
+                  </article>
+                </li>
+              </ol>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-formation"
+              role="tabpanel"
+              aria-labelledby="tab-formation"
+              tabindex="0"
+              hidden>
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h3>BTS Services Informatiques aux Organisations</h3>
+                  <p><strong>Niveau :</strong> 5 (Bac+2)</p>
+                  <p><strong>Durée :</strong> 2 ans</p>
+                  <p><strong>Objectif :</strong> Former des techniciens capables de participer à la production et à la fourniture de services informatiques</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Options :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</li>
+                      <li>SLAM (Solutions Logicielles et Applications Métiers)</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-content">
+                  <h3>Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</h3>
+                  <p><strong>Objectif :</strong> Former des spécialistes capables d'installer, administrer, superviser et maintenir les systèmes et réseaux</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Blocs principaux :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Bloc n°1 : Support et mise à disposition de services informatiques</li>
+                      <li>Bloc n°2 : Administration des systèmes et des réseaux</li>
+                      <li>Bloc n°3 : Cybersécurité des services informatiques</li>
+                    </ul>
+                  </div>
+
+                  <p><strong>Débouchés :</strong> Technicien/Administrateur systèmes et réseaux, Technicien réseaux et télécom, Technicien développement et exploitation</p>
+                </article>
+              </div>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-entreprise"
+              role="tabpanel"
+              aria-labelledby="tab-entreprise"
+              tabindex="0"
+              hidden>
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h3>EBI (École de Biologie Industrielle)</h3>
+                  <p><strong>Type :</strong> École d'ingénieurs en biologie</p>
+                  <p><strong>Fondation :</strong> 1992</p>
+                  <p><strong>Localisation :</strong> Cergy (95800)</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Formations :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Bachelor Biotechnologie (Bac+3)</li>
+                      <li>Programme Ingénieur Grande École (Bac+5)</li>
+                      <li>Mastères Spécialisés® (Bac+6)</li>
+                    </ul>
+                  </div>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Secteurs :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Pharmaceutique</li>
+                      <li>Cosmétique</li>
+                      <li>Agro-alimentaire</li>
+                      <li>Environnement</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-content">
+                  <h3>Service informatique</h3>
+                  <p><strong>Effectif :</strong> 3 personnes (responsable informatique, prestataire présent sur site, alternant)</p>
+                  <p><strong>Rôle :</strong> Assurer le bon fonctionnement des équipements et services informatiques de l'école</p>
+                  <p><strong>Public accompagné :</strong> Étudiants, enseignants permanents, intervenants extérieurs et personnels administratifs</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Prestataires :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>DEiiS : systèmes et réseaux</li>
+                      <li>AISI : cybersécurité</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-content">
+                  <h3>Fonction</h3>
+                  <p><strong>Statut :</strong> Alternant au sein du service informatique</p>
+                  <p><strong>Type de contrat :</strong> Contrat d'apprentissage (2 ans)</p>
+                  <p><strong>Poste :</strong> Technicien systèmes d'information et support IT</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Missions quotidiennes :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Recherche de nouveaux matériels et solutions pour l'établissement</li>
+                      <li>Tests, installation et mise en service des équipements informatiques</li>
+                      <li>Assistance aux utilisateurs et support de niveau 1</li>
+                      <li>Rédaction de procédures d'utilisation du matériel informatique</li>
+                      <li>Diffusion de messages d'information et de sensibilisation</li>
+                      <li>Participation aux comités informatiques mensuels</li>
+                      <li>Suivi de sujets cybersécurité avec l'assureur Stoïk</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+projects.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Réalisations professionnelles de Damien Zanatta dans le cadre du BTS SIO SISR, en formation et en entreprise.">
+  <meta name="theme-color" content="#050b16">
+  <title>Réalisations professionnelles | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html" class="nav-home-link">Accueil</a>
+        <span class="nav-main-separator" aria-hidden="true"></span>
+        <a href="about.html">Présentation</a>
+        <a href="projects.html" class="active" aria-current="page">Réalisations professionnelles</a>
+        <a href="monitoring.html">Veille informatique</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="projects-title">
+        <h1 id="projects-title">Réalisations professionnelles</h1>
+
+        <div data-tabs>
+          <div class="tab-grid projects-tab-grid" role="tablist" aria-label="Contenu des réalisations professionnelles">
+            <button
+              class="tab-card active"
+              id="tab-training"
+              role="tab"
+              type="button"
+              aria-selected="true"
+              aria-controls="panel-training"
+              tabindex="0">
+              En formation
+            </button>
+
+            <button
+              class="tab-card"
+              id="tab-company"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-company"
+              tabindex="-1">
+              En entreprise
+            </button>
+
+            <button
+              class="tab-card"
+              id="tab-summary"
+              role="tab"
+              type="button"
+              aria-selected="false"
+              aria-controls="panel-summary"
+              tabindex="-1">
+              Tableau de synthèse
+            </button>
+          </div>
+
+          <div class="tab-panels">
+            <section
+              class="tab-panel active"
+              id="panel-training"
+              role="tabpanel"
+              aria-labelledby="tab-training"
+              tabindex="0">
+              <ul class="project-list">
+                <li>
+                  <article class="project-card project-card--static">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 1</div>
+                        <h3>Titre du projet de formation à ajouter</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Cette zone est prévue pour accueillir une réalisation effectuée en centre de formation.
+                    </p>
+                  </article>
+                </li>
+
+                <li>
+                  <article class="project-card project-card--static">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 2</div>
+                        <h3>Titre du projet de formation à ajouter</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Tu pourras ajouter ici une autre activité réalisée à l’école.
+                    </p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-company"
+              role="tabpanel"
+              aria-labelledby="tab-company"
+              tabindex="0"
+              hidden>
+              <ul class="project-list">
+                <li>
+                  <a class="project-card" href="p1-glpi.html" aria-label="Ouvrir le projet 1 : Inventaire automatisé du parc">
+                    <div class="project-card-header">
+                      <img
+                        src="p1-glpi-logo.jpg"
+                        alt="Logo GLPI"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 1</div>
+                        <h3>Inventaire automatisé du parc</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Mettre en place et configurer une solution centralisée (GLPI), couplée à une stratégie de groupe (GPO),
+                      afin d'automatiser la remontée d'informations de l'ensemble des postes du réseau.
+                    </p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="p2-sharepoint.html" aria-label="Ouvrir le projet 2 : Base de connaissances Intranet">
+                    <div class="project-card-header">
+                      <img
+                        src="p2-sharepoint-logo.jpg"
+                        alt="Logo SharePoint"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 2</div>
+                        <h3>Base de connaissances Intranet</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Concevoir et structurer un espace collaboratif interne via SharePoint, destiné à centraliser la documentation technique et les procédures informatiques.
+                    </p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="p3-powershell.html" aria-label="Ouvrir le projet 3 : Intégration automatisée des utilisateurs">
+                    <div class="project-card-header">
+                      <img
+                        src="p3-powershell-logo.jpg"
+                        alt="Logo PowerShell"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 3</div>
+                        <h3>Intégration automatisée des utilisateurs</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Concevoir et déployer un script d'automatisation en PowerShell dédié au processus d'intégration des nouveaux collaborateurs.
+                    </p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="p4-vpn.html" aria-label="Ouvrir le projet 4 : Accès distants sécurisés par VPN">
+                    <div class="project-card-header">
+                      <img
+                        src="p4-vpn-logo.jpg"
+                        alt="Logo VPN"
+                        class="project-logo"
+                        width="68"
+                        height="68"
+                        loading="lazy"
+                        decoding="async">
+                      <div class="project-title-block">
+                        <div class="project-number">Projet 4</div>
+                        <h3>Accès distants sécurisés par VPN</h3>
+                      </div>
+                    </div>
+                    <p>
+                      Configurer et sécuriser une solution d'accès distant pour faciliter le télétravail et les déplacements des collaborateurs dans un environnement de confiance.
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-summary"
+              role="tabpanel"
+              aria-labelledby="tab-summary"
+              tabindex="0"
+              hidden>
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h3>Tableau de synthèse</h3>
+                  <p>
+                    Ce document regroupe l’ensemble des réalisations professionnelles présentées dans le cadre de l’épreuve E5.
+                  </p>
+
+                  <div class="pdf-actions">
+                    <a
+                      class="pdf-button"
+                      href="tableau-synthese-bts-sio-2026.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      Ouvrir le PDF
+                    </a>
+                  </div>
+
+                  <iframe
+                    class="pdf-frame"
+                    src="tableau-synthese-bts-sio-2026.pdf#view=FitH"
+                    title="Tableau de synthèse BTS SIO"
+                    loading="lazy">
+                  </iframe>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+p1-glpi.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet GLPI de Damien Zanatta : inventaire automatisé du parc informatique à l'aide de GLPI et d'une GPO.">
+  <meta name="theme-color" content="#050b16">
+  <title>Inventaire automatisé du parc | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <a href="p1-glpi.html" class="project-top-link active" aria-current="page">Projet 1</a>
+        <a href="p2-sharepoint.html" class="project-top-link">Projet 2</a>
+        <a href="p3-powershell.html" class="project-top-link">Projet 3</a>
+        <a href="p4-vpn.html" class="project-top-link">Projet 4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-hero">
+          <div class="project-page-title">
+            <img src="p1-glpi-logo.jpg" alt="Logo GLPI" class="project-page-logo" width="96" height="96">
+            <div class="project-page-heading">
+              <div class="project-number">Projet 1</div>
+              <h1 id="project-title">Inventaire automatisé du parc</h1>
+            </div>
+          </div>
+
+          <p>
+            Cette activité a été réalisée en entreprise dans le cadre de la gestion et du suivi du parc informatique.
+            Elle porte sur la mise en place d’une solution centralisée permettant de remonter automatiquement les informations des postes du réseau.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h3>Contexte</h3>
+            <p>
+              L’entreprise avait besoin de disposer d’une vision plus claire et plus centralisée de son parc informatique.
+              L’objectif était d’améliorer le suivi des équipements et de faciliter leur administration.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Problématique</h3>
+            <p>
+              Sans solution centralisée, l’inventaire matériel et logiciel des postes pouvait être incomplet,
+              plus difficile à maintenir et plus chronophage à mettre à jour manuellement.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Objectif</h3>
+            <p>
+              Mettre en place et configurer une solution centralisée (GLPI), couplée à une stratégie de groupe (GPO),
+              afin d'automatiser la remontée d'informations de l'ensemble des postes du réseau.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Environnement technique</h3>
+            <p>
+              Windows Server, Active Directory, GPO, GLPI, postes clients Windows, réseau local d’entreprise.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Étapes réalisées</h3>
+            <ul class="content-list">
+              <li>Analyse du besoin et identification de la solution à mettre en place</li>
+              <li>Installation et configuration de la solution GLPI</li>
+              <li>Préparation du déploiement automatisé sur les postes du domaine</li>
+              <li>Mise en place d’une stratégie de groupe (GPO) pour faciliter le déploiement</li>
+              <li>Vérification de la remontée automatique des informations dans GLPI</li>
+              <li>Contrôle du bon inventaire des postes intégrés au réseau</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Résultats obtenus</h3>
+            <p>
+              La solution mise en place a permis de centraliser l’inventaire du parc informatique
+              et d’automatiser la collecte des informations relatives aux postes du réseau.
+              Cela a facilité le suivi des équipements ainsi que les opérations d’administration.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Compétences mobilisées</h3>
+            <ul class="content-list">
+              <li>Administration des systèmes Windows</li>
+              <li>Utilisation d’Active Directory</li>
+              <li>Mise en œuvre de GPO</li>
+              <li>Gestion de parc informatique</li>
+              <li>Déploiement automatisé</li>
+              <li>Support et documentation technique</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Documentation / preuves</h3>
+            <p>
+              Les captures d’écran, documents techniques et éventuelles preuves complémentaires
+              pourront être ajoutés ultérieurement dans cette section.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="project-pager-wrapper">
+        <nav class="project-pager" aria-label="Navigation entre les réalisations professionnelles">
+          <span class="pager-button is-disabled">← Projet précédent</span>
+          <a class="pager-button" href="p2-sharepoint.html">Projet suivant →</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+p2-sharepoint.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet SharePoint de Damien Zanatta : conception d'une base de connaissances Intranet pour centraliser la documentation technique.">
+  <meta name="theme-color" content="#050b16">
+  <title>Base de connaissances Intranet | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <a href="p1-glpi.html" class="project-top-link">Projet 1</a>
+        <a href="p2-sharepoint.html" class="project-top-link active" aria-current="page">Projet 2</a>
+        <a href="p3-powershell.html" class="project-top-link">Projet 3</a>
+        <a href="p4-vpn.html" class="project-top-link">Projet 4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-hero">
+          <div class="project-page-title">
+            <img src="p2-sharepoint-logo.jpg" alt="Logo SharePoint" class="project-page-logo" width="96" height="96">
+            <div class="project-page-heading">
+              <div class="project-number">Projet 2</div>
+              <h1 id="project-title">Base de connaissances Intranet</h1>
+            </div>
+          </div>
+
+          <p>
+            Cette activité a été réalisée en entreprise dans le cadre de l’organisation de la documentation interne.
+            Elle vise à concevoir et structurer un espace collaboratif via SharePoint pour centraliser la documentation technique
+            et les procédures informatiques.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h3>Contexte</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Problématique</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Objectif</h3>
+            <p>
+              Concevoir et structurer un espace collaboratif interne via SharePoint, destiné à centraliser la documentation technique et les procédures informatiques.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Environnement technique</h3>
+            <p>
+              SharePoint, Microsoft 365, documentation interne, procédures informatiques, collaboration d’équipe.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Étapes réalisées</h3>
+            <ul class="content-list">
+              <li>Analyse du besoin</li>
+              <li>Définition de l’arborescence documentaire</li>
+              <li>Création de l’espace SharePoint</li>
+              <li>Organisation des rubriques et contenus</li>
+              <li>Mise en place des accès et droits</li>
+              <li>Documentation et tests</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Difficultés rencontrées</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Résultats obtenus</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Compétences mobilisées</h3>
+            <ul class="content-list">
+              <li>Administration d’outils collaboratifs</li>
+              <li>Structuration documentaire</li>
+              <li>Gestion des accès</li>
+              <li>Support aux utilisateurs</li>
+              <li>Organisation de l’information</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Documentation / preuves</h3>
+            <p>
+              Les captures d’écran, procédures, arborescences et documents de preuve pourront être ajoutés ultérieurement.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="project-pager-wrapper">
+        <nav class="project-pager" aria-label="Navigation entre les réalisations professionnelles">
+          <a class="pager-button" href="p1-glpi.html">← Projet précédent</a>
+          <a class="pager-button" href="p3-powershell.html">Projet suivant →</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+p3-powershell.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet PowerShell de Damien Zanatta : automatisation de l'intégration des utilisateurs dans le cadre du processus d'onboarding.">
+  <meta name="theme-color" content="#050b16">
+  <title>Intégration automatisée des utilisateurs | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <a href="p1-glpi.html" class="project-top-link">Projet 1</a>
+        <a href="p2-sharepoint.html" class="project-top-link">Projet 2</a>
+        <a href="p3-powershell.html" class="project-top-link active" aria-current="page">Projet 3</a>
+        <a href="p4-vpn.html" class="project-top-link">Projet 4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-hero">
+          <div class="project-page-title">
+            <img src="p3-powershell-logo.jpg" alt="Logo PowerShell" class="project-page-logo" width="96" height="96">
+            <div class="project-page-heading">
+              <div class="project-number">Projet 3</div>
+              <h1 id="project-title">Intégration automatisée des utilisateurs</h1>
+            </div>
+          </div>
+
+          <p>
+            Cette activité a été réalisée en entreprise dans le cadre de l’intégration des nouveaux collaborateurs.
+            Elle consiste à concevoir et déployer un script PowerShell destiné à automatiser certaines étapes du processus d’onboarding.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h3>Contexte</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Problématique</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Objectif</h3>
+            <p>
+              Concevoir et déployer un script d'automatisation en PowerShell dédié au processus d'intégration des nouveaux collaborateurs.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Environnement technique</h3>
+            <p>
+              PowerShell, Active Directory, postes Windows, comptes utilisateurs, automatisation de tâches administratives.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Étapes réalisées</h3>
+            <ul class="content-list">
+              <li>Analyse des actions à automatiser</li>
+              <li>Rédaction du script PowerShell</li>
+              <li>Paramétrage des entrées nécessaires</li>
+              <li>Tests sur environnement prévu</li>
+              <li>Vérification des créations/modifications attendues</li>
+              <li>Documentation de la solution</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Difficultés rencontrées</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Résultats obtenus</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Compétences mobilisées</h3>
+            <ul class="content-list">
+              <li>Scripting PowerShell</li>
+              <li>Automatisation des tâches</li>
+              <li>Administration des utilisateurs</li>
+              <li>Tests et validation</li>
+              <li>Documentation technique</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Documentation / preuves</h3>
+            <p>
+              Les captures d’écran, extraits du script, exemples d’exécution et documents de preuve pourront être ajoutés ultérieurement.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="project-pager-wrapper">
+        <nav class="project-pager" aria-label="Navigation entre les réalisations professionnelles">
+          <a class="pager-button" href="p2-sharepoint.html">← Projet précédent</a>
+          <a class="pager-button" href="p4-vpn.html">Projet suivant →</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+p4-vpn.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet VPN de Damien Zanatta : mise en place d'accès distants sécurisés pour le télétravail et les déplacements professionnels.">
+  <meta name="theme-color" content="#050b16">
+  <title>Accès distants sécurisés par VPN | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <a href="p1-glpi.html" class="project-top-link">Projet 1</a>
+        <a href="p2-sharepoint.html" class="project-top-link">Projet 2</a>
+        <a href="p3-powershell.html" class="project-top-link">Projet 3</a>
+        <a href="p4-vpn.html" class="project-top-link active" aria-current="page">Projet 4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-hero">
+          <div class="project-page-title">
+            <img src="p4-vpn-logo.jpg" alt="Logo VPN" class="project-page-logo" width="96" height="96">
+            <div class="project-page-heading">
+              <div class="project-number">Projet 4</div>
+              <h1 id="project-title">Accès distants sécurisés par VPN</h1>
+            </div>
+          </div>
+
+          <p>
+            Cette activité a été réalisée en entreprise dans le cadre de la sécurisation des accès distants.
+            Elle consiste à configurer et sécuriser une solution VPN pour faciliter le télétravail et les déplacements
+            des collaborateurs dans un environnement de confiance.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h3>Contexte</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Problématique</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Objectif</h3>
+            <p>
+              Configurer et sécuriser une solution d'accès distant pour faciliter le télétravail et les déplacements des collaborateurs dans un environnement de confiance.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Environnement technique</h3>
+            <p>
+              VPN, accès distant, sécurité réseau, authentification, postes nomades, environnement de télétravail.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Étapes réalisées</h3>
+            <ul class="content-list">
+              <li>Analyse du besoin d’accès distant</li>
+              <li>Choix ou prise en main de la solution VPN</li>
+              <li>Paramétrage de la connexion distante</li>
+              <li>Renforcement de la sécurité d’accès</li>
+              <li>Tests de connexion et de fiabilité</li>
+              <li>Validation de la solution</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Difficultés rencontrées</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Résultats obtenus</h3>
+            <p>
+              À compléter.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Compétences mobilisées</h3>
+            <ul class="content-list">
+              <li>Administration réseau</li>
+              <li>Sécurisation des accès</li>
+              <li>Paramétrage VPN</li>
+              <li>Tests de connectivité</li>
+              <li>Support technique</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Documentation / preuves</h3>
+            <p>
+              Les captures d’écran, schémas réseau, paramètres de configuration et documents de preuve pourront être ajoutés ultérieurement.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="project-pager-wrapper">
+        <nav class="project-pager" aria-label="Navigation entre les réalisations professionnelles">
+          <a class="pager-button" href="p3-powershell.html">← Projet précédent</a>
+          <span class="pager-button is-disabled">Projet suivant →</span>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+monitoring.html :
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Veille informatique de Damien Zanatta sur l'AIOps appliqué à la supervision d'infrastructure.">
+  <meta name="theme-color" content="#050b16">
+  <title>Veille informatique | Damien Zanatta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html" class="nav-home-link">Accueil</a>
+        <span class="nav-main-separator" aria-hidden="true"></span>
+        <a href="about.html">Présentation</a>
+        <a href="projects.html">Réalisations professionnelles</a>
+        <a href="monitoring.html" class="active" aria-current="page">Veille informatique</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="monitoring-title">
+        <h1 id="monitoring-title">Veille informatique</h1>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h3>Sujet de veille</h3>
+            <p>L’AIOps au service de la supervision d’infrastructure.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Problématique</h3>
+            <p>Comment l’AIOps peut-il améliorer la supervision d’infrastructure en réduisant le bruit des alertes, en détectant les anomalies et en accélérant l’identification des causes d’incident&nbsp;?</p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Objectif général</h3>
+            <p>Suivre l’évolution des outils et des méthodes d’observabilité afin de comprendre comment l’intelligence artificielle peut améliorer la supervision des serveurs, des services et des réseaux.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Intérêt pour le BTS SIO SISR</h3>
+            <p>Ce sujet permet d’aborder des notions directement liées à l’option SISR, comme la supervision, l’exploitation, la disponibilité des services, la gestion des alertes, le diagnostic d’incident et l’automatisation de l’analyse.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h3>Résultat attendu</h3>
+            <p>Être capable d’expliquer l’évolution entre supervision classique, observabilité et AIOps, puis d’identifier les apports concrets de ces approches pour une équipe d’exploitation informatique.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+style.css :
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --bg-0: #02050b;
-  --bg-1: #050914;
-  --bg-2: #07101d;
-  --bg-3: #0a1426;
-  --bg-4: #0e1a31;
+  --bg-top: #edf4ff;
+  --bg-mid: #e6efff;
+  --bg-bottom: #dce7fb;
 
-  --text-main: #edf6ff;
-  --text-soft: #a8bdd3;
-  --text-muted: #7086a0;
+  --text-main: #18263d;
+  --text-soft: #445776;
+  --text-muted: #7184a2;
 
-  --accent: #64e6ff;
-  --accent-strong: #9cf3ff;
-  --accent-2: #6d8dff;
-  --accent-3: #8cc8ff;
+  --accent: #79dfff;
+  --accent-strong: #57cfff;
+  --accent-2: #8d9cff;
+  --accent-3: #c6b8ff;
 
-  --glass-bg: rgba(9, 16, 30, 0.56);
-  --glass-bg-strong: rgba(9, 16, 30, 0.72);
-  --glass-bg-soft: rgba(255, 255, 255, 0.04);
+  --glass-bg: rgba(255, 255, 255, 0.18);
+  --glass-bg-strong: rgba(255, 255, 255, 0.26);
+  --glass-bg-soft: rgba(255, 255, 255, 0.12);
 
-  --glass-border: rgba(118, 208, 255, 0.18);
-  --glass-border-strong: rgba(122, 225, 255, 0.42);
-  --glass-inner: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.46);
+  --glass-border-strong: rgba(255, 255, 255, 0.66);
+  --glass-inner: rgba(255, 255, 255, 0.22);
 
   --shadow-lg:
-    0 26px 70px rgba(0, 0, 0, 0.42),
-    0 8px 28px rgba(0, 0, 0, 0.24),
-    0 0 0 1px rgba(100, 230, 255, 0.04);
+    0 28px 70px rgba(77, 97, 140, 0.14),
+    0 10px 28px rgba(77, 97, 140, 0.08);
   --shadow-md:
-    0 18px 44px rgba(0, 0, 0, 0.34),
-    0 6px 18px rgba(0, 0, 0, 0.20),
-    0 0 0 1px rgba(100, 230, 255, 0.03);
+    0 18px 40px rgba(77, 97, 140, 0.12),
+    0 6px 18px rgba(77, 97, 140, 0.07);
   --shadow-sm:
-    0 10px 26px rgba(0, 0, 0, 0.28),
-    0 0 0 1px rgba(100, 230, 255, 0.03);
+    0 10px 24px rgba(77, 97, 140, 0.10);
 
-  --glow-soft: 0 0 24px rgba(100, 230, 255, 0.10);
-  --glow-md: 0 0 34px rgba(100, 230, 255, 0.14);
-  --glow-strong: 0 0 46px rgba(109, 141, 255, 0.12);
+  --glow-soft: 0 0 22px rgba(121, 223, 255, 0.12);
+  --glow-md: 0 0 28px rgba(121, 223, 255, 0.16);
 
   --radius-xl: 32px;
   --radius-lg: 24px;
@@ -46,20 +1313,15 @@
   --radius-sm: 16px;
   --radius-xs: 12px;
 
-  --blur-lg: blur(24px) saturate(145%);
-  --blur-md: blur(18px) saturate(140%);
-  --blur-sm: blur(14px) saturate(135%);
+  --blur-lg: blur(24px) saturate(155%);
+  --blur-md: blur(18px) saturate(150%);
+  --blur-sm: blur(14px) saturate(145%);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-::selection {
-  background: rgba(100, 230, 255, 0.18);
-  color: #ffffff;
 }
 
 html {
@@ -74,12 +1336,11 @@ body {
   line-height: 1.65;
   color: var(--text-main);
   background:
-    radial-gradient(circle at 14% 16%, rgba(100, 230, 255, 0.10), transparent 24%),
-    radial-gradient(circle at 82% 18%, rgba(109, 141, 255, 0.12), transparent 28%),
-    radial-gradient(circle at 76% 74%, rgba(140, 200, 255, 0.07), transparent 22%),
-    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 16%, var(--bg-2) 42%, var(--bg-3) 72%, var(--bg-4) 100%);
+    radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.72), transparent 22%),
+    radial-gradient(circle at 84% 14%, rgba(141, 156, 255, 0.14), transparent 22%),
+    radial-gradient(circle at 76% 74%, rgba(121, 223, 255, 0.18), transparent 24%),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-bottom) 100%);
   position: relative;
-  isolation: isolate;
 }
 
 body::before {
@@ -89,25 +1350,23 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background:
-    linear-gradient(rgba(98, 170, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(98, 170, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
   background-size: 72px 72px, 72px 72px;
   opacity: 0.22;
-  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.16));
 }
 
 body::after {
   content: "";
   position: fixed;
-  inset: -10%;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 32%, rgba(100, 230, 255, 0.10), transparent 18%),
-    radial-gradient(circle at 82% 26%, rgba(109, 141, 255, 0.10), transparent 18%),
-    radial-gradient(circle at 70% 74%, rgba(140, 200, 255, 0.06), transparent 16%);
-  filter: blur(34px);
-  animation: ambientShift 16s ease-in-out infinite alternate;
+    radial-gradient(circle at 20% 30%, rgba(121, 223, 255, 0.08), transparent 18%),
+    radial-gradient(circle at 82% 24%, rgba(198, 184, 255, 0.10), transparent 18%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 26%),
+    linear-gradient(315deg, rgba(255, 255, 255, 0.10), transparent 28%);
 }
 
 img {
@@ -125,34 +1384,27 @@ button {
   font: inherit;
   color: inherit;
   border: 0;
-  background: none;
 }
 
 a:focus-visible,
 button:focus-visible,
 iframe:focus-visible {
-  outline: 2px solid rgba(156, 243, 255, 0.95);
+  outline: 2px solid rgba(87, 207, 255, 0.9);
   outline-offset: 3px;
-  box-shadow:
-    0 0 0 6px rgba(100, 230, 255, 0.12),
-    0 0 22px rgba(100, 230, 255, 0.16);
+  box-shadow: 0 0 0 6px rgba(121, 223, 255, 0.14);
 }
 
 .skip-link {
   position: absolute;
   left: 14px;
-  top: -60px;
-  z-index: 3000;
+  top: -56px;
+  z-index: 2000;
   padding: 10px 14px;
-  background:
-    linear-gradient(180deg, rgba(12, 21, 38, 0.96), rgba(7, 13, 26, 0.96));
-  color: #f4fbff;
-  border: 1px solid rgba(156, 243, 255, 0.34);
+  background: rgba(255, 255, 255, 0.96);
+  color: #17253b;
   border-radius: 12px;
   font-weight: 700;
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.42),
-    0 0 16px rgba(100, 230, 255, 0.12);
+  box-shadow: var(--shadow-sm);
   transition: top 0.2s ease;
 }
 
@@ -171,12 +1423,12 @@ iframe:focus-visible {
   top: 0;
   z-index: 1000;
   background:
-    linear-gradient(180deg, rgba(8, 14, 27, 0.86), rgba(7, 12, 24, 0.64)),
-    rgba(5, 10, 19, 0.38);
-  border-bottom: 1px solid rgba(118, 208, 255, 0.12);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.12)),
+    rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.34);
   box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 10px 28px rgba(77, 97, 140, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
 }
@@ -187,7 +1439,7 @@ iframe:focus-visible {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 56%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 60%);
 }
 
 .site-header::after {
@@ -198,12 +1450,11 @@ iframe:focus-visible {
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(100, 230, 255, 0.10) 18%,
-      rgba(156, 243, 255, 0.68) 50%,
-      rgba(109, 141, 255, 0.18) 82%,
+      rgba(121, 223, 255, 0.48) 30%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(141, 156, 255, 0.42) 70%,
       transparent 100%
     );
-  box-shadow: 0 0 12px rgba(100, 230, 255, 0.18);
 }
 
 .navbar {
@@ -216,11 +1467,11 @@ iframe:focus-visible {
 
 .site-title {
   flex-shrink: 0;
-  font-size: 1.16rem;
+  font-size: 1.18rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #f4fbff;
+  color: #182741;
 }
 
 .site-title a {
@@ -235,11 +1486,10 @@ iframe:focus-visible {
   height: 13px;
   border-radius: 50%;
   background:
-    radial-gradient(circle, #ffffff 0 28%, rgba(100, 230, 255, 0.88) 29% 58%, rgba(100, 230, 255, 0.12) 59% 100%);
+    radial-gradient(circle, rgba(255, 255, 255, 1) 0 28%, rgba(121, 223, 255, 0.52) 29% 58%, rgba(121, 223, 255, 0.12) 59% 100%);
   box-shadow:
-    0 0 0 7px rgba(100, 230, 255, 0.08),
-    0 0 16px rgba(100, 230, 255, 0.24),
-    0 0 28px rgba(100, 230, 255, 0.12);
+    0 0 0 7px rgba(255, 255, 255, 0.16),
+    0 10px 18px rgba(87, 207, 255, 0.12);
 }
 
 .nav-links,
@@ -254,8 +1504,7 @@ iframe:focus-visible {
 .project-top-separator {
   width: 1px;
   height: 28px;
-  background: linear-gradient(180deg, transparent, rgba(156, 243, 255, 0.44), transparent);
-  box-shadow: 0 0 12px rgba(100, 230, 255, 0.10);
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.7), transparent);
 }
 
 /* Shared glass buttons */
@@ -272,16 +1521,15 @@ iframe:focus-visible {
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.06), rgba(109, 141, 255, 0.04)),
-    rgba(8, 14, 26, 0.56);
-  color: #dbeeff;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.10)),
+    rgba(255, 255, 255, 0.10);
+  color: #253955;
   font-weight: 600;
   letter-spacing: 0.01em;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.015),
-    0 12px 26px rgba(0, 0, 0, 0.24);
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 22px rgba(77, 97, 140, 0.08);
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
   transition:
@@ -302,8 +1550,8 @@ iframe:focus-visible {
   border-radius: inherit;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 44%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 34%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 44%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 34%);
 }
 
 .nav-links a::after,
@@ -316,11 +1564,10 @@ iframe:focus-visible {
   height: 1px;
   border-radius: 999px;
   background:
-    linear-gradient(90deg, transparent, rgba(156, 243, 255, 0.90), transparent);
+    linear-gradient(90deg, transparent, rgba(121, 223, 255, 0.9), transparent);
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
-  box-shadow: 0 0 10px rgba(100, 230, 255, 0.18);
 }
 
 .nav-links a:hover,
@@ -329,15 +1576,11 @@ iframe:focus-visible {
 .pdf-button:hover {
   transform: translateY(-2px);
   border-color: var(--glass-border-strong);
-  color: #ffffff;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.09), rgba(109, 141, 255, 0.07)),
-    rgba(9, 16, 30, 0.64);
+  color: #172842;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 16px 30px rgba(0, 0, 0, 0.30),
-    0 0 16px rgba(100, 230, 255, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 16px 30px rgba(77, 97, 140, 0.12),
+    var(--glow-soft);
 }
 
 .nav-links a:hover::after,
@@ -349,17 +1592,16 @@ iframe:focus-visible {
 
 .nav-links a.active,
 .project-top-link.active {
-  color: #ffffff;
-  border-color: rgba(156, 243, 255, 0.56);
+  color: #15243b;
+  border-color: rgba(255, 255, 255, 0.72);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.12), rgba(109, 141, 255, 0.08)),
-    rgba(9, 17, 31, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.16)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.10), rgba(141, 156, 255, 0.08)),
+    rgba(255, 255, 255, 0.12);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 16px 32px rgba(0, 0, 0, 0.30),
-    0 0 0 1px rgba(156, 243, 255, 0.08),
-    0 0 18px rgba(100, 230, 255, 0.10);
+    inset 0 1px 0 rgba(255, 255, 255, 0.56),
+    0 18px 32px rgba(77, 97, 140, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
 /* Main panels */
@@ -374,17 +1616,12 @@ main {
   border-radius: var(--radius-xl);
   border: 1px solid var(--glass-border);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.05), rgba(109, 141, 255, 0.05)),
-    rgba(9, 16, 30, 0.58);
-  box-shadow: var(--shadow-lg);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.12)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.08), rgba(141, 156, 255, 0.06)),
+    rgba(255, 255, 255, 0.10);
+  box-shadow: var(--shadow-lg), var(--glow-soft);
   backdrop-filter: var(--blur-lg);
   -webkit-backdrop-filter: var(--blur-lg);
-}
-
-.page-box > * {
-  position: relative;
-  z-index: 1;
 }
 
 .page-box::before {
@@ -393,9 +1630,9 @@ main {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 26%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 28%),
-    linear-gradient(115deg, transparent 0%, rgba(100, 230, 255, 0.03) 48%, transparent 56%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 28%),
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.34), transparent 18%);
 }
 
 .page-box::after {
@@ -403,12 +1640,8 @@ main {
   position: absolute;
   inset: 10px;
   border-radius: calc(var(--radius-xl) - 10px);
-  border: 1px solid rgba(156, 243, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   pointer-events: none;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.015),
-    0 0 20px rgba(100, 230, 255, 0.04);
-  animation: framePulse 5s ease-in-out infinite;
 }
 
 .presentation-box {
@@ -419,7 +1652,7 @@ h1,
 h2,
 h3 {
   margin-top: 0;
-  color: #f5fbff;
+  color: #1a2942;
 }
 
 h1 {
@@ -427,9 +1660,6 @@ h1 {
   font-size: clamp(2.15rem, 3.2vw, 3.2rem);
   line-height: 1.08;
   letter-spacing: -0.03em;
-  text-shadow:
-    0 0 12px rgba(100, 230, 255, 0.05),
-    0 0 24px rgba(109, 141, 255, 0.04);
 }
 
 h2 {
@@ -448,7 +1678,7 @@ p {
 }
 
 strong {
-  color: #ffffff;
+  color: #172741;
 }
 
 footer {
@@ -468,16 +1698,7 @@ footer {
   display: grid;
   gap: 22px;
   text-align: center;
-  padding: 92px 32px;
-  background:
-    radial-gradient(circle at top center, rgba(156, 243, 255, 0.06), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.05), rgba(109, 141, 255, 0.05)),
-    rgba(8, 14, 28, 0.42);
-  box-shadow:
-    var(--shadow-lg),
-    var(--glow-soft);
-  animation: heroFloat 8s ease-in-out infinite;
+  padding: 88px 32px;
 }
 
 .home-hero::before {
@@ -485,13 +1706,13 @@ footer {
   position: absolute;
   top: 18px;
   right: 18px;
-  width: 128px;
-  height: 128px;
-  border-top: 1px solid rgba(156, 243, 255, 0.28);
-  border-right: 1px solid rgba(156, 243, 255, 0.28);
-  border-top-right-radius: 24px;
+  width: 120px;
+  height: 120px;
+  border-top: 1px solid rgba(255, 255, 255, 0.36);
+  border-right: 1px solid rgba(255, 255, 255, 0.36);
+  border-top-right-radius: 20px;
   pointer-events: none;
-  opacity: 0.92;
+  opacity: 0.9;
 }
 
 .home-hero::after {
@@ -499,13 +1720,13 @@ footer {
   position: absolute;
   bottom: 18px;
   left: 18px;
-  width: 128px;
-  height: 128px;
-  border-bottom: 1px solid rgba(109, 141, 255, 0.24);
-  border-left: 1px solid rgba(109, 141, 255, 0.24);
-  border-bottom-left-radius: 24px;
+  width: 120px;
+  height: 120px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
+  border-bottom-left-radius: 20px;
   pointer-events: none;
-  opacity: 0.88;
+  opacity: 0.8;
 }
 
 .home-name {
@@ -516,8 +1737,8 @@ footer {
 
 .home-subtitle {
   margin: 0 auto;
-  max-width: 900px;
-  font-size: 1.12rem;
+  max-width: 880px;
+  font-size: 1.1rem;
   color: var(--text-soft);
 }
 
@@ -550,10 +1771,10 @@ footer {
   border: 1px solid var(--glass-border);
   border-radius: 22px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.05), rgba(109, 141, 255, 0.04)),
-    rgba(9, 15, 29, 0.56);
-  color: #d6e9fb;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.12)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.06), rgba(141, 156, 255, 0.04)),
+    rgba(255, 255, 255, 0.08);
+  color: #2a4260;
   font-weight: 700;
   text-align: center;
   cursor: pointer;
@@ -575,8 +1796,8 @@ footer {
   border-radius: inherit;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 36%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.36), transparent 44%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 36%);
 }
 
 .tab-card::after {
@@ -588,33 +1809,31 @@ footer {
   height: 10px;
   border-radius: 50%;
   background:
-    radial-gradient(circle, #ffffff 0 28%, rgba(156, 243, 255, 0.92) 29% 58%, rgba(100, 230, 255, 0.10) 59% 100%);
+    radial-gradient(circle, rgba(255, 255, 255, 0.98) 0 28%, rgba(121, 223, 255, 0.42) 29% 58%, rgba(121, 223, 255, 0.10) 59% 100%);
   box-shadow:
-    0 0 0 4px rgba(100, 230, 255, 0.06),
-    0 0 14px rgba(100, 230, 255, 0.18);
+    0 0 0 4px rgba(255, 255, 255, 0.12),
+    0 0 14px rgba(121, 223, 255, 0.16);
   pointer-events: none;
 }
 
 .tab-card:hover {
   transform: translateY(-2px);
   border-color: var(--glass-border-strong);
-  box-shadow:
-    var(--shadow-md),
-    0 0 18px rgba(100, 230, 255, 0.06);
+  box-shadow: var(--shadow-md), var(--glow-soft);
 }
 
 .tab-card.active,
 .tab-card[aria-selected="true"] {
-  color: #ffffff;
-  border-color: rgba(156, 243, 255, 0.52);
+  color: #16263d;
+  border-color: rgba(255, 255, 255, 0.72);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.10), rgba(109, 141, 255, 0.08)),
-    rgba(9, 17, 31, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.16)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.10), rgba(141, 156, 255, 0.08)),
+    rgba(255, 255, 255, 0.12);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 18px 34px rgba(0, 0, 0, 0.30),
-    0 0 18px rgba(100, 230, 255, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    0 20px 36px rgba(77, 97, 140, 0.12),
+    var(--glow-soft);
 }
 
 .tab-panels {
@@ -646,11 +1865,11 @@ footer {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(118, 208, 255, 0.14);
+  border: 1px solid var(--glass-border);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.04), rgba(109, 141, 255, 0.035)),
-    rgba(9, 15, 29, 0.54);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.12)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.06), rgba(141, 156, 255, 0.04)),
+    rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-md);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
@@ -664,9 +1883,8 @@ footer {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 26%),
-    linear-gradient(115deg, transparent 0%, rgba(100, 230, 255, 0.025) 48%, transparent 56%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 26%);
 }
 
 .info-item::after,
@@ -676,7 +1894,7 @@ footer {
   position: absolute;
   inset: 10px;
   border-radius: calc(var(--radius-lg) - 10px);
-  border: 1px solid rgba(156, 243, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   pointer-events: none;
 }
 
@@ -687,7 +1905,7 @@ footer {
 .info-item dt {
   margin: 0 0 6px;
   font-weight: 700;
-  color: #f2fbff;
+  color: #233a58;
 }
 
 .info-item dd {
@@ -712,16 +1930,14 @@ footer {
   margin: 0;
   padding: 16px 18px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(118, 208, 255, 0.18);
+  border: 1px solid var(--glass-border);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.05), rgba(109, 141, 255, 0.04)),
-    rgba(8, 14, 27, 0.60);
-  color: #f3fbff;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.12)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.06), rgba(141, 156, 255, 0.04)),
+    rgba(255, 255, 255, 0.08);
+  color: #223855;
   font-weight: 700;
-  box-shadow:
-    var(--shadow-sm),
-    0 0 14px rgba(100, 230, 255, 0.05);
+  box-shadow: var(--shadow-sm);
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
 }
@@ -731,8 +1947,7 @@ footer {
 }
 
 .timeline-content h3 {
-  color: #f7fcff;
-  text-shadow: 0 0 10px rgba(100, 230, 255, 0.04);
+  color: #1a2b45;
 }
 
 .timeline-content p {
@@ -754,7 +1969,7 @@ footer {
 .hanging-label {
   margin: 0;
   font-weight: 700;
-  color: #f3fbff;
+  color: #1a2b45;
   white-space: nowrap;
 }
 
@@ -795,10 +2010,8 @@ footer {
 
 .project-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(156, 243, 255, 0.30);
-  box-shadow:
-    var(--shadow-lg),
-    0 0 18px rgba(100, 230, 255, 0.08);
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--shadow-lg), var(--glow-soft);
 }
 
 .project-card--static {
@@ -807,7 +2020,7 @@ footer {
 
 .project-card--static:hover {
   transform: none;
-  border-color: rgba(118, 208, 255, 0.14);
+  border-color: var(--glass-border);
   box-shadow: var(--shadow-md);
 }
 
@@ -837,18 +2050,18 @@ footer {
   padding: 6px 12px;
   margin-bottom: 10px;
   border-radius: 999px;
-  border: 1px solid rgba(156, 243, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.54);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.07), rgba(109, 141, 255, 0.05)),
-    rgba(9, 17, 31, 0.58);
-  color: #effaff;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.08), rgba(141, 156, 255, 0.06)),
+    rgba(255, 255, 255, 0.10);
+  color: #30476a;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 10px 18px rgba(0, 0, 0, 0.20);
+    inset 0 1px 0 rgba(255, 255, 255, 0.46),
+    0 10px 18px rgba(77, 97, 140, 0.08);
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
 }
@@ -863,14 +2076,13 @@ footer {
   flex-shrink: 0;
   object-fit: contain;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
-    linear-gradient(135deg, rgba(100, 230, 255, 0.06), rgba(109, 141, 255, 0.04)),
-    rgba(9, 16, 30, 0.64);
-  border: 1px solid rgba(118, 208, 255, 0.16);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14)),
+    linear-gradient(135deg, rgba(121, 223, 255, 0.06), rgba(141, 156, 255, 0.04)),
+    rgba(255, 255, 255, 0.10);
+  border: 1px solid var(--glass-border);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 14px 24px rgba(0, 0, 0, 0.24),
-    0 0 14px rgba(100, 230, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.46),
+    0 14px 24px rgba(77, 97, 140, 0.08);
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
 }
@@ -911,7 +2123,7 @@ footer {
 .project-page-heading h1 {
   font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   line-height: 1.08;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .project-pager-wrapper {
@@ -938,19 +2150,16 @@ footer {
 }
 
 .pdf-button {
-  color: #f4fbff;
+  color: #1a2b45;
 }
 
 .pdf-frame {
   width: 100%;
   height: 900px;
-  border: 1px solid rgba(118, 208, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 22px;
-  background:
-    linear-gradient(180deg, rgba(13, 22, 40, 0.92), rgba(8, 14, 27, 0.92));
-  box-shadow:
-    var(--shadow-md),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-md);
 }
 
 /* Responsive */
@@ -1025,6 +2234,10 @@ footer {
     padding: 10px;
   }
 
+  .project-page-heading h1 {
+    white-space: normal;
+  }
+
   .project-pager {
     flex-direction: column;
   }
@@ -1070,45 +2283,93 @@ footer {
   }
 }
 
-/* Animations */
-@keyframes ambientShift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
+script.js :
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("[data-tabs]").forEach(initTabs);
+});
+
+function initTabs(root) {
+  const tablist = root.querySelector('[role="tablist"]');
+  if (!tablist) {
+    return;
   }
-  100% {
-    transform: translate3d(1.5%, -1.5%, 0) scale(1.03);
+
+  const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+  if (tabs.length === 0) {
+    return;
   }
+
+  const panels = tabs.map((tab) => {
+    const panelId = tab.getAttribute("aria-controls");
+    return panelId ? document.getElementById(panelId) : null;
+  });
+
+  let activeIndex = tabs.findIndex(
+    (tab) =>
+      tab.getAttribute("aria-selected") === "true" ||
+      tab.classList.contains("active")
+  );
+
+  if (activeIndex < 0) {
+    activeIndex = 0;
+  }
+
+  const activateTab = (index, moveFocus = false) => {
+    tabs.forEach((tab, tabIndex) => {
+      const isActive = tabIndex === index;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.setAttribute("tabindex", isActive ? "0" : "-1");
+
+      const panel = panels[tabIndex];
+      if (panel) {
+        panel.classList.toggle("active", isActive);
+        panel.hidden = !isActive;
+      }
+    });
+
+    if (moveFocus) {
+      tabs[index].focus();
+    }
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      activateTab(index, false);
+    });
+
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex = null;
+
+      switch (event.key) {
+        case "ArrowRight":
+        case "ArrowDown":
+          nextIndex = (index + 1) % tabs.length;
+          break;
+        case "ArrowLeft":
+        case "ArrowUp":
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+          break;
+        case "Home":
+          nextIndex = 0;
+          break;
+        case "End":
+          nextIndex = tabs.length - 1;
+          break;
+        default:
+          break;
+      }
+
+      if (nextIndex !== null) {
+        event.preventDefault();
+        activateTab(nextIndex, true);
+      }
+    });
+  });
+
+  activateTab(activeIndex, false);
 }
 
-@keyframes framePulse {
-  0%,
-  100% {
-    opacity: 0.78;
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.015),
-      0 0 20px rgba(100, 230, 255, 0.04);
-  }
-  50% {
-    opacity: 1;
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.02),
-      0 0 24px rgba(100, 230, 255, 0.07);
-  }
-}
+Sans modifier la structure du site, des pages, des onglets, etc., je souhaite revoir intégralement la direction artistique avec un thème cohérent avec les réseaux informatiques.
 
-@keyframes heroFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-    box-shadow:
-      var(--shadow-lg),
-      var(--glow-soft);
-  }
-  50% {
-    transform: translateY(-2px);
-    box-shadow:
-      var(--shadow-lg),
-      var(--glow-md),
-      var(--glow-strong);
-  }
-}
+Pour tout code nécessitant une modification / un ajustement, je souhaite que tu me fournisses le code complet à copier-coller pour remplacer intégralement le code déjà en place.
