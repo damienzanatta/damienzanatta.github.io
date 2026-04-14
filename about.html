@@ -12,6 +12,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .presentation-box #panel-parcours .timeline-item {
+      align-items: stretch;
+    }
+
+    .presentation-box #panel-parcours .timeline-date {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      height: 100%;
+    }
+
+    .presentation-box #panel-parcours .timeline-date-start,
+    .presentation-box #panel-parcours .timeline-date-end {
+      display: block;
+    }
+
+    .presentation-box #panel-parcours .timeline-date-dots {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      margin: auto 0;
+    }
+
+    .presentation-box #panel-parcours .timeline-date-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 0 10px rgba(158, 238, 255, 0.18);
+    }
+  </style>
+
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -135,8 +171,13 @@
               <ol class="timeline">
                 <li class="timeline-item">
                   <p class="timeline-date">
-                    <time datetime="2017-09">Septembre 2017</time> -
-                    <time datetime="2020-08">Août 2020</time>
+                    <time class="timeline-date-start" datetime="2017-09">Septembre 2017</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2020-08">Août 2020</time>
                   </p>
                   <article class="timeline-content">
                     <h3>Bac Professionnel Systèmes Numériques</h3>
@@ -148,8 +189,13 @@
 
                 <li class="timeline-item">
                   <p class="timeline-date">
-                    <time datetime="2020-09">Septembre 2020</time> -
-                    <time datetime="2022-08">Août 2022</time>
+                    <time class="timeline-date-start" datetime="2020-09">Septembre 2020</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2022-08">Août 2022</time>
                   </p>
                   <article class="timeline-content">
                     <h3>Validation du projet professionnel</h3>
@@ -162,8 +208,13 @@
 
                 <li class="timeline-item">
                   <p class="timeline-date">
-                    <time datetime="2022-09">Septembre 2022</time> -
-                    <time datetime="2024-08">Août 2024</time>
+                    <time class="timeline-date-start" datetime="2022-09">Septembre 2022</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2024-08">Août 2024</time>
                   </p>
                   <article class="timeline-content">
                     <h3>BTS Comptabilité et Gestion</h3>
@@ -174,8 +225,13 @@
 
                 <li class="timeline-item">
                   <p class="timeline-date">
-                    <time datetime="2024-09">Septembre 2024</time> -
-                    <time datetime="2026-08">Août 2026</time>
+                    <time class="timeline-date-start" datetime="2024-09">Septembre 2024</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2026-08">Août 2026</time>
                   </p>
                   <article class="timeline-content">
                     <h3>BTS Services Informatiques aux Organisations</h3>
@@ -187,8 +243,13 @@
 
                 <li class="timeline-item">
                   <p class="timeline-date">
-                    <time datetime="2026-09">Septembre 2026</time> -
-                    <time datetime="2027-08">Août 2027</time>
+                    <time class="timeline-date-start" datetime="2026-09">Septembre 2026</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2027-08">Août 2027</time>
                   </p>
                   <article class="timeline-content">
                     <h3>Bachelor Data et IA</h3>
