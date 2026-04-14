@@ -1,49 +1,50 @@
 :root {
   color-scheme: dark;
 
-  /* Palette futur / premium / cloud-datacenter */
-  --bg-0: #06152d;
-  --bg-1: #0b1f42;
-  --bg-2: #12305f;
-  --bg-3: #1b4a86;
+  /* Palette Apple futuriste / liquid glass / cloud premium */
+  --bg-0: #071427;
+  --bg-1: #0d223f;
+  --bg-2: #16355f;
+  --bg-3: #2a5f9d;
 
-  --text-main: #fbfeff;
-  --text-soft: #edf8ff;
-  --text-muted: #bfd5e7;
+  --text-main: #ffffff;
+  --text-soft: #f1f8ff;
+  --text-muted: #bfd0e4;
 
-  --accent: #67e8ff;
-  --accent-2: #86d7ff;
-  --accent-3: #d7f9ff;
+  --accent: #7ae9ff;
+  --accent-2: #9fdcff;
+  --accent-3: #dff7ff;
   --accent-4: #ffffff;
-  --accent-5: #49b8ff;
+  --accent-5: #74bfff;
 
-  /* Verre */
+  /* Liquid glass */
   --glass-bg:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.055));
   --glass-bg-strong:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.27), rgba(175, 232, 255, 0.12));
-  --glass-border: rgba(245, 252, 255, 0.22);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.30), rgba(191, 235, 255, 0.13));
+  --glass-border: rgba(255, 255, 255, 0.24);
   --glass-border-strong: rgba(255, 255, 255, 0.48);
 
   --glass-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.16),
-    0 6px 16px rgba(0, 0, 0, 0.07),
-    0 0 18px rgba(103, 232, 255, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 18px 40px rgba(0, 0, 0, 0.15),
+    0 8px 18px rgba(0, 0, 0, 0.06),
+    0 0 24px rgba(122, 233, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
     inset 0 -1px 0 rgba(255, 255, 255, 0.04);
 
   --glass-shadow-hover:
-    0 22px 46px rgba(0, 0, 0, 0.18),
-    0 8px 18px rgba(0, 0, 0, 0.08),
-    0 0 28px rgba(103, 232, 255, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 22px 48px rgba(0, 0, 0, 0.17),
+    0 10px 22px rgba(0, 0, 0, 0.07),
+    0 0 32px rgba(122, 233, 255, 0.12),
+    0 0 48px rgba(116, 191, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 
   --glass-shadow-active:
-    0 20px 44px rgba(0, 0, 0, 0.18),
-    0 0 26px rgba(103, 232, 255, 0.22),
-    0 0 42px rgba(73, 184, 255, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    0 20px 46px rgba(0, 0, 0, 0.17),
+    0 0 28px rgba(122, 233, 255, 0.20),
+    0 0 52px rgba(116, 191, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
     inset 0 -1px 0 rgba(255, 255, 255, 0.06);
 
   --blur-xl: blur(30px) saturate(180%);
@@ -81,14 +82,14 @@ body {
   line-height: 1.7;
   color: var(--text-main);
   background:
-    radial-gradient(circle at 12% 10%, rgba(89, 225, 255, 0.15), transparent 24%),
-    radial-gradient(circle at 84% 18%, rgba(122, 207, 255, 0.14), transparent 23%),
-    radial-gradient(circle at 72% 78%, rgba(200, 246, 255, 0.08), transparent 18%),
-    linear-gradient(180deg, #07182f 0%, #061327 100%);
+    radial-gradient(circle at 12% 10%, rgba(122, 233, 255, 0.14), transparent 24%),
+    radial-gradient(circle at 84% 18%, rgba(159, 220, 255, 0.14), transparent 23%),
+    radial-gradient(circle at 72% 78%, rgba(223, 247, 255, 0.08), transparent 18%),
+    linear-gradient(180deg, #08172b 0%, #061326 100%);
   position: relative;
 }
 
-/* Fond initial restauré, recoloré vers blanc / bleu électrique / cyan */
+/* Fond initial restauré, recoloré vers un rendu plus Apple / blanc glacé / bleu clair */
 body::before {
   content: "";
   position: fixed;
@@ -101,8 +102,8 @@ body::before {
   background-position: center top;
   background-repeat: repeat;
   background-attachment: fixed;
-  opacity: 0.38;
-  filter: hue-rotate(205deg) saturate(2.25) brightness(1.22);
+  opacity: 0.36;
+  filter: hue-rotate(198deg) saturate(1.95) brightness(1.30);
   mix-blend-mode: screen;
 }
 
@@ -113,27 +114,27 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    radial-gradient(circle at 18% 16%, rgba(89, 225, 255, 0.11), transparent 22%),
-    radial-gradient(circle at 82% 24%, rgba(122, 207, 255, 0.10), transparent 24%),
-    radial-gradient(circle at 68% 78%, rgba(200, 246, 255, 0.06), transparent 18%),
-    linear-gradient(115deg, transparent 0 36%, rgba(89, 225, 255, 0.040) 40%, transparent 44%),
-    linear-gradient(65deg, transparent 0 42%, rgba(122, 207, 255, 0.035) 46%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 18% 16%, rgba(122, 233, 255, 0.10), transparent 22%),
+    radial-gradient(circle at 82% 24%, rgba(159, 220, 255, 0.09), transparent 24%),
+    radial-gradient(circle at 68% 78%, rgba(223, 247, 255, 0.05), transparent 18%),
+    linear-gradient(115deg, transparent 0 36%, rgba(122, 233, 255, 0.034) 40%, transparent 44%),
+    linear-gradient(65deg, transparent 0 42%, rgba(116, 191, 255, 0.030) 46%, transparent 50%),
     linear-gradient(
       90deg,
       transparent 0%,
       transparent 8%,
-      rgba(89, 225, 255, 0.032) 8.15%,
-      rgba(89, 225, 255, 0.032) 8.35%,
+      rgba(122, 233, 255, 0.028) 8.15%,
+      rgba(122, 233, 255, 0.028) 8.35%,
       transparent 8.5%,
       transparent 24%,
-      rgba(122, 207, 255, 0.032) 24.15%,
-      rgba(122, 207, 255, 0.032) 24.35%,
+      rgba(116, 191, 255, 0.028) 24.15%,
+      rgba(116, 191, 255, 0.028) 24.35%,
       transparent 24.5%,
       transparent 52%,
-      rgba(200, 246, 255, 0.025) 52.15%,
-      rgba(200, 246, 255, 0.025) 52.35%,
+      rgba(223, 247, 255, 0.020) 52.15%,
+      rgba(223, 247, 255, 0.020) 52.35%,
       transparent 52.5%,
       transparent 100%
     ),
@@ -141,16 +142,16 @@ body::after {
       180deg,
       transparent 0%,
       transparent 10%,
-      rgba(89, 225, 255, 0.025) 10.15%,
-      rgba(89, 225, 255, 0.025) 10.35%,
+      rgba(122, 233, 255, 0.020) 10.15%,
+      rgba(122, 233, 255, 0.020) 10.35%,
       transparent 10.5%,
       transparent 38%,
-      rgba(122, 207, 255, 0.025) 38.15%,
-      rgba(122, 207, 255, 0.025) 38.35%,
+      rgba(116, 191, 255, 0.020) 38.15%,
+      rgba(116, 191, 255, 0.020) 38.35%,
       transparent 38.5%,
       transparent 68%,
-      rgba(200, 246, 255, 0.020) 68.15%,
-      rgba(200, 246, 255, 0.020) 68.35%,
+      rgba(223, 247, 255, 0.016) 68.15%,
+      rgba(223, 247, 255, 0.016) 68.35%,
       transparent 68.5%,
       transparent 100%
     );
@@ -175,12 +176,12 @@ body::after {
     center top,
     center top;
   background-attachment: fixed;
-  opacity: 0.78;
+  opacity: 0.66;
   mix-blend-mode: screen;
 }
 
 ::selection {
-  background: rgba(89, 225, 255, 0.26);
+  background: rgba(122, 233, 255, 0.26);
   color: #ffffff;
 }
 
@@ -213,7 +214,7 @@ iframe:focus-visible {
   top: -56px;
   z-index: 2000;
   padding: 10px 14px;
-  background: #f5fdff;
+  background: #f7fdff;
   color: #071629;
   border-radius: 10px;
   font-weight: 700;
@@ -261,7 +262,7 @@ iframe:focus-visible {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #fbfeff;
+  color: #ffffff;
 }
 
 .site-title a {
@@ -285,7 +286,7 @@ iframe:focus-visible {
 .project-top-separator {
   width: 1px;
   height: 28px;
-  background: linear-gradient(180deg, transparent, rgba(245, 252, 255, 0.24), transparent);
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.26), transparent);
 }
 
 /* Base glass commune */
@@ -339,7 +340,7 @@ iframe:focus-visible {
 .pdf-button:hover {
   transform: translateY(-2px);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.30);
+  border-color: rgba(255, 255, 255, 0.34);
   background: var(--glass-bg-strong);
   box-shadow: var(--glass-shadow-hover);
 }
@@ -348,11 +349,11 @@ iframe:focus-visible {
 .project-top-link.active {
   color: #ffffff;
   border-color: var(--glass-border-strong);
-  background: var(--glass-bg-strong);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(195, 238, 255, 0.16));
   box-shadow: var(--glass-shadow-active);
   text-shadow:
-    0 0 10px rgba(103, 232, 255, 0.18),
-    0 0 18px rgba(73, 184, 255, 0.10);
+    0 0 12px rgba(122, 233, 255, 0.16),
+    0 0 20px rgba(116, 191, 255, 0.10);
 }
 
 main {
@@ -385,7 +386,7 @@ h1,
 h2,
 h3 {
   margin-top: 0;
-  color: #fbfeff;
+  color: #ffffff;
   text-wrap: balance;
 }
 
@@ -395,8 +396,8 @@ h1 {
   line-height: 1.08;
   letter-spacing: -0.03em;
   text-shadow:
-    0 0 12px rgba(89, 225, 255, 0.10),
-    0 0 26px rgba(57, 168, 255, 0.05);
+    0 0 10px rgba(122, 233, 255, 0.10),
+    0 0 22px rgba(116, 191, 255, 0.05);
 }
 
 h2 {
@@ -407,7 +408,7 @@ h3 {
   margin-bottom: 10px;
   font-size: 1.08rem;
   letter-spacing: 0.01em;
-  color: #fdfeff;
+  color: #ffffff;
 }
 
 p {
@@ -513,7 +514,7 @@ footer {
   min-height: 88px;
   padding: 18px 16px;
   border-radius: var(--radius-md);
-  color: #eef8ff;
+  color: #f3faff;
   font-weight: 700;
   text-align: center;
   cursor: pointer;
@@ -527,7 +528,7 @@ footer {
 
 .tab-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.30);
+  border-color: rgba(255, 255, 255, 0.34);
   background: var(--glass-bg-strong);
   box-shadow: var(--glass-shadow-hover);
 }
@@ -536,11 +537,11 @@ footer {
 .tab-card[aria-selected="true"] {
   color: #ffffff;
   border-color: var(--glass-border-strong);
-  background: var(--glass-bg-strong);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(195, 238, 255, 0.16));
   box-shadow: var(--glass-shadow-active);
   text-shadow:
-    0 0 10px rgba(103, 232, 255, 0.18),
-    0 0 18px rgba(73, 184, 255, 0.10);
+    0 0 12px rgba(122, 233, 255, 0.16),
+    0 0 20px rgba(116, 191, 255, 0.10);
 }
 
 .tab-panels {
@@ -604,7 +605,7 @@ footer {
 .timeline-date {
   margin: 0;
   padding: 16px 18px;
-  color: #fbfeff;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -613,7 +614,7 @@ footer {
 }
 
 .timeline-content h3 {
-  color: #fbfeff;
+  color: #ffffff;
 }
 
 .timeline-content p {
@@ -635,7 +636,7 @@ footer {
 .hanging-label {
   margin: 0;
   font-weight: 700;
-  color: #fbfeff;
+  color: #ffffff;
   white-space: nowrap;
 }
 
@@ -676,7 +677,7 @@ footer {
 
 .project-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.30);
+  border-color: rgba(255, 255, 255, 0.34);
   background: var(--glass-bg-strong);
   box-shadow: var(--glass-shadow-hover);
 }
@@ -718,18 +719,18 @@ footer {
   padding: 6px 10px;
   margin-bottom: 10px;
   border-radius: 999px;
-  border: 1px solid rgba(245, 252, 255, 0.18);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-  color: #f4fbff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+  color: #f8fdff;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
   box-shadow:
-    0 10px 18px rgba(0, 0, 0, 0.10),
-    0 0 14px rgba(89, 225, 255, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    0 10px 18px rgba(0, 0, 0, 0.09),
+    0 0 14px rgba(122, 233, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 .project-card h3,
@@ -741,14 +742,14 @@ footer {
 .project-page-logo {
   flex-shrink: 0;
   object-fit: contain;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-  border: 1px solid rgba(245, 252, 255, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.22);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
   box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.12),
-    0 0 16px rgba(89, 225, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    0 10px 22px rgba(0, 0, 0, 0.10),
+    0 0 16px rgba(122, 233, 255, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 .project-logo {
@@ -827,11 +828,11 @@ footer {
   width: 100%;
   height: auto;
   border-radius: 16px;
-  border: 1px solid rgba(245, 252, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.98);
   box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    0 14px 30px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .pdf-actions {
