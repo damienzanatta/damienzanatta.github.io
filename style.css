@@ -695,36 +695,6 @@ footer {
   align-items: start;
 }
 
-/* Ajustements ciblés uniquement pour l'onglet "Parcours" */
-#panel-parcours .timeline-item {
-  grid-template-columns: 320px minmax(0, 1fr);
-}
-
-#panel-parcours .timeline-date {
-  width: 100%;
-  white-space: nowrap;
-}
-
-#panel-parcours .timeline-content {
-  width: 100%;
-}
-
-@media (min-width: 901px) {
-  #panel-parcours .timeline-item:nth-child(even) {
-    grid-template-columns: minmax(0, 1fr) 320px;
-  }
-
-  #panel-parcours .timeline-item:nth-child(even) .timeline-content {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  #panel-parcours .timeline-item:nth-child(even) .timeline-date {
-    grid-column: 2;
-    grid-row: 1;
-  }
-}
-
 .timeline-date {
   margin: 0;
   padding: 16px 18px;
@@ -1053,16 +1023,6 @@ footer {
 
   .timeline-item {
     grid-template-columns: 1fr;
-  }
-
-  #panel-parcours .timeline-item {
-    grid-template-columns: 1fr;
-  }
-
-  #panel-parcours .timeline-item .timeline-date,
-  #panel-parcours .timeline-item .timeline-content {
-    grid-column: auto;
-    grid-row: auto;
   }
 
   .hanging-block {
