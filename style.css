@@ -49,10 +49,6 @@
   --glass-border-active: rgba(255, 255, 255, 0.52);
 
   --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
-  --glass-bg-dense:
-    linear-gradient(180deg, rgba(15, 24, 44, 0.84), rgba(15, 24, 44, 0.78)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
-
   --glass-overlay:
     linear-gradient(135deg, rgba(158, 238, 255, 0.1), transparent 45%),
     linear-gradient(315deg, rgba(203, 184, 255, 0.1), transparent 55%);
@@ -70,6 +66,9 @@
     0 14px 28px rgba(0, 0, 0, 0.14),
     0 0 20px rgba(158, 238, 255, 0.16),
     0 0 24px rgba(203, 184, 255, 0.14);
+
+  --glass-blur-nav: 14px;
+  --glass-blur-block: 30px;
 }
 
 @view-transition {
@@ -346,8 +345,8 @@ iframe:focus-visible {
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(var(--glass-blur-nav));
+  -webkit-backdrop-filter: blur(var(--glass-blur-nav));
 }
 
 .tab-card,
@@ -358,10 +357,10 @@ iframe:focus-visible {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--glass-border);
-  background: var(--glass-bg-dense);
+  background: var(--glass-bg);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(var(--glass-blur-block));
+  -webkit-backdrop-filter: blur(var(--glass-blur-block));
 }
 
 .nav-links a::before,
