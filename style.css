@@ -801,6 +801,14 @@ footer {
     color var(--duration-fast) ease;
 }
 
+.project-list a.project-card {
+  --project-card-lift: 0px;
+}
+
+.project-list a.project-card:hover {
+  --project-card-lift: -3px;
+}
+
 .project-card--static {
   cursor: default;
 }
@@ -983,6 +991,14 @@ footer {
 .reveal-init.is-revealed {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
+}
+
+.project-list a.project-card.reveal-init {
+  transform: translate3d(0, calc(22px + var(--project-card-lift)), 0) scale(0.985);
+}
+
+.project-list a.project-card.reveal-init.is-revealed {
+  transform: translate3d(0, var(--project-card-lift), 0) scale(1);
 }
 
 /* Animations */
