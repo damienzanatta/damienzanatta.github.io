@@ -47,12 +47,17 @@
   --glass-border: rgba(224, 236, 255, 0.16);
   --glass-border-hover: rgba(240, 248, 255, 0.28);
   --glass-border-active: rgba(255, 255, 255, 0.52);
+
   --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
-  --glass-bg-opaque: linear-gradient(180deg, rgba(26, 36, 63, 0.9), rgba(18, 27, 48, 0.82));
+  --glass-bg-dense:
+    linear-gradient(180deg, rgba(15, 24, 44, 0.84), rgba(15, 24, 44, 0.78)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
+
   --glass-overlay:
     linear-gradient(135deg, rgba(158, 238, 255, 0.1), transparent 45%),
     linear-gradient(315deg, rgba(203, 184, 255, 0.1), transparent 55%);
   --glass-highlight: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.22), transparent 60%);
+
   --glass-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     0 10px 28px rgba(0, 0, 0, 0.12),
@@ -353,7 +358,7 @@ iframe:focus-visible {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--glass-border);
-  background: var(--glass-bg-opaque);
+  background: var(--glass-bg-dense);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
