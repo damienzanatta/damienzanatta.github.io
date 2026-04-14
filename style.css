@@ -716,10 +716,12 @@ footer {
 
   #panel-parcours .timeline-item:nth-child(even) .timeline-content {
     grid-column: 1;
+    grid-row: 1;
   }
 
   #panel-parcours .timeline-item:nth-child(even) .timeline-date {
     grid-column: 2;
+    grid-row: 1;
   }
 }
 
@@ -1060,6 +1062,7 @@ footer {
   #panel-parcours .timeline-item .timeline-date,
   #panel-parcours .timeline-item .timeline-content {
     grid-column: auto;
+    grid-row: auto;
   }
 
   .hanging-block {
