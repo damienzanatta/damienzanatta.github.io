@@ -532,41 +532,10 @@ footer {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   isolation: isolate;
-  --indicator-x: 0px;
-  --indicator-y: 0px;
-  --indicator-w: 0px;
-  --indicator-h: 0px;
-  --indicator-opacity: 0;
 }
 
 .projects-tab-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.tab-grid::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  top: 0;
-  width: var(--indicator-w);
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 52%, var(--accent-3) 100%);
-  box-shadow:
-    0 0 14px rgba(158, 238, 255, 0.22),
-    0 0 24px rgba(203, 184, 255, 0.18);
-  opacity: var(--indicator-opacity);
-  transform: translate3d(
-    var(--indicator-x),
-    calc(var(--indicator-y) + var(--indicator-h) - 3px),
-    0
-  );
-  transition:
-    transform var(--duration-slow) var(--ease-emphasis),
-    width var(--duration-slow) var(--ease-emphasis),
-    opacity var(--duration-fast) ease;
-  pointer-events: none;
 }
 
 .tab-card {
@@ -580,7 +549,7 @@ footer {
   border: 1px solid rgba(224, 236, 255, 0.16);
   border-radius: 16px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.045));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
   color: #eef5ff;
   font-weight: 700;
   text-align: center;
@@ -670,7 +639,7 @@ footer {
   border-radius: var(--radius-md);
   border: 1px solid rgba(224, 236, 255, 0.14);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.03));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
   box-shadow:
     0 14px 30px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.16);
@@ -741,7 +710,7 @@ footer {
   border-radius: var(--radius-md);
   border: 1px solid rgba(224, 236, 255, 0.14);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.03));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
   color: #fdfefe;
   font-weight: 700;
   box-shadow:
@@ -992,7 +961,7 @@ footer {
   min-width: 190px;
 }
 
-/* Reveal on scroll */
+/* Apparitions à l'ouverture */
 .reveal-init {
   opacity: 0;
   transform: translate3d(0, 22px, 0) scale(0.985);
