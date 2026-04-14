@@ -1,6 +1,6 @@
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const supportsViewTransitions = "startViewTransition" in document;
-const TAB_EXIT_DURATION = 180;
+const TRANSITION_EXIT_DURATION = 180;
 
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = motionQuery.matches;
@@ -70,7 +70,7 @@ function initPageTransitions(reduceMotion) {
 
       window.setTimeout(() => {
         window.location.href = targetUrl.href;
-      }, TAB_EXIT_DURATION);
+      }, TRANSITION_EXIT_DURATION);
     });
   });
 }
@@ -147,7 +147,7 @@ function animateVisibleElements(
   });
 }
 
-function startScopeEntrance(scope, reduceMotion) {
+function runScopeEntrance(scope, reduceMotion) {
   if (!scope) {
     return;
   }
@@ -264,21 +264,28 @@ function initTabs(root, reduceMotion) {
       setTabButtonsState(index);
       showOnlyPanel(index);
       activeIndex = index;
-      startScopeEntrance(nextPanel, reduceMotion);
+      runScopeEntrance(nextPanel, reduceMotion);
       return;
     }
 
     isTransitioning = true;
 
+    const commitSwitch = () => {
+      setTabButtonsState(index);
+      showOnlyPanel(index);
+      activeIndex = index;
+      runScopeEntrance(nextPanel, reduceMotion);
+    };
+
     if (supportsViewTransitions) {
       const transition = document.startViewTransition(() => {
-        setTabButtonsState(index);
         showOnlyPanel(index);
+        setTabButtonsState(index);
         activeIndex = index;
       });
 
       transition.ready.then(() => {
-        startScopeEntrance(nextPanel, reduceMotion);
+        runScopeEntrance(nextPanel, reduceMotion);
       });
 
       transition.finished.finally(() => {
@@ -293,18 +300,14 @@ function initTabs(root, reduceMotion) {
       currentPanel.classList.add("is-leaving");
     }
 
-    setTabButtonsState(index);
-
     window.setTimeout(() => {
       if (currentPanel) {
         currentPanel.classList.remove("is-leaving");
       }
 
-      showOnlyPanel(index);
-      activeIndex = index;
-      startScopeEntrance(nextPanel, reduceMotion);
+      commitSwitch();
       isTransitioning = false;
-    }, TAB_EXIT_DURATION);
+    }, TRANSITION_EXIT_DURATION);
   };
 
   tabs.forEach((tab, index) => {
