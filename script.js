@@ -1,18 +1,16 @@
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const supportsViewTransitions = "startViewTransition" in document;
 
-let revealObserver = null;
-let revealAnimationsEnabled = false;
-
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = motionQuery.matches;
 
   initPageTransitions(reduceMotion);
-  initScrollReveal(reduceMotion);
 
   document.querySelectorAll("[data-tabs]").forEach((root) => {
     initTabs(root, reduceMotion);
   });
+
+  animateVisibleElements(document, { reduceMotion });
 });
 
 function initPageTransitions(reduceMotion) {
@@ -76,41 +74,7 @@ function initPageTransitions(reduceMotion) {
   });
 }
 
-function initScrollReveal(reduceMotion) {
-  const targets = getRevealTargets(document);
-
-  if (targets.length === 0) {
-    return;
-  }
-
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    targets.forEach((element) => {
-      element.classList.add("is-revealed");
-    });
-    return;
-  }
-
-  revealAnimationsEnabled = true;
-  revealObserver = new IntersectionObserver(handleRevealEntries, {
-    threshold: 0.14,
-    rootMargin: "0px 0px -8% 0px"
-  });
-
-  primeRevealTargets(targets.filter((element) => !element.closest("[hidden]")));
-}
-
-function handleRevealEntries(entries) {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) {
-      return;
-    }
-
-    entry.target.classList.add("is-revealed");
-    revealObserver.unobserve(entry.target);
-  });
-}
-
-function getRevealTargets(root) {
+function getAnimatedTargets(root) {
   return Array.from(
     root.querySelectorAll(
       [
@@ -129,34 +93,57 @@ function getRevealTargets(root) {
   );
 }
 
-function primeRevealTargets(elements) {
-  elements.forEach((element, index) => {
-    if (element.dataset.revealReady === "true") {
-      return;
-    }
-
-    element.dataset.revealReady = "true";
-    element.classList.add("reveal-init");
-    element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 40}ms`);
-    revealObserver.observe(element);
-  });
-}
-
-function revealWithin(root) {
-  const targets = getRevealTargets(root).filter((element) => !element.closest("[hidden]"));
+function animateVisibleElements(
+  root,
+  { restart = false, reduceMotion = motionQuery.matches } = {}
+) {
+  const targets = getAnimatedTargets(root).filter(
+    (element) => !element.closest("[hidden]")
+  );
 
   if (targets.length === 0) {
     return;
   }
 
-  if (!revealAnimationsEnabled || !revealObserver) {
+  if (reduceMotion) {
     targets.forEach((element) => {
+      element.classList.remove("reveal-init");
       element.classList.add("is-revealed");
+      element.style.removeProperty("--reveal-delay");
+      element.dataset.entranceReady = "true";
     });
     return;
   }
 
-  primeRevealTargets(targets);
+  if (restart) {
+    targets.forEach((element) => {
+      element.classList.remove("reveal-init", "is-revealed");
+      element.style.removeProperty("--reveal-delay");
+    });
+
+    void root.offsetWidth;
+  }
+
+  targets.forEach((element, index) => {
+    if (
+      !restart &&
+      element.dataset.entranceReady === "true" &&
+      element.classList.contains("is-revealed")
+    ) {
+      return;
+    }
+
+    element.dataset.entranceReady = "true";
+    element.classList.add("reveal-init");
+    element.classList.remove("is-revealed");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 40}ms`);
+  });
+
+  requestAnimationFrame(() => {
+    targets.forEach((element) => {
+      element.classList.add("is-revealed");
+    });
+  });
 }
 
 function initTabs(root, reduceMotion) {
@@ -187,24 +174,7 @@ function initTabs(root, reduceMotion) {
     activeIndex = 0;
   }
 
-  const updateIndicator = () => {
-    const activeTab = tabs[activeIndex];
-
-    if (!activeTab) {
-      return;
-    }
-
-    const activeRect = activeTab.getBoundingClientRect();
-    const tablistRect = tablist.getBoundingClientRect();
-
-    tablist.style.setProperty("--indicator-x", `${activeRect.left - tablistRect.left}px`);
-    tablist.style.setProperty("--indicator-y", `${activeRect.top - tablistRect.top}px`);
-    tablist.style.setProperty("--indicator-w", `${activeRect.width}px`);
-    tablist.style.setProperty("--indicator-h", `${activeRect.height}px`);
-    tablist.style.setProperty("--indicator-opacity", "1");
-  };
-
-  const activateTab = (index, moveFocus = false) => {
+  const activateTab = (index, moveFocus = false, isInitial = false) => {
     if (index < 0 || index >= tabs.length) {
       return;
     }
@@ -228,7 +198,7 @@ function initTabs(root, reduceMotion) {
       panel.hidden = !isActive;
     });
 
-    if (nextPanel && !reduceMotion) {
+    if (nextPanel && !reduceMotion && !isInitial) {
       nextPanel.classList.remove("is-entering");
       void nextPanel.offsetWidth;
       nextPanel.classList.add("is-entering");
@@ -241,9 +211,14 @@ function initTabs(root, reduceMotion) {
       );
     }
 
+    if (nextPanel && !isInitial) {
+      animateVisibleElements(nextPanel, {
+        restart: true,
+        reduceMotion
+      });
+    }
+
     activeIndex = index;
-    revealWithin(nextPanel || root);
-    requestAnimationFrame(updateIndicator);
 
     if (moveFocus) {
       tabs[index].focus();
@@ -252,7 +227,7 @@ function initTabs(root, reduceMotion) {
 
   tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
-      activateTab(index, false);
+      activateTab(index, false, false);
     });
 
     tab.addEventListener("keydown", (event) => {
@@ -279,19 +254,10 @@ function initTabs(root, reduceMotion) {
 
       if (nextIndex !== null) {
         event.preventDefault();
-        activateTab(nextIndex, true);
+        activateTab(nextIndex, true, false);
       }
     });
   });
 
-  window.addEventListener("resize", updateIndicator, { passive: true });
-
-  if ("ResizeObserver" in window) {
-    const resizeObserver = new ResizeObserver(() => {
-      updateIndicator();
-    });
-    resizeObserver.observe(tablist);
-  }
-
-  activateTab(activeIndex, false);
+  activateTab(activeIndex, false, true);
 }
