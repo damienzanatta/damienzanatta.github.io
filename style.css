@@ -695,6 +695,25 @@ footer {
   align-items: start;
 }
 
+/* Ajustements ciblés pour l'onglet "Parcours" uniquement */
+#panel-parcours .timeline-item {
+  grid-template-columns: 320px minmax(0, 1fr);
+}
+
+#panel-parcours .timeline-date {
+  white-space: nowrap;
+}
+
+@media (min-width: 901px) {
+  #panel-parcours .timeline-item:nth-child(even) .timeline-date {
+    order: 2;
+  }
+
+  #panel-parcours .timeline-item:nth-child(even) .timeline-content {
+    order: 1;
+  }
+}
+
 .timeline-date {
   margin: 0;
   padding: 16px 18px;
@@ -1022,6 +1041,10 @@ footer {
   }
 
   .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  #panel-parcours .timeline-item {
     grid-template-columns: 1fr;
   }
 
