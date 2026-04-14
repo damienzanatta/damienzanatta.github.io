@@ -44,42 +44,26 @@
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
-  --glass-border: rgba(244, 249, 255, 0.18);
-  --glass-border-hover: rgba(255, 255, 255, 0.30);
+  --glass-border: rgba(224, 236, 255, 0.16);
+  --glass-border-hover: rgba(240, 248, 255, 0.28);
   --glass-border-active: rgba(255, 255, 255, 0.52);
-
-  --glass-bg:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.09) 42%, rgba(255, 255, 255, 0.05) 100%);
-  --glass-bg-strong:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.10) 36%, rgba(255, 255, 255, 0.05) 100%);
-
+  --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
   --glass-overlay:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 42%),
-    linear-gradient(135deg, rgba(158, 238, 255, 0.12), transparent 52%),
-    linear-gradient(315deg, rgba(203, 184, 255, 0.12), transparent 58%);
-
-  --glass-highlight:
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.30), transparent 58%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 42%);
-
+    linear-gradient(135deg, rgba(158, 238, 255, 0.1), transparent 45%),
+    linear-gradient(315deg, rgba(203, 184, 255, 0.1), transparent 55%);
+  --glass-highlight: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.22), transparent 60%);
   --glass-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.26),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-    0 16px 40px rgba(0, 0, 0, 0.22),
-    0 0 24px rgba(158, 238, 255, 0.06);
-
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 10px 28px rgba(0, 0, 0, 0.12),
+    0 0 24px rgba(158, 238, 255, 0.05);
   --glass-shadow-hover:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
-    0 20px 46px rgba(0, 0, 0, 0.24),
-    0 0 28px rgba(158, 238, 255, 0.10);
-
+    0 14px 30px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 0 20px rgba(158, 238, 255, 0.08);
   --glass-shadow-active:
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    0 18px 42px rgba(0, 0, 0, 0.24),
-    0 0 28px rgba(158, 238, 255, 0.16),
-    0 0 34px rgba(203, 184, 255, 0.12);
+    0 14px 28px rgba(0, 0, 0, 0.14),
+    0 0 20px rgba(158, 238, 255, 0.16),
+    0 0 24px rgba(203, 184, 255, 0.14);
 }
 
 @view-transition {
@@ -358,12 +342,11 @@ iframe:focus-visible {
 .project-card {
   position: relative;
   overflow: hidden;
-  isolation: isolate;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(20px) saturate(165%);
-  -webkit-backdrop-filter: blur(20px) saturate(165%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .nav-links a::before,
@@ -419,8 +402,6 @@ iframe:focus-visible {
   color: #edf4ff;
   font-weight: 600;
   letter-spacing: 0.01em;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.09) 46%, rgba(255, 255, 255, 0.05) 100%);
   transform: translate3d(0, 0, 0);
   transition:
     transform var(--duration-base) var(--ease-emphasis),
@@ -428,31 +409,6 @@ iframe:focus-visible {
     color var(--duration-fast) ease,
     background var(--duration-base) var(--ease-standard),
     box-shadow var(--duration-base) var(--ease-standard);
-}
-
-.info-item,
-.timeline-date,
-.timeline-content,
-.project-card {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.10) 38%, rgba(255, 255, 255, 0.05) 100%),
-    linear-gradient(135deg, rgba(158, 238, 255, 0.07), transparent 54%),
-    linear-gradient(315deg, rgba(203, 184, 255, 0.08), transparent 60%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-    0 18px 42px rgba(0, 0, 0, 0.22),
-    0 0 26px rgba(158, 238, 255, 0.06);
-  backdrop-filter: blur(24px) saturate(170%);
-  -webkit-backdrop-filter: blur(24px) saturate(170%);
-}
-
-.info-item::after,
-.timeline-date::after,
-.timeline-content::after,
-.project-card::after {
-  opacity: 0.24;
-  transform: scale(1);
 }
 
 .nav-links a:hover,
@@ -484,7 +440,7 @@ iframe:focus-visible {
   color: #07101f;
   border-color: var(--glass-border-active);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(223, 248, 255, 0.74) 44%, rgba(217, 204, 255, 0.68) 100%);
+    linear-gradient(180deg, #ffffff 0%, #dff8ff 42%, #d9ccff 100%);
   box-shadow: var(--glass-shadow-active);
 }
 
@@ -796,16 +752,12 @@ footer {
   transform: none;
   color: inherit;
   border-color: var(--glass-border);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-    0 18px 42px rgba(0, 0, 0, 0.22),
-    0 0 26px rgba(158, 238, 255, 0.06);
+  box-shadow: var(--glass-shadow);
 }
 
 .project-card--static:hover::after {
-  opacity: 0.24;
-  transform: scale(1);
+  opacity: 0;
+  transform: scale(0.96);
 }
 
 .project-card p {
