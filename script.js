@@ -1,5 +1,6 @@
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const supportsViewTransitions = "startViewTransition" in document;
+const TAB_EXIT_DURATION = 180;
 
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = motionQuery.matches;
@@ -69,7 +70,7 @@ function initPageTransitions(reduceMotion) {
 
       window.setTimeout(() => {
         window.location.href = targetUrl.href;
-      }, 180);
+      }, TAB_EXIT_DURATION);
     });
   });
 }
@@ -146,6 +147,30 @@ function animateVisibleElements(
   });
 }
 
+function startScopeEntrance(scope, reduceMotion) {
+  if (!scope) {
+    return;
+  }
+
+  if (!reduceMotion) {
+    scope.classList.remove("is-entering");
+    void scope.offsetWidth;
+    scope.classList.add("is-entering");
+    scope.addEventListener(
+      "animationend",
+      () => {
+        scope.classList.remove("is-entering");
+      },
+      { once: true }
+    );
+  }
+
+  animateVisibleElements(scope, {
+    restart: true,
+    reduceMotion
+  });
+}
+
 function initTabs(root, reduceMotion) {
   const tablist = root.querySelector('[role="tablist"]');
 
@@ -174,20 +199,18 @@ function initTabs(root, reduceMotion) {
     activeIndex = 0;
   }
 
-  const activateTab = (index, moveFocus = false, isInitial = false) => {
-    if (index < 0 || index >= tabs.length) {
-      return;
-    }
+  let isTransitioning = false;
 
-    const nextPanel = panels[index];
-
+  const setTabButtonsState = (index) => {
     tabs.forEach((tab, tabIndex) => {
       const isActive = tabIndex === index;
       tab.classList.toggle("active", isActive);
       tab.setAttribute("aria-selected", String(isActive));
       tab.setAttribute("tabindex", isActive ? "0" : "-1");
     });
+  };
 
+  const showOnlyPanel = (index) => {
     panels.forEach((panel, panelIndex) => {
       if (!panel) {
         return;
@@ -196,33 +219,92 @@ function initTabs(root, reduceMotion) {
       const isActive = panelIndex === index;
       panel.classList.toggle("active", isActive);
       panel.hidden = !isActive;
+
+      if (!isActive) {
+        panel.classList.remove("is-entering", "is-leaving");
+      }
     });
+  };
 
-    if (nextPanel && !reduceMotion && !isInitial) {
-      nextPanel.classList.remove("is-entering");
-      void nextPanel.offsetWidth;
-      nextPanel.classList.add("is-entering");
-      nextPanel.addEventListener(
-        "animationend",
-        () => {
-          nextPanel.classList.remove("is-entering");
-        },
-        { once: true }
-      );
+  const activateTab = (index, moveFocus = false, isInitial = false) => {
+    if (index < 0 || index >= tabs.length) {
+      return;
     }
 
-    if (nextPanel && !isInitial) {
-      animateVisibleElements(nextPanel, {
-        restart: true,
-        reduceMotion
-      });
+    if (!isInitial && index === activeIndex) {
+      if (moveFocus) {
+        tabs[index].focus();
+      }
+      return;
     }
 
-    activeIndex = index;
+    if (!isInitial && isTransitioning) {
+      return;
+    }
+
+    const currentPanel = panels[activeIndex];
+    const nextPanel = panels[index];
+
+    if (!nextPanel) {
+      return;
+    }
+
+    if (isInitial) {
+      setTabButtonsState(index);
+      showOnlyPanel(index);
+      activeIndex = index;
+      return;
+    }
 
     if (moveFocus) {
       tabs[index].focus();
     }
+
+    if (reduceMotion) {
+      setTabButtonsState(index);
+      showOnlyPanel(index);
+      activeIndex = index;
+      startScopeEntrance(nextPanel, reduceMotion);
+      return;
+    }
+
+    isTransitioning = true;
+
+    if (supportsViewTransitions) {
+      const transition = document.startViewTransition(() => {
+        setTabButtonsState(index);
+        showOnlyPanel(index);
+        activeIndex = index;
+      });
+
+      transition.ready.then(() => {
+        startScopeEntrance(nextPanel, reduceMotion);
+      });
+
+      transition.finished.finally(() => {
+        isTransitioning = false;
+      });
+
+      return;
+    }
+
+    if (currentPanel) {
+      currentPanel.classList.remove("is-entering");
+      currentPanel.classList.add("is-leaving");
+    }
+
+    setTabButtonsState(index);
+
+    window.setTimeout(() => {
+      if (currentPanel) {
+        currentPanel.classList.remove("is-leaving");
+      }
+
+      showOnlyPanel(index);
+      activeIndex = index;
+      startScopeEntrance(nextPanel, reduceMotion);
+      isTransitioning = false;
+    }, TAB_EXIT_DURATION);
   };
 
   tabs.forEach((tab, index) => {
