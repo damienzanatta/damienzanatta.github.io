@@ -695,22 +695,35 @@ footer {
   align-items: start;
 }
 
-/* Ajustements ciblés pour l'onglet "Parcours" uniquement */
+/* Ajustements ciblés uniquement pour l'onglet "Parcours" */
 #panel-parcours .timeline-item {
   grid-template-columns: 320px minmax(0, 1fr);
 }
 
 #panel-parcours .timeline-date {
+  width: 100%;
   white-space: nowrap;
 }
 
+#panel-parcours .timeline-content {
+  width: 100%;
+}
+
 @media (min-width: 901px) {
-  #panel-parcours .timeline-item:nth-child(even) .timeline-date {
-    order: 2;
+  #panel-parcours .timeline-item:nth-child(odd) .timeline-date {
+    grid-column: 1;
+  }
+
+  #panel-parcours .timeline-item:nth-child(odd) .timeline-content {
+    grid-column: 2;
   }
 
   #panel-parcours .timeline-item:nth-child(even) .timeline-content {
-    order: 1;
+    grid-column: 1;
+  }
+
+  #panel-parcours .timeline-item:nth-child(even) .timeline-date {
+    grid-column: 2;
   }
 }
 
