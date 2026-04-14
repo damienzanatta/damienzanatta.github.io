@@ -198,6 +198,19 @@ function initTabs(root, reduceMotion) {
       panel.hidden = !isActive;
     });
 
+    if (nextPanel && !reduceMotion && !isInitial) {
+      nextPanel.classList.remove("is-entering");
+      void nextPanel.offsetWidth;
+      nextPanel.classList.add("is-entering");
+      nextPanel.addEventListener(
+        "animationend",
+        () => {
+          nextPanel.classList.remove("is-entering");
+        },
+        { once: true }
+      );
+    }
+
     if (nextPanel && !isInitial) {
       animateVisibleElements(nextPanel, {
         restart: true,
