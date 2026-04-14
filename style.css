@@ -38,6 +38,7 @@
   --duration-base: 240ms;
   --duration-slow: 360ms;
   --duration-page: 520ms;
+  --duration-exit: 180ms;
 
   --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
@@ -616,6 +617,11 @@ footer {
   animation: page-enter var(--duration-page) var(--ease-emphasis) both;
 }
 
+.tab-panel.is-leaving {
+  pointer-events: none;
+  animation: page-leave var(--duration-exit) var(--ease-standard) both;
+}
+
 /* Structures */
 .info-grid,
 .timeline,
@@ -961,7 +967,7 @@ footer {
   min-width: 190px;
 }
 
-/* Apparitions à l'ouverture */
+/* Apparitions synchronisées avec page / onglet */
 .reveal-init {
   opacity: 0;
   transform: translate3d(0, 22px, 0) scale(0.985);
@@ -998,14 +1004,14 @@ footer {
   }
 }
 
-@keyframes tab-panel-in {
+@keyframes page-leave {
   from {
-    opacity: 0;
-    transform: translate3d(0, 16px, 0);
-  }
-  to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
   }
 }
 
