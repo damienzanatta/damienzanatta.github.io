@@ -48,6 +48,7 @@
   --glass-border-hover: rgba(240, 248, 255, 0.28);
   --glass-border-active: rgba(255, 255, 255, 0.52);
   --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
+  --glass-bg-opaque: linear-gradient(180deg, rgba(26, 36, 63, 0.9), rgba(18, 27, 48, 0.82));
   --glass-overlay:
     linear-gradient(135deg, rgba(158, 238, 255, 0.1), transparent 45%),
     linear-gradient(315deg, rgba(203, 184, 255, 0.1), transparent 55%);
@@ -334,7 +335,16 @@ iframe:focus-visible {
 .nav-links a,
 .project-top-link,
 .pager-button,
-.pdf-button,
+.pdf-button {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
 .tab-card,
 .info-item,
 .timeline-date,
@@ -343,7 +353,7 @@ iframe:focus-visible {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
+  background: var(--glass-bg-opaque);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
