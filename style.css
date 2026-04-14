@@ -692,7 +692,7 @@ footer {
   display: grid;
   grid-template-columns: 250px minmax(0, 1fr);
   gap: 18px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .timeline-date {
