@@ -5,6 +5,7 @@ const TRANSITION_EXIT_DURATION = 180;
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = motionQuery.matches;
 
+  initHeaderState();
   initPageTransitions(reduceMotion);
 
   document.querySelectorAll("[data-tabs]").forEach((root) => {
@@ -13,6 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   animateVisibleElements(document, { reduceMotion });
 });
+
+function initHeaderState() {
+  const header = document.querySelector(".site-header");
+
+  if (!header) {
+    return;
+  }
+
+  const syncHeaderState = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 10);
+  };
+
+  syncHeaderState();
+  window.addEventListener("scroll", syncHeaderState, { passive: true });
+}
 
 function initPageTransitions(reduceMotion) {
   if (reduceMotion || supportsViewTransitions) {
