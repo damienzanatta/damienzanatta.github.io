@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    .presentation-box .presentation-tab-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .presentation-box #panel-parcours .timeline-item {
       align-items: stretch;
     }
@@ -81,7 +85,7 @@
         <h1 id="about-title">Présentation</h1>
 
         <div data-tabs>
-          <div class="tab-grid" role="tablist" aria-label="Contenu de présentation">
+          <div class="tab-grid presentation-tab-grid" role="tablist" aria-label="Contenu de présentation">
             <button
               class="tab-card active"
               id="tab-situation"
@@ -102,17 +106,6 @@
               aria-controls="panel-parcours"
               tabindex="-1">
               Parcours
-            </button>
-
-            <button
-              class="tab-card"
-              id="tab-formation"
-              role="tab"
-              type="button"
-              aria-selected="false"
-              aria-controls="panel-formation"
-              tabindex="-1">
-              Formation
             </button>
 
             <button
@@ -263,47 +256,6 @@
                   </article>
                 </li>
               </ol>
-            </section>
-
-            <section
-              class="tab-panel"
-              id="panel-formation"
-              role="tabpanel"
-              aria-labelledby="tab-formation"
-              tabindex="0"
-              hidden>
-              <div class="timeline">
-                <article class="timeline-content">
-                  <h3>BTS Services Informatiques aux Organisations</h3>
-                  <p><strong>Niveau :</strong> 5 (Bac+2)</p>
-                  <p><strong>Durée :</strong> 2 ans</p>
-                  <p><strong>Objectif :</strong> Former des techniciens capables de participer à la production et à la fourniture de services informatiques</p>
-
-                  <div class="hanging-block">
-                    <p class="hanging-label">Options :</p>
-                    <ul class="content-list content-list--plain hanging-content">
-                      <li>SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</li>
-                      <li>SLAM (Solutions Logicielles et Applications Métiers)</li>
-                    </ul>
-                  </div>
-                </article>
-
-                <article class="timeline-content">
-                  <h3>Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</h3>
-                  <p><strong>Objectif :</strong> Former des spécialistes capables d'installer, administrer, superviser et maintenir les systèmes et réseaux</p>
-
-                  <div class="hanging-block">
-                    <p class="hanging-label">Blocs principaux :</p>
-                    <ul class="content-list content-list--plain hanging-content">
-                      <li>Bloc n°1 : Support et mise à disposition de services informatiques</li>
-                      <li>Bloc n°2 : Administration des systèmes et des réseaux</li>
-                      <li>Bloc n°3 : Cybersécurité des services informatiques</li>
-                    </ul>
-                  </div>
-
-                  <p><strong>Débouchés :</strong> Technicien/Administrateur systèmes et réseaux, Technicien réseaux et télécom, Technicien développement et exploitation</p>
-                </article>
-              </div>
             </section>
 
             <section
