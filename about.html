@@ -12,6 +12,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .presentation-box .presentation-tab-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .presentation-box #panel-parcours .timeline-item {
+      align-items: stretch;
+    }
+
+    .presentation-box #panel-parcours .timeline-date {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      height: 100%;
+    }
+
+    .presentation-box #panel-parcours .timeline-date-start,
+    .presentation-box #panel-parcours .timeline-date-end {
+      display: block;
+    }
+
+    .presentation-box #panel-parcours .timeline-date-dots {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      margin: auto 0;
+    }
+
+    .presentation-box #panel-parcours .timeline-date-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 0 10px rgba(158, 238, 255, 0.18);
+    }
+
+    .presentation-box #panel-parcours .timeline-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+
   <script src="script.js" defer></script>
 </head>
 <body>
