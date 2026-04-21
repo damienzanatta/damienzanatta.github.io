@@ -41,23 +41,24 @@
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
-  /* --- SURFACE EXACTEMENT IDENTIQUE AU HEADER --- */
-  --surface-border: rgba(255, 255, 255, 0.05); /* Liseré ultra-fin pour délimiter les blocs */
+  /* --- RENDU STRICT DU BANDEAU SUPÉRIEUR --- */
+  
+  --surface-border: rgba(255, 255, 255, 0.08);
   --surface-border-hover: rgba(127, 247, 255, 0.2);
   --surface-border-active: rgba(127, 247, 255, 0.4);
 
-  /* Propriétés strictes du bandeau d'origine */
+  /* On utilise le code EXACT de ton header d'origine, mais adapté pour que le bas des grands blocs (comme ceux de la page Veille) ne soit pas totalement invisible à 0% */
   --surface-base: transparent;
-  --surface-bg: linear-gradient(180deg, rgba(3, 8, 22, 0.72), rgba(3, 8, 22, 0));
+  --surface-bg: linear-gradient(180deg, rgba(3, 8, 22, 0.75) 0%, rgba(3, 8, 22, 0.35) 100%);
 
   --surface-holo: none;
   --surface-sheen: none;
 
-  --surface-shadow: none;
-  --surface-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.3);
-  --surface-shadow-active: none;
+  --surface-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --surface-shadow-hover: 0 15px 45px rgba(0, 0, 0, 0.4);
+  --surface-shadow-active: 0 5px 15px rgba(0, 0, 0, 0.5);
 
-  /* Le flou exact */
+  /* Le flou de 8px du bandeau supérieur */
   --surface-blur: 8px;
   --surface-saturation: 100%;
 }
@@ -210,7 +211,7 @@ iframe:focus-visible {
   backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
   -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
   border-bottom: 1px solid var(--surface-border);
-  box-shadow: var(--surface-shadow);
+  box-shadow: none;
   transition:
     opacity var(--duration-base) var(--ease-standard),
     transform var(--duration-base) var(--ease-standard);
@@ -296,7 +297,6 @@ iframe:focus-visible {
 .project-card,
 .page-box {
   position: relative;
-  overflow: hidden;
   border: 1px solid var(--surface-border);
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
@@ -444,16 +444,15 @@ iframe:focus-visible {
   box-shadow: var(--surface-shadow-hover);
 }
 
+/* SUPPRESSION de la transition de transform sur main pour sécuriser le flou */
 main,
 footer {
-  transition:
-    opacity var(--duration-base) var(--ease-standard),
-    transform var(--duration-slow) var(--ease-emphasis);
+  transition: opacity var(--duration-base) var(--ease-standard);
 }
 
+/* SUPPRESSION de l'animation page-enter qui cassait le moteur de flou de Chrome */
 main {
   padding: 64px 0;
-  animation: page-enter var(--duration-page) var(--ease-emphasis) both;
 }
 
 body.is-leaving .site-header {
@@ -582,13 +581,14 @@ footer {
   display: none !important;
 }
 
+/* L'animation de changement d'onglet est maintenant gérée uniquement par l'opacité pour ne pas recasser le flou */
 .tab-panel.is-entering {
-  animation: page-enter var(--duration-page) var(--ease-emphasis) both;
+  animation: fade-in var(--duration-page) var(--ease-emphasis) both;
 }
 
-.tab-panel.is-leaving {
-  pointer-events: none;
-  animation: page-leave var(--duration-exit) var(--ease-standard) both;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .info-grid,
@@ -857,19 +857,13 @@ footer {
   min-width: 190px;
 }
 
-/* IMPORTANT: J'ai retiré ici tous les 'translate3d' qui tuaient ton filtre de flou.
-   Ils sont remplacés par des translateY classiques. 
-*/
 .reveal-init {
   opacity: 0;
   transform: translateY(22px) scale(0.985);
-  transition:
-    opacity var(--duration-page) var(--ease-standard),
-    transform var(--duration-page) var(--ease-emphasis);
+  transition: opacity var(--duration-page) var(--ease-standard), transform var(--duration-page) var(--ease-emphasis);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-/* Quand l'animation est finie, le composant est libéré et le flou peut s'afficher */
 .reveal-init.is-revealed {
   opacity: 1;
   transform: none !important;
@@ -890,17 +884,6 @@ footer {
   }
   50% {
     transform: scale(1.08);
-  }
-}
-
-@keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 
