@@ -1,25 +1,29 @@
 :root {
   color-scheme: dark;
 
-  /* Fond Midnight Blue profond et élégant */
-  --bg-base: #020510;
-  --bg-deep: #03081a;
-  --bg-mid: #060f26;
-  --bg-glow: #0a1a3f;
+  /* Arrière-plan Midnight Blue : Profond, élégant et non terne */
+  --bg-base: #060e21;
+  --bg-deep: #08132d;
+  --bg-mid: #0b1a3d;
+  --bg-glow: #0e214d;
 
   --text-main: #f8fbff;
   --text-soft: #edf4ff;
   --text-muted: #cfddfb;
 
-  --accent: #00ffff; /* Passage au Cyan vif */
+  /* Accents Néon Cyan */
+  --accent: #00ffff;
   --accent-strong: #e0ffff;
   --accent-soft: rgba(0, 255, 255, 0.18);
 
   --accent-2: #b190ff;
   --accent-2-soft: rgba(177, 144, 255, 0.16);
 
-  --line: rgba(0, 255, 255, 0.1);
-  --line-strong: rgba(0, 255, 255, 0.25);
+  --accent-3: #91e0ff;
+  --accent-3-soft: rgba(145, 224, 255, 0.12);
+
+  --line: rgba(0, 255, 255, 0.16);
+  --line-strong: rgba(0, 255, 255, 0.28);
 
   --shadow-lg: 0 24px 54px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 14px 30px rgba(0, 0, 0, 0.3);
@@ -39,24 +43,24 @@
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
-  /* --- SURFACE EXACTEMENT IDENTIQUE AU HEADER (CUPERTINO) --- */
-  --surface-border: rgba(255, 255, 255, 0.08); 
-  --surface-border-hover: rgba(0, 255, 255, 0.2);
-  --surface-border-active: rgba(0, 255, 255, 0.4);
+  /* --- SURFACE EXACTEMENT IDENTIQUE AU HEADER (CUPERTINO STRICT) --- */
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-border-hover: rgba(0, 255, 255, 0.25);
+  --surface-border-active: rgba(0, 255, 255, 0.45);
 
   --surface-base: transparent;
   
-  /* Dégradé spécifique demandé */
+  /* Le dégradé semi-transparent garanti anti-bug */
   --surface-bg: linear-gradient(180deg, rgba(3, 8, 22, 0.75) 0%, rgba(3, 8, 22, 0.35) 100%);
 
   --surface-holo: none;
   --surface-sheen: none;
 
   --surface-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  --surface-shadow-hover: 0 15px 45px rgba(0, 255, 255, 0.1);
-  --surface-shadow-active: 0 5px 15px rgba(0, 255, 255, 0.2);
+  --surface-shadow-hover: 0 15px 45px rgba(0, 255, 255, 0.15);
+  --surface-shadow-active: 0 5px 15px rgba(0, 255, 255, 0.3);
 
-  /* Le flou exact */
+  /* Le flou de 8px du bandeau supérieur */
   --surface-blur: 8px;
   --surface-saturation: 100%;
 }
@@ -89,15 +93,15 @@ body {
   text-rendering: optimizeLegibility;
   line-height: 1.7;
   color: var(--text-main);
-  background: 
+  /* Application du fond Midnight Blue avec de la profondeur */
+  background:
     radial-gradient(circle at 18% 18%, var(--bg-glow), transparent 0 26%),
     radial-gradient(circle at 82% 14%, var(--bg-mid), transparent 0 22%),
     radial-gradient(circle at 50% 100%, var(--bg-deep), transparent 0 34%),
-    linear-gradient(180deg, var(--bg-base) 0%, #010207 100%);
+    linear-gradient(180deg, var(--bg-base) 0%, #030612 100%);
   position: relative;
 }
 
-/* FLUX DE DONNÉES - EFFET NÉON CYAN */
 body::before {
   content: "";
   position: fixed;
@@ -110,9 +114,10 @@ body::before {
   background-position: center top;
   background-repeat: repeat;
   background-attachment: fixed;
-  opacity: 0.6;
-  /* Conversion totale en Néon Cyan lumineux */
-  filter: hue-rotate(155deg) saturate(3.5) brightness(1.6) drop-shadow(0 0 6px rgba(0, 255, 255, 0.7)) drop-shadow(0 0 2px rgba(0, 255, 255, 0.9));
+  
+  /* L'EFFET NÉON CYAN (Forte saturation, luminosité augmentée et double drop-shadow pour irradier) */
+  opacity: 0.8;
+  filter: saturate(3.5) brightness(1.6) drop-shadow(0 0 5px rgba(0, 255, 255, 0.7)) drop-shadow(0 0 12px rgba(0, 255, 255, 0.4));
   mix-blend-mode: screen;
 }
 
@@ -183,11 +188,11 @@ iframe:focus-visible {
   z-index: 2000;
   padding: 10px 14px;
   background: #00ffff;
-  color: #020510;
+  color: #060e21;
   border-radius: 10px;
   font-weight: 700;
   transition: top var(--duration-fast) var(--ease-standard);
-  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
 }
 
 .skip-link:focus {
@@ -278,7 +283,7 @@ iframe:focus-visible {
   background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.3), transparent);
 }
 
-/* Application du verre dépoli exact sans translate3d */
+/* Surfaces premium uniformes (Glassmorphism strict garanti sans translate3d) */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -290,7 +295,7 @@ iframe:focus-visible {
 .project-card,
 .page-box {
   position: relative;
-  /* On garde le composant net et sans isolation forcée */
+  overflow: hidden;
   border: 1px solid var(--surface-border);
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
@@ -372,6 +377,11 @@ iframe:focus-visible {
     box-shadow var(--duration-base) var(--ease-standard);
 }
 
+.page-box {
+  padding: 34px;
+  border-radius: 30px;
+}
+
 .info-item,
 .timeline-content,
 .timeline-date {
@@ -381,7 +391,6 @@ iframe:focus-visible {
     box-shadow var(--duration-base) var(--ease-standard);
 }
 
-/* Animations au hover via translateY au lieu de translate3d */
 .nav-links a:hover,
 .project-top-link:hover,
 .pager-button:hover,
@@ -408,7 +417,7 @@ iframe:focus-visible {
 .project-top-link.active,
 .tab-card.active,
 .tab-card[aria-selected="true"] {
-  color: #020510;
+  color: #030612;
   border-color: var(--surface-border-active);
   background-color: rgba(255, 255, 255, 0.86);
   background-image:
@@ -429,8 +438,8 @@ iframe:focus-visible {
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
-  backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
-  -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
+  backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
+  -webkit-backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
@@ -444,17 +453,13 @@ iframe:focus-visible {
   box-shadow: var(--surface-shadow-hover);
 }
 
-/* Animations globales */
 main,
 footer {
-  transition:
-    opacity var(--duration-base) var(--ease-standard),
-    transform var(--duration-slow) var(--ease-emphasis);
+  transition: opacity var(--duration-base) var(--ease-standard);
 }
 
 main {
   padding: 64px 0;
-  /* Le fill-mode both a été retiré ici par le correctif précédent */
 }
 
 body.is-leaving .site-header {
@@ -470,19 +475,7 @@ body.is-leaving footer {
 
 .page-box {
   position: relative;
-  overflow: visible;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.page-box::before,
-.page-box::after {
-  display: none;
+  overflow: hidden;
 }
 
 .presentation-box {
@@ -573,7 +566,6 @@ footer {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  /* Retrait du fameux isolation: isolate; */
 }
 
 .projects-tab-grid {
@@ -595,10 +587,6 @@ footer {
   position: relative;
 }
 
-.tab-panel {
-  /* Retrait du translate3d */
-}
-
 .tab-panel[hidden] {
   display: none !important;
 }
@@ -612,7 +600,6 @@ footer {
   animation: fade-out var(--duration-exit) var(--ease-standard) forwards;
 }
 
-/* Nouvelles animations sans translate3d pour préserver le flou */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
@@ -892,7 +879,7 @@ footer {
   min-width: 190px;
 }
 
-/* Cascade d'apparition sécurisée pour le flou */
+/* Cascade d'apparition sans translate3d */
 .reveal-init {
   opacity: 0;
   transform: translateY(22px) scale(0.985);
@@ -980,7 +967,7 @@ footer {
   }
 
   .page-box {
-    padding: 0;
+    padding: 26px;
   }
 
   .project-page-title {
@@ -1005,6 +992,11 @@ footer {
 @media (max-width: 560px) {
   .tab-grid {
     grid-template-columns: 1fr;
+  }
+
+  .page-box {
+    padding: 22px;
+    border-radius: 24px;
   }
 
   .project-card-header,
