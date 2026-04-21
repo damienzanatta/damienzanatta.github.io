@@ -41,56 +41,28 @@
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
-  --surface-border: rgba(255, 255, 255, 0.14);
-  --surface-border-hover: rgba(199, 247, 255, 0.28);
-  --surface-border-active: rgba(232, 250, 255, 0.42);
+  /* --- NOUVELLES SURFACES GLASSMORPHISM (CUPERTINO LIGHT) --- */
+  --surface-border: rgba(255, 255, 255, 0.15);
+  --surface-border-hover: rgba(255, 255, 255, 0.3);
+  --surface-border-active: rgba(255, 255, 255, 0.45);
 
-  --surface-base: rgba(9, 18, 38, 0.46);
+  --surface-base: rgba(255, 255, 255, 0.03);
 
-  --surface-bg:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.18) 0%,
-      rgba(255, 255, 255, 0.08) 18%,
-      rgba(255, 255, 255, 0.04) 100%
-    );
+  --surface-bg: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
 
-  --surface-holo:
-    linear-gradient(135deg, rgba(127, 247, 255, 0.12), transparent 42%),
-    linear-gradient(315deg, rgba(154, 178, 255, 0.12), transparent 58%);
+  --surface-holo: none;
+  --surface-sheen: none;
 
-  --surface-sheen:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.12) 24%,
-      rgba(255, 255, 255, 0.04) 52%,
-      rgba(255, 255, 255, 0) 100%
-    );
+  --surface-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --surface-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.3);
+  --surface-shadow-active: 0 4px 16px rgba(0, 0, 0, 0.4);
 
-  --surface-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.03),
-    0 18px 42px rgba(2, 6, 18, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.02),
-    0 0 28px rgba(127, 247, 255, 0.05);
-
-  --surface-shadow-hover:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
-    0 22px 52px rgba(2, 6, 18, 0.46),
-    0 0 0 1px rgba(199, 247, 255, 0.06),
-    0 0 36px rgba(127, 247, 255, 0.1);
-
-  --surface-shadow-active:
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    0 22px 52px rgba(2, 6, 18, 0.38),
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 0 40px rgba(127, 247, 255, 0.14);
-
-  --surface-blur: 22px;
-  --surface-saturation: 185%;
+  --surface-blur: 16px;
+  --surface-saturation: 120%;
 }
 
 @view-transition {
@@ -236,10 +208,11 @@ iframe:focus-visible {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(180deg, rgba(3, 8, 22, 0.72), rgba(3, 8, 22, 0));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: none;
+  /* On applique la même texture claire au header pour l'homogénéité */
+  background: var(--surface-bg);
+  backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
+  -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
+  border-bottom: 1px solid var(--surface-border);
   box-shadow: none;
   transition:
     opacity var(--duration-base) var(--ease-standard),
