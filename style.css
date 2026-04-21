@@ -1,27 +1,21 @@
 :root {
   color-scheme: dark;
 
-  --bg-base: #0b317c;
+  --bg-base: #123f96;
 
   --text-main: #f8fbff;
   --text-soft: #edf4ff;
-  --text-muted: #cfddfb;
+  --text-muted: #d2def8;
 
-  --accent: #69eeff;
-  --accent-strong: #f2fdff;
-  --accent-soft: rgba(105, 238, 255, 0.18);
+  --accent: #74ebff;
+  --accent-strong: #f5fdff;
+  --accent-soft: rgba(116, 235, 255, 0.16);
 
-  --accent-2: #b190ff;
-  --accent-2-soft: rgba(177, 144, 255, 0.16);
+  --accent-2: #b79bff;
+  --accent-2-soft: rgba(183, 155, 255, 0.14);
 
-  --accent-3: #91e0ff;
-  --accent-3-soft: rgba(145, 224, 255, 0.12);
-
-  --line: rgba(219, 230, 255, 0.16);
-  --line-strong: rgba(236, 243, 255, 0.28);
-
-  --shadow-lg: 0 24px 54px rgba(0, 0, 0, 0.18);
-  --shadow-md: 0 14px 30px rgba(0, 0, 0, 0.14);
+  --line: rgba(226, 236, 255, 0.14);
+  --line-strong: rgba(241, 246, 255, 0.24);
 
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -38,55 +32,54 @@
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
-  /* Surfaces premium uniformes */
-  --surface-border: rgba(238, 244, 255, 0.22);
-  --surface-border-hover: rgba(248, 251, 255, 0.34);
-  --surface-border-active: rgba(255, 255, 255, 0.5);
+  /* Surface uniforme ultra-minimaliste */
+  --surface-border: rgba(243, 247, 255, 0.22);
+  --surface-border-hover: rgba(248, 251, 255, 0.3);
+  --surface-border-active: rgba(255, 255, 255, 0.48);
 
-  --surface-base: rgba(19, 43, 109, 0.44);
+  --surface-fill: rgba(236, 243, 255, 0.16);
 
   --surface-bg:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.24) 0%,
-      rgba(255, 255, 255, 0.19) 14%,
+      rgba(255, 255, 255, 0.22) 0%,
       rgba(255, 255, 255, 0.14) 100%
     );
 
-  --surface-holo:
-    linear-gradient(135deg, rgba(105, 238, 255, 0.08), transparent 48%),
-    linear-gradient(315deg, rgba(177, 144, 255, 0.09), transparent 58%);
+  --surface-tint:
+    linear-gradient(
+      135deg,
+      rgba(116, 235, 255, 0.06) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      315deg,
+      rgba(183, 155, 255, 0.07) 0%,
+      transparent 58%
+    );
 
   --surface-sheen:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.34) 0%,
-      rgba(255, 255, 255, 0.14) 34%,
-      rgba(255, 255, 255, 0.04) 62%,
-      rgba(255, 255, 255, 0) 100%
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0.08) 34%,
+      rgba(255, 255, 255, 0) 70%
     );
 
   --surface-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
-    0 14px 32px rgba(4, 11, 30, 0.2),
-    0 0 20px rgba(105, 238, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 10px 24px rgba(6, 14, 34, 0.14);
 
   --surface-shadow-hover:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    0 18px 38px rgba(4, 11, 30, 0.22),
-    0 0 24px rgba(105, 238, 255, 0.08),
-    0 0 28px rgba(177, 144, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 14px 28px rgba(6, 14, 34, 0.18);
 
   --surface-shadow-active:
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    0 18px 40px rgba(4, 11, 30, 0.2),
-    0 0 28px rgba(105, 238, 255, 0.14),
-    0 0 32px rgba(177, 144, 255, 0.12);
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    0 14px 30px rgba(6, 14, 34, 0.16),
+    0 0 18px rgba(116, 235, 255, 0.1);
 
-  --surface-blur: 10px;
+  --surface-blur: 16px;
   --surface-saturation: 145%;
 }
 
@@ -129,13 +122,13 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background-image:
-    url("data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiPgogIDxzdHlsZT4KICAgIEBrZXlmcmFtZXMgcHVsc2VBIHsgZnJvbSB7IHN0cm9rZS1kYXNob2Zmc2V0OiAyMjA7IH0gdG8geyBzdHJva2UtZGFzaG9mZnNldDogMDsgfSB9CiAgICBAa2V5ZnJhbWVzIHB1bHNlQiB7IGZyb20geyBzdHJva2UtZGFzaG9mZnNldDogMDsgfSB0byB7IHN0cm9rZS1kYXNob2Zmc2V0OiAyNjA7IH0gfQogICAgQGtleWZyYW1lcyBwdWxzZUMgeyAwJSwxMDAlIHsgb3BhY2l0eTogLjE4OyB9IDUwJSB7IG9wYWNpdHk6IC45OyB9IH0KICAgIC50cmFjZSB7IGZpbGw6IG5vbmU7IHN0cm9rZTogcmdiYSgxNzMsIDIwNiwgMTc3LCAuMjApOyBzdHJva2Utd2lkdGg6IDM7IHN0cm9rZS1saW5lY2FwOiByb3VuZDsgc3Ryb2tlLWxpbmVqb2luOiByb3VuZDsgfQogICAgLnRyYWNlLXRoaW4geyBmaWxsOiBub25lOyBzdHJva2U6IHJnYmEoMTczLCAyMDYsIDE3NywgLjEyKTsgc3Ryb2tlLXdpZHRoOiAyOyBzdHJva2UtbGluZWNhcDogcm91bmQ7IHN0cm9rZS1saW5lam9pbjogcm91bmQ7IH0KICAgIC5mbG93LWEgeyBmaWxsOiBub25lOyBzdHJva2U6ICM3NmU0ZGI7IHN0cm9rZS13aWR0aDogMi40OyBzdHJva2UtbGluZWNhcDogcm91bmQ7IHN0cm9rZS1saW5lam9pbjogcm91bmQ7IHN0cm9rZS1kYXNoYXJyYXk6IDEyIDIwODsgYW5pbWF0aW9uOiBwdWxzZUEgNi40cyBsaW5lYXIgaW5maW5pdGU7IH0KICAgIC5mbG93LWIgeyBmaWxsOiBub25lOyBzdHJva2U6ICM5ZmNmNmY7IHN0cm9rZS13aWR0aDogMi4yOyBzdHJva2UtbGluZWNhcDogcm91bmQ7IHN0cm9rZS1saW5lam9pbjogcm91bmQ7IHN0cm9rZS1kYXNoYXJyYXk6IDE0IDI0NjsgYW5pbWF0aW9uOiBwdWxzZUIgOC4ycyBsaW5lYXIgaW5maW5pdGU7IGFuaW1hdGlvbi1kZWxheTogLTIuOXM7IH0KICAgIC5wYWQgeyBmaWxsOiByZ2JhKDIwNCwgMTc1LCAxMDQsIC4xNik7IHN0cm9rZTogcmdiYSgyMjIsIDE5MSwgMTIyLCAuMzApOyBzdHJva2Utd2lkdGg6IDEuNDsgfQogICAgLnZpYSB7IGZpbGw6IHJnYmEoMjEyLCAxNzYsIDExMCwgLjE4KTsgc3Ryb2tlOiByZ2JhKDIyMCwgMTkwLCAxMzAsIC4zOCk7IHN0cm9rZS13aWR0aDogMS4xOyB9CiAgICAubGVkIHsgZmlsbDogIzc5ZWJlMjsgb3BhY2l0eTogLjI1OyBhbmltYXRpb246IHB1bHNlQyA0LjZzIGVhc2UtaW4tb3V0IGluZmluaXRlOyB9CiAgICAubGVkLWIgeyBmaWxsOiAjOWZjZjZmOyBvcGFjaXR5OiAuMjI7IGFuaW1hdGlvbjogcHVsc2VDIDYuOHMgZWFzZS1pbi1vdXQgaW5maW5pdGU7IGFuaW1hdGlvbjotZGVsYXk6IC0yczsgfQogIDwvc3R5bGU+CgogIDxwYXRoIGNsYXNzPSJ0cmFjZSIgZD0iTTI0IDcySDEwNFY0NkgxNjZWOThIMjUwVjY0SDMzNiIvPgogIDxwYXRoIGNsYXNzPSJmbG93LWEiIGQ9Ik0yNCA3MkgxMDRWNDZIMTY2Vjk4SDI1MFY2NEgzMzYiLz4KCiAgPHBhdGggY2xhc3M9InRyYWNlIiBkPSJNMjQgMTc4SDg2VjEzMkgxNDJWMjIwSDIyMFYxODBIMjgyVjI0NEgzMzYiLz4KICA8cGF0aCBjbGFzcz0iZmxvdy1iIiBkPSJNMjQgMTc4SDg2VjEzMkgxNDJWMjIwSDIyMFYxODBIMjgyVjI0NEgzMzYiLz4KCiAgPHBhdGggY2xhc3M9InRyYWNlIiBkPSJNNDggMzE2SDEyNFYyODJIMTg4VjMxOEgyNDhWMjc2SDMxNiIvPgogIDxwYXRoIGNsYXNzPSJ0cmFjZS10aGluIiBkPSJNMTI0IDI4MlYyMjBIMTY4VjE3NkgyNTBWMTMySDMwOFYxMDIiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTEwNCA0NlYyMEgyMjRWNDYiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTg2IDEzMlY5NEgxMzhWNzIiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTIyMCAxODBWMTRIMjcyVjExMkgzMzYiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTE2NiA5OFYxNDhIMTk2VjE3OCIvPgogIDxwYXRoIGNsYXNzPSJ0cmFjZS10aGluIiBkPSJNMjQ4IDI3NlYyMTRIMzA4VjE4NkgzMzYiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTQ4IDMxNlYyNDRIODJWMjIwIi8+CiAgPHBhdGggY2xhc3M9InRyYWNlLXRoaW4iIGQ9Ik0xODggMzE4VjM0MEgzMDAiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTI1MCA2NFYyOEgzMTRWNDgiLz4KCiAgPHJlY3QgY2xhc3M9InBhZCIgeD0iMTQ4IiB5PSIxNTQiIHdpZHRoPSI1OCIgaGVpZ2h0PSI0MiIgcng9IjgiLz4KICA8cmVjdCBjbGFzcz0icGFkIiB4PSI5MiIgeT0iMjQ2IiB3aWR0aD0iNDYiIGhlaWdodD0iMjgiIHJ4PSI3Ii8+CiAgPHJlY3QgY2xhc3M9InBhZCIgeD0iMjU4IiB5PSI4NiIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjI4IiByeD0iNyIvPgoKICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIyNCIgY3k9IjcyIiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIxMDQiIGN5PSI0NiIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iMTY2IiBjeT0iOTgiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjI1MCIgY3k9IjY0IiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIzMzYiIGN5PSI2NCIgcj0iNC4yIi8+CgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjI0IiBjeT0iMTc4IiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSI4NiIgY3k9IjEzMiIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iMTQyIiBjeT0iMjIwIiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIyMjAiIGN5PSIxODAiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjI4MiIgY3k9IjI0NCIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iMzM2IiBjeT0iMjQ0IiByPSI0LjIiLz4KCiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iNDgiIGN5PSIzMTYiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjEyNCIgY3k9IjI4MiIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iMTg4IiBjeT0iMzE4IiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIyNDgiIGN5PSIyNzYiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjMxNiIgY3k9IjI3NiIgcj0iNC4yIi8+CgogIDxjaXJjbGUgY2xhc3M9ImxlZCIgY3g9IjEzOCIgY3k9IjcyIiByPSIyLjYiLz4KICA8Y2lyY2xlIGNsYXNzPSJsZWQtYiIgY3g9IjE5NiIgY3k9IjE3OCIgcj0iMi42Ii8+CiAgPGNpcmNsZSBjbGFzcz0ibGVkIiBjeD0iMzA4IiBjeT0iMTAyIiByPSIyLjYiLz4KICA8Y2lyY2xlIGNsYXNzPSJsZWQtYiIgY3g9IjgyIiBjeT0iMjIwIiByPSIyLjYiLz4KPC9zdmc+Cg==");
+    url("data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiPgogIDxzdHlsZT4KICAgIEBrZXlmcmFtZXMgcHVsc2VBIHsgZnJvbSB7IHN0cm9rZS1kYXNob2Zmc2V0OiAyMjA7IH0gdG8geyBzdHJva2UtZGFzaG9mZnNldDogMDsgfSB9CiAgICBAa2V5ZnJhbWVzIHB1bHNlQiB7IGZyb20geyBzdHJva2UtZGFzaG9mZnNldDogMDsgfSB0byB7IHN0cm9rZS1kYXNoYXJyYXk6IDI2MDsgfSB9CiAgICAudHJhY2UgeyBmaWxsOiBub25lOyBzdHJva2U6IHJnYmEoMjI4LDIzNiwgMjU1LCAuMTEpOyBzdHJva2Utd2lkdGg6IDIuNjsgc3Ryb2tlLWxpbmVjYXA6IHJvdW5kOyBzdHJva2UtbGluZWpvaW46IHJvdW5kOyB9CiAgICAudHJhY2UtdGhpbiB7IGZpbGw6IG5vbmU7IHN0cm9rZTogcmdiYSgyMjgsIDIzNiwgMjU1LCAuMDYpOyBzdHJva2Utd2lkdGg6IDEuNjsgc3Ryb2tlLWxpbmVjYXA6IHJvdW5kOyBzdHJva2UtbGluZWpvaW46IHJvdW5kOyB9CiAgICAuZmxvdy1hIHsgZmlsbDogbm9uZTsgc3Ryb2tlOiAjNzhmMGZmOyBzdHJva2Utd2lkdGg6IDIuMjsgc3Ryb2tlLWxpbmVjYXA6IHJvdW5kOyBzdHJva2UtbGluZWpvaW46IHJvdW5kOyBzdHJva2UtZGFzaGFycmF5OiAxMiAyMDg7IGFuaW1hdGlvbjogcHVsc2VBIIDYuNHMgbGluZWFyIGluZmluaXRlOyB9CiAgICAuZmxvdy1iIHsgZmlsbDogbm9uZTsgc3Ryb2tlOiAjYzk4ZmZmOyBzdHJva2Utd2lkdGg6IDIuMDsgc3Ryb2tlLWxpbmVjYXA6IHJvdW5kOyBzdHJva2UtbGluZWpvaW46IHJvdW5kOyBzdHJva2UtZGFzaGFycmF5OiAxNCAyNDY7IGFuaW1hdGlvbjogcHVsc2VCIDguMnMgbGluZWFyIGluZmluaXRlOyBhbmltYXRpb24tZGVsYXk6IC0yLjlzOyB9CiAgICAucGFkIHsgZmlsbDogcmdiYSgyNTUsIDI1NSwgMjU1LCAuMDQpOyBzdHJva2U6IHJnYmEoMjQ1LCAyNDksIDI1NSwgLjEwKTsgc3Ryb2tlLXdpZHRoOiAxLjI7IH0KICAgIC52aWEgeyBmaWxsOiByZ2JhKDIzNiwgMjQxLCAyNTUsIC4xMik7IHN0cm9rZTogcmdiYSgyNDIsIDI0NiwgMjU1LCAuMTQpOyBzdHJva2Utd2lkdGg6IDE7IH0KICA8L3N0eWxlPgogIDxwYXRoIGNsYXNzPSJ0cmFjZSIgZD0iTTI0IDcySDEwNFY0NkgxNjZWOThIMjUwVjY0SDMzNiIvPgogIDxwYXRoIGNsYXNzPSJmbG93LWEiIGQ9Ik0yNCA3MkgxMDRWNDZIMTY2Vjk4SDI1MFY2NEgzMzYiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UiIGQ9Ik0yNCAxNzhIODZWMTMySDE0MlYyMjBIMjIwVjE4MEgyODJWMjQ0SDMzNiIvPgogIDxwYXRoIGNsYXNzPSJmbG93LWIiIGQ9Ik0yNCAxNzhIODZWMTMySDE0MlYyMjBIMjIwVjE4MEgyODJWMjQ0SDMzNiIvPgogIDxwYXRoIGNsYXNzPSJ0cmFjZSIgZD0iTTQ4IDMxNkgxMjRWMjgySDE4OFYzMThIMjQ4VjI3NkgzMTYiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTEyNCAyODJWIDIyMEgxNjhWMTc2SDI1MFYxMzJIMzA4VjEwMiIvPgogIDxwYXRoIGNsYXNzPSJ0cmFjZS10aGluIiBkPSJNMTA0IDQ2VjIwSDIyNFY0NiIvPgogIDxwYXRoIGNsYXNzPSJ0cmFjZS10aGluIiBkPSJNODEgMTMyVjk0SDEzOFY3MiIvPgogIDxwYXRoIGNsYXNzPSJ0cmFjZS10aGluIiBkPSJNMjIwIDE4MFYxNDJIMjcyVjExMkgzMzYiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTE2NiA5OFYxNDhIMTk2VjE3OCIvPgogIDxwYXRoIGNsYXNzPSJ0cmFjZS10aGluIiBkPSJNMjQ4IDI3NlYyMTRIMzA4VjE4NkgzMzYiLz4KICA8cGF0aCBjbGFzcz0idHJhY2UtdGhpbiIgZD0iTTQ4IDMxNlYyNDRIODJWMjIwIi8+CiAgPHJlY3QgY2xhc3M9InBhZCIgeD0iMTQ4IiB5PSIxNTQiIHdpZHRoPSI1OCIgaGVpZ2h0PSI0MiIgcng9IjgiLz4KICA8cmVjdCBjbGFzcz0icGFkIiB4PSI5MiIgeT0iMjQ2IiB3aWR0aD0iNDYiIGhlaWdodD0iMjgiIHJ4PSI3Ii8+CiAgPHJlY3QgY2xhc3M9InBhZCIgeD0iMjU4IiB5PSI4NiIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjI4IiByeD0iNyIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjI0IiBjeT0iNzIiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjEwNCIgY3k9IjQ2IiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIxNjYiIGN5PSI5OCIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iMjUwIiBjeT0iNjQiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjMzNiIgY3k9IjY0IiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIyNCIgY3k9IjE3OCIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iODYiIGN5PSIxMzIiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjE0MiIgY3k9IjIyMCIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iMjIwIiBjeT0iMTgwIiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIyODIiIGN5PSIyNDQiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjMzNiIgY3k9IjI0NCIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iNDgiIGN5PSIzMTYiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjEyNCIgY3k9IjI4MiIgcj0iNC4yIi8+CiAgPGNpcmNsZSBjbGFzcz0idmlhIiBjeD0iMTg4IiBjeT0iMzE4IiByPSI0LjIiLz4KICA8Y2lyY2xlIGNsYXNzPSJ2aWEiIGN4PSIyNDgiIGN5PSIyNzYiIHI9IjQuMiIvPgogIDxjaXJjbGUgY2xhc3M9InZpYSIgY3g9IjMxNiIgY3k9IjI3NiIgcj0iNC4yIi8+PC9zdmc+");
   background-size: 360px 360px;
   background-position: center top;
   background-repeat: repeat;
   background-attachment: fixed;
-  opacity: 0.5;
-  filter: hue-rotate(218deg) saturate(2.15) brightness(1.34) contrast(1.06);
+  opacity: 0.46;
+  filter: hue-rotate(218deg) saturate(1.85) brightness(1.18);
   mix-blend-mode: screen;
 }
 
@@ -146,27 +139,17 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(224, 236, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(224, 236, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(224, 236, 255, 0.012) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(224, 236, 255, 0.012) 1px, transparent 1px);
-  background-size:
-    56px 56px,
-    56px 56px,
-    14px 14px,
-    14px 14px;
-  background-position:
-    center top,
-    center top,
-    center top,
-    center top;
+    linear-gradient(rgba(232, 240, 255, 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 240, 255, 0.026) 1px, transparent 1px);
+  background-size: 56px 56px, 56px 56px;
+  background-position: center top, center top;
   background-attachment: fixed;
-  opacity: 0.8;
+  opacity: 0.7;
   mix-blend-mode: screen;
 }
 
 ::selection {
-  background: rgba(105, 238, 255, 0.24);
+  background: rgba(116, 235, 255, 0.24);
   color: #f8fcff;
 }
 
@@ -255,7 +238,7 @@ iframe:focus-visible {
   letter-spacing: 0.01em;
   text-transform: none;
   color: #fbfdff;
-  text-shadow: 0 0 14px rgba(105, 238, 255, 0.12);
+  text-shadow: 0 0 10px rgba(116, 235, 255, 0.12);
 }
 
 .site-title a {
@@ -272,8 +255,8 @@ iframe:focus-visible {
   background:
     radial-gradient(circle, #dcfdff 0 34%, #69eeff 35% 100%);
   box-shadow:
-    0 0 0 4px rgba(105, 238, 255, 0.08),
-    0 0 16px rgba(105, 238, 255, 0.34);
+    0 0 0 4px rgba(116, 235, 255, 0.08),
+    0 0 14px rgba(116, 235, 255, 0.28);
   animation: title-orb 5.8s ease-in-out infinite;
   transition:
     transform var(--duration-base) var(--ease-emphasis),
@@ -283,8 +266,8 @@ iframe:focus-visible {
 .site-title a:hover::before {
   transform: scale(1.08);
   box-shadow:
-    0 0 0 6px rgba(105, 238, 255, 0.1),
-    0 0 22px rgba(105, 238, 255, 0.42);
+    0 0 0 6px rgba(116, 235, 255, 0.1),
+    0 0 20px rgba(116, 235, 255, 0.36);
 }
 
 .nav-links,
@@ -299,10 +282,10 @@ iframe:focus-visible {
 .project-top-separator {
   width: 1px;
   height: 28px;
-  background: linear-gradient(180deg, transparent, rgba(224, 236, 255, 0.3), transparent);
+  background: linear-gradient(180deg, transparent, rgba(232, 240, 255, 0.28), transparent);
 }
 
-/* Surfaces premium uniformes */
+/* SURFACES PREMIUM UNIFORMES */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -315,7 +298,7 @@ iframe:focus-visible {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--surface-border);
-  background-color: var(--surface-base);
+  background-color: var(--surface-fill);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
   backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
@@ -335,7 +318,7 @@ iframe:focus-visible {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: var(--surface-holo);
+  background: var(--surface-tint);
   pointer-events: none;
 }
 
@@ -353,7 +336,7 @@ iframe:focus-visible {
   inset: -1px;
   border-radius: inherit;
   background: var(--surface-sheen);
-  opacity: 0.9;
+  opacity: 1;
   pointer-events: none;
   transition:
     opacity var(--duration-base) var(--ease-standard),
@@ -411,7 +394,7 @@ iframe:focus-visible {
 .pdf-button:hover,
 .tab-card:hover,
 .project-card:hover {
-  transform: translate3d(0, -3px, 0);
+  transform: translate3d(0, -2px, 0);
   color: #ffffff;
   border-color: var(--surface-border-hover);
   box-shadow: var(--surface-shadow-hover);
@@ -431,15 +414,15 @@ iframe:focus-visible {
 .project-top-link.active,
 .tab-card.active,
 .tab-card[aria-selected="true"] {
-  color: #163249;
+  color: #183650;
   border-color: var(--surface-border-active);
-  background-color: rgba(255, 255, 255, 0.86);
+  background-color: rgba(255, 255, 255, 0.88);
   background-image:
     linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.94) 0%,
-      rgba(235, 250, 255, 0.92) 42%,
-      rgba(237, 226, 255, 0.9) 100%
+      rgba(238, 248, 255, 0.91) 56%,
+      rgba(239, 230, 255, 0.89) 100%
     );
   box-shadow: var(--surface-shadow-active);
 }
@@ -449,21 +432,20 @@ iframe:focus-visible {
 .tab-card.active::before,
 .tab-card[aria-selected="true"]::before {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.32), rgba(105, 238, 255, 0.14) 44%, rgba(177, 144, 255, 0.16) 100%);
+    linear-gradient(135deg, rgba(116, 235, 255, 0.1), transparent 44%),
+    linear-gradient(315deg, rgba(183, 155, 255, 0.12), transparent 62%);
 }
 
 .nav-links a.active::after,
 .project-top-link.active::after,
 .tab-card.active::after,
 .tab-card[aria-selected="true"]::after {
-  opacity: 1;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.86) 0%,
-      rgba(255, 255, 255, 0.26) 32%,
-      rgba(255, 255, 255, 0.06) 60%,
-      rgba(255, 255, 255, 0) 100%
+      rgba(255, 255, 255, 0.62) 0%,
+      rgba(255, 255, 255, 0.16) 38%,
+      rgba(255, 255, 255, 0) 72%
     );
 }
 
@@ -473,7 +455,7 @@ iframe:focus-visible {
   flex-shrink: 0;
   object-fit: contain;
   border: 1px solid var(--surface-border);
-  background-color: var(--surface-base);
+  background-color: var(--surface-fill);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
   backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
@@ -548,8 +530,8 @@ h1 {
   line-height: 1.08;
   letter-spacing: -0.03em;
   text-shadow:
-    0 0 18px rgba(255, 255, 255, 0.06),
-    0 0 22px rgba(105, 238, 255, 0.05);
+    0 0 12px rgba(255, 255, 255, 0.05),
+    0 0 16px rgba(116, 235, 255, 0.04);
 }
 
 h2 {
@@ -775,7 +757,7 @@ footer {
 }
 
 .project-list a.project-card:hover {
-  --project-card-lift: -3px;
+  --project-card-lift: -2px;
 }
 
 .project-card--static {
@@ -790,7 +772,7 @@ footer {
 }
 
 .project-card--static:hover::after {
-  opacity: 0.9;
+  opacity: 1;
   transform: none;
 }
 
@@ -820,17 +802,13 @@ footer {
   padding: 6px 10px;
   margin-bottom: 10px;
   border-radius: 999px;
-  border: 1px solid rgba(236, 244, 255, 0.2);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.14));
+  border: 1px solid rgba(243, 247, 255, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.1));
   color: #f4efff;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-    0 0 16px rgba(177, 144, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .project-card h3,
@@ -909,7 +887,7 @@ footer {
   background: rgba(255, 255, 255, 0.95);
   box-shadow:
     0 14px 30px rgba(0, 0, 0, 0.12),
-    0 0 18px rgba(105, 238, 255, 0.04);
+    0 0 14px rgba(116, 235, 255, 0.03);
 }
 
 .pdf-actions {
