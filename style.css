@@ -41,31 +41,29 @@
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
-  /* --- SURFACES VERRE DÉPOLI (STYLE CUPERTINO) --- */
-  --surface-border: rgba(255, 255, 255, 0.12);
-  --surface-border-hover: rgba(255, 255, 255, 0.25);
-  --surface-border-active: rgba(255, 255, 255, 0.4);
+  /* --- SURFACES : COPIE EXACTE DU HEADER --- */
+  
+  --surface-border: rgba(255, 255, 255, 0.06);
+  --surface-border-hover: rgba(255, 255, 255, 0.15);
+  --surface-border-active: rgba(255, 255, 255, 0.25);
 
-  /* Clé du problème : opacité très basse pour compenser la superposition des blocs */
-  --surface-base: rgba(16, 32, 64, 0.2);
+  --surface-base: rgba(12, 22, 45, 0.45);
 
-  /* Un très léger voile blanc pour capter la lumière */
   --surface-bg: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.01) 100%
+    180deg, 
+    rgba(28, 48, 88, 0.65) 0%, 
+    rgba(12, 22, 45, 0.25) 100%
   );
 
   --surface-holo: none;
   --surface-sheen: none;
 
-  --surface-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  --surface-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.3);
-  --surface-shadow-active: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --surface-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --surface-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.5);
+  --surface-shadow-active: 0 4px 16px rgba(0, 0, 0, 0.6);
 
-  /* Flou plus élevé pour vraiment "fondre" les lignes de l'arrière-plan */
-  --surface-blur: 16px;
-  --surface-saturation: 120%;
+  --surface-blur: 8px;
+  --surface-saturation: 100%;
 }
 
 @view-transition {
@@ -211,7 +209,6 @@ iframe:focus-visible {
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* Application stricte de la texture sur le header */
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
   backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
@@ -292,7 +289,6 @@ iframe:focus-visible {
   background: linear-gradient(180deg, transparent, rgba(226, 239, 255, 0.26), transparent);
 }
 
-/* Application stricte de la texture sur TOUS les éléments */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -465,7 +461,6 @@ iframe:focus-visible {
     );
 }
 
-/* Cadres des logos */
 .project-logo,
 .project-page-logo {
   flex-shrink: 0;
@@ -565,7 +560,6 @@ footer {
   text-align: center;
 }
 
-/* Accueil */
 .home-main {
   min-height: calc(100vh - 188px);
   display: flex;
@@ -600,7 +594,6 @@ footer {
   margin-top: 8px;
 }
 
-/* Onglets */
 .tab-grid {
   position: relative;
   display: grid;
@@ -645,7 +638,6 @@ footer {
   animation: page-leave var(--duration-exit) var(--ease-standard) both;
 }
 
-/* Structures */
 .info-grid,
 .timeline,
 .project-list {
@@ -752,7 +744,6 @@ footer {
   padding-left: 0;
 }
 
-/* Projets */
 .project-list {
   display: grid;
   gap: 18px;
@@ -880,7 +871,6 @@ footer {
   opacity: 0.42;
 }
 
-/* Tableau de synthèse */
 .summary-card {
   padding-bottom: 22px;
 }
@@ -914,7 +904,6 @@ footer {
   min-width: 190px;
 }
 
-/* Cascade d'apparition */
 .reveal-init {
   opacity: 0;
   transform: translate3d(0, 22px, 0) scale(0.985);
@@ -937,7 +926,6 @@ footer {
   transform: translate3d(0, var(--project-card-lift), 0) scale(1);
 }
 
-/* Animations */
 @keyframes title-orb {
   0%,
   100% {
@@ -970,7 +958,6 @@ footer {
   }
 }
 
-/* Responsive */
 @media (max-width: 980px) {
   .navbar {
     align-items: flex-start;
