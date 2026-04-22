@@ -45,8 +45,10 @@
   --surface-border-hover: rgba(0, 255, 255, 0.3);
   --surface-border-active: rgba(0, 255, 255, 0.5);
 
-  /* Fond très transparent pour le cristal */
+  /* Fond bleu/cyan transparent pour empêcher les boutons inactifs de paraître gris */
   --surface-base: rgba(0, 30, 80, 0.2);
+  
+  /* Voile blanc ultra-léger pour l'aspect verre clair */
   --surface-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
 
   --surface-holo: none;
@@ -146,7 +148,7 @@ a {
   text-decoration: none;
 }
 
-/* LE CORRECTIF EST ICI : Suppression du gris par défaut des navigateurs sur les boutons */
+/* Suppression du gris par défaut des navigateurs sur les boutons */
 button {
   font: inherit;
   color: inherit;
@@ -264,7 +266,8 @@ iframe:focus-visible {
   background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.3), transparent);
 }
 
-/* --- GLASSMORPHISM SUR LES COMPOSANTS --- */
+/* --- UNIFORMISATION STRICTE DE TOUS LES COMPOSANTS --- */
+/* La règle maîtresse qui garantit une forme, texture et surface 100% identique partout */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -276,6 +279,7 @@ iframe:focus-visible {
 .project-card {
   position: relative;
   overflow: hidden;
+  border-radius: 16px; /* Forme unique pour tous les composants */
   border: 1px solid var(--surface-border);
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
@@ -285,7 +289,9 @@ iframe:focus-visible {
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
-    box-shadow var(--duration-base) var(--ease-standard);
+    box-shadow var(--duration-base) var(--ease-standard),
+    color var(--duration-fast) ease,
+    background-color var(--duration-base) var(--ease-standard);
 }
 
 .nav-links a::before,
@@ -326,6 +332,7 @@ iframe:focus-visible {
     transform var(--duration-base) var(--ease-emphasis);
 }
 
+/* Espacements et alignements spécifiques (sans casser l'uniformité visuelle) */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -336,7 +343,6 @@ iframe:focus-visible {
   justify-content: center;
   min-height: 46px;
   padding: 11px 16px;
-  border-radius: 12px;
   color: #eef5ff;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -347,13 +353,22 @@ iframe:focus-visible {
   padding: 22px 22px 20px;
 }
 
-.info-item,
-.timeline-content,
-.timeline-date {
-  border-radius: var(--radius-md);
+.info-item {
+  padding: 20px 22px;
 }
 
-/* HOVER & INTERACTIONS */
+.timeline-content {
+  padding: 20px 22px 18px;
+}
+
+.timeline-date {
+  margin: 0;
+  padding: 16px 18px;
+  color: #fdfefe;
+  font-weight: 700;
+}
+
+/* HOVER & INTERACTIONS UNIQUEMENT SUR LES ÉLÉMENTS CLIQUABLES */
 .nav-links a:hover,
 .project-top-link:hover,
 .pager-button:hover,
@@ -370,7 +385,7 @@ iframe:focus-visible {
   transform: scale(0.97);
 }
 
-/* BOUTON ACTIF (Contraste inversé) */
+/* BOUTON ACTIF (Contraste inversé lumineux) */
 .nav-links a.active,
 .project-top-link.active,
 .tab-card.active,
@@ -382,11 +397,12 @@ iframe:focus-visible {
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
 }
 
-/* LOGOS */
+/* LOGOS ET IMAGES (Uniformisés sur le border-radius de 16px) */
 .project-logo,
 .project-page-logo {
   flex-shrink: 0;
   object-fit: contain;
+  border-radius: 16px; /* Uniformisé */
   border: 1px solid var(--surface-border);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
@@ -448,7 +464,7 @@ h1 {
   margin-bottom: 28px;
   font-size: clamp(2.15rem, 3.2vw, 3.2rem);
   line-height: 1.08;
-  letter-spacing: -0.04em; /* Typographie plus premium */
+  letter-spacing: -0.04em;
   text-shadow:
     0 0 18px rgba(255, 255, 255, 0.06),
     0 0 22px rgba(0, 255, 255, 0.25);
@@ -530,7 +546,6 @@ footer {
   z-index: 1;
   min-height: 84px;
   padding: 18px 16px;
-  border-radius: 16px;
   font-weight: 700;
   text-align: center;
   cursor: pointer;
@@ -579,10 +594,6 @@ footer {
   gap: 18px;
 }
 
-.info-item {
-  padding: 20px 22px;
-}
-
 .info-item dt {
   margin: 0 0 6px;
   font-weight: 700;
@@ -605,17 +616,6 @@ footer {
   grid-template-columns: 250px minmax(0, 1fr);
   gap: 18px;
   align-items: stretch;
-}
-
-.timeline-date {
-  margin: 0;
-  padding: 16px 18px;
-  color: #fdfefe;
-  font-weight: 700;
-}
-
-.timeline-content {
-  padding: 20px 22px 18px;
 }
 
 .timeline-content h3 {
@@ -706,7 +706,7 @@ footer {
   min-height: 30px;
   padding: 6px 10px;
   margin-bottom: 10px;
-  border-radius: 999px;
+  border-radius: 999px; /* Forme de pilule conservée spécifiquement pour le badge */
   border: 1px solid rgba(0, 255, 255, 0.2);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   color: #e0ffff;
@@ -725,7 +725,6 @@ footer {
   width: 72px;
   height: 72px;
   padding: 10px;
-  border-radius: 16px;
 }
 
 .project-hero {
@@ -747,7 +746,6 @@ footer {
   width: 100px;
   height: 100px;
   padding: 12px;
-  border-radius: 22px;
 }
 
 .project-page-heading {
@@ -787,7 +785,7 @@ footer {
 .summary-image {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  border-radius: 16px; /* Uniformisé */
   border: 1px solid rgba(0, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.95);
   box-shadow:
