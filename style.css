@@ -1,16 +1,15 @@
 :root {
   color-scheme: dark;
 
-  /* --- ARRIÈRE-PLAN : MIDNIGHT BLUE PROFOND --- */
-  --bg-base: #020813;
-  --bg-deep: #01040a;
-  --bg-mid: #051024;
-  --bg-glow: #081a3e;
+  /* --- ARRIÈRE-PLAN : MIDNIGHT BLUE AVEC PLUS DE PROFONDEUR --- */
+  --bg-base: #091630;
+  --bg-deep: #020917;
+  --bg-mid: #0d2450;
+  --bg-glow: #183c78;
 
-  /* --- TEXTES HOLOGRAPHIQUES --- */
-  --text-main: #e0ffff;
-  --text-soft: #bce3ff;
-  --text-muted: #8fcfff;
+  --text-main: #f8fbff;
+  --text-soft: #edf4ff;
+  --text-muted: #cfddfb;
 
   /* --- ACCENTS : NÉON CYAN PUR --- */
   --accent: #00ffff;
@@ -87,57 +86,46 @@ body {
   font-synthesis-weight: none;
   text-rendering: optimizeLegibility;
   line-height: 1.7;
-  color: var(--text-soft);
+  color: var(--text-main);
   background-color: var(--bg-base);
-  background-image: 
-    radial-gradient(circle at 18% 18%, var(--bg-glow), transparent 0 35%),
-    radial-gradient(circle at 82% 14%, var(--bg-mid), transparent 0 30%),
-    radial-gradient(circle at 50% 100%, var(--bg-deep), transparent 0 50%);
+  background-image:
+    radial-gradient(circle at 12% 10%, rgba(35, 82, 168, 0.34), transparent 0 34%),
+    radial-gradient(circle at 84% 14%, rgba(23, 60, 120, 0.34), transparent 0 30%),
+    radial-gradient(circle at 50% 42%, rgba(10, 29, 64, 0.2), transparent 0 42%),
+    radial-gradient(circle at 50% 100%, rgba(2, 9, 23, 0.92), transparent 0 54%),
+    linear-gradient(180deg, #0a1734 0%, #091630 48%, #071126 100%);
   position: relative;
 }
 
 /* Texture de grain subtile (Noise) */
 body::after {
   content: "";
-  position: fixed; inset: 0; z-index: -1;
-  opacity: 0.03;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.02;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* FLUX DE DONNÉES - MOTIF SEAMLESS (SANS RACCORD) ET PROFONDEUR */
+/* FLUX DE DONNÉES - NÉONS BLEUS, STRUCTURE UNIQUE ET PROFONDEUR */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  
-  /* Double couche SVG : 
-     1. Couche lointaine (plus grande, plus transparente)
-     2. Couche proche (plus petite, plus nette) 
-     Le motif est calculé mathématiquement pour boucler à l'infini sans coupure. */
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(0,255,255,0.15);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%2300ffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:15 300;animation:p 6s linear infinite;%7D.flow2%7Bfill:none;stroke:%2300ffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20 400;animation:p 8s linear infinite reverse;%7D.node%7Bfill:%23081b3d;stroke:%2300ffff;stroke-width:1.5;box-shadow:0 0 10px %2300ffff;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:800;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M0,80 h60 l40,40 h100 l40,-40 h160'/%3E%3Cpath class='flow' d='M0,80 h60 l40,40 h100 l40,-40 h160'/%3E%3Ccircle cx='100' cy='120' r='3' class='node'/%3E%3Ccircle cx='200' cy='120' r='3' class='node'/%3E%3Ccircle cx='240' cy='80' r='3' class='node'/%3E%3Cpath class='trace' d='M0,280 h120 l40,-40 h80 l40,40 h120'/%3E%3Cpath class='flow2' d='M0,280 h120 l40,-40 h80 l40,40 h120'/%3E%3Ccircle cx='120' cy='280' r='3' class='node'/%3E%3Ccircle cx='160' cy='240' r='3' class='node'/%3E%3Ccircle cx='240' cy='240' r='3' class='node'/%3E%3Cpath class='trace' d='M80,0 v160 l40,40 v100 l-40,40 v60'/%3E%3Cpath class='flow' d='M80,0 v160 l40,40 v100 l-40,40 v60'/%3E%3Ccircle cx='80' cy='160' r='3' class='node'/%3E%3Ccircle cx='120' cy='200' r='3' class='node'/%3E%3Cpath class='trace' d='M320,0 v60 l-40,40 v160 l40,40 v100'/%3E%3Cpath class='flow2' d='M320,0 v60 l-40,40 v160 l40,40 v100'/%3E%3Ccircle cx='320' cy='60' r='3' class='node'/%3E%3Ccircle cx='280' cy='100' r='3' class='node'/%3E%3Ccircle cx='280' cy='260' r='3' class='node'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(0,255,255,0.08);stroke-width:1;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%2300ffff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 200;animation:p 9s linear infinite;%7D.flow2%7Bfill:none;stroke:%2300ffff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:15 300;animation:p 11s linear infinite reverse;%7D.node%7Bfill:%23081b3d;stroke:%2300ffff;stroke-width:1;box-shadow:0 0 6px %2300ffff;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:800;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M0,80 h60 l40,40 h100 l40,-40 h160'/%3E%3Cpath class='flow' d='M0,80 h60 l40,40 h100 l40,-40 h160'/%3E%3Ccircle cx='100' cy='120' r='2' class='node'/%3E%3Ccircle cx='200' cy='120' r='2' class='node'/%3E%3Ccircle cx='240' cy='80' r='2' class='node'/%3E%3Cpath class='trace' d='M0,280 h120 l40,-40 h80 l40,40 h120'/%3E%3Cpath class='flow2' d='M0,280 h120 l40,-40 h80 l40,40 h120'/%3E%3Ccircle cx='120' cy='280' r='2' class='node'/%3E%3Ccircle cx='160' cy='240' r='2' class='node'/%3E%3Ccircle cx='240' cy='240' r='2' class='node'/%3E%3Cpath class='trace' d='M80,0 v160 l40,40 v100 l-40,40 v60'/%3E%3Cpath class='flow' d='M80,0 v160 l40,40 v100 l-40,40 v60'/%3E%3Ccircle cx='80' cy='160' r='2' class='node'/%3E%3Ccircle cx='120' cy='200' r='2' class='node'/%3E%3Cpath class='trace' d='M320,0 v60 l-40,40 v160 l40,40 v100'/%3E%3Cpath class='flow2' d='M320,0 v60 l-40,40 v160 l40,40 v100'/%3E%3Ccircle cx='320' cy='60' r='2' class='node'/%3E%3Ccircle cx='280' cy='100' r='2' class='node'/%3E%3Ccircle cx='280' cy='260' r='2' class='node'/%3E%3C/svg%3E");
-  background-size: 800px 800px, 350px 350px;
-  background-position: center top, 100px 100px;
-  background-repeat: repeat, repeat;
-  background-attachment: fixed;
-  opacity: 0.95;
-  filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22820%22%20height%3D%22620%22%20viewBox%3D%220%200%20820%20620%22%3E%20%3Cstyle%3E%20%40keyframes%20flowA%20%7B%20from%20%7B%20stroke-dashoffset%3A%20420%3B%20%7D%20to%20%7B%20stroke-dashoffset%3A%200%3B%20%7D%20%7D%20%40keyframes%20pulseA%20%7B%200%25%2C100%25%20%7B%20opacity%3A%20.2%3B%20%7D%2050%25%20%7B%20opacity%3A%20.95%3B%20%7D%20%7D%20.trace%20%7B%20fill%3Anone%3B%20stroke%3Argba%28138%2C205%2C255%2C.16%29%3B%20stroke-width%3A3%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20%7D%20.trace-thin%20%7B%20fill%3Anone%3B%20stroke%3Argba%28118%2C185%2C255%2C.1%29%3B%20stroke-width%3A2%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20%7D%20.flow%20%7B%20fill%3Anone%3B%20stroke%3A%2366d6ff%3B%20stroke-width%3A2.4%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20stroke-dasharray%3A18%20402%3B%20animation%3A%20flowA%208.6s%20linear%20infinite%3B%20%7D%20.node%20%7B%20fill%3Argba%28159%2C225%2C255%2C.18%29%3B%20stroke%3Argba%28173%2C228%2C255%2C.38%29%3B%20stroke-width%3A1.3%3B%20%7D%20.led%20%7B%20fill%3A%23bdefff%3B%20opacity%3A.34%3B%20animation%3ApulseA%204.8s%20ease-in-out%20infinite%3B%20%7D%20.panel%20%7B%20fill%3Argba%2817%2C39%2C92%2C.18%29%3B%20stroke%3Argba%28141%2C209%2C255%2C.18%29%3B%20stroke-width%3A1.2%3B%20%7D%20%3C/style%3E%20%3Cpath%20class%3D%22trace%22%20d%3D%22M28%2086H178V46H318V118H476V76H650V152H790%22/%3E%20%3Cpath%20class%3D%22flow%22%20d%3D%22M28%2086H178V46H318V118H476V76H650V152H790%22/%3E%20%3Cpath%20class%3D%22trace%22%20d%3D%22M72%20250H226V192H356V288H504V224H664V308H790%22/%3E%20%3Cpath%20class%3D%22flow%22%20d%3D%22M72%20250H226V192H356V288H504V224H664V308H790%22%20style%3D%22animation-duration%3A10.2s%3B%20animation-delay%3A-2.8s%3B%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M178%2046V20H428V54H602V22%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M226%20192V140H420V170H550V118H724V86%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M318%20118V176H286V228%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M504%20224V170H618V208H760%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M356%20288V358H520V318H688%22/%3E%20%3Crect%20class%3D%22panel%22%20x%3D%22384%22%20y%3D%22338%22%20width%3D%22110%22%20height%3D%2254%22%20rx%3D%2212%22/%3E%20%3Crect%20class%3D%22panel%22%20x%3D%22580%22%20y%3D%22330%22%20width%3D%2274%22%20height%3D%2238%22%20rx%3D%2210%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%2228%22%20cy%3D%2286%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22178%22%20cy%3D%2246%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22318%22%20cy%3D%22118%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22476%22%20cy%3D%2276%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22650%22%20cy%3D%22152%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22790%22%20cy%3D%22152%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%2272%22%20cy%3D%22250%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22226%22%20cy%3D%22192%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22356%22%20cy%3D%22288%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22504%22%20cy%3D%22224%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22664%22%20cy%3D%22308%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22790%22%20cy%3D%22308%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22420%22%20cy%3D%22170%22%20r%3D%223.2%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22550%22%20cy%3D%22118%22%20r%3D%223.2%22%20style%3D%22animation-delay%3A-1.8s%3B%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22602%22%20cy%3D%2222%22%20r%3D%223.2%22%20style%3D%22animation-delay%3A-3.1s%3B%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22520%22%20cy%3D%22318%22%20r%3D%223.2%22%20style%3D%22animation-delay%3A-2.4s%3B%22/%3E%20%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22760%22%20height%3D%22760%22%20viewBox%3D%220%200%20760%20760%22%3E%20%3Cstyle%3E%20%40keyframes%20flowB%20%7B%20from%20%7B%20stroke-dashoffset%3A%200%3B%20%7D%20to%20%7B%20stroke-dashoffset%3A%20520%3B%20%7D%20%7D%20%40keyframes%20pulseB%20%7B%200%25%2C100%25%20%7B%20opacity%3A%20.18%3B%20%7D%2050%25%20%7B%20opacity%3A%20.92%3B%20%7D%20%7D%20.trace%20%7B%20fill%3Anone%3B%20stroke%3Argba%28124%2C198%2C255%2C.15%29%3B%20stroke-width%3A3%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20%7D%20.trace-thin%20%7B%20fill%3Anone%3B%20stroke%3Argba%28117%2C184%2C255%2C.09%29%3B%20stroke-width%3A2%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20%7D%20.flow%20%7B%20fill%3Anone%3B%20stroke%3A%2352bcff%3B%20stroke-width%3A2.3%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20stroke-dasharray%3A16%20492%3B%20animation%3A%20flowB%209.8s%20linear%20infinite%3B%20%7D%20.flow-soft%20%7B%20fill%3Anone%3B%20stroke%3A%239fe8ff%3B%20stroke-width%3A2%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20stroke-dasharray%3A12%20470%3B%20animation%3A%20flowB%2012.4s%20linear%20infinite%20reverse%3B%20%7D%20.node%20%7B%20fill%3Argba%28165%2C229%2C255%2C.16%29%3B%20stroke%3Argba%28173%2C226%2C255%2C.34%29%3B%20stroke-width%3A1.2%3B%20%7D%20.led%20%7B%20fill%3A%23d7f4ff%3B%20opacity%3A.28%3B%20animation%3ApulseB%205.2s%20ease-in-out%20infinite%3B%20%7D%20.panel%20%7B%20fill%3Argba%2814%2C34%2C82%2C.16%29%3B%20stroke%3Argba%28116%2C193%2C255%2C.16%29%3B%20stroke-width%3A1.1%3B%20%7D%20%3C/style%3E%20%3Cpath%20class%3D%22trace%22%20d%3D%22M84%2058V178H148V288H252V224H366V356H482V268H612V386H700%22/%3E%20%3Cpath%20class%3D%22flow%22%20d%3D%22M84%2058V178H148V288H252V224H366V356H482V268H612V386H700%22/%3E%20%3Cpath%20class%3D%22trace%22%20d%3D%22M38%20462H188V418H304V520H414V452H542V566H700%22/%3E%20%3Cpath%20class%3D%22flow-soft%22%20d%3D%22M38%20462H188V418H304V520H414V452H542V566H700%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M148%20288V356H214V412%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M252%20224V154H314V94H466%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M482%20268V196H560V146H700%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M304%20520V618H468V670H642%22/%3E%20%3Crect%20class%3D%22panel%22%20x%3D%22198%22%20y%3D%22374%22%20width%3D%2284%22%20height%3D%2242%22%20rx%3D%2210%22/%3E%20%3Crect%20class%3D%22panel%22%20x%3D%22498%22%20y%3D%22602%22%20width%3D%2296%22%20height%3D%2244%22%20rx%3D%2210%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%2284%22%20cy%3D%2258%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22148%22%20cy%3D%22288%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22252%22%20cy%3D%22224%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22366%22%20cy%3D%22356%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22482%22%20cy%3D%22268%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22612%22%20cy%3D%22386%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22700%22%20cy%3D%22386%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%2238%22%20cy%3D%22462%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22188%22%20cy%3D%22418%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22304%22%20cy%3D%22520%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22414%22%20cy%3D%22452%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22542%22%20cy%3D%22566%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22700%22%20cy%3D%22566%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22314%22%20cy%3D%2294%22%20r%3D%223.2%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22560%22%20cy%3D%22146%22%20r%3D%223.2%22%20style%3D%22animation-delay%3A-1.9s%3B%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22214%22%20cy%3D%22412%22%20r%3D%223.2%22%20style%3D%22animation-delay%3A-3.4s%3B%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22468%22%20cy%3D%22670%22%20r%3D%223.2%22%20style%3D%22animation-delay%3A-2.2s%3B%22/%3E%20%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22960%22%20height%3D%22520%22%20viewBox%3D%220%200%20960%20520%22%3E%20%3Cstyle%3E%20%40keyframes%20flowC%20%7B%20from%20%7B%20stroke-dashoffset%3A%20360%3B%20%7D%20to%20%7B%20stroke-dashoffset%3A%200%3B%20%7D%20%7D%20%40keyframes%20glowC%20%7B%200%25%2C100%25%20%7B%20opacity%3A%20.16%3B%20%7D%2050%25%20%7B%20opacity%3A%20.9%3B%20%7D%20%7D%20.trace%20%7B%20fill%3Anone%3B%20stroke%3Argba%28116%2C194%2C255%2C.13%29%3B%20stroke-width%3A3%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20%7D%20.trace-thin%20%7B%20fill%3Anone%3B%20stroke%3Argba%28110%2C182%2C255%2C.08%29%3B%20stroke-width%3A2%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20%7D%20.flow%20%7B%20fill%3Anone%3B%20stroke%3A%237fe0ff%3B%20stroke-width%3A2.2%3B%20stroke-linecap%3Around%3B%20stroke-linejoin%3Around%3B%20stroke-dasharray%3A20%20340%3B%20animation%3A%20flowC%207.9s%20linear%20infinite%3B%20%7D%20.node%20%7B%20fill%3Argba%28164%2C229%2C255%2C.16%29%3B%20stroke%3Argba%28166%2C222%2C255%2C.32%29%3B%20stroke-width%3A1.15%3B%20%7D%20.led%20%7B%20fill%3A%23e0f8ff%3B%20opacity%3A.25%3B%20animation%3A%20glowC%204.6s%20ease-in-out%20infinite%3B%20%7D%20.panel%20%7B%20fill%3Argba%2818%2C38%2C86%2C.15%29%3B%20stroke%3Argba%28118%2C193%2C255%2C.14%29%3B%20stroke-width%3A1.1%3B%20%7D%20%3C/style%3E%20%3Cpath%20class%3D%22trace%22%20d%3D%22M56%20428H190V372H344V440H488V346H622V406H760V332H904%22/%3E%20%3Cpath%20class%3D%22flow%22%20d%3D%22M56%20428H190V372H344V440H488V346H622V406H760V332H904%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M190%20372V296H286V240H420V184H570%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M488%20346V258H594V208H734V250H904%22/%3E%20%3Cpath%20class%3D%22trace-thin%22%20d%3D%22M344%20440V494H544%22/%3E%20%3Crect%20class%3D%22panel%22%20x%3D%22446%22%20y%3D%22132%22%20width%3D%2288%22%20height%3D%2244%22%20rx%3D%2210%22/%3E%20%3Crect%20class%3D%22panel%22%20x%3D%22706%22%20y%3D%22276%22%20width%3D%2272%22%20height%3D%2236%22%20rx%3D%2210%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%2256%22%20cy%3D%22428%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22190%22%20cy%3D%22372%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22344%22%20cy%3D%22440%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22488%22%20cy%3D%22346%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22622%22%20cy%3D%22406%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22760%22%20cy%3D%22332%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22node%22%20cx%3D%22904%22%20cy%3D%22332%22%20r%3D%225%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22286%22%20cy%3D%22240%22%20r%3D%223.1%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22420%22%20cy%3D%22184%22%20r%3D%223.1%22%20style%3D%22animation-delay%3A-1.6s%3B%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22594%22%20cy%3D%22208%22%20r%3D%223.1%22%20style%3D%22animation-delay%3A-2.7s%3B%22/%3E%20%3Ccircle%20class%3D%22led%22%20cx%3D%22544%22%20cy%3D%22494%22%20r%3D%223.1%22%20style%3D%22animation-delay%3A-3.4s%3B%22/%3E%20%3C/svg%3E");
+  background-size: 46% auto, 38% auto, 58% auto;
+  background-position: left -4vw top 3vh, right -4vw top 24vh, center bottom -6vh;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  opacity: 0.94;
+  filter: saturate(1.45) brightness(1.18) drop-shadow(0 0 10px rgba(71, 185, 255, 0.42)) drop-shadow(0 0 26px rgba(98, 204, 255, 0.22));
   mix-blend-mode: screen;
-}
-
-/* --- TEXTE HOLOGRAPHIQUE --- */
-h1, h2, h3, strong, dt, .hanging-label, .project-number, .timeline-date, .site-title a {
-  color: var(--text-main);
-  text-shadow: 0 0 6px rgba(0, 255, 255, 0.6), 0 0 16px rgba(0, 255, 255, 0.3);
-}
-
-p, dd, li, footer {
-  color: var(--text-soft);
-  text-shadow: 0 0 4px rgba(0, 255, 255, 0.4), 0 0 10px rgba(0, 255, 255, 0.2);
+  animation: data-depth-drift 18s ease-in-out infinite alternate;
 }
 
 ::selection {
@@ -202,7 +190,7 @@ iframe:focus-visible {
   margin: 0 auto;
 }
 
-/* HEADER INVISIBLE */
+/* HEADER INVISIBLE (Aucun fond) */
 .site-header {
   position: sticky;
   top: 0;
@@ -233,6 +221,8 @@ iframe:focus-visible {
   font-weight: 600;
   letter-spacing: 0.01em;
   text-transform: none;
+  color: #fbfdff;
+  text-shadow: 0 0 14px rgba(0, 255, 255, 0.3);
 }
 
 .site-title a {
@@ -278,6 +268,28 @@ iframe:focus-visible {
   background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.3), transparent);
 }
 
+/* Variables de mouvement partagées pour harmoniser hover/click/reveal */
+.nav-links a,
+.project-top-link,
+.pager-button,
+.pdf-button,
+.tab-card,
+.project-card,
+.home-hero,
+.tab-grid,
+.timeline-date,
+.info-item,
+.timeline-content,
+.summary-image,
+.pdf-actions,
+.project-pager,
+.project-pager-wrapper {
+  --hover-translate-y: 0px;
+  --press-scale: 1;
+  --reveal-translate-y: 0px;
+  transform: translateY(calc(var(--hover-translate-y) + var(--reveal-translate-y))) scale(var(--press-scale));
+}
+
 /* --- UNIFORMISATION STRICTE & BLINDAGE DU FLOU --- */
 .nav-links a,
 .project-top-link,
@@ -302,7 +314,6 @@ iframe:focus-visible {
     border-color var(--duration-base) var(--ease-standard),
     box-shadow var(--duration-base) var(--ease-standard),
     color var(--duration-fast) ease,
-    text-shadow var(--duration-fast) ease,
     background-color var(--duration-base) var(--ease-standard);
 }
 
@@ -352,16 +363,18 @@ iframe:focus-visible {
   justify-content: center;
   min-height: 46px;
   padding: 11px 16px;
-  color: var(--text-main);
-  text-shadow: 0 0 6px rgba(0, 255, 255, 0.6), 0 0 16px rgba(0, 255, 255, 0.3);
+  color: #eef5ff;
   font-weight: 600;
   letter-spacing: 0.01em;
+  text-shadow:
+    0 0 10px rgba(196, 239, 255, 0.22),
+    0 0 22px rgba(95, 197, 255, 0.12);
 }
 
 .project-card {
   display: block;
   padding: 22px 22px 20px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .info-item {
@@ -375,7 +388,35 @@ iframe:focus-visible {
 .timeline-date {
   margin: 0;
   padding: 16px 18px;
+  color: #fdfefe;
   font-weight: 700;
+}
+
+/* Aspect holographique des contenus dans les composants */
+.info-item dt,
+.timeline-date,
+.timeline-content h3,
+.project-card h3,
+.project-page-heading h1,
+.project-number,
+.hanging-label {
+  background-image: linear-gradient(180deg, #ffffff 0%, #eefaff 34%, #cfeeff 68%, #9ed3ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 14px rgba(196, 239, 255, 0.18),
+    0 0 30px rgba(95, 197, 255, 0.1);
+}
+
+.info-item dd,
+.timeline-content p,
+.content-list,
+.project-card p {
+  text-shadow:
+    0 0 10px rgba(196, 239, 255, 0.12),
+    0 0 22px rgba(95, 197, 255, 0.06);
 }
 
 /* BOUTON ACTIF (Contraste inversé lumineux, verrouillé) */
@@ -387,12 +428,12 @@ iframe:focus-visible {
 .project-top-link.active:hover,
 .tab-card.active:hover,
 .tab-card[aria-selected="true"]:hover {
-  color: #020813 !important;
-  text-shadow: none !important;
+  color: #081b3d !important;
   border-color: var(--surface-border-active) !important;
   background-color: rgba(255, 255, 255, 0.95) !important;
   background-image: linear-gradient(180deg, #ffffff 0%, #e0ffff 100%) !important;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4) !important;
+  text-shadow: none;
 }
 
 /* LOGOS ET IMAGES */
@@ -400,7 +441,7 @@ iframe:focus-visible {
 .project-page-logo {
   flex-shrink: 0;
   object-fit: contain;
-  border-radius: 16px; 
+  border-radius: 16px;
   border: 1px solid var(--surface-border);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
@@ -446,6 +487,7 @@ h1,
 h2,
 h3 {
   margin-top: 0;
+  color: #fcfeff;
   text-wrap: balance;
 }
 
@@ -454,6 +496,9 @@ h1 {
   font-size: clamp(2.15rem, 3.2vw, 3.2rem);
   line-height: 1.08;
   letter-spacing: -0.04em;
+  text-shadow:
+    0 0 18px rgba(255, 255, 255, 0.06),
+    0 0 22px rgba(0, 255, 255, 0.25);
 }
 
 h2 {
@@ -468,10 +513,16 @@ h3 {
 
 p {
   margin-top: 0;
+  color: var(--text-soft);
+}
+
+strong {
+  color: #ffffff;
 }
 
 footer {
   padding: 18px 0 42px;
+  color: var(--text-muted);
   text-align: center;
 }
 
@@ -499,6 +550,7 @@ footer {
   margin: 0 auto;
   max-width: 880px;
   font-size: 1.08rem;
+  color: var(--text-soft);
 }
 
 .home-subtitle span {
@@ -577,6 +629,7 @@ footer {
 
 .info-item dd {
   margin: 0;
+  color: var(--text-soft);
 }
 
 .timeline {
@@ -621,6 +674,7 @@ footer {
 .content-list {
   margin: 0;
   padding-left: 20px;
+  color: var(--text-soft);
 }
 
 .content-list li + li {
@@ -763,36 +817,27 @@ footer {
   min-width: 190px;
 }
 
-/* CORRECTION ABSOLUE DU FLOU AU SCROLL */
+/* CORRECTION ABSOLUE DU FLOU AU SCROLL : Animation sur variable de déplacement, ZÉRO conflit avec hover/click */
 .reveal-init {
   visibility: hidden;
-  transform: translateY(22px);
+  --reveal-translate-y: 22px;
   transition: transform var(--duration-page) var(--ease-emphasis);
 }
 
 .reveal-init.is-revealed {
   visibility: visible;
-  transform: translateY(0);
+  --reveal-translate-y: 0px;
 }
 
-.project-list a.project-card.reveal-init {
-  transform: translateY(22px);
-}
-
-.project-list a.project-card.reveal-init.is-revealed {
-  transform: translateY(0);
-}
-
-/* --- HOVER & INTERACTIONS STRICTEMENT HARMONISÉES --- */
+/* --- HOVER & INTERACTIONS --- */
 .nav-links a:hover,
 .project-top-link:hover,
 .pager-button:hover,
 .pdf-button:hover,
 .tab-card:hover,
-a.project-card:hover {
-  transform: translateY(-3px) !important;
+.project-card:hover {
+  --hover-translate-y: -3px;
   color: #ffffff;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5) !important;
   border-color: var(--surface-border-hover) !important;
   box-shadow: var(--surface-shadow-hover) !important;
 }
@@ -802,7 +847,7 @@ a.project-card:hover {
 .pager-button:hover::after,
 .pdf-button:hover::after,
 .tab-card:hover::after,
-a.project-card:hover::after {
+.project-card:hover::after {
   opacity: 1;
 }
 
@@ -811,8 +856,9 @@ a.project-card:hover::after {
 .pager-button:active,
 .pdf-button:active,
 .tab-card:active,
-a.project-card:active {
-  transform: scale(0.97) !important;
+.project-card:active {
+  --hover-translate-y: 0px;
+  --press-scale: 0.97;
 }
 
 @keyframes title-orb {
@@ -820,10 +866,21 @@ a.project-card:active {
   50% { transform: scale(1.08); }
 }
 
+@keyframes data-depth-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -10px, 0) scale(1.015); }
+  100% { transform: translate3d(0, 8px, 0) scale(1.03); }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .navbar { flex-direction: column; align-items: flex-start; }
   .tab-grid, .info-grid, .timeline-item { grid-template-columns: 1fr; }
+
+  body::before {
+    background-size: 78% auto, 72% auto, 94% auto;
+    background-position: left -18vw top 7vh, right -20vw top 34vh, center bottom -2vh;
+  }
 }
 
 @media (max-width: 700px) {
