@@ -198,7 +198,7 @@ iframe:focus-visible {
   -webkit-backdrop-filter: none;
   border-bottom: none;
   box-shadow: none;
-  transition: opacity var(--duration-base) var(--ease-standard);
+  transition: opacity var(--duration-base) var(--ease-standard), top var(--duration-base) var(--ease-standard);
 }
 
 .site-header::after {
@@ -326,9 +326,8 @@ iframe:focus-visible {
   background: var(--surface-sheen);
   opacity: 0.9;
   pointer-events: none;
-  transition:
-    opacity var(--duration-base) var(--ease-standard),
-    transform var(--duration-base) var(--ease-emphasis);
+  /* Retrait du transform dans l'after pour ne pas gêner */
+  transition: opacity var(--duration-base) var(--ease-standard);
 }
 
 .nav-links a,
@@ -346,7 +345,6 @@ iframe:focus-visible {
   letter-spacing: 0.01em;
 }
 
-/* Les cartes ont explicitement le pointeur pour indiquer qu'elles sont interactives */
 .project-card {
   display: block;
   padding: 22px 22px 20px;
@@ -391,7 +389,6 @@ iframe:focus-visible {
   box-shadow: var(--surface-shadow);
   backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
   -webkit-backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
-  /* La transition est ici mais plus de hover qui modifie le contenu (supprimé) */
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
@@ -400,7 +397,9 @@ iframe:focus-visible {
 
 main,
 footer {
-  transition: opacity var(--duration-base) var(--ease-standard);
+  position: relative;
+  top: 0;
+  transition: opacity var(--duration-base) var(--ease-standard), top var(--duration-slow) var(--ease-emphasis);
 }
 
 main {
@@ -409,12 +408,13 @@ main {
 
 body.is-leaving .site-header {
   opacity: 0.45;
+  top: -8px; /* Correction anti-bug blur */
 }
 
 body.is-leaving main,
 body.is-leaving footer {
   opacity: 0;
-  transform: translateY(18px);
+  top: 18px; /* Correction anti-bug blur */
 }
 
 /* PAGE-BOX INVISIBLE */
@@ -533,6 +533,10 @@ footer {
   position: relative;
 }
 
+.tab-panel {
+  position: relative; /* Sécurité pour l'animation 'top' */
+}
+
 .tab-panel[hidden] {
   display: none !important;
 }
@@ -546,14 +550,15 @@ footer {
   animation: fade-out var(--duration-exit) var(--ease-standard) forwards;
 }
 
+/* Remplacement de translateY par top pour préserver le filtre de flou sur Chrome/Edge */
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: none; }
+  from { opacity: 0; top: 24px; }
+  to { opacity: 1; top: 0; }
 }
 
 @keyframes fade-out {
-  from { opacity: 1; transform: none; }
-  to { opacity: 0; transform: translateY(18px); }
+  from { opacity: 1; top: 0; }
+  to { opacity: 0; top: 18px; }
 }
 
 /* Structures */
@@ -773,20 +778,27 @@ footer {
   min-width: 190px;
 }
 
-/* Cascade d'apparition simplifiée pour garantir la priorité du hover */
+/* Cascade d'apparition sans translate3d pour préserver le flou */
 .reveal-init {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity var(--duration-page) var(--ease-standard), transform var(--duration-page) var(--ease-emphasis);
+  top: 22px; /* Remplacement de transform */
+  transition: opacity var(--duration-page) var(--ease-standard), top var(--duration-page) var(--ease-emphasis);
 }
 
 .reveal-init.is-revealed {
   opacity: 1;
-  transform: translateY(0);
+  top: 0 !important;
 }
 
-/* --- HOVER & INTERACTIONS UNIQUEMENT SUR LES ÉLÉMENTS CLIQUABLES --- */
-/* Placé à la fin pour avoir la priorité absolue sur le .reveal-init */
+.project-list a.project-card.reveal-init {
+  top: 22px;
+}
+
+.project-list a.project-card.reveal-init.is-revealed {
+  top: 0 !important;
+}
+
+/* --- HOVER & INTERACTIONS (PRIORITÉ ABSOLUE PLACÉE EN FIN DE FICHIER) --- */
 .nav-links a:hover,
 .project-top-link:hover,
 .pager-button:hover,
@@ -797,15 +809,6 @@ footer {
   color: #ffffff;
   border-color: var(--surface-border-hover);
   box-shadow: var(--surface-shadow-hover);
-}
-
-.nav-links a:hover::after,
-.project-top-link:hover::after,
-.pager-button:hover::after,
-.pdf-button:hover::after,
-.tab-card:hover::after,
-.project-card:hover::after {
-  opacity: 1;
 }
 
 .nav-links a:active,
