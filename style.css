@@ -45,10 +45,7 @@
   --surface-border-hover: rgba(0, 255, 255, 0.3);
   --surface-border-active: rgba(0, 255, 255, 0.5);
 
-  /* Fond bleu/cyan transparent pour empêcher les boutons inactifs de paraître gris */
   --surface-base: rgba(0, 30, 80, 0.2);
-  
-  /* Voile blanc ultra-léger pour l'aspect verre clair */
   --surface-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
 
   --surface-holo: none;
@@ -58,7 +55,6 @@
   --surface-shadow-hover: 0 12px 40px rgba(0, 255, 255, 0.1);
   --surface-shadow-active: 0 5px 15px rgba(0, 255, 255, 0.2);
 
-  /* Flou affiné à 6px */
   --surface-blur: 6px;
   --surface-saturation: 110%;
 }
@@ -99,7 +95,6 @@ body {
   position: relative;
 }
 
-/* Texture de grain subtile (Noise) */
 body::after {
   content: "";
   position: fixed; inset: 0; z-index: -1;
@@ -108,7 +103,6 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* FLUX DE DONNÉES - EFFET NÉON CYAN */
 body::before {
   content: "";
   position: fixed;
@@ -148,7 +142,6 @@ a {
   text-decoration: none;
 }
 
-/* Suppression du gris par défaut des navigateurs sur les boutons */
 button {
   font: inherit;
   color: inherit;
@@ -188,7 +181,6 @@ iframe:focus-visible {
   margin: 0 auto;
 }
 
-/* HEADER INVISIBLE (Aucun fond) */
 .site-header {
   position: sticky;
   top: 0;
@@ -266,7 +258,7 @@ iframe:focus-visible {
   background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.3), transparent);
 }
 
-/* --- UNIFORMISATION STRICTE DE TOUS LES COMPOSANTS --- */
+/* --- UNIFORMISATION STRICTE & CORRECTION DU BUG DE FLOU --- */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -284,7 +276,11 @@ iframe:focus-visible {
   box-shadow: var(--surface-shadow);
   backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
   -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
-  /* Suppression de l'overflow hidden, il n'est pas nécessaire et peut causer des soucis */
+  
+  /* Hack pour Chrome : Force un compositing hardware permanent pour empêcher le flou de clignoter pendant les animations d'opacité */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
@@ -365,11 +361,15 @@ iframe:focus-visible {
   font-weight: 700;
 }
 
-/* BOUTON ACTIF (Contraste inversé lumineux) */
+/* BOUTON ACTIF (Contraste inversé garanti) */
 .nav-links a.active,
 .project-top-link.active,
 .tab-card.active,
-.tab-card[aria-selected="true"] {
+.tab-card[aria-selected="true"],
+.nav-links a.active:hover,
+.project-top-link.active:hover,
+.tab-card.active:hover,
+.tab-card[aria-selected="true"]:hover {
   color: #081b3d !important;
   border-color: var(--surface-border-active);
   background-color: rgba(255, 255, 255, 0.95);
@@ -394,10 +394,9 @@ iframe:focus-visible {
     box-shadow var(--duration-base) var(--ease-standard);
 }
 
-/* On utilise translateY() pour l'animation générale de la page, c'est ce qui fonctionne le mieux sans casser le filtre */
 main,
 footer {
-  transition: opacity var(--duration-base) var(--ease-standard), transform var(--duration-slow) var(--ease-emphasis);
+  transition: opacity var(--duration-base) var(--ease-standard);
 }
 
 main {
@@ -411,10 +410,8 @@ body.is-leaving .site-header {
 body.is-leaving main,
 body.is-leaving footer {
   opacity: 0;
-  transform: translateY(18px);
 }
 
-/* PAGE-BOX INVISIBLE */
 .page-box {
   position: relative;
   background: transparent;
@@ -469,7 +466,6 @@ footer {
   text-align: center;
 }
 
-/* Accueil */
 .home-main {
   min-height: calc(100vh - 188px);
   display: flex;
@@ -504,7 +500,6 @@ footer {
   margin-top: 8px;
 }
 
-/* Onglets */
 .tab-grid {
   position: relative;
   display: grid;
@@ -530,16 +525,17 @@ footer {
   position: relative;
 }
 
+.tab-panel {
+  position: relative;
+}
+
 .tab-panel[hidden] {
   display: none !important;
 }
 
-/* POUR ÉVITER LE BUG DU HALO FLOU : */
-/* On anime l'opacité UNIQUEMENT. On ne touche plus aux mouvements `transform` ou `top` dans l'apparition, 
-   car c'est cela qui crée un conflit de calques avec le backdrop-filter */
-
 .tab-panel.is-entering {
-  animation: fade-in-tabs var(--duration-page) var(--ease-emphasis);
+  animation: fade-in-tabs var(--duration-page) var(--ease-emphasis) both;
+  will-change: opacity, transform;
 }
 
 .tab-panel.is-leaving {
@@ -547,17 +543,17 @@ footer {
   animation: fade-out-tabs var(--duration-exit) var(--ease-standard) forwards;
 }
 
+/* Animations d'onglets (retour du transform pour un mouvement parfait, couplé à l'opacité 0.001 anti-bug) */
 @keyframes fade-in-tabs {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0.001; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fade-out-tabs {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0.001; transform: translateY(18px); }
 }
 
-/* Structures */
 .info-grid,
 .timeline,
 .project-list {
@@ -642,7 +638,6 @@ footer {
   padding-left: 0;
 }
 
-/* Projets */
 .project-list {
   display: grid;
   gap: 18px;
@@ -740,7 +735,6 @@ footer {
   opacity: 0.42;
 }
 
-/* Tableau de synthèse */
 .summary-card {
   padding-bottom: 22px;
 }
@@ -774,22 +768,25 @@ footer {
   min-width: 190px;
 }
 
-/* POUR L'APPARITION AU SCROLL : ON UTILISE AUSSI L'OPACITÉ PURE, SANS MOUVEMENT */
+/* Animations d'apparition (retour du transform pour un mouvement parfait, couplé à l'opacité 0.001 anti-bug) */
 .reveal-init {
-  opacity: 0;
-  transition: opacity var(--duration-page) var(--ease-standard);
+  opacity: 0.001; /* Remplace le 0 fatal qui tuait le layer du flou */
+  transform: translateY(22px);
+  will-change: opacity, transform;
+  transition: opacity var(--duration-page) var(--ease-standard), transform var(--duration-page) var(--ease-emphasis);
 }
 
 .reveal-init.is-revealed {
   opacity: 1;
+  transform: translateY(0) !important;
 }
 
 .project-list a.project-card.reveal-init {
-  opacity: 0;
+  transform: translateY(22px);
 }
 
 .project-list a.project-card.reveal-init.is-revealed {
-  opacity: 1;
+  transform: translateY(0) !important;
 }
 
 /* --- HOVER & INTERACTIONS (PRIORITÉ ABSOLUE PLACÉE EN FIN DE FICHIER) --- */
