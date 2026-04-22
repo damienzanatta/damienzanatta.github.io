@@ -198,7 +198,7 @@ iframe:focus-visible {
   -webkit-backdrop-filter: none;
   border-bottom: none;
   box-shadow: none;
-  transition: opacity var(--duration-base) var(--ease-standard), top var(--duration-base) var(--ease-standard);
+  transition: opacity var(--duration-base) var(--ease-standard);
 }
 
 .site-header::after {
@@ -283,8 +283,12 @@ iframe:focus-visible {
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
+  
+  /* L'astuce pour forcer le navigateur à toujours appliquer le filtre même pendant les animations */
   backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
   -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
+  will-change: opacity, transform, filter;
+
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
@@ -326,7 +330,6 @@ iframe:focus-visible {
   background: var(--surface-sheen);
   opacity: 0.9;
   pointer-events: none;
-  /* Retrait du transform dans l'after pour ne pas gêner */
   transition: opacity var(--duration-base) var(--ease-standard);
 }
 
@@ -367,11 +370,12 @@ iframe:focus-visible {
 }
 
 /* BOUTON ACTIF (Contraste inversé lumineux) */
+/* CORRECTION: Ajout de !important pour forcer la couleur du texte même au hover */
 .nav-links a.active,
 .project-top-link.active,
 .tab-card.active,
 .tab-card[aria-selected="true"] {
-  color: #081b3d;
+  color: #081b3d !important;
   border-color: var(--surface-border-active);
   background-color: rgba(255, 255, 255, 0.95);
   background-image: linear-gradient(180deg, #ffffff 0%, #e0ffff 100%);
@@ -408,13 +412,12 @@ main {
 
 body.is-leaving .site-header {
   opacity: 0.45;
-  top: -8px; /* Correction anti-bug blur */
 }
 
 body.is-leaving main,
 body.is-leaving footer {
   opacity: 0;
-  top: 18px; /* Correction anti-bug blur */
+  top: 18px;
 }
 
 /* PAGE-BOX INVISIBLE */
@@ -534,31 +537,32 @@ footer {
 }
 
 .tab-panel {
-  position: relative; /* Sécurité pour l'animation 'top' */
+  position: relative;
 }
 
 .tab-panel[hidden] {
   display: none !important;
 }
 
+/* CORRECTION DU FLASH LORS DE L'ANIMATION DES ONGLETS */
 .tab-panel.is-entering {
-  animation: fade-in var(--duration-page) var(--ease-emphasis);
+  animation: fade-in-tabs var(--duration-page) var(--ease-emphasis);
 }
 
 .tab-panel.is-leaving {
   pointer-events: none;
-  animation: fade-out var(--duration-exit) var(--ease-standard) forwards;
+  animation: fade-out-tabs var(--duration-exit) var(--ease-standard) forwards;
 }
 
-/* Remplacement de translateY par top pour préserver le filtre de flou sur Chrome/Edge */
-@keyframes fade-in {
-  from { opacity: 0; top: 24px; }
-  to { opacity: 1; top: 0; }
+/* Nouvelles keyframes forcées avec backdrop-filter pour empêcher le navigateur de désactiver le flou */
+@keyframes fade-in-tabs {
+  from { opacity: 0; top: 24px; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
+  to { opacity: 1; top: 0; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
 }
 
-@keyframes fade-out {
-  from { opacity: 1; top: 0; }
-  to { opacity: 0; top: 18px; }
+@keyframes fade-out-tabs {
+  from { opacity: 1; top: 0; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
+  to { opacity: 0; top: 18px; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
 }
 
 /* Structures */
@@ -778,10 +782,11 @@ footer {
   min-width: 190px;
 }
 
-/* Cascade d'apparition sans translate3d pour préserver le flou */
+/* CORRECTION DU FLASH LORS DE L'APPARITION AU SCROLL */
 .reveal-init {
   opacity: 0;
-  top: 22px; /* Remplacement de transform */
+  top: 22px;
+  /* L'animation est toujours gérée via le 'top' */
   transition: opacity var(--duration-page) var(--ease-standard), top var(--duration-page) var(--ease-emphasis);
 }
 
@@ -809,6 +814,15 @@ footer {
   color: #ffffff;
   border-color: var(--surface-border-hover);
   box-shadow: var(--surface-shadow-hover);
+}
+
+.nav-links a:hover::after,
+.project-top-link:hover::after,
+.pager-button:hover::after,
+.pdf-button:hover::after,
+.tab-card:hover::after,
+.project-card:hover::after {
+  opacity: 1;
 }
 
 .nav-links a:active,
