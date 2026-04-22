@@ -346,11 +346,11 @@ iframe:focus-visible {
   letter-spacing: 0.01em;
 }
 
-/* On force le curseur pointer sur les cartes de projet, même celles en <article> */
+/* Les cartes ont explicitement le pointeur pour indiquer qu'elles sont interactives */
 .project-card {
   display: block;
   padding: 22px 22px 20px;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 .info-item {
@@ -366,29 +366,6 @@ iframe:focus-visible {
   padding: 16px 18px;
   color: #fdfefe;
   font-weight: 700;
-}
-
-/* HOVER & INTERACTIONS UNIQUEMENT SUR LES ÉLÉMENTS CLIQUABLES */
-.nav-links a:hover,
-.project-top-link:hover,
-.pager-button:hover,
-.pdf-button:hover,
-.tab-card:hover,
-.project-card:hover {
-  transform: translateY(-3px);
-  color: #ffffff;
-  border-color: var(--surface-border-hover);
-  box-shadow: var(--surface-shadow-hover);
-}
-
-/* TOUS LES ÉLÉMENTS CLIQUABLES ONT MAINTENANT LA MÊME ANIMATION DE CLIC */
-.nav-links a:active,
-.project-top-link:active,
-.pager-button:active,
-.pdf-button:active,
-.tab-card:active,
-.project-card:active {
-  transform: scale(0.97);
 }
 
 /* BOUTON ACTIF (Contraste inversé lumineux) */
@@ -408,23 +385,17 @@ iframe:focus-visible {
 .project-page-logo {
   flex-shrink: 0;
   object-fit: contain;
-  border-radius: 16px;
+  border-radius: 16px; 
   border: 1px solid var(--surface-border);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
   backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
   -webkit-backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
+  /* La transition est ici mais plus de hover qui modifie le contenu (supprimé) */
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
     box-shadow var(--duration-base) var(--ease-standard);
-}
-
-.project-page-title:hover .project-page-logo,
-.project-card:hover .project-logo {
-  transform: translateY(-2px) scale(1.03);
-  border-color: var(--surface-border-hover);
-  box-shadow: var(--surface-shadow-hover);
 }
 
 main,
@@ -802,7 +773,7 @@ footer {
   min-width: 190px;
 }
 
-/* Cascade d'apparition */
+/* Cascade d'apparition simplifiée pour garantir la priorité du hover */
 .reveal-init {
   opacity: 0;
   transform: translateY(22px);
@@ -811,15 +782,39 @@ footer {
 
 .reveal-init.is-revealed {
   opacity: 1;
-  transform: none !important;
+  transform: translateY(0);
 }
 
-.project-list a.project-card.reveal-init {
-  transform: translateY(22px);
+/* --- HOVER & INTERACTIONS UNIQUEMENT SUR LES ÉLÉMENTS CLIQUABLES --- */
+/* Placé à la fin pour avoir la priorité absolue sur le .reveal-init */
+.nav-links a:hover,
+.project-top-link:hover,
+.pager-button:hover,
+.pdf-button:hover,
+.tab-card:hover,
+.project-card:hover {
+  transform: translateY(-3px);
+  color: #ffffff;
+  border-color: var(--surface-border-hover);
+  box-shadow: var(--surface-shadow-hover);
 }
 
-.project-list a.project-card.reveal-init.is-revealed {
-  transform: none !important;
+.nav-links a:hover::after,
+.project-top-link:hover::after,
+.pager-button:hover::after,
+.pdf-button:hover::after,
+.tab-card:hover::after,
+.project-card:hover::after {
+  opacity: 1;
+}
+
+.nav-links a:active,
+.project-top-link:active,
+.pager-button:active,
+.pdf-button:active,
+.tab-card:active,
+.project-card:active {
+  transform: scale(0.97);
 }
 
 @keyframes title-orb {
