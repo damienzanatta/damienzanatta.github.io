@@ -95,6 +95,7 @@ body {
   position: relative;
 }
 
+/* Texture de grain subtile (Noise) */
 body::after {
   content: "";
   position: fixed; inset: 0; z-index: -1;
@@ -103,6 +104,7 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* FLUX DE DONNÉES - EFFET NÉON CYAN PUR */
 body::before {
   content: "";
   position: fixed;
@@ -143,12 +145,13 @@ a {
 }
 
 button {
-  font: inherit;
-  color: inherit;
-  background: transparent;
-  border: none;
   appearance: none;
   -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  background: transparent;
 }
 
 a:focus-visible,
@@ -181,6 +184,7 @@ iframe:focus-visible {
   margin: 0 auto;
 }
 
+/* HEADER INVISIBLE (Aucun fond) */
 .site-header {
   position: sticky;
   top: 0;
@@ -258,7 +262,7 @@ iframe:focus-visible {
   background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.3), transparent);
 }
 
-/* --- UNIFORMISATION STRICTE & CORRECTION DU BUG DE FLOU --- */
+/* --- UNIFORMISATION STRICTE & BLINDAGE DU FLOU --- */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -269,18 +273,14 @@ iframe:focus-visible {
 .timeline-content,
 .project-card {
   position: relative;
-  border-radius: 16px;
-  border: 1px solid var(--surface-border);
-  background-color: var(--surface-base);
-  background-image: var(--surface-bg);
-  box-shadow: var(--surface-shadow);
-  backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
-  -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
-  
-  /* Hack pour Chrome : Force un compositing hardware permanent pour empêcher le flou de clignoter pendant les animations d'opacité */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-
+  overflow: hidden;
+  border-radius: 16px !important;
+  border: 1px solid var(--surface-border) !important;
+  background-color: var(--surface-base) !important;
+  background-image: var(--surface-bg) !important;
+  box-shadow: var(--surface-shadow) !important;
+  backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)) !important;
+  -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)) !important;
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
@@ -361,7 +361,7 @@ iframe:focus-visible {
   font-weight: 700;
 }
 
-/* BOUTON ACTIF (Contraste inversé garanti) */
+/* BOUTON ACTIF (Contraste inversé lumineux, verrouillé) */
 .nav-links a.active,
 .project-top-link.active,
 .tab-card.active,
@@ -371,10 +371,10 @@ iframe:focus-visible {
 .tab-card.active:hover,
 .tab-card[aria-selected="true"]:hover {
   color: #081b3d !important;
-  border-color: var(--surface-border-active);
-  background-color: rgba(255, 255, 255, 0.95);
-  background-image: linear-gradient(180deg, #ffffff 0%, #e0ffff 100%);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  border-color: var(--surface-border-active) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #e0ffff 100%) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4) !important;
 }
 
 /* LOGOS ET IMAGES */
@@ -412,6 +412,7 @@ body.is-leaving footer {
   opacity: 0;
 }
 
+/* PAGE-BOX INVISIBLE */
 .page-box {
   position: relative;
   background: transparent;
@@ -466,6 +467,7 @@ footer {
   text-align: center;
 }
 
+/* Accueil */
 .home-main {
   min-height: calc(100vh - 188px);
   display: flex;
@@ -500,6 +502,7 @@ footer {
   margin-top: 8px;
 }
 
+/* Onglets */
 .tab-grid {
   position: relative;
   display: grid;
@@ -525,35 +528,27 @@ footer {
   position: relative;
 }
 
-.tab-panel {
-  position: relative;
-}
-
 .tab-panel[hidden] {
   display: none !important;
 }
 
+/* CORRECTION ABSOLUE DU FLOU LORS DE L'ANIMATION DES ONGLETS */
 .tab-panel.is-entering {
-  animation: fade-in-tabs var(--duration-page) var(--ease-emphasis) both;
-  will-change: opacity, transform;
+  animation: slide-in-tabs var(--duration-page) var(--ease-emphasis);
 }
 
 .tab-panel.is-leaving {
   pointer-events: none;
-  animation: fade-out-tabs var(--duration-exit) var(--ease-standard) forwards;
+  display: none;
 }
 
-/* Animations d'onglets (retour du transform pour un mouvement parfait, couplé à l'opacité 0.001 anti-bug) */
-@keyframes fade-in-tabs {
-  from { opacity: 0.001; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Animation de simple déplacement : PAS de changement d'opacité = le flou reste parfait */
+@keyframes slide-in-tabs {
+  from { transform: translateY(24px); visibility: hidden; }
+  to { transform: translateY(0); visibility: visible; }
 }
 
-@keyframes fade-out-tabs {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0.001; transform: translateY(18px); }
-}
-
+/* Structures */
 .info-grid,
 .timeline,
 .project-list {
@@ -638,6 +633,7 @@ footer {
   padding-left: 0;
 }
 
+/* Projets */
 .project-list {
   display: grid;
   gap: 18px;
@@ -735,6 +731,7 @@ footer {
   opacity: 0.42;
 }
 
+/* Tableau de synthèse */
 .summary-card {
   padding-bottom: 22px;
 }
@@ -768,17 +765,16 @@ footer {
   min-width: 190px;
 }
 
-/* Animations d'apparition (retour du transform pour un mouvement parfait, couplé à l'opacité 0.001 anti-bug) */
+/* CORRECTION ABSOLUE DU FLOU AU SCROLL : Animation sur Visibility et Transform, ZÉRO Opacity */
 .reveal-init {
-  opacity: 0.001; /* Remplace le 0 fatal qui tuait le layer du flou */
+  visibility: hidden;
   transform: translateY(22px);
-  will-change: opacity, transform;
-  transition: opacity var(--duration-page) var(--ease-standard), transform var(--duration-page) var(--ease-emphasis);
+  transition: transform var(--duration-page) var(--ease-emphasis);
 }
 
 .reveal-init.is-revealed {
-  opacity: 1;
-  transform: translateY(0) !important;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .project-list a.project-card.reveal-init {
@@ -786,10 +782,10 @@ footer {
 }
 
 .project-list a.project-card.reveal-init.is-revealed {
-  transform: translateY(0) !important;
+  transform: translateY(0);
 }
 
-/* --- HOVER & INTERACTIONS (PRIORITÉ ABSOLUE PLACÉE EN FIN DE FICHIER) --- */
+/* --- HOVER & INTERACTIONS --- */
 .nav-links a:hover,
 .project-top-link:hover,
 .pager-button:hover,
@@ -798,8 +794,8 @@ footer {
 .project-card:hover {
   transform: translateY(-3px);
   color: #ffffff;
-  border-color: var(--surface-border-hover);
-  box-shadow: var(--surface-shadow-hover);
+  border-color: var(--surface-border-hover) !important;
+  box-shadow: var(--surface-shadow-hover) !important;
 }
 
 .nav-links a:hover::after,
