@@ -267,7 +267,6 @@ iframe:focus-visible {
 }
 
 /* --- UNIFORMISATION STRICTE DE TOUS LES COMPOSANTS --- */
-/* La règle maîtresse qui garantit une forme, texture et surface 100% identique partout */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -279,7 +278,7 @@ iframe:focus-visible {
 .project-card {
   position: relative;
   overflow: hidden;
-  border-radius: 16px; /* Forme unique pour tous les composants */
+  border-radius: 16px;
   border: 1px solid var(--surface-border);
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
@@ -332,7 +331,6 @@ iframe:focus-visible {
     transform var(--duration-base) var(--ease-emphasis);
 }
 
-/* Espacements et alignements spécifiques (sans casser l'uniformité visuelle) */
 .nav-links a,
 .project-top-link,
 .pager-button,
@@ -348,9 +346,11 @@ iframe:focus-visible {
   letter-spacing: 0.01em;
 }
 
+/* On force le curseur pointer sur les cartes de projet, même celles en <article> */
 .project-card {
   display: block;
   padding: 22px 22px 20px;
+  cursor: pointer;
 }
 
 .info-item {
@@ -381,7 +381,13 @@ iframe:focus-visible {
   box-shadow: var(--surface-shadow-hover);
 }
 
-.nav-links a:active, .tab-card:active {
+/* TOUS LES ÉLÉMENTS CLIQUABLES ONT MAINTENANT LA MÊME ANIMATION DE CLIC */
+.nav-links a:active,
+.project-top-link:active,
+.pager-button:active,
+.pdf-button:active,
+.tab-card:active,
+.project-card:active {
   transform: scale(0.97);
 }
 
@@ -397,12 +403,12 @@ iframe:focus-visible {
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
 }
 
-/* LOGOS ET IMAGES (Uniformisés sur le border-radius de 16px) */
+/* LOGOS ET IMAGES */
 .project-logo,
 .project-page-logo {
   flex-shrink: 0;
   object-fit: contain;
-  border-radius: 16px; /* Uniformisé */
+  border-radius: 16px;
   border: 1px solid var(--surface-border);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
@@ -670,17 +676,6 @@ footer {
   gap: 18px;
 }
 
-.project-card--static {
-  cursor: default;
-}
-
-.project-card--static:hover {
-  transform: none;
-  color: inherit;
-  border-color: var(--surface-border);
-  box-shadow: var(--surface-shadow);
-}
-
 .project-card p {
   margin: 0;
 }
@@ -706,7 +701,7 @@ footer {
   min-height: 30px;
   padding: 6px 10px;
   margin-bottom: 10px;
-  border-radius: 999px; /* Forme de pilule conservée spécifiquement pour le badge */
+  border-radius: 999px;
   border: 1px solid rgba(0, 255, 255, 0.2);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   color: #e0ffff;
@@ -785,7 +780,7 @@ footer {
 .summary-image {
   width: 100%;
   height: auto;
-  border-radius: 16px; /* Uniformisé */
+  border-radius: 16px;
   border: 1px solid rgba(0, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.95);
   box-shadow:
