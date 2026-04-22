@@ -277,18 +277,14 @@ iframe:focus-visible {
 .timeline-content,
 .project-card {
   position: relative;
-  overflow: hidden;
   border-radius: 16px;
   border: 1px solid var(--surface-border);
   background-color: var(--surface-base);
   background-image: var(--surface-bg);
   box-shadow: var(--surface-shadow);
-  
-  /* L'astuce pour forcer le navigateur à toujours appliquer le filtre même pendant les animations */
   backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
   -webkit-backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation));
-  will-change: opacity, transform, filter;
-
+  /* Suppression de l'overflow hidden, il n'est pas nécessaire et peut causer des soucis */
   transition:
     transform var(--duration-base) var(--ease-emphasis),
     border-color var(--duration-base) var(--ease-standard),
@@ -370,7 +366,6 @@ iframe:focus-visible {
 }
 
 /* BOUTON ACTIF (Contraste inversé lumineux) */
-/* CORRECTION: Ajout de !important pour forcer la couleur du texte même au hover */
 .nav-links a.active,
 .project-top-link.active,
 .tab-card.active,
@@ -399,11 +394,10 @@ iframe:focus-visible {
     box-shadow var(--duration-base) var(--ease-standard);
 }
 
+/* On utilise translateY() pour l'animation générale de la page, c'est ce qui fonctionne le mieux sans casser le filtre */
 main,
 footer {
-  position: relative;
-  top: 0;
-  transition: opacity var(--duration-base) var(--ease-standard), top var(--duration-slow) var(--ease-emphasis);
+  transition: opacity var(--duration-base) var(--ease-standard), transform var(--duration-slow) var(--ease-emphasis);
 }
 
 main {
@@ -417,7 +411,7 @@ body.is-leaving .site-header {
 body.is-leaving main,
 body.is-leaving footer {
   opacity: 0;
-  top: 18px;
+  transform: translateY(18px);
 }
 
 /* PAGE-BOX INVISIBLE */
@@ -536,15 +530,14 @@ footer {
   position: relative;
 }
 
-.tab-panel {
-  position: relative;
-}
-
 .tab-panel[hidden] {
   display: none !important;
 }
 
-/* CORRECTION DU FLASH LORS DE L'ANIMATION DES ONGLETS */
+/* POUR ÉVITER LE BUG DU HALO FLOU : */
+/* On anime l'opacité UNIQUEMENT. On ne touche plus aux mouvements `transform` ou `top` dans l'apparition, 
+   car c'est cela qui crée un conflit de calques avec le backdrop-filter */
+
 .tab-panel.is-entering {
   animation: fade-in-tabs var(--duration-page) var(--ease-emphasis);
 }
@@ -554,15 +547,14 @@ footer {
   animation: fade-out-tabs var(--duration-exit) var(--ease-standard) forwards;
 }
 
-/* Nouvelles keyframes forcées avec backdrop-filter pour empêcher le navigateur de désactiver le flou */
 @keyframes fade-in-tabs {
-  from { opacity: 0; top: 24px; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
-  to { opacity: 1; top: 0; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fade-out-tabs {
-  from { opacity: 1; top: 0; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
-  to { opacity: 0; top: 18px; backdrop-filter: blur(var(--surface-blur)) saturate(var(--surface-saturation)); }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 /* Structures */
@@ -782,25 +774,22 @@ footer {
   min-width: 190px;
 }
 
-/* CORRECTION DU FLASH LORS DE L'APPARITION AU SCROLL */
+/* POUR L'APPARITION AU SCROLL : ON UTILISE AUSSI L'OPACITÉ PURE, SANS MOUVEMENT */
 .reveal-init {
   opacity: 0;
-  top: 22px;
-  /* L'animation est toujours gérée via le 'top' */
-  transition: opacity var(--duration-page) var(--ease-standard), top var(--duration-page) var(--ease-emphasis);
+  transition: opacity var(--duration-page) var(--ease-standard);
 }
 
 .reveal-init.is-revealed {
   opacity: 1;
-  top: 0 !important;
 }
 
 .project-list a.project-card.reveal-init {
-  top: 22px;
+  opacity: 0;
 }
 
 .project-list a.project-card.reveal-init.is-revealed {
-  top: 0 !important;
+  opacity: 1;
 }
 
 /* --- HOVER & INTERACTIONS (PRIORITÉ ABSOLUE PLACÉE EN FIN DE FICHIER) --- */
