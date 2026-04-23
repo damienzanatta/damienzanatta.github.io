@@ -195,6 +195,24 @@ function initTabs(root, reduceMotion) {
       tab.classList.contains("active")
   );
 
+  const hash = window.location.hash.replace(/^#/, "");
+
+  if (hash) {
+    const hashIndex = tabs.findIndex((tab, index) => {
+      const panel = panels[index];
+      return (
+        tab.id === hash ||
+        tab.getAttribute("aria-controls") === hash ||
+        hash === tab.id.replace(/^tab-/, "") ||
+        (panel && hash === panel.id.replace(/^panel-/, ""))
+      );
+    });
+
+    if (hashIndex >= 0) {
+      activeIndex = hashIndex;
+    }
+  }
+
   if (activeIndex < 0) {
     activeIndex = 0;
   }
