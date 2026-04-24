@@ -97,10 +97,14 @@
           <article class="timeline-content">
             <h2>Étape 1 – Vérification de la configuration initiale</h2>
             <p>
-              J’ai commencé par afficher la configuration active du commutateur avec la commande <strong>show running-config</strong>. Cette étape m’a permis de vérifier l’état initial du commutateur avant toute modification.
+              Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.
             </p>
-
-            <pre><code>show running-config</code></pre>
+            <p>
+              J’ai commencé par afficher la configuration active du commutateur avec la commande <strong>show running-config</strong>.
+            </p>
+            <p>
+              Cette consultation m’a permis de vérifier l’état initial de l’équipement, d’identifier les paramètres déjà présents et de disposer d’un point de comparaison avant d’appliquer les modifications.
+            </p>
 
             <figure class="summary-visual">
               <img
@@ -118,16 +122,17 @@
           <article class="timeline-content">
             <h2>Étape 2 – Configuration du commutateur</h2>
             <p>
-              J’ai ensuite configuré les principaux paramètres du commutateur : le nom d’hôte, l’accès console, l’accès au mode privilégié, le chiffrement des mots de passe et la bannière d’avertissement.
+              J’ai renommé le commutateur avec la commande <strong>hostname S1</strong> afin d’identifier clairement l’équipement dans la topologie.
             </p>
-
-            <pre><code>hostname S1
-line console 0
-password [mot_de_passe]
-login
-enable secret [mot_de_passe_secret]
-service password-encryption
-banner motd "L'acces a ce systeme est reserve aux personnes autorisees !"</code></pre>
+            <p>
+              J’ai sécurisé l’accès à la console avec les commandes <strong>line console 0</strong>, <strong>password [mot_de_passe]</strong> et <strong>login</strong> afin d’imposer une authentification lors de l’ouverture de la CLI.
+            </p>
+            <p>
+              J’ai protégé l’accès au mode privilégié avec la commande <strong>enable secret [mot_de_passe_secret]</strong> afin de limiter l’accès aux commandes d’administration avancées.
+            </p>
+            <p>
+              J’ai activé le chiffrement des mots de passe avec la commande <strong>service password-encryption</strong>, puis ajouté une bannière MOTD avec la commande <strong>banner motd</strong> afin d’afficher un message d’avertissement aux utilisateurs.
+            </p>
 
             <figure class="summary-visual">
               <img
@@ -136,16 +141,19 @@ banner motd "L'acces a ce systeme est reserve aux personnes autorisees !"</code>
                 alt="Commandes Cisco IOS utilisées pour configurer les paramètres initiaux du commutateur."
                 loading="lazy"
                 decoding="async">
-              <figcaption>
-                <p>Commandes de configuration appliquées sur le commutateur.</p>
-              </figcaption>
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 3 – Vérification de l’accès sécurisé</h2>
             <p>
-              Après la configuration, j’ai vérifié que le mot de passe était bien demandé à la connexion et que la bannière MOTD s’affichait correctement. Cette vérification confirme que l’accès au commutateur est protégé.
+              Après la configuration, j’ai fermé puis rouvert l’interface CLI du commutateur S1 afin de tester l’accès comme lors d’une nouvelle connexion.
+            </p>
+            <p>
+              J’ai pu constater que la bannière MOTD s’affichait correctement avant l’accès à l’équipement.
+            </p>
+            <p>
+              J’ai également vérifié que les mots de passe étaient bien demandés et, après essai, qu’ils permettaient d’accéder aux niveaux d’administration attendus.
             </p>
 
             <figure class="summary-visual">
@@ -155,20 +163,20 @@ banner motd "L'acces a ce systeme est reserve aux personnes autorisees !"</code>
                 alt="Vérification de la demande de mot de passe et de l’affichage de la bannière MOTD sur le commutateur."
                 loading="lazy"
                 decoding="async">
-              <figcaption>
-                <p>Vérification de l’accès console sécurisé.</p>
-              </figcaption>
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 4 – Vérification finale et sauvegarde</h2>
             <p>
-              J’ai ensuite affiché la configuration finale afin de contrôler les paramètres appliqués, puis j’ai sauvegardé la configuration pour qu’elle soit conservée après redémarrage.
+              J’ai de nouveau affiché la configuration active du commutateur avec la commande <strong>show running-config</strong>.
             </p>
-
-            <pre><code>show running-config
-copy running-config startup-config</code></pre>
+            <p>
+              J’ai pu constater que les paramètres configurés étaient bien présents : nom d’hôte S1, accès console protégé, mot de passe du mode privilégié, chiffrement des mots de passe et bannière MOTD.
+            </p>
+            <p>
+              J’ai donc sauvegardé la configuration avec la commande <strong>write memory</strong> afin qu’elle soit conservée après redémarrage du commutateur.
+            </p>
 
             <figure class="summary-visual">
               <img
@@ -177,9 +185,6 @@ copy running-config startup-config</code></pre>
                 alt="Affichage de la configuration finale du commutateur après paramétrage et sauvegarde."
                 loading="lazy"
                 decoding="async">
-              <figcaption>
-                <p>Configuration finale après sécurisation et sauvegarde.</p>
-              </figcaption>
             </figure>
           </article>
 
