@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet de formation de Damien Zanatta : configuration DHCPv4 sur une infrastructure Cisco.">
+  <meta name="theme-color" content="#06091a">
+  <title>Configuration DHCPv4 | Damien Zanatta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <a href="fp1-commutateur.html" class="project-top-link">Projet 1</a>
+        <a href="fp2-routage.html" class="project-top-link">Projet 2</a>
+        <a href="fp3-dhcp.html" class="project-top-link active" aria-current="page">Projet 3</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-page-title">
+          <img src="fp3-dhcp-logo.jpg" alt="Icône DHCPv4" class="project-page-logo" width="96" height="96">
+          <div class="project-page-heading">
+            <div class="project-number">Projet 3</div>
+            <h1 id="project-title">Configuration DHCPv4</h1>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>Présentation</h2>
+            <p>
+              Dans le cadre de ma formation, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration du service DHCPv4.
+            </p>
+            <p>
+              L’objectif était d’automatiser l’attribution des paramètres IPv4 aux clients d’un réseau, en configurant un routeur Cisco comme serveur DHCP, des relais DHCP et une interface cliente DHCP.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Objectifs</h2>
+            <ul class="content-list">
+              <li>Configurer un routeur comme serveur DHCPv4.</li>
+              <li>Exclure les adresses IPv4 réservées.</li>
+              <li>Créer des pools DHCP adaptés aux réseaux locaux.</li>
+              <li>Configurer le relais DHCP sur les routeurs concernés.</li>
+              <li>Configurer une interface routeur en client DHCP.</li>
+              <li>Vérifier l’attribution des adresses et la connectivité.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique</h2>
+            <ul class="content-list">
+              <li><strong>Logiciel :</strong> Cisco Packet Tracer</li>
+              <li><strong>Équipements :</strong> routeurs Cisco, commutateurs Cisco, postes clients et serveur DNS</li>
+              <li><strong>Interface :</strong> CLI Cisco IOS</li>
+              <li><strong>Technologies :</strong> DHCPv4, relais DHCP, adressage IPv4 et routage</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Topologie réseau et table d'adressage</h2>
+            <p>
+              La topologie est composée de plusieurs routeurs interconnectés, de réseaux locaux clients et d’un serveur DNS.
+            </p>
+            <p>
+              La table d’adressage permet d’identifier les réseaux concernés, les passerelles par défaut et les adresses devant être distribuées automatiquement aux clients.
+            </p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img
+                  class="summary-image"
+                  src="fp3-img1-topologie-reseau.jpg"
+                  alt="Topologie Packet Tracer utilisée pour la configuration DHCPv4."
+                  loading="lazy"
+                  decoding="async">
+              </figure>
+
+              <figure class="summary-visual">
+                <img
+                  class="summary-image"
+                  src="fp3-img2-table-adressage.jpg"
+                  alt="Table d’adressage du TP DHCPv4 indiquant les réseaux, les interfaces et les passerelles."
+                  loading="lazy"
+                  decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 1 – Configuration du serveur DHCPv4 sur R2</h2>
+            <p>
+              Je suis d’abord entré dans le routeur R2 afin de le configurer comme serveur DHCPv4 pour plusieurs réseaux locaux.
+            </p>
+            <p>
+              J’ai exclu les premières adresses des réseaux concernés afin d’éviter qu’elles soient attribuées automatiquement à des clients.
+            </p>
+            <p>
+              Cette étape permet de réserver les adresses nécessaires aux interfaces de routeurs, aux serveurs ou aux équipements d’administration.
+            </p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img
+                  class="summary-image"
+                  src="fp3-img3-exclusions-dhcp.jpg"
+                  alt="Configuration des adresses IPv4 exclues du service DHCP sur le routeur R2."
+                  loading="lazy"
+                  decoding="async">
+              </figure>
+
+              <figure class="summary-visual">
+                <img
+                  class="summary-image"
+                  src="fp3-img4-pools-dhcp.jpg"
+                  alt="Création des pools DHCPv4 sur le routeur R2 pour les réseaux locaux."
+                  loading="lazy"
+                  decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 2 – Création des pools DHCPv4</h2>
+            <p>
+              J’ai créé les pools DHCP destinés aux réseaux locaux qui doivent recevoir une configuration IPv4 automatiquement.
+            </p>
+            <p>
+              Pour chaque pool, j’ai renseigné le réseau concerné, la passerelle par défaut et le serveur DNS.
+            </p>
+            <p>
+              Cette configuration permet aux postes clients de recevoir automatiquement une adresse IP, un masque, une passerelle et une adresse de serveur DNS.
+            </p>
+
+            <figure class="summary-visual">
+              <img
+                class="summary-image"
+                src="fp3-img4-pools-dhcp.jpg"
+                alt="Configuration des pools DHCPv4 avec réseau, passerelle par défaut et serveur DNS."
+                loading="lazy"
+                decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 3 – Configuration du relais DHCP</h2>
+            <p>
+              J’ai configuré le relais DHCP sur les interfaces LAN des routeurs qui ne possèdent pas directement le serveur DHCP.
+            </p>
+            <p>
+              J’ai utilisé la commande <strong>ip helper-address</strong> afin de rediriger les requêtes DHCP des clients vers le routeur R2.
+            </p>
+            <p>
+              Cette configuration permet à des clients situés sur un autre réseau de recevoir une adresse IP depuis un serveur DHCP distant.
+            </p>
+
+            <figure class="summary-visual">
+              <img
+                class="summary-image"
+                src="fp3-img5-relais-dhcp.jpg"
+                alt="Configuration du relais DHCP avec la commande ip helper-address."
+                loading="lazy"
+                decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 4 – Configuration d’une interface en client DHCP</h2>
+            <p>
+              J’ai configuré une interface du routeur R2 afin qu’elle obtienne automatiquement une adresse IPv4 par DHCP.
+            </p>
+            <p>
+              J’ai utilisé la commande <strong>ip address dhcp</strong>, puis j’ai activé l’interface avec la commande <strong>no shutdown</strong>.
+            </p>
+            <p>
+              Cette étape permet de simuler le comportement d’un routeur recevant une configuration IP depuis un réseau fournisseur.
+            </p>
+
+            <figure class="summary-visual">
+              <img
+                class="summary-image"
+                src="fp3-img6-client-dhcp-r2.jpg"
+                alt="Configuration de l’interface du routeur R2 comme client DHCP."
+                loading="lazy"
+                decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 5 – Vérifications DHCPv4</h2>
+            <p>
+              J’ai vérifié que les clients recevaient bien leurs informations réseau automatiquement.
+            </p>
+            <p>
+              J’ai également consulté les informations DHCP afin de contrôler les adresses attribuées et les liaisons créées par le serveur.
+            </p>
+            <p>
+              Ces vérifications permettent de confirmer que le service DHCPv4 fonctionne correctement sur les réseaux concernés.
+            </p>
+
+            <figure class="summary-visual">
+              <img
+                class="summary-image"
+                src="fp3-img7-verifications-dhcp.jpg"
+                alt="Vérification des adresses attribuées et des liaisons DHCPv4."
+                loading="lazy"
+                decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 6 – Tests de connectivité</h2>
+            <p>
+              J’ai réalisé des tests de connectivité afin de vérifier que les clients pouvaient communiquer avec les équipements du réseau.
+            </p>
+            <p>
+              Les tests ont permis de confirmer que les adresses attribuées par DHCP étaient exploitables et que les passerelles étaient correctement configurées.
+            </p>
+            <p>
+              Cette dernière vérification valide la configuration DHCPv4 et le bon fonctionnement de l’adressage automatique.
+            </p>
+
+            <figure class="summary-visual">
+              <img
+                class="summary-image"
+                src="fp3-img8-tests-connectivite.jpg"
+                alt="Tests de connectivité après attribution automatique des adresses DHCPv4."
+                loading="lazy"
+                decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultats obtenus</h2>
+            <ul class="content-list">
+              <li>Routeur R2 configuré comme serveur DHCPv4.</li>
+              <li>Adresses IPv4 réservées exclues des pools DHCP.</li>
+              <li>Pools DHCP créés pour les réseaux locaux.</li>
+              <li>Passerelles et serveur DNS renseignés dans les pools.</li>
+              <li>Relais DHCP configuré sur les routeurs concernés.</li>
+              <li>Interface de R2 configurée en client DHCP.</li>
+              <li>Attribution automatique des adresses IPv4 vérifiée.</li>
+              <li>Connectivité réseau validée.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Identification des équipements, des réseaux et des paramètres d’adressage IPv4.</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
+                <dd>Mise en place d’une solution DHCPv4 répondant à un besoin d’automatisation de l’adressage réseau.</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
+                <dd>Configuration et vérification d’un service DHCPv4 permettant aux clients d’obtenir automatiquement leurs paramètres réseau.</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Organiser son développement professionnel</dt>
+                <dd>Développement de compétences en DHCPv4, relais DHCP, adressage IPv4 et documentation de la réalisation dans le portfolio.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>
+              Ce TP m’a permis de mieux comprendre le fonctionnement du service DHCPv4 et son rôle dans l’automatisation de l’adressage réseau.
+            </p>
+            <p>
+              J’ai appris à créer des pools DHCP, à exclure des adresses réservées, à configurer un relais DHCP et à vérifier les adresses attribuées aux clients.
+            </p>
+            <p>
+              Cette réalisation est importante car DHCP est un service essentiel pour simplifier l’administration des postes clients dans une infrastructure réseau.
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
