@@ -128,10 +128,13 @@
               J’ai sécurisé l’accès à la console avec les commandes <strong>line console 0</strong>, <strong>password [mot_de_passe]</strong> et <strong>login</strong> afin d’imposer une authentification lors de l’ouverture de la CLI.
             </p>
             <p>
-              J’ai protégé l’accès au mode privilégié avec la commande <strong>enable secret [mot_de_passe_secret]</strong> afin de limiter l’accès aux commandes d’administration avancées.
+              J’ai configuré un premier mot de passe pour l’accès au mode privilégié avec la commande <strong>enable password [mot_de_passe]</strong>, puis j’ai activé la commande <strong>service password-encryption</strong> afin de chiffrer les mots de passe visibles dans la configuration.
             </p>
             <p>
-              J’ai activé le chiffrement des mots de passe avec la commande <strong>service password-encryption</strong>, puis ajouté une bannière MOTD avec la commande <strong>banner motd</strong> afin d’afficher un message d’avertissement aux utilisateurs.
+              J’ai ensuite renforcé la protection du mode privilégié avec la commande <strong>enable secret [mot_de_passe_secret]</strong>, qui permet de définir un mot de passe secret chiffré pour l’accès administrateur.
+            </p>
+            <p>
+              Enfin, j’ai ajouté une bannière d’avertissement avec la commande <strong>banner motd</strong> afin d’informer que l’accès au système est réservé aux personnes autorisées.
             </p>
 
             <figure class="summary-visual">
@@ -172,7 +175,7 @@
               J’ai de nouveau affiché la configuration active du commutateur avec la commande <strong>show running-config</strong>.
             </p>
             <p>
-              J’ai pu constater que les paramètres configurés étaient bien présents : nom d’hôte S1, accès console protégé, mot de passe du mode privilégié, chiffrement des mots de passe et bannière MOTD.
+              J’ai pu constater que les paramètres configurés étaient bien présents : nom d’hôte S1, accès console protégé, mots de passe du mode privilégié configurés, chiffrement des mots de passe et bannière MOTD.
             </p>
             <p>
               J’ai donc sauvegardé la configuration avec la commande <strong>write memory</strong> afin qu’elle soit conservée après redémarrage du commutateur.
