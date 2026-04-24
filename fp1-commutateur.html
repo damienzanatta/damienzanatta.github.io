@@ -42,6 +42,222 @@
             <h1 id="project-title">Configuration des paramètres initiaux d'un commutateur</h1>
           </div>
         </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>TP Packet Tracer 2.5.5 – BTS SIO SISR</h2>
+            <p>
+              Dans le cadre de ma formation en BTS SIO option SISR, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration initiale d’un commutateur. L’objectif était de préparer un commutateur Cisco à son utilisation dans une infrastructure réseau en configurant les paramètres de base : nom de l’équipement, mots de passe, bannière d’avertissement, chiffrement et sauvegarde de la configuration.
+            </p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Objectifs</h2>
+            <ul class="content-list">
+              <li>Renommer le commutateur.</li>
+              <li>Sécuriser l’accès console.</li>
+              <li>Protéger l’accès au mode privilégié.</li>
+              <li>Chiffrer les mots de passe.</li>
+              <li>Ajouter une bannière MOTD.</li>
+              <li>Sauvegarder la configuration.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Logiciel</dt>
+                <dd>Cisco Packet Tracer</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Équipements</dt>
+                <dd>Commutateurs Cisco</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Interface</dt>
+                <dd>CLI Cisco IOS</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Contexte</dt>
+                <dd>TP réalisé en formation BTS SIO SISR</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Thème</dt>
+                <dd>Administration et sécurisation réseau</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Topologie</h2>
+            <figure class="summary-visual">
+              <img
+                class="summary-image"
+                src="fp1-topologie.png"
+                alt="Topologie Packet Tracer composée de deux commutateurs Cisco S1 et S2 reliés à deux postes clients."
+                loading="lazy"
+                decoding="async">
+              <figcaption>
+                <p>
+                  La topologie est composée de deux commutateurs, S1 et S2, reliés à deux postes clients. Cette architecture permet de simuler une configuration de base d’équipements réseau Cisco.
+                </p>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étapes réalisées</h2>
+
+            <div class="timeline">
+              <article class="timeline-content">
+                <h3>Étape 1 – Vérification de la configuration initiale</h3>
+                <p>
+                  J’ai commencé par afficher la configuration active du commutateur avec la commande <strong>show running-config</strong>. Cette étape m’a permis de vérifier l’état initial du commutateur avant toute modification.
+                </p>
+
+                <pre><code>show running-config</code></pre>
+
+                <figure class="summary-visual">
+                  <img
+                    class="summary-image"
+                    src="fp1-running-config-initial.png"
+                    alt="Affichage de la configuration initiale du commutateur avec la commande show running-config."
+                    loading="lazy"
+                    decoding="async">
+                  <figcaption>
+                    <p>Configuration initiale du commutateur.</p>
+                  </figcaption>
+                </figure>
+              </article>
+
+              <article class="timeline-content">
+                <h3>Étape 2 – Configuration du commutateur</h3>
+                <p>
+                  J’ai ensuite configuré les principaux paramètres du commutateur : le nom d’hôte, l’accès console, l’accès au mode privilégié, le chiffrement des mots de passe et la bannière d’avertissement.
+                </p>
+
+                <pre><code>hostname S1
+line console 0
+password [mot_de_passe]
+login
+enable secret [mot_de_passe_secret]
+service password-encryption
+banner motd "L'acces a ce systeme est reserve aux personnes autorisees !"</code></pre>
+
+                <figure class="summary-visual">
+                  <img
+                    class="summary-image"
+                    src="fp1-commandes.png"
+                    alt="Commandes Cisco IOS utilisées pour configurer les paramètres initiaux du commutateur."
+                    loading="lazy"
+                    decoding="async">
+                  <figcaption>
+                    <p>Commandes de configuration appliquées sur le commutateur.</p>
+                  </figcaption>
+                </figure>
+              </article>
+
+              <article class="timeline-content">
+                <h3>Étape 3 – Vérification de l’accès sécurisé</h3>
+                <p>
+                  Après la configuration, j’ai vérifié que le mot de passe était bien demandé à la connexion et que la bannière MOTD s’affichait correctement. Cette vérification confirme que l’accès au commutateur est protégé.
+                </p>
+
+                <figure class="summary-visual">
+                  <img
+                    class="summary-image"
+                    src="fp1-verifications.png"
+                    alt="Vérification de la demande de mot de passe et de l’affichage de la bannière MOTD sur le commutateur."
+                    loading="lazy"
+                    decoding="async">
+                  <figcaption>
+                    <p>Vérification de l’accès console sécurisé.</p>
+                  </figcaption>
+                </figure>
+              </article>
+
+              <article class="timeline-content">
+                <h3>Étape 4 – Vérification finale et sauvegarde</h3>
+                <p>
+                  J’ai ensuite affiché la configuration finale afin de contrôler les paramètres appliqués, puis j’ai sauvegardé la configuration pour qu’elle soit conservée après redémarrage.
+                </p>
+
+                <pre><code>show running-config
+copy running-config startup-config</code></pre>
+
+                <figure class="summary-visual">
+                  <img
+                    class="summary-image"
+                    src="fp1-running-config-final.png"
+                    alt="Affichage de la configuration finale du commutateur après paramétrage et sauvegarde."
+                    loading="lazy"
+                    decoding="async">
+                  <figcaption>
+                    <p>Configuration finale après sécurisation et sauvegarde.</p>
+                  </figcaption>
+                </figure>
+              </article>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultat obtenu</h2>
+            <p>
+              À la fin du TP, le commutateur S1 dispose d’une configuration initiale sécurisée : nom d’hôte configuré, accès console protégé, mode privilégié sécurisé, mots de passe chiffrés, bannière MOTD affichée et configuration sauvegardée.
+            </p>
+
+            <ul class="content-list">
+              <li>Nom d’hôte configuré.</li>
+              <li>Accès console protégé.</li>
+              <li>Mode privilégié sécurisé.</li>
+              <li>Mots de passe chiffrés.</li>
+              <li>Bannière MOTD affichée.</li>
+              <li>Configuration sauvegardée.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Identification et configuration d’un équipement réseau.</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Mettre à disposition un service informatique</dt>
+                <dd>Préparation d’un commutateur utilisable dans une infrastructure réseau.</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Répondre à un besoin d’évolution</dt>
+                <dd>Sécurisation des accès d’administration du commutateur.</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Développer sa présence professionnelle</dt>
+                <dd>Documentation d’une réalisation professionnelle dans le portfolio.</dd>
+              </div>
+
+              <div class="info-item">
+                <dt>Administration réseau SISR</dt>
+                <dd>Utilisation de Cisco IOS et de Packet Tracer pour configurer un équipement réseau.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>
+              Ce TP m’a permis de mieux comprendre les bases de l’administration d’un commutateur Cisco. J’ai appris à utiliser les principaux modes de configuration IOS, à sécuriser les accès d’administration et à vérifier les paramètres appliqués. Cette réalisation est importante car la configuration initiale d’un équipement réseau est une étape essentielle avant sa mise en production.
+            </p>
+          </article>
+        </div>
       </section>
     </div>
   </main>
