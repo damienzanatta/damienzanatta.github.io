@@ -4,8 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Présentation de Damien Zanatta, de son parcours, de sa formation BTS SIO SISR et de son entreprise d'accueil.">
-  <meta name="theme-color" content="#06091a">
+  <meta name="theme-color" content="#020813">
   <title>Présentation | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +56,13 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(158, 238, 255, 0.4);
       box-shadow: 0 0 10px rgba(158, 238, 255, 0.18);
+    }
+    
+    [data-theme="light"] .presentation-box #panel-parcours .timeline-date-dots span {
+      background: rgba(2, 132, 199, 0.4);
+      box-shadow: none;
     }
 
     .presentation-box #panel-parcours .timeline-content {
@@ -76,6 +89,8 @@
         <a href="about.html" class="active" aria-current="page">Présentation</a>
         <a href="projects.html">Réalisations professionnelles</a>
         <a href="monitoring.html">Veille informatique</a>
+        <span class="nav-main-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-toggle" aria-label="Changer de thème"></button>
       </nav>
     </div>
   </header>
@@ -87,73 +102,34 @@
 
         <div data-tabs>
           <div class="tab-grid presentation-tab-grid" role="tablist" aria-label="Contenu de présentation">
-            <button
-              class="tab-card active"
-              id="tab-situation"
-              role="tab"
-              type="button"
-              aria-selected="true"
-              aria-controls="panel-situation"
-              tabindex="0">
-              Situation
-            </button>
-
-            <button
-              class="tab-card"
-              id="tab-parcours"
-              role="tab"
-              type="button"
-              aria-selected="false"
-              aria-controls="panel-parcours"
-              tabindex="-1">
-              Parcours
-            </button>
-
-            <button
-              class="tab-card"
-              id="tab-entreprise"
-              role="tab"
-              type="button"
-              aria-selected="false"
-              aria-controls="panel-entreprise"
-              tabindex="-1">
-              Entreprise
-            </button>
+            <button class="tab-card active" id="tab-situation" role="tab" type="button" aria-selected="true" aria-controls="panel-situation" tabindex="0">Situation</button>
+            <button class="tab-card" id="tab-parcours" role="tab" type="button" aria-selected="false" aria-controls="panel-parcours" tabindex="-1">Parcours</button>
+            <button class="tab-card" id="tab-entreprise" role="tab" type="button" aria-selected="false" aria-controls="panel-entreprise" tabindex="-1">Entreprise</button>
           </div>
 
           <div class="tab-panels">
-            <section
-              class="tab-panel active"
-              id="panel-situation"
-              role="tabpanel"
-              aria-labelledby="tab-situation"
-              tabindex="0">
+            <section class="tab-panel active" id="panel-situation" role="tabpanel" aria-labelledby="tab-situation" tabindex="0">
               <dl class="info-grid">
                 <div class="info-item">
                   <dt>Période</dt>
                   <dd>Septembre 2024 - Août 2026</dd>
                 </div>
-
                 <div class="info-item">
                   <dt>Statut</dt>
                   <dd>Étudiant en alternance</dd>
                 </div>
-
                 <div class="info-item">
                   <dt>Formation</dt>
                   <dd>BTS Services Informatiques aux Organisations</dd>
                 </div>
-
                 <div class="info-item">
                   <dt>Option</dt>
                   <dd>Solutions d'Infrastructure, Systèmes et Réseaux</dd>
                 </div>
-
                 <div class="info-item">
                   <dt>Structure de formation</dt>
                   <dd>H3 Campus (78300, Poissy)</dd>
                 </div>
-
                 <div class="info-item">
                   <dt>Structure d'accueil</dt>
                   <dd>École de Biologie Industrielle (95800, Cergy)</dd>
@@ -161,21 +137,13 @@
               </dl>
             </section>
 
-            <section
-              class="tab-panel"
-              id="panel-parcours"
-              role="tabpanel"
-              aria-labelledby="tab-parcours"
-              tabindex="0"
-              hidden>
+            <section class="tab-panel" id="panel-parcours" role="tabpanel" aria-labelledby="tab-parcours" tabindex="0" hidden>
               <ol class="timeline">
                 <li class="timeline-item">
                   <p class="timeline-date">
                     <time class="timeline-date-start" datetime="2017-09">Septembre 2017</time>
                     <span class="timeline-date-dots" aria-hidden="true">
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                      <span></span><span></span><span></span>
                     </span>
                     <time class="timeline-date-end" datetime="2020-08">Août 2020</time>
                   </p>
@@ -191,9 +159,7 @@
                   <p class="timeline-date">
                     <time class="timeline-date-start" datetime="2020-09">Septembre 2020</time>
                     <span class="timeline-date-dots" aria-hidden="true">
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                      <span></span><span></span><span></span>
                     </span>
                     <time class="timeline-date-end" datetime="2022-08">Août 2022</time>
                   </p>
@@ -210,9 +176,7 @@
                   <p class="timeline-date">
                     <time class="timeline-date-start" datetime="2022-09">Septembre 2022</time>
                     <span class="timeline-date-dots" aria-hidden="true">
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                      <span></span><span></span><span></span>
                     </span>
                     <time class="timeline-date-end" datetime="2024-08">Août 2024</time>
                   </p>
@@ -227,9 +191,7 @@
                   <p class="timeline-date">
                     <time class="timeline-date-start" datetime="2024-09">Septembre 2024</time>
                     <span class="timeline-date-dots" aria-hidden="true">
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                      <span></span><span></span><span></span>
                     </span>
                     <time class="timeline-date-end" datetime="2026-08">Août 2026</time>
                   </p>
@@ -245,9 +207,7 @@
                   <p class="timeline-date">
                     <time class="timeline-date-start" datetime="2026-09">Septembre 2026</time>
                     <span class="timeline-date-dots" aria-hidden="true">
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                      <span></span><span></span><span></span>
                     </span>
                     <time class="timeline-date-end" datetime="2027-08">Août 2027</time>
                   </p>
@@ -259,13 +219,7 @@
               </ol>
             </section>
 
-            <section
-              class="tab-panel"
-              id="panel-entreprise"
-              role="tabpanel"
-              aria-labelledby="tab-entreprise"
-              tabindex="0"
-              hidden>
+            <section class="tab-panel" id="panel-entreprise" role="tabpanel" aria-labelledby="tab-entreprise" tabindex="0" hidden>
               <div class="timeline">
                 <article class="timeline-content">
                   <h3>EBI (École de Biologie Industrielle)</h3>
