@@ -4,8 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Projet SharePoint de Damien Zanatta : conception d'une base de connaissances Intranet pour centraliser la documentation technique.">
-  <meta name="theme-color" content="#06091a">
+  <meta name="theme-color" content="#020813">
   <title>Base de connaissances Intranet | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +39,8 @@
         <a href="ep2-sharepoint.html" class="project-top-link active" aria-current="page">Projet 2</a>
         <a href="ep3-powershell.html" class="project-top-link">Projet 3</a>
         <a href="ep4-vpn.html" class="project-top-link">Projet 4</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-toggle project-top-link" aria-label="Changer de thème"></button>
       </nav>
     </div>
   </header>
@@ -49,15 +59,9 @@
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>
-              Dans le cadre de mon alternance au sein du service informatique de l’EBI, j’ai participé à la mise en place d’une base de connaissances Intranet sur SharePoint.
-            </p>
-            <p>
-              L’objectif de cette réalisation était de centraliser la documentation informatique de l’établissement afin de faciliter l’accès aux procédures, aux tutoriels et aux informations techniques utiles aux utilisateurs et au service informatique.
-            </p>
-            <p>
-              Cette base documentaire constitue une première version fonctionnelle du site. Elle servira de socle pour les futures évolutions, notamment l’amélioration de l’interface et l’adaptation des contenus selon les profils d’utilisateurs.
-            </p>
+            <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, j’ai participé à la mise en place d’une base de connaissances Intranet sur SharePoint.</p>
+            <p>L’objectif de cette réalisation était de centraliser la documentation informatique de l’établissement afin de faciliter l’accès aux procédures, aux tutoriels et aux informations techniques utiles aux utilisateurs et au service informatique.</p>
+            <p>Cette base documentaire constitue une première version fonctionnelle du site. Elle servira de socle pour les futures évolutions, notamment l’amélioration de l’interface et l’adaptation des contenus selon les profils d’utilisateurs.</p>
           </article>
 
           <article class="timeline-content">
@@ -87,242 +91,115 @@
 
           <article class="timeline-content">
             <h2>Exemples de procédures</h2>
-            <p>
-              Avant la mise en place de la base de connaissances, j’avais déjà rédigé plusieurs procédures destinées à accompagner les utilisateurs dans l’utilisation du matériel et des outils numériques de l’établissement.
-            </p>
-            <p>
-              Ces documents ont servi d’exemples concrets pour alimenter le futur espace documentaire. Ils montrent le type de contenu attendu dans la base de connaissances : des procédures visuelles, structurées et directement exploitables par les utilisateurs.
-            </p>
+            <p>Avant la mise en place de la base de connaissances, j’avais déjà rédigé plusieurs procédures destinées à accompagner les utilisateurs dans l’utilisation du matériel et des outils numériques de l’établissement.</p>
+            <p>Ces documents ont servi d’exemples concrets pour alimenter le futur espace documentaire. Ils montrent le type de contenu attendu dans la base de connaissances : des procédures visuelles, structurées et directement exploitables par les utilisateurs.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img01-camera-pod.jpg"
-                  alt="Première page d'une procédure rédigée concernant l'utilisation d'une caméra pod."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img01-camera-pod.jpg" alt="Première page d'une procédure rédigée concernant l'utilisation d'une caméra pod." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img02-camera-pod.jpg"
-                  alt="Deuxième page d'une procédure rédigée concernant l'utilisation d'une caméra pod."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img02-camera-pod.jpg" alt="Deuxième page d'une procédure rédigée concernant l'utilisation d'une caméra pod." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img03-connexion-projecteur.jpg"
-                  alt="Procédure rédigée expliquant la connexion à un projecteur."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img03-connexion-projecteur.jpg" alt="Procédure rédigée expliquant la connexion à un projecteur." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img04-transfert-teams.jpg"
-                  alt="Procédure rédigée expliquant le transfert d'informations ou de fichiers avec Microsoft Teams."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img04-transfert-teams.jpg" alt="Procédure rédigée expliquant le transfert d'informations ou de fichiers avec Microsoft Teams." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Cadrage du projet</h2>
-            <p>
-              Mon responsable informatique m’a fourni un document de cadrage afin de définir les attentes du projet, les contenus à intégrer et les évolutions envisagées pour le futur site Intranet.
-            </p>
-            <p>
-              Ce cadrage m’a permis d’identifier le périmètre de mon intervention : organiser l’espace documentaire, préparer la page d’accueil, intégrer les documents et construire une première version exploitable du site.
-            </p>
-            <p>
-              La configuration avancée de la sécurité et l’ajout des groupes d’utilisateurs en lecture seule seront ensuite pris en charge par le prestataire DEiiS.
-            </p>
+            <p>Mon responsable informatique m’a fourni un document de cadrage afin de définir les attentes du projet, les contenus à intégrer et les évolutions envisagées pour le futur site Intranet.</p>
+            <p>Ce cadrage m’a permis d’identifier le périmètre de mon intervention : organiser l’espace documentaire, préparer la page d’accueil, intégrer les documents et construire une première version exploitable du site.</p>
+            <p>La configuration avancée de la sécurité et l’ajout des groupes d’utilisateurs en lecture seule seront ensuite pris en charge par le prestataire DEiiS.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img05-cadrage-projet.jpg"
-                  alt="Première page du document de cadrage du projet SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img05-cadrage-projet.jpg" alt="Première page du document de cadrage du projet SharePoint." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img06-cadrage-projet.jpg"
-                  alt="Deuxième page du document de cadrage du projet SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img06-cadrage-projet.jpg" alt="Deuxième page du document de cadrage du projet SharePoint." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Point de départ : site SharePoint vide</h2>
-            <p>
-              Le prestataire réseau DEiiS a créé le site SharePoint et m’a attribué le rôle de propriétaire afin que je puisse effectuer les premières configurations.
-            </p>
-            <p>
-              La capture du site vide permet de montrer l’état initial de l’espace avant mon intervention. À ce stade, aucune page personnalisée, aucun lien rapide et aucune bibliothèque documentaire structurée n’étaient encore en place.
-            </p>
-
+            <p>Le prestataire réseau DEiiS a créé le site SharePoint et m’a attribué le rôle de propriétaire afin que je puisse effectuer les premières configurations.</p>
+            <p>La capture du site vide permet de montrer l’état initial de l’espace avant mon intervention. À ce stade, aucune page personnalisée, aucun lien rapide et aucune bibliothèque documentaire structurée n’étaient encore en place.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="ep2-img07-site-vide.jpg"
-                alt="Capture d'écran du site SharePoint vide avant configuration."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="ep2-img07-site-vide.jpg" alt="Capture d'écran du site SharePoint vide avant configuration." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Édition de la page d’accueil</h2>
-            <p>
-              J’ai commencé par éditer la page d’accueil du site afin de lui donner une structure claire et identifiable.
-            </p>
-            <p>
-              J’ai ajouté un titre, deux phrases d’introduction et des liens rapides vers les outils courants utilisés à l’EBI. Cette étape permet aux utilisateurs d’identifier immédiatement l’objectif du site et d’accéder plus facilement aux ressources principales.
-            </p>
+            <p>J’ai commencé par éditer la page d’accueil du site afin de lui donner une structure claire et identifiable.</p>
+            <p>J’ai ajouté un titre, deux phrases d’introduction et des liens rapides vers les outils courants utilisés à l’EBI. Cette étape permet aux utilisateurs d’identifier immédiatement l’objectif du site et d’accéder plus facilement aux ressources principales.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img08-edition-accueil.jpg"
-                  alt="Édition de la page d'accueil du site SharePoint avec ajout d'un titre et d'un texte d'introduction."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img08-edition-accueil.jpg" alt="Édition de la page d'accueil du site SharePoint avec ajout d'un titre et d'un texte d'introduction." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img09-edition-liens.jpg"
-                  alt="Ajout de liens rapides vers les outils courants de l'EBI sur la page d'accueil SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img09-edition-liens.jpg" alt="Ajout de liens rapides vers les outils courants de l'EBI sur la page d'accueil SharePoint." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Création de la bibliothèque documentaire</h2>
-            <p>
-              J’ai ensuite créé une bibliothèque documentaire dédiée à la base de connaissances.
-            </p>
-            <p>
-              Dans cette bibliothèque, j’ai créé plusieurs dossiers afin de classer les documents par thème. Cette organisation permet de séparer les procédures, les tutoriels, les bonnes pratiques et les documentations techniques.
-            </p>
-            <p>
-              L’objectif était d’obtenir une arborescence simple, compréhensible et suffisamment évolutive pour accueillir de nouveaux documents au fil du temps.
-            </p>
+            <p>J’ai ensuite créé une bibliothèque documentaire dédiée à la base de connaissances.</p>
+            <p>Dans cette bibliothèque, j’ai créé plusieurs dossiers afin de classer les documents par thème. Cette organisation permet de séparer les procédures, les tutoriels, les bonnes pratiques et les documentations techniques.</p>
+            <p>L’objectif était d’obtenir une arborescence simple, compréhensible et suffisamment évolutive pour accueillir de nouveaux documents au fil du temps.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img10-creation-bibliotheque.jpg"
-                  alt="Création de la bibliothèque documentaire dans SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img10-creation-bibliotheque.jpg" alt="Création de la bibliothèque documentaire dans SharePoint." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img11-creation-dossiers.jpg"
-                  alt="Création des dossiers de classement dans la bibliothèque documentaire SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img11-creation-dossiers.jpg" alt="Création des dossiers de classement dans la bibliothèque documentaire SharePoint." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Ajout de la bibliothèque sur la page d’accueil</h2>
-            <p>
-              Après la création de la bibliothèque documentaire, je suis retourné dans l’édition de la page d’accueil afin de l’intégrer directement sous les liens rapides.
-            </p>
-            <p>
-              Cette intégration permet aux utilisateurs d’accéder aux dossiers documentaires sans avoir à rechercher manuellement la bibliothèque dans SharePoint.
-            </p>
-
+            <p>Après la création de la bibliothèque documentaire, je suis retourné dans l’édition de la page d’accueil afin de l’intégrer directement sous les liens rapides.</p>
+            <p>Cette intégration permet aux utilisateurs d’accéder aux dossiers documentaires sans avoir à rechercher manuellement la bibliothèque dans SharePoint.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="ep2-img12-edition-dossiers.jpg"
-                alt="Ajout de la bibliothèque documentaire sur la page d'accueil du site SharePoint."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="ep2-img12-edition-dossiers.jpg" alt="Ajout de la bibliothèque documentaire sur la page d'accueil du site SharePoint." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Importation des documents</h2>
-            <p>
-              Une fois la structure de la page d’accueil finalisée, j’ai importé les documents dans les dossiers correspondants.
-            </p>
-            <p>
-              J’ai veillé à classer les fichiers de façon cohérente afin que chaque document soit retrouvé rapidement par le service informatique ou par les utilisateurs concernés.
-            </p>
-            <p>
-              Pour éviter de surcharger la présentation, seules quatre captures sont intégrées ci-dessous afin d’illustrer l’importation de documents dans plusieurs dossiers de la bibliothèque.
-            </p>
+            <p>Une fois la structure de la page d’accueil finalisée, j’ai importé les documents dans les dossiers correspondants.</p>
+            <p>J’ai veillé à classer les fichiers de façon cohérente afin que chaque document soit retrouvé rapidement par le service informatique ou par les utilisateurs concernés.</p>
+            <p>Pour éviter de surcharger la présentation, seules quatre captures sont intégrées ci-dessous afin d’illustrer l’importation de documents dans plusieurs dossiers de la bibliothèque.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img13-importation-documents.jpg"
-                  alt="Exemple d'importation de documents dans un dossier de la bibliothèque SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img13-importation-documents.jpg" alt="Exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img14-importation-documents.jpg"
-                  alt="Deuxième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img14-importation-documents.jpg" alt="Deuxième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img15-importation-documents.jpg"
-                  alt="Troisième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img15-importation-documents.jpg" alt="Troisième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="ep2-img16-importation-documents.jpg"
-                  alt="Quatrième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="ep2-img16-importation-documents.jpg" alt="Quatrième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
-            <p>
-              La première version de la base de connaissances Intranet a été mise en place conformément aux attentes définies avec mon responsable.
-            </p>
+            <p>La première version de la base de connaissances Intranet a été mise en place conformément aux attentes définies avec mon responsable.</p>
             <ul class="content-list">
               <li>Page d’accueil personnalisée avec un titre, une introduction et des liens rapides.</li>
               <li>Bibliothèque documentaire créée dans SharePoint.</li>
@@ -331,17 +208,9 @@
               <li>Procédures internes valorisées dans un espace centralisé.</li>
               <li>Socle documentaire prêt pour la mise en place des droits d’accès par le prestataire DEiiS.</li>
             </ul>
-            <p>
-              Le site sera amélioré par la suite, notamment avec une interface plus dynamique et une expérience adaptée aux différents profils d’utilisateurs. Pour cette première étape, le site reste commun à l’ensemble des utilisateurs concernés.
-            </p>
-
+            <p>Le site sera amélioré par la suite, notamment avec une interface plus dynamique et une expérience adaptée aux différents profils d’utilisateurs. Pour cette première étape, le site reste commun à l’ensemble des utilisateurs concernés.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="ep2-img17-site-final.jpg"
-                alt="Capture d'écran de la page d'accueil finale du site SharePoint avec les liens rapides et la bibliothèque documentaire."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="ep2-img17-site-final.jpg" alt="Capture d'écran de la page d'accueil finale du site SharePoint avec les liens rapides et la bibliothèque documentaire." loading="lazy" decoding="async">
             </figure>
           </article>
 
@@ -352,27 +221,22 @@
                 <dt>Gérer le patrimoine informatique</dt>
                 <dd>Organisation et valorisation de la documentation informatique interne dans une bibliothèque SharePoint structurée.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
                 <dd>Mise à disposition de procédures permettant de faciliter le support utilisateur et de répondre plus rapidement aux demandes récurrentes.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Développer la présence en ligne de l’organisation</dt>
                 <dd>Contribution à la création d’un espace Intranet SharePoint destiné à centraliser les ressources informatiques de l’établissement.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Travailler en mode projet</dt>
                 <dd>Prise en compte d’un document de cadrage, respect du périmètre défini et coordination avec le responsable informatique et le prestataire DEiiS.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Mettre à disposition des utilisateurs un service informatique</dt>
                 <dd>Création d’un point d’accès centralisé permettant aux utilisateurs de consulter les procédures et documentations utiles.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Organiser son développement professionnel</dt>
                 <dd>Développement de compétences sur SharePoint, la structuration documentaire, la rédaction de procédures et la valorisation d’une réalisation professionnelle dans le portfolio.</dd>
@@ -382,18 +246,10 @@
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>
-              Cette réalisation m’a permis de mieux comprendre l’importance d’une documentation centralisée dans le fonctionnement quotidien d’un service informatique.
-            </p>
-            <p>
-              J’ai appris à structurer un espace SharePoint, à organiser une bibliothèque documentaire et à rendre les contenus plus accessibles pour les utilisateurs.
-            </p>
-            <p>
-              Ce projet m’a également permis de travailler à partir d’un cadrage professionnel, en tenant compte des besoins exprimés par mon responsable et des interventions prévues par un prestataire externe.
-            </p>
-            <p>
-              Cette base de connaissances constitue une première étape importante. Elle pourra être enrichie progressivement et devenir un véritable outil de support, de capitalisation des connaissances et d’amélioration continue pour l’EBI.
-            </p>
+            <p>Cette réalisation m’a permis de mieux comprendre l’importance d’une documentation centralisée dans le fonctionnement quotidien d’un service informatique.</p>
+            <p>J’ai appris à structurer un espace SharePoint, à organiser une bibliothèque documentaire et à rendre les contenus plus accessibles pour les utilisateurs.</p>
+            <p>Ce projet m’a également permis de travailler à partir d’un cadrage professionnel, en tenant compte des besoins exprimés par mon responsable et des interventions prévues par un prestataire externe.</p>
+            <p>Cette base de connaissances constitue une première étape importante. Elle pourra être enrichie progressivement et devenir un véritable outil de support, de capitalisation des connaissances et d’amélioration continue pour l’EBI.</p>
           </article>
         </div>
       </section>
