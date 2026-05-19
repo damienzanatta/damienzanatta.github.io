@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Projet de formation de Damien Zanatta : configuration DHCPv4 sur une infrastructure Cisco.">
   <meta name="theme-color" content="#020813">
-  <title>Configuration DHCPv4 | Damien Zanatta</title>
+  <title>Configuration du DHCPv4 | Damien Zanatta</title>
 
   <script>
     (function() {
@@ -67,7 +67,7 @@
           <img src="fp3-dhcp-logo.jpg" alt="Icône DHCPv4" class="project-page-logo" width="96" height="96">
           <div class="project-page-heading">
             <div class="project-number">Projet 3</div>
-            <h1 id="project-title">Configuration DHCPv4</h1>
+            <h1 id="project-title">Configuration du DHCPv4</h1>
           </div>
         </div>
 
@@ -102,83 +102,91 @@
 
           <article class="timeline-content">
             <h2>Topologie réseau et table d'adressage</h2>
-            <p>La topologie est composée de plusieurs routeurs interconnectés, de réseaux locaux clients et d’un serveur DNS.</p>
-            <p>La table d’adressage permet d’identifier les réseaux concernés, les passerelles par défaut et les adresses devant être distribuées automatiquement aux clients.</p>
+            <p>La topologie est composée de trois routeurs interconnectés (R1, R2, R3), d’un serveur DNS et de deux postes clients placés dans des réseaux locaux distincts.</p>
+            <p>La table d’adressage permet d’identifier les réseaux concernés, les interfaces utilisées et les passerelles par défaut afin d'appliquer correctement la configuration DHCP.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="fp3-img1-topologie-reseau.jpg" alt="Topologie Packet Tracer utilisée pour la configuration DHCPv4." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp3-img01-topologie-reseau.jpg" alt="Topologie Packet Tracer utilisée pour la configuration DHCPv4." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="fp3-img2-table-adressage.jpg" alt="Table d’adressage du TP DHCPv4 indiquant les réseaux, les interfaces et les passerelles." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp3-img02-table-adressage.jpg" alt="Table d’adressage du TP DHCPv4 indiquant les réseaux, les interfaces et les passerelles." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 1 – Configuration du serveur DHCPv4 sur R2</h2>
-            <p>Je suis d’abord entré dans le routeur R2 afin de le configurer comme serveur DHCPv4 pour plusieurs réseaux locaux.</p>
-            <p>J’ai exclu les premières adresses des réseaux concernés afin d’éviter qu’elles soient attribuées automatiquement à des clients.</p>
-            <p>Cette étape permet de réserver les adresses nécessaires aux interfaces de routeurs, aux serveurs ou aux équipements d’administration.</p>
+            <h2>Étape 1 – Configuration du routeur R2 en tant que serveur DHCP</h2>
+            <p>Je suis d’abord entré dans le routeur central R2 afin de le configurer comme serveur DHCP pour les réseaux locaux de R1 et R3.</p>
+            <p>J'ai commencé par exclure les dix premières adresses IP de chaque réseau (de .1 à .10) avec la commande <strong>ip dhcp excluded-address</strong> afin de les réserver pour des attributions statiques, comme les interfaces de routeurs.</p>
+            <p>Ensuite, j'ai créé deux pools DHCP nommés <strong>R1-LAN</strong> et <strong>R3-LAN</strong>. Pour chaque pool, j’ai défini l'adresse du réseau avec son masque, la passerelle par défaut correspondante et l'adresse du serveur DNS.</p>
+
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp3-img03-config-r2-dhcp.jpg" alt="Configuration des exclusions et création des pools DHCP sur le routeur R2." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 2 – Configuration du relais DHCP</h2>
+            <p>Puisque les postes clients (PC1 et PC2) ne sont pas sur le même réseau local que le serveur DHCP (R2), j'ai dû configurer des agents de relais. Les requêtes de diffusion (broadcast) DHCP ne traversent pas les routeurs par défaut.</p>
+            <p>Sur le routeur R1, je suis entré dans la configuration de l'interface LAN (G0/0) pour appliquer la commande <strong>ip helper-address 10.1.1.2</strong>, pointant vers l'interface série de R2.</p>
+            <p>J'ai reproduit cette opération sur l'interface LAN du routeur R3 (G0/0) avec l'adresse d'assistance <strong>10.2.2.2</strong>.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="fp3-img3-exclusions-dhcp.jpg" alt="Configuration des adresses IPv4 exclues du service DHCP sur le routeur R2." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp3-img04-config-r1-relais.jpg" alt="Configuration du relais DHCP sur l'interface G0/0 du routeur R1." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="fp3-img4-pools-dhcp.jpg" alt="Création des pools DHCPv4 sur le routeur R2 pour les réseaux locaux." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp3-img05-config-r3-relais.jpg" alt="Configuration du relais DHCP sur l'interface G0/0 du routeur R3." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 2 – Création des pools DHCPv4</h2>
-            <p>J’ai créé les pools DHCP destinés aux réseaux locaux qui doivent recevoir une configuration IPv4 automatiquement.</p>
-            <p>Pour chaque pool, j’ai renseigné le réseau concerné, la passerelle par défaut et le serveur DNS.</p>
-            <p>Cette configuration permet aux postes clients de recevoir automatiquement une adresse IP, un masque, une passerelle et une adresse de serveur DNS.</p>
+            <h2>Étape 3 – Configuration des hôtes</h2>
+            <p>Après avoir configuré le serveur et les relais, je suis passé sur les postes clients.</p>
+            <p>J'ai modifié les paramètres de la carte réseau de PC1 et PC2 pour qu'ils obtiennent leurs informations d'adressage IPv4 dynamiquement depuis le serveur DHCP plutôt qu'en statique.</p>
+            <p>J'ai pu constater que la requête a abouti avec succès (<em>"DHCP request successful"</em>) et que les premières adresses disponibles après les exclusions (.11), les masques, les passerelles et le serveur DNS ont bien été attribués.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp3-img06-config-pc1.jpg" alt="Configuration du PC1 en client DHCP." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp3-img07-config-pc2.jpg" alt="Configuration du PC2 en client DHCP." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 4 – Configuration du routeur R2 en tant que client DHCP</h2>
+            <p>L'étape suivante consistait à simuler une connexion Internet fournie par un équipement distant (FAI) pour le routeur R2.</p>
+            <p>J'ai configuré son interface GigabitEthernet0/1 en mode client avec la commande <strong>ip address dhcp</strong>, puis je l'ai activée (<strong>no shutdown</strong>).</p>
+            <p>En utilisant la commande <strong>show ip interface brief</strong>, j'ai pu vérifier que l'interface G0/1 avait bien reçu une adresse IP dynamique (état <em>Method DHCP</em>), confirmant que R2 peut également agir en tant que client.</p>
+
             <figure class="summary-visual">
-              <img class="summary-image" src="fp3-img4-pools-dhcp.jpg" alt="Configuration des pools DHCPv4 avec réseau, passerelle par défaut et serveur DNS." loading="lazy" decoding="async">
+              <img class="summary-image" src="fp3-img08-config-r2.jpg" alt="Configuration de l'interface G0/1 du routeur R2 en client DHCP et vérification." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 3 – Configuration du relais DHCP</h2>
-            <p>J’ai configuré le relais DHCP sur les interfaces LAN des routeurs qui ne possèdent pas directement le serveur DHCP.</p>
-            <p>J’ai utilisé la commande <strong>ip helper-address</strong> afin de rediriger les requêtes DHCP des clients vers le routeur R2.</p>
-            <p>Cette configuration permet à des clients situés sur un autre réseau de recevoir une adresse IP depuis un serveur DHCP distant.</p>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp3-img5-relais-dhcp.jpg" alt="Configuration du relais DHCP avec la commande ip helper-address." loading="lazy" decoding="async">
-            </figure>
-          </article>
+            <h2>Étape 5 – Vérifications</h2>
+            <p>Pour m'assurer du bon fonctionnement global de la topologie, j'ai effectué plusieurs contrôles finaux.</p>
+            <p>Sur le routeur R2, la commande <strong>show ip dhcp binding</strong> m'a permis de lister les liaisons actives et de contrôler que les adresses IPv4 (.10.11 et .30.11) étaient bien allouées aux adresses MAC respectives de PC1 et PC2.</p>
+            <p>Enfin, j'ai réalisé des tests de connectivité en envoyant des requêtes ping depuis PC1 vers PC2, puis de PC2 vers PC1. Les réponses ont toutes été reçues correctement, confirmant que le routage et l'adressage dynamique sont pleinement opérationnels.</p>
 
-          <article class="timeline-content">
-            <h2>Étape 4 – Configuration d’une interface en client DHCP</h2>
-            <p>J’ai configuré une interface du routeur R2 afin qu’elle obtienne automatiquement une adresse IPv4 par DHCP.</p>
-            <p>J’ai utilisé la commande <strong>ip address dhcp</strong>, puis j’ai activé l’interface avec la commande <strong>no shutdown</strong>.</p>
-            <p>Cette étape permet de simuler le comportement d’un routeur recevant une configuration IP depuis un réseau fournisseur.</p>
             <figure class="summary-visual">
-              <img class="summary-image" src="fp3-img6-client-dhcp-r2.jpg" alt="Configuration de l’interface du routeur R2 comme client DHCP." loading="lazy" decoding="async">
+              <img class="summary-image" src="fp3-img09-verifications-liaisons.jpg" alt="Vérification des adresses attribuées via la commande show ip dhcp binding sur R2." loading="lazy" decoding="async" style="margin-bottom: 18px;">
             </figure>
-          </article>
 
-          <article class="timeline-content">
-            <h2>Étape 5 – Vérifications DHCPv4</h2>
-            <p>J’ai vérifié que les clients recevaient bien leurs informations réseau automatiquement.</p>
-            <p>J’ai également consulté les informations DHCP afin de contrôler les adresses attribuées et les liaisons créées par le serveur.</p>
-            <p>Ces vérifications permet de confirmer que le service DHCPv4 fonctionne correctement sur les réseaux concernés.</p>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp3-img7-verifications-dhcp.jpg" alt="Vérification des adresses attribuées et des liaisons DHCPv4." loading="lazy" decoding="async">
-            </figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Étape 6 – Tests de connectivité</h2>
-            <p>J’ai réalisé des tests de connectivité afin de vérifier que les clients pouvaient communiquer avec les équipements du réseau.</p>
-            <p>Les tests ont permis de confirmer que les adresses attribuées par DHCP étaient exploitables et que les passerelles étaient correctement configurées.</p>
-            <p>Cette dernière vérification valide la configuration DHCPv4 et le bon fonctionnement de l’adressage automatique.</p>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp3-img8-tests-connectivite.jpg" alt="Tests de connectivité après attribution automatique des adresses DHCPv4." loading="lazy" decoding="async">
-            </figure>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp3-img10-ping-pc1-pc2.jpg" alt="Test de connectivité réussi (ping) depuis PC1 vers PC2." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp3-img11-ping-pc2-pc1.jpg" alt="Test de connectivité réussi (ping) depuis PC2 vers PC1." loading="lazy" decoding="async">
+              </figure>
+            </div>
           </article>
 
           <article class="timeline-content">
