@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = motionQuery.matches;
 
   initPageTransitions(reduceMotion);
+  initThemeToggle();
 
   document.querySelectorAll("[data-tabs]").forEach((root) => {
     initTabs(root, reduceMotion);
@@ -14,6 +15,52 @@ document.addEventListener("DOMContentLoaded", () => {
   animateVisibleElements(document, { reduceMotion });
 });
 
+function initThemeToggle() {
+  const toggleBtns = document.querySelectorAll('.theme-toggle');
+  const storageKey = 'theme-preference';
+  
+  const updateThemeUI = (theme) => {
+    const isDark = theme === 'dark';
+    
+    // Mettre à jour les boutons
+    toggleBtns.forEach(btn => {
+      btn.innerHTML = isDark ? '☀️ Mode clair' : '🌙 Mode sombre';
+      btn.setAttribute('aria-label', isDark ? 'Activer le mode clair' : 'Activer le mode sombre');
+    });
+
+    // Mettre à jour la couleur du navigateur mobile
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', isDark ? '#020813' : '#f4f7fa');
+    }
+  };
+
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(storageKey, theme);
+    updateThemeUI(theme);
+  };
+
+  // L'initialisation est récupérée depuis l'attribut du HTML (posé via script inline dans <head>)
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  updateThemeUI(currentTheme);
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  });
+
+  // Écouter les changements système (OS)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem(storageKey)) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+}
+
 function initPageTransitions(reduceMotion) {
   if (reduceMotion || supportsViewTransitions) {
     return;
@@ -21,49 +68,20 @@ function initPageTransitions(reduceMotion) {
 
   document.querySelectorAll("a[href]").forEach((link) => {
     link.addEventListener("click", (event) => {
-      if (event.defaultPrevented) {
-        return;
-      }
-
-      if (
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey ||
-        event.button !== 0
-      ) {
-        return;
-      }
-
-      if (link.target && link.target !== "_self") {
-        return;
-      }
-
-      if (link.hasAttribute("download")) {
-        return;
-      }
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      if (link.target && link.target !== "_self") return;
+      if (link.hasAttribute("download")) return;
 
       const href = link.getAttribute("href");
-
-      if (!href || href.startsWith("#")) {
-        return;
-      }
+      if (!href || href.startsWith("#")) return;
 
       const targetUrl = new URL(link.href, window.location.href);
       const currentUrl = new URL(window.location.href);
 
-      if (targetUrl.origin !== currentUrl.origin) {
-        return;
-      }
+      if (targetUrl.origin !== currentUrl.origin) return;
 
-      const isSameDocumentHashLink =
-        targetUrl.pathname === currentUrl.pathname &&
-        targetUrl.search === currentUrl.search &&
-        targetUrl.hash;
-
-      if (isSameDocumentHashLink) {
-        return;
-      }
+      const isSameDocumentHashLink = targetUrl.pathname === currentUrl.pathname && targetUrl.search === currentUrl.search && targetUrl.hash;
+      if (isSameDocumentHashLink) return;
 
       event.preventDefault();
       document.body.classList.add("is-leaving");
@@ -94,17 +112,10 @@ function getAnimatedTargets(root) {
   );
 }
 
-function animateVisibleElements(
-  root,
-  { restart = false, reduceMotion = motionQuery.matches } = {}
-) {
-  const targets = getAnimatedTargets(root).filter(
-    (element) => !element.closest("[hidden]")
-  );
+function animateVisibleElements(root, { restart = false, reduceMotion = motionQuery.matches } = {}) {
+  const targets = getAnimatedTargets(root).filter((element) => !element.closest("[hidden]"));
 
-  if (targets.length === 0) {
-    return;
-  }
+  if (targets.length === 0) return;
 
   if (reduceMotion) {
     targets.forEach((element) => {
@@ -121,19 +132,13 @@ function animateVisibleElements(
       element.classList.remove("reveal-init", "is-revealed");
       element.style.removeProperty("--reveal-delay");
     });
-
     void root.offsetWidth;
   }
 
   targets.forEach((element, index) => {
-    if (
-      !restart &&
-      element.dataset.entranceReady === "true" &&
-      element.classList.contains("is-revealed")
-    ) {
+    if (!restart && element.dataset.entranceReady === "true" && element.classList.contains("is-revealed")) {
       return;
     }
-
     element.dataset.entranceReady = "true";
     element.classList.add("reveal-init");
     element.classList.remove("is-revealed");
@@ -148,74 +153,44 @@ function animateVisibleElements(
 }
 
 function runScopeEntrance(scope, reduceMotion) {
-  if (!scope) {
-    return;
-  }
+  if (!scope) return;
 
   if (!reduceMotion) {
     scope.classList.remove("is-entering");
     void scope.offsetWidth;
     scope.classList.add("is-entering");
-    scope.addEventListener(
-      "animationend",
-      () => {
-        scope.classList.remove("is-entering");
-      },
-      { once: true }
-    );
+    scope.addEventListener("animationend", () => { scope.classList.remove("is-entering"); }, { once: true });
   }
 
-  animateVisibleElements(scope, {
-    restart: true,
-    reduceMotion
-  });
+  animateVisibleElements(scope, { restart: true, reduceMotion });
 }
 
 function initTabs(root, reduceMotion) {
   const tablist = root.querySelector('[role="tablist"]');
-
-  if (!tablist) {
-    return;
-  }
-
+  if (!tablist) return;
   const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
-
-  if (tabs.length === 0) {
-    return;
-  }
+  if (tabs.length === 0) return;
 
   const panels = tabs.map((tab) => {
     const panelId = tab.getAttribute("aria-controls");
     return panelId ? document.getElementById(panelId) : null;
   });
 
-  let activeIndex = tabs.findIndex(
-    (tab) =>
-      tab.getAttribute("aria-selected") === "true" ||
-      tab.classList.contains("active")
-  );
-
+  let activeIndex = tabs.findIndex(tab => tab.getAttribute("aria-selected") === "true" || tab.classList.contains("active"));
   const hash = window.location.hash.replace(/^#/, "");
 
   if (hash) {
     const hashIndex = tabs.findIndex((tab, index) => {
       const panel = panels[index];
       return (
-        tab.id === hash ||
-        tab.getAttribute("aria-controls") === hash ||
-        hash === tab.id.replace(/^tab-/, "") ||
-        (panel && hash === panel.id.replace(/^panel-/, ""))
+        tab.id === hash || tab.getAttribute("aria-controls") === hash ||
+        hash === tab.id.replace(/^tab-/, "") || (panel && hash === panel.id.replace(/^panel-/, ""))
       );
     });
-
-    if (hashIndex >= 0) {
-      activeIndex = hashIndex;
-    }
+    if (hashIndex >= 0) activeIndex = hashIndex;
   }
 
-  if (activeIndex < 0) {
-    activeIndex = 0;
-  }
+  if (activeIndex < 0) activeIndex = 0;
 
   let isTransitioning = false;
 
@@ -230,42 +205,22 @@ function initTabs(root, reduceMotion) {
 
   const showOnlyPanel = (index) => {
     panels.forEach((panel, panelIndex) => {
-      if (!panel) {
-        return;
-      }
-
+      if (!panel) return;
       const isActive = panelIndex === index;
       panel.classList.toggle("active", isActive);
       panel.hidden = !isActive;
-
-      if (!isActive) {
-        panel.classList.remove("is-entering", "is-leaving");
-      }
+      if (!isActive) panel.classList.remove("is-entering", "is-leaving");
     });
   };
 
   const activateTab = (index, moveFocus = false, isInitial = false) => {
-    if (index < 0 || index >= tabs.length) {
-      return;
-    }
-
-    if (!isInitial && index === activeIndex) {
-      if (moveFocus) {
-        tabs[index].focus();
-      }
-      return;
-    }
-
-    if (!isInitial && isTransitioning) {
-      return;
-    }
+    if (index < 0 || index >= tabs.length) return;
+    if (!isInitial && index === activeIndex) { if (moveFocus) tabs[index].focus(); return; }
+    if (!isInitial && isTransitioning) return;
 
     const currentPanel = panels[activeIndex];
     const nextPanel = panels[index];
-
-    if (!nextPanel) {
-      return;
-    }
+    if (!nextPanel) return;
 
     if (isInitial) {
       setTabButtonsState(index);
@@ -274,9 +229,7 @@ function initTabs(root, reduceMotion) {
       return;
     }
 
-    if (moveFocus) {
-      tabs[index].focus();
-    }
+    if (moveFocus) tabs[index].focus();
 
     if (reduceMotion) {
       setTabButtonsState(index);
@@ -287,7 +240,6 @@ function initTabs(root, reduceMotion) {
     }
 
     isTransitioning = true;
-
     const commitSwitch = () => {
       setTabButtonsState(index);
       showOnlyPanel(index);
@@ -301,15 +253,8 @@ function initTabs(root, reduceMotion) {
         setTabButtonsState(index);
         activeIndex = index;
       });
-
-      transition.ready.then(() => {
-        runScopeEntrance(nextPanel, reduceMotion);
-      });
-
-      transition.finished.finally(() => {
-        isTransitioning = false;
-      });
-
+      transition.ready.then(() => runScopeEntrance(nextPanel, reduceMotion));
+      transition.finished.finally(() => isTransitioning = false);
       return;
     }
 
@@ -319,46 +264,23 @@ function initTabs(root, reduceMotion) {
     }
 
     window.setTimeout(() => {
-      if (currentPanel) {
-        currentPanel.classList.remove("is-leaving");
-      }
-
+      if (currentPanel) currentPanel.classList.remove("is-leaving");
       commitSwitch();
       isTransitioning = false;
     }, TRANSITION_EXIT_DURATION);
   };
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => {
-      activateTab(index, false, false);
-    });
-
+    tab.addEventListener("click", () => activateTab(index, false, false));
     tab.addEventListener("keydown", (event) => {
       let nextIndex = null;
-
       switch (event.key) {
-        case "ArrowRight":
-        case "ArrowDown":
-          nextIndex = (index + 1) % tabs.length;
-          break;
-        case "ArrowLeft":
-        case "ArrowUp":
-          nextIndex = (index - 1 + tabs.length) % tabs.length;
-          break;
-        case "Home":
-          nextIndex = 0;
-          break;
-        case "End":
-          nextIndex = tabs.length - 1;
-          break;
-        default:
-          break;
+        case "ArrowRight": case "ArrowDown": nextIndex = (index + 1) % tabs.length; break;
+        case "ArrowLeft": case "ArrowUp": nextIndex = (index - 1 + tabs.length) % tabs.length; break;
+        case "Home": nextIndex = 0; break;
+        case "End": nextIndex = tabs.length - 1; break;
       }
-
-      if (nextIndex !== null) {
-        event.preventDefault();
-        activateTab(nextIndex, true, false);
-      }
+      if (nextIndex !== null) { event.preventDefault(); activateTab(nextIndex, true, false); }
     });
   });
 
