@@ -1,27 +1,64 @@
 :root {
   color-scheme: dark;
 
-  /* --- ARRIÈRE-PLAN : MIDNIGHT BLUE PROFOND --- */
+  /* --- VARIABLES DU THÈME SOMBRE (DÉFAUT) --- */
   --bg-base: #020813;
   --bg-deep: #01040a;
   --bg-mid: #051024;
   --bg-glow: #081a3e;
 
-  /* --- TEXTES HOLOGRAPHIQUES --- */
   --text-main: #e0ffff;
   --text-soft: #bce3ff;
   --text-muted: #8fcfff;
 
-  /* --- ACCENTS : NÉON CYAN PUR --- */
   --accent: #00ffff;
   --accent-strong: #e0ffff;
   --accent-soft: rgba(0, 255, 255, 0.18);
-
   --accent-2: #b190ff;
   --accent-2-soft: rgba(177, 144, 255, 0.16);
 
   --line: rgba(0, 255, 255, 0.16);
   --line-strong: rgba(0, 255, 255, 0.28);
+
+  --surface-border: rgba(255, 255, 255, 0.12);
+  --surface-border-hover: rgba(0, 255, 255, 0.3);
+  --surface-border-active: rgba(0, 255, 255, 0.5);
+
+  --surface-base: rgba(0, 30, 80, 0.2);
+  --surface-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --surface-holo: none;
+  --surface-sheen: none;
+
+  --surface-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --surface-shadow-hover: 0 12px 40px rgba(0, 255, 255, 0.1);
+  --surface-shadow-active: 0 5px 15px rgba(0, 255, 255, 0.2);
+
+  --surface-blur: 6px;
+  --surface-saturation: 110%;
+
+  /* Effets holographiques */
+  --text-glow-main: 0 0 6px rgba(0, 255, 255, 0.6), 0 0 16px rgba(0, 255, 255, 0.3);
+  --text-glow-soft: 0 0 4px rgba(0, 255, 255, 0.4), 0 0 10px rgba(0, 255, 255, 0.2);
+  
+  --title-orb-color1: #e0ffff;
+  --title-orb-color2: #00ffff;
+  --title-orb-shadow: 0 0 0 4px rgba(0, 255, 255, 0.1), 0 0 16px rgba(0, 255, 255, 0.5);
+  --title-orb-shadow-hover: 0 0 0 6px rgba(0, 255, 255, 0.15), 0 0 22px rgba(0, 255, 255, 0.6);
+
+  --selection-bg: rgba(0, 255, 255, 0.24);
+  --selection-color: #ffffff;
+
+  --button-active-bg: rgba(255, 255, 255, 0.95);
+  --button-active-gradient: linear-gradient(180deg, #ffffff 0%, #e0ffff 100%);
+  --button-active-color: #020813;
+  --button-active-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  
+  /* Propriétés du fond animé (Flux) */
+  --flow-blend-mode: screen;
+  --flow-opacity: 0.9;
+  --flow-filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
+  --svg-flow-1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(0,255,255,0.18);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%2300ffff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 250;animation:p 6s linear infinite;%7D.node%7Bfill:%2300ffff;box-shadow:0 0 10px %2300ffff;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:260;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Cpath class='flow' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Ccircle cx='420' cy='40' r='2.5' class='node'/%3E%3Ccircle cx='450' cy='40' r='2.5' class='node'/%3E%3Ccircle cx='20' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='360' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='390' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='300' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='330' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='740' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='770' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='40' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='400' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='430' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='340' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='370' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='780' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='50' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='420' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='450' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='360' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='390' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='760' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='790' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='30' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='400' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='430' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='340' cy='360' r='2.5' class='node'/%3E%3Ccircle cx='370' cy='360' r='2.5' class='node'/%3E%3Ccircle cx='740' cy='360' r='2.5' class='node'/%3E%3C/svg%3E");
+  --svg-flow-2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(0,255,255,0.12);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%2300ffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 250;animation:p 8s linear infinite;%7D.node%7Bfill:%2300ffff;box-shadow:0 0 10px %2300ffff;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:260;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Cpath class='flow' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Ccircle cx='420' cy='40' r='2' class='node'/%3E%3Ccircle cx='450' cy='40' r='2' class='node'/%3E%3Ccircle cx='20' cy='80' r='2' class='node'/%3E%3Ccircle cx='360' cy='80' r='2' class='node'/%3E%3Ccircle cx='390' cy='80' r='2' class='node'/%3E%3Ccircle cx='300' cy='120' r='2' class='node'/%3E%3Ccircle cx='330' cy='120' r='2' class='node'/%3E%3Ccircle cx='740' cy='120' r='2' class='node'/%3E%3Ccircle cx='770' cy='120' r='2' class='node'/%3E%3Ccircle cx='40' cy='160' r='2' class='node'/%3E%3Ccircle cx='400' cy='160' r='2' class='node'/%3E%3Ccircle cx='430' cy='160' r='2' class='node'/%3E%3Ccircle cx='340' cy='200' r='2' class='node'/%3E%3Ccircle cx='370' cy='200' r='2' class='node'/%3E%3Ccircle cx='780' cy='200' r='2' class='node'/%3E%3Ccircle cx='50' cy='240' r='2' class='node'/%3E%3Ccircle cx='420' cy='240' r='2' class='node'/%3E%3Ccircle cx='450' cy='240' r='2' class='node'/%3E%3Ccircle cx='360' cy='280' r='2' class='node'/%3E%3Ccircle cx='390' cy='280' r='2' class='node'/%3E%3Ccircle cx='760' cy='280' r='2' class='node'/%3E%3Ccircle cx='790' cy='280' r='2' class='node'/%3E%3Ccircle cx='30' cy='320' r='2' class='node'/%3E%3Ccircle cx='400' cy='320' r='2' class='node'/%3E%3Ccircle cx='430' cy='320' r='2' class='node'/%3E%3Ccircle cx='340' cy='360' r='2' class='node'/%3E%3Ccircle cx='370' cy='360' r='2' class='node'/%3E%3Ccircle cx='740' cy='360' r='2' class='node'/%3E%3C/svg%3E");
 
   --shadow-lg: 0 24px 54px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 14px 30px rgba(0, 0, 0, 0.3);
@@ -40,24 +77,64 @@
   --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+}
 
-  /* --- GLASSMORPHISM ÉCLAIRCI ET AFFINÉ --- */
-  --surface-border: rgba(255, 255, 255, 0.12);
-  --surface-border-hover: rgba(0, 255, 255, 0.3);
-  --surface-border-active: rgba(0, 255, 255, 0.5);
-
-  --surface-base: rgba(0, 30, 80, 0.2);
-  --surface-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
-
-  --surface-holo: none;
-  --surface-sheen: none;
-
-  --surface-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  --surface-shadow-hover: 0 12px 40px rgba(0, 255, 255, 0.1);
-  --surface-shadow-active: 0 5px 15px rgba(0, 255, 255, 0.2);
-
-  --surface-blur: 6px;
-  --surface-saturation: 110%;
+/* --- VARIABLES DU THÈME CLAIR --- */
+[data-theme="light"] {
+  color-scheme: light;
+  
+  --bg-base: #f4f7fa;
+  --bg-deep: #e2e8f0;
+  --bg-mid: #ebf0f5;
+  --bg-glow: #ffffff;
+  
+  --text-main: #0f172a;
+  --text-soft: #334155;
+  --text-muted: #64748b;
+  
+  --accent: #0284c7;
+  --accent-strong: #0369a1;
+  --accent-soft: rgba(2, 132, 199, 0.15);
+  
+  --accent-2: #7c3aed;
+  --accent-2-soft: rgba(124, 58, 237, 0.15);
+  
+  --line: rgba(0, 0, 0, 0.08);
+  --line-strong: rgba(0, 0, 0, 0.15);
+  
+  --surface-border: rgba(0, 0, 0, 0.08);
+  --surface-border-hover: rgba(2, 132, 199, 0.3);
+  --surface-border-active: rgba(2, 132, 199, 0.5);
+  
+  --surface-base: rgba(255, 255, 255, 0.65);
+  --surface-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 100%);
+  
+  --surface-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  --surface-shadow-hover: 0 12px 40px rgba(2, 132, 199, 0.12);
+  --surface-shadow-active: 0 5px 15px rgba(2, 132, 199, 0.2);
+  
+  --text-glow-main: none;
+  --text-glow-soft: none;
+  
+  --title-orb-color1: #0ea5e9;
+  --title-orb-color2: #0284c7;
+  --title-orb-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15), 0 0 12px rgba(2, 132, 199, 0.3);
+  --title-orb-shadow-hover: 0 0 0 6px rgba(2, 132, 199, 0.2), 0 0 18px rgba(2, 132, 199, 0.4);
+  
+  --selection-bg: rgba(2, 132, 199, 0.2);
+  --selection-color: #0f172a;
+  
+  --button-active-bg: rgba(2, 132, 199, 0.1);
+  --button-active-gradient: linear-gradient(180deg, rgba(2,132,199,0.15) 0%, rgba(2,132,199,0.05) 100%);
+  --button-active-color: #0369a1;
+  --button-active-shadow: 0 0 15px rgba(2, 132, 199, 0.15);
+  
+  --flow-blend-mode: multiply;
+  --flow-opacity: 0.3;
+  --flow-filter: drop-shadow(0 0 2px rgba(2, 132, 199, 0.2));
+  
+  --svg-flow-1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(2,132,199,0.25);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%230284c7;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 250;animation:p 6s linear infinite;%7D.node%7Bfill:%230284c7;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:260;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Cpath class='flow' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Ccircle cx='420' cy='40' r='2.5' class='node'/%3E%3Ccircle cx='450' cy='40' r='2.5' class='node'/%3E%3Ccircle cx='20' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='360' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='390' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='300' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='330' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='740' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='770' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='40' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='400' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='430' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='340' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='370' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='780' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='50' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='420' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='450' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='360' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='390' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='760' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='790' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='30' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='400' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='430' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='340' cy='360' r='2.5' class='node'/%3E%3Ccircle cx='370' cy='360' r='2.5' class='node'/%3E%3Ccircle cx='740' cy='360' r='2.5' class='node'/%3E%3C/svg%3E");
+  --svg-flow-2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(2,132,199,0.15);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%230284c7;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 250;animation:p 8s linear infinite;%7D.node%7Bfill:%230284c7;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:260;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Cpath class='flow' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Ccircle cx='420' cy='40' r='2' class='node'/%3E%3Ccircle cx='450' cy='40' r='2' class='node'/%3E%3Ccircle cx='20' cy='80' r='2' class='node'/%3E%3Ccircle cx='360' cy='80' r='2' class='node'/%3E%3Ccircle cx='390' cy='80' r='2' class='node'/%3E%3Ccircle cx='300' cy='120' r='2' class='node'/%3E%3Ccircle cx='330' cy='120' r='2' class='node'/%3E%3Ccircle cx='740' cy='120' r='2' class='node'/%3E%3Ccircle cx='770' cy='120' r='2' class='node'/%3E%3Ccircle cx='40' cy='160' r='2' class='node'/%3E%3Ccircle cx='400' cy='160' r='2' class='node'/%3E%3Ccircle cx='430' cy='160' r='2' class='node'/%3E%3Ccircle cx='340' cy='200' r='2' class='node'/%3E%3Ccircle cx='370' cy='200' r='2' class='node'/%3E%3Ccircle cx='780' cy='200' r='2' class='node'/%3E%3Ccircle cx='50' cy='240' r='2' class='node'/%3E%3Ccircle cx='420' cy='240' r='2' class='node'/%3E%3Ccircle cx='450' cy='240' r='2' class='node'/%3E%3Ccircle cx='360' cy='280' r='2' class='node'/%3E%3Ccircle cx='390' cy='280' r='2' class='node'/%3E%3Ccircle cx='760' cy='280' r='2' class='node'/%3E%3Ccircle cx='790' cy='280' r='2' class='node'/%3E%3Ccircle cx='30' cy='320' r='2' class='node'/%3E%3Ccircle cx='400' cy='320' r='2' class='node'/%3E%3Ccircle cx='430' cy='320' r='2' class='node'/%3E%3Ccircle cx='340' cy='360' r='2' class='node'/%3E%3Ccircle cx='370' cy='360' r='2' class='node'/%3E%3Ccircle cx='740' cy='360' r='2' class='node'/%3E%3C/svg%3E");
 }
 
 @view-transition {
@@ -72,6 +149,7 @@
 
 html {
   scroll-behavior: smooth;
+  transition: background-color var(--duration-base) var(--ease-standard);
 }
 
 html,
@@ -94,6 +172,7 @@ body {
     radial-gradient(circle at 82% 14%, var(--bg-mid), transparent 0 30%),
     radial-gradient(circle at 50% 100%, var(--bg-deep), transparent 0 50%);
   position: relative;
+  transition: color var(--duration-base) var(--ease-standard), background-color var(--duration-base) var(--ease-standard);
 }
 
 /* Texture de grain subtile (Noise) */
@@ -105,40 +184,39 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* FLUX DE DONNÉES - EFFET NÉON CYAN PUR SANS CHEVAUCHEMENT AVEC PROFONDEUR */
+/* FLUX DE DONNÉES - DYNAMIQUE SELON LE THÈME */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  /* Double couche SVG pour la profondeur : alignements structurés inspirés du circuit fourni */
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(0,255,255,0.18);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%2300ffff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 250;animation:p 6s linear infinite;%7D.node%7Bfill:%2300ffff;box-shadow:0 0 10px %2300ffff;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:260;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Cpath class='flow' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Ccircle cx='420' cy='40' r='2.5' class='node'/%3E%3Ccircle cx='450' cy='40' r='2.5' class='node'/%3E%3Ccircle cx='20' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='360' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='390' cy='80' r='2.5' class='node'/%3E%3Ccircle cx='300' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='330' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='740' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='770' cy='120' r='2.5' class='node'/%3E%3Ccircle cx='40' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='400' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='430' cy='160' r='2.5' class='node'/%3E%3Ccircle cx='340' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='370' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='780' cy='200' r='2.5' class='node'/%3E%3Ccircle cx='50' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='420' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='450' cy='240' r='2.5' class='node'/%3E%3Ccircle cx='360' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='390' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='760' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='790' cy='280' r='2.5' class='node'/%3E%3Ccircle cx='30' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='400' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='430' cy='320' r='2.5' class='node'/%3E%3Ccircle cx='340' cy='360' r='2.5' class='node'/%3E%3Ccircle cx='370' cy='360' r='2.5' class='node'/%3E%3Ccircle cx='740' cy='360' r='2.5' class='node'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Cstyle%3E.trace%7Bfill:none;stroke:rgba(0,255,255,0.12);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D.flow%7Bfill:none;stroke:%2300ffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 250;animation:p 8s linear infinite;%7D.node%7Bfill:%2300ffff;box-shadow:0 0 10px %2300ffff;%7D@keyframes p%7Bfrom%7Bstroke-dashoffset:260;%7Dto%7Bstroke-dashoffset:0;%7D%7D%3C/style%3E%3Cpath class='trace' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Cpath class='flow' d='M-10 40 L100 40 L130 70 L250 70 L280 40 L420 40 M450 40 L520 40 L550 10 L680 10 L710 40 L810 40 M20 80 L80 80 L110 110 L220 110 L250 80 L360 80 M390 80 L480 80 L510 50 L640 50 L670 80 L810 80 M-10 120 L60 120 L90 150 L190 150 L220 120 L300 120 M330 120 L440 120 L470 90 L600 90 L630 120 L740 120 M770 120 L810 120 M40 160 L110 160 L140 190 L260 190 L290 160 L400 160 M430 160 L500 160 L530 130 L660 130 L690 160 L810 160 M-10 200 L90 200 L120 230 L230 230 L260 200 L340 200 M370 200 L460 200 L490 170 L620 170 L650 200 L780 200 M50 240 L130 240 L160 270 L280 270 L310 240 L420 240 M450 240 L540 240 L570 210 L700 210 L730 240 L810 240 M-10 280 L70 280 L100 310 L210 310 L240 280 L360 280 M390 280 L480 280 L510 250 L640 250 L670 280 L760 280 M790 280 L810 280 M30 320 L110 320 L140 350 L260 350 L290 320 L400 320 M430 320 L520 320 L550 290 L680 290 L710 320 L810 320 M-10 360 L50 360 L80 390 L190 390 L220 360 L340 360 M370 360 L460 360 L490 330 L620 330 L650 360 L740 360'/%3E%3Ccircle cx='420' cy='40' r='2' class='node'/%3E%3Ccircle cx='450' cy='40' r='2' class='node'/%3E%3Ccircle cx='20' cy='80' r='2' class='node'/%3E%3Ccircle cx='360' cy='80' r='2' class='node'/%3E%3Ccircle cx='390' cy='80' r='2' class='node'/%3E%3Ccircle cx='300' cy='120' r='2' class='node'/%3E%3Ccircle cx='330' cy='120' r='2' class='node'/%3E%3Ccircle cx='740' cy='120' r='2' class='node'/%3E%3Ccircle cx='770' cy='120' r='2' class='node'/%3E%3Ccircle cx='40' cy='160' r='2' class='node'/%3E%3Ccircle cx='400' cy='160' r='2' class='node'/%3E%3Ccircle cx='430' cy='160' r='2' class='node'/%3E%3Ccircle cx='340' cy='200' r='2' class='node'/%3E%3Ccircle cx='370' cy='200' r='2' class='node'/%3E%3Ccircle cx='780' cy='200' r='2' class='node'/%3E%3Ccircle cx='50' cy='240' r='2' class='node'/%3E%3Ccircle cx='420' cy='240' r='2' class='node'/%3E%3Ccircle cx='450' cy='240' r='2' class='node'/%3E%3Ccircle cx='360' cy='280' r='2' class='node'/%3E%3Ccircle cx='390' cy='280' r='2' class='node'/%3E%3Ccircle cx='760' cy='280' r='2' class='node'/%3E%3Ccircle cx='790' cy='280' r='2' class='node'/%3E%3Ccircle cx='30' cy='320' r='2' class='node'/%3E%3Ccircle cx='400' cy='320' r='2' class='node'/%3E%3Ccircle cx='430' cy='320' r='2' class='node'/%3E%3Ccircle cx='340' cy='360' r='2' class='node'/%3E%3Ccircle cx='370' cy='360' r='2' class='node'/%3E%3Ccircle cx='740' cy='360' r='2' class='node'/%3E%3C/svg%3E");
+  background-image: var(--svg-flow-1), var(--svg-flow-2);
   background-size: 1200px 600px, 600px 300px;
   background-position: center top, 150px 150px;
   background-repeat: repeat, repeat;
   background-attachment: fixed;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
-  mix-blend-mode: screen;
+  opacity: var(--flow-opacity);
+  filter: var(--flow-filter);
+  mix-blend-mode: var(--flow-blend-mode);
+  transition: opacity var(--duration-base) var(--ease-standard), filter var(--duration-base) var(--ease-standard);
 }
 
-/* --- TEXTE HOLOGRAPHIQUE --- */
 h1, h2, h3, strong, dt, .hanging-label, .project-number, .timeline-date, .site-title a {
   color: var(--text-main);
-  text-shadow: 0 0 6px rgba(0, 255, 255, 0.6), 0 0 16px rgba(0, 255, 255, 0.3);
+  text-shadow: var(--text-glow-main);
+  transition: color var(--duration-fast) ease, text-shadow var(--duration-fast) ease;
 }
 
 p, dd, li, footer {
   color: var(--text-soft);
-  text-shadow: 0 0 4px rgba(0, 255, 255, 0.4), 0 0 10px rgba(0, 255, 255, 0.2);
+  text-shadow: var(--text-glow-soft);
+  transition: color var(--duration-fast) ease, text-shadow var(--duration-fast) ease;
 }
 
 ::selection {
-  background: rgba(0, 255, 255, 0.24);
-  color: #ffffff;
+  background: var(--selection-bg);
+  color: var(--selection-color);
 }
 
 ::view-transition-old(root),
@@ -181,12 +259,12 @@ iframe:focus-visible {
   top: -56px;
   z-index: 2000;
   padding: 10px 14px;
-  background: #00ffff;
-  color: #081b3d;
+  background: var(--accent);
+  color: var(--bg-base);
   border-radius: 10px;
   font-weight: 700;
-  transition: top var(--duration-fast) var(--ease-standard);
-  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+  transition: top var(--duration-fast) var(--ease-standard), background var(--duration-fast), color var(--duration-fast);
+  box-shadow: 0 8px 20px var(--accent-soft);
 }
 
 .skip-link:focus {
@@ -242,21 +320,15 @@ iframe:focus-visible {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: radial-gradient(circle, #e0ffff 0 34%, #00ffff 35% 100%);
-  box-shadow:
-    0 0 0 4px rgba(0, 255, 255, 0.1),
-    0 0 16px rgba(0, 255, 255, 0.5);
+  background: radial-gradient(circle, var(--title-orb-color1) 0 34%, var(--title-orb-color2) 35% 100%);
+  box-shadow: var(--title-orb-shadow);
   animation: title-orb 5.8s ease-in-out infinite;
-  transition:
-    transform var(--duration-base) var(--ease-emphasis),
-    box-shadow var(--duration-base) var(--ease-standard);
+  transition: transform var(--duration-base) var(--ease-emphasis), box-shadow var(--duration-base) var(--ease-standard);
 }
 
 .site-title a:hover::before {
   transform: scale(1.08);
-  box-shadow:
-    0 0 0 6px rgba(0, 255, 255, 0.15),
-    0 0 22px rgba(0, 255, 255, 0.6);
+  box-shadow: var(--title-orb-shadow-hover);
 }
 
 .nav-links,
@@ -271,7 +343,7 @@ iframe:focus-visible {
 .project-top-separator {
   width: 1px;
   height: 28px;
-  background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  background: linear-gradient(180deg, transparent, var(--surface-border-hover), transparent);
 }
 
 /* --- UNIFORMISATION STRICTE & BLINDAGE DU FLOU --- */
@@ -283,7 +355,8 @@ iframe:focus-visible {
 .info-item,
 .timeline-date,
 .timeline-content,
-.project-card {
+.project-card,
+.theme-toggle {
   position: relative;
   overflow: hidden;
   border-radius: 16px !important;
@@ -310,7 +383,8 @@ iframe:focus-visible {
 .info-item::before,
 .timeline-date::before,
 .timeline-content::before,
-.project-card::before {
+.project-card::before,
+.theme-toggle::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -327,7 +401,8 @@ iframe:focus-visible {
 .info-item::after,
 .timeline-date::after,
 .timeline-content::after,
-.project-card::after {
+.project-card::after,
+.theme-toggle::after {
   content: "";
   position: absolute;
   inset: -1px;
@@ -342,16 +417,22 @@ iframe:focus-visible {
 .project-top-link,
 .pager-button,
 .pdf-button,
-.tab-card {
+.tab-card,
+.theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 46px;
   padding: 11px 16px;
   color: var(--text-main);
-  text-shadow: 0 0 6px rgba(0, 255, 255, 0.6), 0 0 16px rgba(0, 255, 255, 0.3);
+  text-shadow: var(--text-glow-main);
   font-weight: 600;
   letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  white-space: nowrap;
 }
 
 .project-card {
@@ -374,8 +455,7 @@ iframe:focus-visible {
   font-weight: 700;
 }
 
-/* BOUTON ACTIF (Contraste inversé lumineux, verrouillé) */
-/* L'effet holographique se désactive pour la lisibilité sur fond clair */
+/* BOUTON ACTIF */
 .nav-links a.active,
 .project-top-link.active,
 .tab-card.active,
@@ -384,12 +464,12 @@ iframe:focus-visible {
 .project-top-link.active:hover,
 .tab-card.active:hover,
 .tab-card[aria-selected="true"]:hover {
-  color: #020813 !important;
+  color: var(--button-active-color) !important;
   text-shadow: none !important;
   border-color: var(--surface-border-active) !important;
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  background-image: linear-gradient(180deg, #ffffff 0%, #e0ffff 100%) !important;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4) !important;
+  background-color: var(--button-active-bg) !important;
+  background-image: var(--button-active-gradient) !important;
+  box-shadow: var(--button-active-shadow) !important;
 }
 
 /* LOGOS ET IMAGES */
@@ -403,14 +483,10 @@ iframe:focus-visible {
   box-shadow: var(--surface-shadow);
   backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
   -webkit-backdrop-filter: blur(calc(var(--surface-blur) * 0.9)) saturate(var(--surface-saturation));
-  transition:
-    transform var(--duration-base) var(--ease-emphasis),
-    border-color var(--duration-base) var(--ease-standard),
-    box-shadow var(--duration-base) var(--ease-standard);
+  transition: transform var(--duration-base) var(--ease-emphasis), border-color var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard);
 }
 
-main,
-footer {
+main, footer {
   transition: opacity var(--duration-base) var(--ease-standard);
 }
 
@@ -439,9 +515,7 @@ body.is-leaving footer {
   min-height: 320px;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   margin-top: 0;
   text-wrap: balance;
 }
@@ -524,7 +598,6 @@ footer {
   padding: 18px 16px;
   font-weight: 700;
   text-align: center;
-  cursor: pointer;
 }
 
 .tab-panels {
@@ -536,7 +609,6 @@ footer {
   display: none !important;
 }
 
-/* CORRECTION ABSOLUE DU FLOU LORS DE L'ANIMATION DES ONGLETS */
 .tab-panel.is-entering {
   animation: slide-in-tabs var(--duration-page) var(--ease-emphasis);
 }
@@ -546,16 +618,13 @@ footer {
   display: none;
 }
 
-/* Animation de simple déplacement : PAS de changement d'opacité = le flou reste parfait */
 @keyframes slide-in-tabs {
   from { transform: translateY(24px); visibility: hidden; }
   to { transform: translateY(0); visibility: visible; }
 }
 
 /* Structures */
-.info-grid,
-.timeline,
-.project-list {
+.info-grid, .timeline, .project-list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -572,9 +641,7 @@ footer {
   font-weight: 700;
 }
 
-.info-item dd {
-  margin: 0;
-}
+.info-item dd { margin: 0; }
 
 .timeline {
   display: flex;
@@ -611,18 +678,14 @@ footer {
   white-space: nowrap;
 }
 
-.hanging-content {
-  margin: 0;
-}
+.hanging-content { margin: 0; }
 
 .content-list {
   margin: 0;
   padding-left: 20px;
 }
 
-.content-list li + li {
-  margin-top: 6px;
-}
+.content-list li + li { margin-top: 6px; }
 
 .content-list--plain {
   list-style: none;
@@ -630,14 +693,8 @@ footer {
 }
 
 /* Projets */
-.project-list {
-  display: grid;
-  gap: 18px;
-}
-
-.project-card p {
-  margin: 0;
-}
+.project-list { display: grid; gap: 18px; }
+.project-card p { margin: 0; }
 
 .project-card-header {
   display: flex;
@@ -646,13 +703,9 @@ footer {
   margin-bottom: 14px;
 }
 
-.project-card-header--textonly {
-  gap: 0;
-}
+.project-card-header--textonly { gap: 0; }
 
-.project-title-block {
-  min-width: 0;
-}
+.project-title-block { min-width: 0; }
 
 .project-number {
   display: inline-flex;
@@ -661,18 +714,15 @@ footer {
   padding: 6px 10px;
   margin-bottom: 10px;
   border-radius: 999px;
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--surface-border-hover);
+  background: linear-gradient(180deg, var(--surface-border), transparent);
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  box-shadow: 0 0 16px rgba(0, 255, 255, 0.15);
+  box-shadow: 0 0 16px var(--accent-soft);
 }
 
-.project-card h3,
-.project-page-heading h1 {
-  margin: 0;
-}
+.project-card h3, .project-page-heading h1 { margin: 0; }
 
 .project-logo {
   width: 72px;
@@ -680,13 +730,8 @@ footer {
   padding: 10px;
 }
 
-.project-hero {
-  margin-bottom: 28px;
-}
-
-.project-hero p {
-  max-width: 900px;
-}
+.project-hero { margin-bottom: 28px; }
+.project-hero p { max-width: 900px; }
 
 .project-page-title {
   display: flex;
@@ -701,9 +746,7 @@ footer {
   padding: 12px;
 }
 
-.project-page-heading {
-  min-width: 0;
-}
+.project-page-heading { min-width: 0; }
 
 .project-page-heading h1 {
   font-size: clamp(1.9rem, 3.2vw, 2.8rem);
@@ -711,9 +754,7 @@ footer {
   white-space: normal;
 }
 
-.project-pager-wrapper {
-  margin-top: 22px;
-}
+.project-pager-wrapper { margin-top: 22px; }
 
 .project-pager {
   display: flex;
@@ -727,23 +768,16 @@ footer {
 }
 
 /* Tableau de synthèse */
-.summary-card {
-  padding-bottom: 22px;
-}
-
-.summary-visual {
-  margin: 0;
-}
+.summary-card { padding-bottom: 22px; }
+.summary-visual { margin: 0; }
 
 .summary-image {
   width: 100%;
   height: auto;
   border-radius: 16px;
-  border: 1px solid rgba(0, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.12),
-    0 0 18px rgba(0, 255, 255, 0.1);
+  border: 1px solid var(--surface-border-hover);
+  background: var(--bg-glow);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12), 0 0 18px var(--accent-soft);
 }
 
 .pdf-actions {
@@ -752,15 +786,10 @@ footer {
   gap: 12px;
 }
 
-.pdf-actions--below {
-  margin: 20px 0 0;
-}
+.pdf-actions--below { margin: 20px 0 0; }
+.pdf-button { min-width: 190px; }
 
-.pdf-button {
-  min-width: 190px;
-}
-
-/* CORRECTION ABSOLUE DU FLOU AU SCROLL */
+/* CORRECTION FLOU AU SCROLL */
 .reveal-init {
   visibility: hidden;
   transform: translateY(22px);
@@ -772,25 +801,20 @@ footer {
   transform: translateY(0);
 }
 
-.project-list a.project-card.reveal-init {
-  transform: translateY(22px);
-}
-
-.project-list a.project-card.reveal-init.is-revealed {
-  transform: translateY(0);
-}
+.project-list a.project-card.reveal-init { transform: translateY(22px); }
+.project-list a.project-card.reveal-init.is-revealed { transform: translateY(0); }
 
 /* --- HOVER & INTERACTIONS STRICTEMENT HARMONISÉES --- */
-/* Le !important force le déplacement même si JS a initialisé la classe .is-revealed */
 .nav-links a:hover,
 .project-top-link:hover,
 .pager-button:hover,
 .pdf-button:hover,
 .tab-card:hover,
-a.project-card:hover {
+a.project-card:hover,
+.theme-toggle:hover {
   transform: translateY(-3px) !important;
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5) !important;
+  color: var(--text-main);
+  text-shadow: var(--title-orb-shadow-hover) !important;
   border-color: var(--surface-border-hover) !important;
   box-shadow: var(--surface-shadow-hover) !important;
 }
@@ -800,7 +824,8 @@ a.project-card:hover {
 .pager-button:hover::after,
 .pdf-button:hover::after,
 .tab-card:hover::after,
-a.project-card:hover::after {
+a.project-card:hover::after,
+.theme-toggle:hover::after {
   opacity: 1;
 }
 
@@ -809,7 +834,8 @@ a.project-card:hover::after {
 .pager-button:active,
 .pdf-button:active,
 .tab-card:active,
-a.project-card:active {
+a.project-card:active,
+.theme-toggle:active {
   transform: scale(0.97) !important;
 }
 
