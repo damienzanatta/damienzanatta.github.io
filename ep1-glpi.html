@@ -4,8 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Projet GLPI de Damien Zanatta : inventaire automatisé du parc informatique à l'aide de GLPI et d'une GPO.">
-  <meta name="theme-color" content="#06091a">
+  <meta name="theme-color" content="#020813">
   <title>Inventaire automatisé du parc | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +39,8 @@
         <a href="ep2-sharepoint.html" class="project-top-link">Projet 2</a>
         <a href="ep3-powershell.html" class="project-top-link">Projet 3</a>
         <a href="ep4-vpn.html" class="project-top-link">Projet 4</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-toggle project-top-link" aria-label="Changer de thème"></button>
       </nav>
     </div>
   </header>
