@@ -4,8 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Projet de formation de Damien Zanatta : configuration du routage inter-VLAN avec la méthode router-on-a-stick.">
-  <meta name="theme-color" content="#06091a">
+  <meta name="theme-color" content="#020813">
   <title>Configuration du routage inter-VLAN | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +38,8 @@
         <a href="fp1-commutateur.html" class="project-top-link">Projet 1</a>
         <a href="fp2-routage.html" class="project-top-link active" aria-current="page">Projet 2</a>
         <a href="fp3-dhcp.html" class="project-top-link">Projet 3</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-toggle project-top-link" aria-label="Changer de thème"></button>
       </nav>
     </div>
   </header>
@@ -48,12 +58,8 @@
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>
-              Dans le cadre de ma formation, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration du routage inter-VLAN avec la méthode router-on-a-stick.
-            </p>
-            <p>
-              L’objectif était de permettre la communication entre plusieurs VLAN à partir d’un seul lien physique entre un commutateur et un routeur, en utilisant des sous-interfaces et l’encapsulation 802.1Q.
-            </p>
+            <p>Dans le cadre de ma formation, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration du routage inter-VLAN avec la méthode router-on-a-stick.</p>
+            <p>L’objectif était de permettre la communication entre plusieurs VLAN à partir d’un seul lien physique entre un commutateur et un routeur, en utilisant des sous-interfaces et l’encapsulation 802.1Q.</p>
           </article>
 
           <article class="timeline-content">
@@ -80,158 +86,73 @@
 
           <article class="timeline-content">
             <h2>Topologie réseau et table d'adressage</h2>
-            <p>
-              La topologie est composée d’un routeur R1, d’un commutateur S1 et de deux postes clients placés dans des VLAN distincts.
-            </p>
-            <p>
-              La table d’adressage permet d’identifier les sous-réseaux utilisés, les adresses IP des postes clients et les passerelles configurées sur le routeur.
-            </p>
+            <p>La topologie est composée d’un routeur R1, d’un commutateur S1 et de deux postes clients placés dans des VLAN distincts.</p>
+            <p>La table d’adressage permet d’identifier les sous-réseaux utilisés, les adresses IP des postes clients et les passerelles configurées sur le routeur.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="fp2-img1-topologie-reseau.jpg"
-                  alt="Topologie Packet Tracer composée d’un routeur R1, d’un commutateur S1 et de deux postes clients dans des VLAN distincts."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="fp2-img1-topologie-reseau.jpg" alt="Topologie Packet Tracer composée d’un routeur R1, d’un commutateur S1 et de deux postes clients dans des VLAN distincts." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="fp2-img2-table-adressage.jpg"
-                  alt="Table d’adressage du TP de routage inter-VLAN indiquant les adresses IP des équipements et des passerelles."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="fp2-img2-table-adressage.jpg" alt="Table d’adressage du TP de routage inter-VLAN indiquant les adresses IP des équipements et des passerelles." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 1 – Création des VLAN sur le commutateur</h2>
-            <p>
-              Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.
-            </p>
-            <p>
-              J’ai créé le <strong>VLAN 10</strong> et le <strong>VLAN 30</strong> afin de séparer logiquement les postes clients dans deux réseaux distincts.
-            </p>
-            <p>
-              J’ai ensuite configuré les ports d’accès : le port <strong>Fa0/11</strong> a été associé au VLAN 10 et le port <strong>Fa0/6</strong> au VLAN 30.
-            </p>
-            <p>
-              J’ai enfin vérifié la configuration avec la commande <strong>show vlan brief</strong>, ce qui m’a permis de confirmer la présence des VLAN et l’affectation correcte des ports.
-            </p>
+            <p>Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.</p>
+            <p>J’ai créé le <strong>VLAN 10</strong> et le <strong>VLAN 30</strong> afin de séparer logiquement les postes clients dans deux réseaux distincts.</p>
+            <p>J’ai ensuite configuré les ports d’accès : le port <strong>Fa0/11</strong> a été associé au VLAN 10 et le port <strong>Fa0/6</strong> au VLAN 30.</p>
+            <p>J’ai enfin vérifié la configuration avec la commande <strong>show vlan brief</strong>, ce qui m’a permis de confirmer la présence des VLAN et l’affectation correcte des ports.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="fp2-img3-creation-vlan.jpg"
-                  alt="Création des VLAN 10 et 30 puis affectation des ports Fa0/11 et Fa0/6 sur le commutateur S1."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="fp2-img3-creation-vlan.jpg" alt="Création des VLAN 10 et 30 puis affectation des ports Fa0/11 et Fa0/6 sur le commutateur S1." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="fp2-img4-show-vlan-brief.jpg"
-                  alt="Vérification des VLAN et des ports associés avec la commande show vlan brief."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="fp2-img4-show-vlan-brief.jpg" alt="Vérification des VLAN et des ports associés avec la commande show vlan brief." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 2 – Configuration des sous-interfaces du routeur</h2>
-            <p>
-              Je suis ensuite entré dans le routeur R1 afin de configurer le routage inter-VLAN.
-            </p>
-            <p>
-              J’ai créé la sous-interface <strong>G0/0.10</strong> pour le VLAN 10 et la sous-interface <strong>G0/0.30</strong> pour le VLAN 30.
-            </p>
-            <p>
-              J’ai appliqué l’encapsulation <strong>dot1Q</strong> sur chaque sous-interface afin d’associer chaque interface logique au VLAN correspondant.
-            </p>
-            <p>
-              J’ai attribué les adresses IP <strong>172.17.10.1</strong> et <strong>172.17.30.1</strong> aux sous-interfaces afin qu’elles servent de passerelles par défaut pour les postes clients.
-            </p>
-            <p>
-              J’ai terminé en activant l’interface physique <strong>G0/0</strong> avec la commande <strong>no shutdown</strong>, ce qui a permis d’activer les sous-interfaces.
-            </p>
-
+            <p>Je suis ensuite entré dans le routeur R1 afin de configurer le routage inter-VLAN.</p>
+            <p>J’ai créé la sous-interface <strong>G0/0.10</strong> pour le VLAN 10 et la sous-interface <strong>G0/0.30</strong> pour le VLAN 30.</p>
+            <p>J’ai appliqué l’encapsulation <strong>dot1Q</strong> sur chaque sous-interface afin d’associer chaque interface logique au VLAN correspondant.</p>
+            <p>J’ai attribué les adresses IP <strong>172.17.10.1</strong> et <strong>172.17.30.1</strong> aux sous-interfaces afin qu’elles servent de passerelles par défaut pour les postes clients.</p>
+            <p>J’ai terminé en activant l’interface physique <strong>G0/0</strong> avec la commande <strong>no shutdown</strong>, ce qui a permis d’activer les sous-interfaces.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="fp2-img5-configuration-sous-interfaces.jpg"
-                alt="Configuration des sous-interfaces G0/0.10 et G0/0.30 du routeur R1 avec encapsulation dot1Q et adresses IP."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="fp2-img5-configuration-sous-interfaces.jpg" alt="Configuration des sous-interfaces G0/0.10 et G0/0.30 du routeur R1 avec encapsulation dot1Q et adresses IP." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 3 – Activation du trunking</h2>
-            <p>
-              J’ai configuré l’interface <strong>Gig0/1</strong> du commutateur S1 en mode trunk afin de transporter le trafic des VLAN 10 et 30 vers le routeur R1.
-            </p>
-            <p>
-              Cette configuration est indispensable dans la méthode router-on-a-stick, car un seul lien physique transporte plusieurs réseaux logiques.
-            </p>
-            <p>
-              J’ai vérifié le trunking avec la commande <strong>show interfaces trunk</strong>.
-            </p>
-            <p>
-              La sortie de commande confirme que le port <strong>Gig0/1</strong> est en mode trunk, utilise l’encapsulation <strong>802.1Q</strong> et autorise le passage des VLAN nécessaires.
-            </p>
-
+            <p>J’ai configuré l’interface <strong>Gig0/1</strong> du commutateur S1 en mode trunk afin de transporter le trafic des VLAN 10 et 30 vers le routeur R1.</p>
+            <p>Cette configuration est indispensable dans la méthode router-on-a-stick, car un seul lien physique transporte plusieurs réseaux logiques.</p>
+            <p>J’ai vérifié le trunking avec la commande <strong>show interfaces trunk</strong>.</p>
+            <p>La sortie de commande confirme que le port <strong>Gig0/1</strong> est en mode trunk, utilise l’encapsulation <strong>802.1Q</strong> et autorise le passage des VLAN nécessaires.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="fp2-img6-activation-trunking.jpg"
-                alt="Activation et vérification du trunking sur l’interface Gig0/1 du commutateur S1."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="fp2-img6-activation-trunking.jpg" alt="Activation et vérification du trunking sur l’interface Gig0/1 du commutateur S1." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 4 – Tests de connectivité inter-VLAN</h2>
-            <p>
-              J’ai réalisé des tests de connectivité entre les postes situés dans des VLAN différents.
-            </p>
-            <p>
-              Depuis PC1, j’ai envoyé une requête ping vers l’adresse IP du poste situé dans le VLAN 30.
-            </p>
-            <p>
-              Le premier paquet a été perdu, puis les réponses suivantes ont été reçues, ce qui confirme que la communication inter-VLAN est fonctionnelle.
-            </p>
-            <p>
-              Depuis le poste du VLAN 30, j’ai ensuite effectué un ping vers PC1 et les réponses ont toutes été reçues correctement.
-            </p>
-            <p>
-              Ces tests valident le fonctionnement du routage inter-VLAN et la cohérence de la configuration appliquée.
-            </p>
+            <p>J’ai réalisé des tests de connectivité entre les postes situés dans des VLAN différents.</p>
+            <p>Depuis PC1, j’ai envoyé une requête ping vers l’adresse IP du poste situé dans le VLAN 30.</p>
+            <p>Le premier paquet a été perdu, puis les réponses suivantes ont été reçues, ce qui confirme que la communication inter-VLAN est fonctionnelle.</p>
+            <p>Depuis le poste du VLAN 30, j’ai ensuite effectué un ping vers PC1 et les réponses ont toutes été reçues correctement.</p>
+            <p>Ces tests valident le fonctionnement du routage inter-VLAN et la cohérence de la configuration appliquée.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="fp2-img7-ping-PC1-PC3.jpg"
-                  alt="Test de connectivité depuis PC1 vers le poste du VLAN 30."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="fp2-img7-ping-PC1-PC3.jpg" alt="Test de connectivité depuis PC1 vers le poste du VLAN 30." loading="lazy" decoding="async">
               </figure>
-
               <figure class="summary-visual">
-                <img
-                  class="summary-image"
-                  src="fp2-img8-ping-PC3-PC1.jpg"
-                  alt="Test de connectivité depuis le poste du VLAN 30 vers PC1."
-                  loading="lazy"
-                  decoding="async">
+                <img class="summary-image" src="fp2-img8-ping-PC3-PC1.jpg" alt="Test de connectivité depuis le poste du VLAN 30 vers PC1." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
@@ -256,17 +177,14 @@
                 <dt>Gérer le patrimoine informatique</dt>
                 <dd>Identification et configuration d’équipements réseau dans une infrastructure segmentée.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
                 <dd>Mise en place d’une solution de routage inter-VLAN répondant à un besoin de communication entre réseaux.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Mettre à disposition des utilisateurs un service informatique</dt>
                 <dd>Configuration et vérification d’un service de communication entre VLAN.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Organiser son développement professionnel</dt>
                 <dd>Développement de compétences en VLAN, trunking, routage inter-VLAN et documentation de la réalisation dans le portfolio.</dd>
@@ -276,15 +194,9 @@
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>
-              Ce TP m’a permis de mieux comprendre le principe du routage inter-VLAN et le rôle des VLAN dans la segmentation d’un réseau.
-            </p>
-            <p>
-              J’ai appris à créer des VLAN, à attribuer des ports d’accès, à configurer un lien trunk et à mettre en place des sous-interfaces avec encapsulation 802.1Q.
-            </p>
-            <p>
-              Cette réalisation est importante car la méthode router-on-a-stick permet de faire communiquer plusieurs VLAN tout en limitant le nombre d’interfaces physiques nécessaires sur le routeur.
-            </p>
+            <p>Ce TP m’a permis de mieux comprendre le principe du routage inter-VLAN et le rôle des VLAN dans la segmentation d’un réseau.</p>
+            <p>J’ai appris à créer des VLAN, à attribuer des ports d’accès, à configurer un lien trunk et à mettre en place des sous-interfaces avec encapsulation 802.1Q.</p>
+            <p>Cette réalisation est importante car la méthode router-on-a-stick permet de faire communiquer plusieurs VLAN tout en limitant le nombre d’interfaces physiques nécessaires sur le routeur.</p>
           </article>
         </div>
       </section>
