@@ -4,8 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Projet de formation de Damien Zanatta : configurations initiales d'un commutateur.">
-  <meta name="theme-color" content="#06091a">
+  <meta name="theme-color" content="#020813">
   <title>Configurations initiales d'un commutateur | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +38,8 @@
         <a href="fp1-commutateur.html" class="project-top-link active" aria-current="page">Projet 1</a>
         <a href="fp2-routage.html" class="project-top-link">Projet 2</a>
         <a href="fp3-dhcp.html" class="project-top-link">Projet 3</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-toggle project-top-link" aria-label="Changer de thème"></button>
       </nav>
     </div>
   </header>
@@ -48,12 +58,8 @@
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>
-              Dans le cadre de ma formation, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration initiale d’un commutateur.
-            </p>
-            <p>
-              L’objectif était de préparer un commutateur Cisco à son utilisation dans une infrastructure réseau en configurant les paramètres de base.
-            </p>
+            <p>Dans le cadre de ma formation, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration initiale d’un commutateur.</p>
+            <p>L’objectif était de préparer un commutateur Cisco à son utilisation dans une infrastructure réseau en configurant les paramètres de base.</p>
           </article>
 
           <article class="timeline-content">
@@ -79,117 +85,53 @@
 
           <article class="timeline-content">
             <h2>Topologie</h2>
-            <p>
-              La topologie est composée de deux commutateurs, S1 et S2, reliés à deux postes clients.
-            </p>
-            <p>
-              Cette architecture permet de simuler une configuration de base d’équipements réseau Cisco.
-            </p>
-
+            <p>La topologie est composée de deux commutateurs, S1 et S2, reliés à deux postes clients.</p>
+            <p>Cette architecture permet de simuler une configuration de base d’équipements réseau Cisco.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="fp1-img1-topologie-reseau.jpg"
-                alt="Topologie Packet Tracer composée de deux commutateurs Cisco S1 et S2 reliés à deux postes clients."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="fp1-img1-topologie-reseau.jpg" alt="Topologie Packet Tracer composée de deux commutateurs Cisco S1 et S2 reliés à deux postes clients." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 1 – Vérification de la configuration initiale</h2>
-            <p>
-              Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.
-            </p>
-            <p>
-              J’ai commencé par afficher la configuration active du commutateur avec la commande <strong>show running-config</strong>.
-            </p>
-            <p>
-              Cette consultation m’a permis de vérifier l’état initial de l’équipement, d’identifier les paramètres déjà présents et de disposer d’un point de comparaison avant d’appliquer les modifications.
-            </p>
-
+            <p>Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.</p>
+            <p>J’ai commencé par afficher la configuration active du commutateur avec la commande <strong>show running-config</strong>.</p>
+            <p>Cette consultation m’a permis de vérifier l’état initial de l’équipement, d’identifier les paramètres déjà présents et de disposer d’un point de comparaison avant d’appliquer les modifications.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="fp1-img2-running-config-initial.jpg"
-                alt="Affichage de la configuration initiale du commutateur avec la commande show running-config."
-                loading="lazy"
-                decoding="async">
-              <figcaption>
-                <p>Configuration initiale du commutateur.</p>
-              </figcaption>
+              <img class="summary-image" src="fp1-img2-running-config-initial.jpg" alt="Affichage de la configuration initiale du commutateur avec la commande show running-config." loading="lazy" decoding="async">
+              <figcaption><p>Configuration initiale du commutateur.</p></figcaption>
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 2 – Configuration du commutateur</h2>
-            <p>
-              J’ai renommé le commutateur avec la commande <strong>hostname S1</strong> afin d’identifier clairement l’équipement dans la topologie.
-            </p>
-            <p>
-              J’ai sécurisé l’accès à la console avec les commandes <strong>line console 0</strong>, <strong>password [mot_de_passe]</strong> et <strong>login</strong> afin d’imposer une authentification lors de l’ouverture de la CLI.
-            </p>
-            <p>
-              J’ai configuré un premier mot de passe pour l’accès au mode privilégié avec la commande <strong>enable password [mot_de_passe]</strong>, puis j’ai activé la commande <strong>service password-encryption</strong> afin de chiffrer les mots de passe visibles dans la configuration.
-            </p>
-            <p>
-              J’ai ensuite renforcé la protection du mode privilégié avec la commande <strong>enable secret [mot_de_passe_secret]</strong>, qui permet de définir un mot de passe secret chiffré pour l’accès administrateur.
-            </p>
-            <p>
-              Enfin, j’ai ajouté une bannière d’avertissement avec la commande <strong>banner motd</strong> afin d’informer que l’accès au système est réservé aux personnes autorisées.
-            </p>
-
+            <p>J’ai renommé le commutateur avec la commande <strong>hostname S1</strong> afin d’identifier clairement l’équipement dans la topologie.</p>
+            <p>J’ai sécurisé l’accès à la console avec les commandes <strong>line console 0</strong>, <strong>password [mot_de_passe]</strong> et <strong>login</strong> afin d’imposer une authentification lors de l’ouverture de la CLI.</p>
+            <p>J’ai configuré un premier mot de passe pour l’accès au mode privilégié avec la commande <strong>enable password [mot_de_passe]</strong>, puis j’ai activé la commande <strong>service password-encryption</strong> afin de chiffrer les mots de passe visibles dans la configuration.</p>
+            <p>J’ai ensuite renforcé la protection du mode privilégié avec la commande <strong>enable secret [mot_de_passe_secret]</strong>, qui permet de définir un mot de passe secret chiffré pour l’accès administrateur.</p>
+            <p>Enfin, j’ai ajouté une bannière d’avertissement avec la commande <strong>banner motd</strong> afin d’informer que l’accès au système est réservé aux personnes autorisées.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="fp1-img3-commandes.jpg"
-                alt="Commandes Cisco IOS utilisées pour configurer les paramètres initiaux du commutateur."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="fp1-img3-commandes.jpg" alt="Commandes Cisco IOS utilisées pour configurer les paramètres initiaux du commutateur." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 3 – Vérification de l’accès sécurisé</h2>
-            <p>
-              Après la configuration, j’ai fermé puis rouvert l’interface CLI du commutateur S1 afin de tester l’accès comme lors d’une nouvelle connexion.
-            </p>
-            <p>
-              J’ai pu constater que la bannière MOTD s’affichait correctement avant l’accès à l’équipement.
-            </p>
-            <p>
-              J’ai également vérifié que les mots de passe étaient bien demandés et, après essai, qu’ils permettaient d’accéder aux niveaux d’administration attendus.
-            </p>
-
+            <p>Après la configuration, j’ai fermé puis rouvert l’interface CLI du commutateur S1 afin de tester l’accès comme lors d’une nouvelle connexion.</p>
+            <p>J’ai pu constater que la bannière MOTD s’affichait correctement avant l’accès à l’équipement.</p>
+            <p>J’ai également vérifié que les mots de passe étaient bien demandés et, après essai, qu’ils permettaient d’accéder aux niveaux d’administration attendus.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="fp1-img4-verifications-connexion.jpg"
-                alt="Vérification de la demande de mot de passe et de l’affichage de la bannière MOTD sur le commutateur."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="fp1-img4-verifications-connexion.jpg" alt="Vérification de la demande de mot de passe et de l’affichage de la bannière MOTD sur le commutateur." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Étape 4 – Vérification finale et sauvegarde</h2>
-            <p>
-              J’ai de nouveau affiché la configuration active du commutateur avec la commande <strong>show running-config</strong>.
-            </p>
-            <p>
-              J’ai pu constater que plusieurs paramètres configurés étaient bien présents : le nom d’hôte <strong>S1</strong>, l’activation du chiffrement des mots de passe, ainsi que les mots de passe du mode privilégié configurés avec <strong>enable password</strong> et <strong>enable secret</strong>.
-            </p>
-            <p>
-              J’ai donc sauvegardé la configuration avec la commande <strong>write memory</strong> afin qu’elle soit conservée après redémarrage du commutateur.
-            </p>
-
+            <p>J’ai de nouveau affiché la configuration active du commutateur avec la commande <strong>show running-config</strong>.</p>
+            <p>J’ai pu constater que plusieurs paramètres configurés étaient bien présents : le nom d’hôte <strong>S1</strong>, l’activation du chiffrement des mots de passe, ainsi que les mots de passe du mode privilégié configurés avec <strong>enable password</strong> et <strong>enable secret</strong>.</p>
+            <p>J’ai donc sauvegardé la configuration avec la commande <strong>write memory</strong> afin qu’elle soit conservée après redémarrage du commutateur.</p>
             <figure class="summary-visual">
-              <img
-                class="summary-image"
-                src="fp1-img5-running-config-final.jpg"
-                alt="Affichage de la configuration finale du commutateur après paramétrage et sauvegarde."
-                loading="lazy"
-                decoding="async">
+              <img class="summary-image" src="fp1-img5-running-config-final.jpg" alt="Affichage de la configuration finale du commutateur après paramétrage et sauvegarde." loading="lazy" decoding="async">
             </figure>
           </article>
 
@@ -212,17 +154,14 @@
                 <dt>Gérer le patrimoine informatique</dt>
                 <dd>Identification, configuration et sauvegarde d’un équipement réseau.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
                 <dd>Sécurisation de l’accès d’administration d’un commutateur.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Mettre à disposition des utilisateurs un service informatique</dt>
                 <dd>Préparation et vérification d’un commutateur avant son intégration dans une infrastructure réseau.</dd>
               </div>
-
               <div class="info-item">
                 <dt>Organiser son développement professionnel</dt>
                 <dd>Développement de compétences en administration réseau Cisco et documentation de la réalisation dans le portfolio.</dd>
@@ -232,15 +171,9 @@
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>
-              Ce TP m’a permis de mieux comprendre les bases de l’administration d’un commutateur Cisco.
-            </p>
-            <p>
-              J’ai appris à utiliser les principaux modes de configuration IOS, à sécuriser les accès d’administration et à vérifier les paramètres appliqués.
-            </p>
-            <p>
-              Cette réalisation est importante car la configuration initiale d’un équipement réseau est une étape essentielle avant sa mise en production.
-            </p>
+            <p>Ce TP m’a permis de mieux comprendre les bases de l’administration d’un commutateur Cisco.</p>
+            <p>J’ai appris à utiliser les principaux modes de configuration IOS, à sécuriser les accès d’administration et à vérifier les paramètres appliqués.</p>
+            <p>Cette réalisation est importante car la configuration initiale d’un équipement réseau est une étape essentielle avant sa mise en production.</p>
           </article>
         </div>
       </section>
