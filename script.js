@@ -16,19 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initThemeToggle() {
-  const toggleBtns = document.querySelectorAll('.theme-toggle');
+  const toggleBtns = document.querySelectorAll('.theme-switch');
   const storageKey = 'theme-preference';
   
   const updateThemeUI = (theme) => {
     const isDark = theme === 'dark';
     
-    // Mettre à jour les boutons
+    // Mettre à jour l'attribut d'accessibilité (Dark mode par défaut = état "on" ou true)
     toggleBtns.forEach(btn => {
-      btn.innerHTML = isDark ? '☀️ Mode clair' : '🌙 Mode sombre';
-      btn.setAttribute('aria-label', isDark ? 'Activer le mode clair' : 'Activer le mode sombre');
+      btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
     });
 
-    // Mettre à jour la couleur du navigateur mobile
+    // Mettre à jour la couleur de la barre de navigation sur mobile
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
       metaThemeColor.setAttribute('content', isDark ? '#020813' : '#f4f7fa');
@@ -41,7 +40,7 @@ function initThemeToggle() {
     updateThemeUI(theme);
   };
 
-  // L'initialisation est récupérée depuis l'attribut du HTML (posé via script inline dans <head>)
+  // Lecture du thème depuis le document (défini par le script inline dans <head>)
   const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
   updateThemeUI(currentTheme);
 
@@ -53,7 +52,7 @@ function initThemeToggle() {
     });
   });
 
-  // Écouter les changements système (OS)
+  // Détection du changement de thème côté système
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem(storageKey)) {
       setTheme(e.matches ? 'dark' : 'light');
