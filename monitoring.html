@@ -65,31 +65,142 @@
       <section class="page-box presentation-box" aria-labelledby="monitoring-title">
         <h1 id="monitoring-title">Veille informatique</h1>
 
-        <div class="timeline">
-          <article class="timeline-content">
-            <h3>Sujet de veille</h3>
-            <p>L’AIOps au service de la supervision d’infrastructure.</p>
-          </article>
-          <article class="timeline-content">
-            <h3>Qu'est-ce que l'AIOps ?</h3>
-            <p>L'AIOps (Artificial Intelligence for IT Operations) est l'application de l'intelligence artificielle et du machine learning pour automatiser, optimiser et anticiper les opérations informatiques.</p>
-          </article>
-          <article class="timeline-content">
-            <h3>Problématique</h3>
-            <p>Comment l’AIOps peut-il améliorer la supervision d’infrastructure en réduisant le bruit des alertes, en détectant les anomalies et en accélérant l’identification des causes d’incident ?</p>
-          </article>
-          <article class="timeline-content">
-            <h3>Objectif général</h3>
-            <p>Suivre l’évolution des outils et des méthodes d’observabilité afin de comprendre comment l’intelligence artificielle peut améliorer la supervision des serveurs, des services et des réseaux.</p>
-          </article>
-          <article class="timeline-content">
-            <h3>Intérêt pour le BTS SIO SISR</h3>
-            <p>Ce sujet permet d’aborder des notions directement liées à l’option SISR, comme la supervision, l’exploitation, la disponibilité des services, la gestion des alertes, le diagnostic d’incident et l’automatisation de l’analyse.</p>
-          </article>
-          <article class="timeline-content">
-            <h3>Résultat attendu</h3>
-            <p>Être capable d’expliquer l’évolution entre supervision classique, observabilité et AIOps, puis d’identifier les apports concrets de ces approches pour une équipe d’exploitation informatique.</p>
-          </article>
+        <div data-tabs>
+          <div class="tab-grid projects-tab-grid" role="tablist" aria-label="Contenu de la veille technologique">
+            <button class="tab-card active" id="tab-synthesis" role="tab" type="button" aria-selected="true" aria-controls="panel-synthesis" tabindex="0">Synthèse technique</button>
+            <button class="tab-card" id="tab-methodology" role="tab" type="button" aria-selected="false" aria-controls="panel-methodology" tabindex="-1">Méthodologie</button>
+            <button class="tab-card" id="tab-articles" role="tab" type="button" aria-selected="false" aria-controls="panel-articles" tabindex="-1">Revue d'articles</button>
+          </div>
+
+          <div class="tab-panels">
+            <section class="tab-panel active" id="panel-synthesis" role="tabpanel" aria-labelledby="tab-synthesis" tabindex="0">
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h2>Sujet : L’AIOps au service de la supervision d’infrastructure</h2>
+                  <p><strong>Problématique :</strong> Comment l’AIOps transforme-t-il la supervision classique en automatisant la détection des anomalies et en accélérant l’identification des causes d’incident réseau ?</p>
+                </article>
+
+                <article class="timeline-content">
+                  <h2>Le constat (Pourquoi l'AIOps ?)</h2>
+                  <p>Avec l'essor du Cloud hybride, de la virtualisation et des architectures distribuées, les systèmes d'information sont devenus extrêmement complexes. Les outils de supervision classiques (ITOM) génèrent des milliers de logs et d'alertes par jour.</p>
+                  <p>Cette surabondance d'informations provoque ce que l'on appelle la <strong>"fatigue des alertes"</strong>. Lors d'une panne, les administrateurs SISR peinent à distinguer le signal pertinent du bruit de fond, allongeant considérablement le temps de diagnostic.</p>
+                </article>
+
+                <article class="timeline-content">
+                  <h2>Définition et Fonctionnement</h2>
+                  <p>L'<strong>AIOps</strong> (Artificial Intelligence for IT Operations) n'est pas un outil qui remplace la supervision, mais une couche intelligente qui vient se greffer par-dessus (comme sur Centreon, Zabbix ou Datadog).</p>
+                  <p>Grâce au Big Data et au Machine Learning, l'outil ingère toutes les données du réseau, modélise le comportement "normal" de l'infrastructure, et détecte automatiquement les anomalies en temps réel, sans que l'administrateur n'ait eu besoin de configurer des seuils manuels (ex: 80% de CPU).</p>
+                </article>
+
+                <article class="timeline-content">
+                  <h2>Les bénéfices pour l'administrateur SISR</h2>
+                  <div class="hanging-block">
+                    <p class="hanging-label">Avantages majeurs :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li><strong>Réduction du bruit :</strong> L'IA corrèle des centaines d'alertes en un seul incident central.</li>
+                      <li><strong>Analyse de la cause racine (RCA) :</strong> L'AIOps pointe instantanément l'équipement défectueux (ex: un switch) à l'origine d'une panne en cascade.</li>
+                      <li><strong>Analyse prédictive :</strong> Détection de la dégradation d'un disque ou d'une bande passante avant que le crash ne se produise.</li>
+                      <li><strong>Baisse du MTTR :</strong> Le temps moyen de résolution est drastiquement réduit.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="tab-panel" id="panel-methodology" role="tabpanel" aria-labelledby="tab-methodology" tabindex="0" hidden>
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h2>Une démarche d'information automatisée</h2>
+                  <p>Pour garantir une veille efficace et pertinente sans y consacrer un temps manuel excessif, j'ai mis en place une démarche basée sur le <strong>modèle Push</strong> (l'information vient à moi) via la syndication de contenu (Flux RSS).</p>
+                </article>
+
+                <dl class="info-grid">
+                  <div class="info-item">
+                    <dt>1. Collecte ciblée (Google Alerts)</dt>
+                    <dd>Création d'alertes avec des opérateurs booléens précis pour filtrer le bruit (ex: <code>"AIOps" AND "supervision"</code> ou <code>"AIOps" AND "infrastructure"</code>). Ces alertes sont converties en flux RSS.</dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>2. Agrégation professionnelle (Feedly)</dt>
+                    <dd>Centralisation des alertes Google et des flux RSS de sites spécialisés (LeMagIT, Silicon.fr, Journal du Net) et de blogs d'éditeurs (Datadog, Dynatrace) dans un tableau de bord unique.</dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>3. Traitement et Tri (Notion)</dt>
+                    <dd>Lecture régulière du flux Feedly et sauvegarde des articles les plus pertinents dans une base de données Notion avec un système d'étiquettes (Date, Thème, Niveau de pertinence).</dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>4. Diffusion (Ce Portfolio)</dt>
+                    <dd>Synthèse des connaissances acquises et mise à disposition des 5 articles majeurs retenus, présentés dans un format accessible et structuré pour le jury.</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+
+            <section class="tab-panel" id="panel-articles" role="tabpanel" aria-labelledby="tab-articles" tabindex="0" hidden>
+              <ul class="project-list">
+                
+                <li>
+                  <a class="project-card" href="https://www.journaldunet.com" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article du JDN">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Février 2026 - Journal du Net</div>
+                        <h3>AIOps : Quand l'intelligence artificielle prend les commandes des opérations IT</h3>
+                      </div>
+                    </div>
+                    <p>Cet article fait un état des lieux de l'adoption de l'AIOps en entreprise. Il explique comment l'IA permet aux équipes d'exploitation de passer d'une posture réactive (réparer après la panne) à une posture proactive.</p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="https://www.oracle.com" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article d'Oracle">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Novembre 2025 - Oracle</div>
+                        <h3>Découvrez comment l'AIOps automatise l'IT</h3>
+                      </div>
+                    </div>
+                    <p>Un article plus technique abordant le fonctionnement concret du Machine Learning pour automatiser la détection des goulots d'étranglement réseau et les problèmes de serveurs dans des environnements Cloud.</p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="https://www.lemagit.fr" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article du Mag IT">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Juillet 2024 - Le Mag IT</div>
+                        <h3>Les nouvelles tendances de la production IT pour optimiser le contrôle</h3>
+                      </div>
+                    </div>
+                    <p>Focus sur la transformation du métier d'administrateur systèmes et réseaux. L'AIOps est présenté comme le meilleur allié de l'humain pour gérer la croissance exponentielle des données générées par l'infrastructure.</p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="https://itsocial.fr" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article IT Social">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Juin 2024 - IT Social</div>
+                        <h3>Centreon : la supervision basée sur l'IA/ML est axée sur l'AIOps</h3>
+                      </div>
+                    </div>
+                    <p>Application concrète avec la solution de supervision Centreon, très utilisée en entreprise. L'article détaille comment l'éditeur intègre des algorithmes d'IA pour analyser les métriques en temps réel.</p>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="project-card" href="https://www.silicon.fr" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article Silicon">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Avril 2024 - Silicon.fr</div>
+                        <h3>Services réseau : malgré l'AIOps, les SLA progressent peu</h3>
+                      </div>
+                    </div>
+                    <p>Un article indispensable offrant un esprit critique sur le sujet. Il démontre que la technologie AIOps, bien que puissante, nécessite une excellente configuration initiale et des équipes formées pour avoir un réel impact sur les SLA (Service Level Agreements).</p>
+                  </a>
+                </li>
+
+              </ul>
+            </section>
+          </div>
         </div>
       </section>
     </div>
