@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet de formation de Damien Zanatta : Déploiement et sécurisation d'un domaine Active Directory.">
+  <meta name="theme-color" content="#020813">
+  <title>Déploiement d'un domaine Active Directory | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <a href="fp1-commutateur.html" class="project-top-link">Projet 1</a>
+        <a href="fp2-routage.html" class="project-top-link">Projet 2</a>
+        <a href="fp3-dhcp.html" class="project-top-link">Projet 3</a>
+        <a href="fp4-activedirectory.html" class="project-top-link active" aria-current="page">Projet 4</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-page-title">
+          <img src="fp4-activedirectory-logo.jpg" alt="Icône Active Directory" class="project-page-logo" width="96" height="96">
+          <div class="project-page-heading">
+            <div class="project-number">Projet 4</div>
+            <h1 id="project-title">Déploiement d'un domaine Active Directory</h1>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>Présentation</h2>
+            <p>Dans le cadre de l'évolution du système d'information, j'ai conçu, déployé et sécurisé une infrastructure d'annuaire centralisée basée sur <strong>Active Directory Domain Services (AD DS)</strong> sous Windows Server 2022.</p>
+            <p>L'objectif était de remplacer l'administration locale décentralisée (modèle Workgroup) par une gestion centralisée des identités, des accès et des politiques de sécurité (GPO) pour l'ensemble du parc informatique.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Objectifs</h2>
+            <ul class="content-list">
+              <li>Préparer et isoler l'environnement de virtualisation réseau.</li>
+              <li>Configurer l'adressage statique et le nommage du serveur.</li>
+              <li>Installer AD DS et promouvoir le contrôleur de domaine racine (sio.local).</li>
+              <li>Structurer la base NTDS (Unités d'Organisation, Groupes, Utilisateurs).</li>
+              <li>Déployer une Stratégie de Groupe (GPO) pour restreindre l'environnement de travail.</li>
+              <li>Intégrer une station Windows 11 au domaine et valider la recette technique.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique</h2>
+            <ul class="content-list">
+              <li><strong>Hyperviseur :</strong> VMware Workstation Pro (Réseau Host-Only)</li>
+              <li><strong>Serveur DC :</strong> Windows Server 2022 Standard (SRV-AD01)</li>
+              <li><strong>Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
+              <li><strong>Technologies :</strong> AD DS, DNS, Stratégies de groupe (GPO), Kerberos, LDAP</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bloc 1 – Le Socle de Virtualisation (Préparation de l'environnement)</h2>
+            <p>Afin de garantir l'étanchéité des tests de recette, j'ai isolé la maquette sur un commutateur virtuel personnalisé (VMnet2) en mode <em>Host-Only</em>.</p>
+            <p>Une action critique consistait à désactiver expressément le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse parasite durant le déploiement des machines virtuelles (SRV-AD01 et PC-CLIENT01).</p>
+            
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img1-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bloc 2 – Déploiement du Noyau de Services (Configuration de SRV-AD01)</h2>
+            <p>Après l'installation de l'OS, j'ai configuré le système (nommage normalisé SRV-AD01) et la carte réseau avec une IP statique stricte (192.168.10.1). Le serveur DNS primaire a été pointé sur la boucle locale (127.0.0.1) afin de préparer l'installation du rôle DNS intégré.</p>
+            <p>J'ai ensuite installé les services de domaine Active Directory via l'assistant de rôles, puis promu le serveur en tant que racine d'une nouvelle forêt d'entreprise nommée <strong>sio.local</strong>, validant ainsi la création de la base de sécurité centralisée.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img2-ip-serveur.jpg" alt="Configuration IPv4 statique de la carte réseau de SRV-AD01." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img3-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'autorité du domaine SIO." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bloc 3 – Gouvernance et Industrialisation de la Sécurité</h2>
+            <p>Pour assurer une gestion granulaire, j'ai structuré l'annuaire en créant l'Unité d'Organisation (OU) parente <strong>SOCIETE-SIO</strong>, contenant les sous-OUs pour les postes et les utilisateurs, ainsi que le compte de test <em>Damien Zanatta</em> et le groupe <em>G_Informatique</em>.</p>
+            <p>J'ai ensuite créé et lié une GPO restrictive directement sur cette arborescence. Cette stratégie de groupe (via les modèles d'administration système) est configurée pour bloquer l'accès interactif à l'invite de commandes pour tous les utilisateurs ciblés par héritage.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img4-aduc.jpg" alt="Console Utilisateurs et Ordinateurs AD montrant l'arborescence et les objets." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img5-gpo.jpg" alt="Éditeur de GPO affichant le paramètre de restriction de l'invite de commandes activé." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bloc 4 – Intégration Client et Recette Technique</h2>
+            <p>Sur la station Windows 11, j'ai configuré l'adressage IP en forçant le serveur DNS préféré sur l'adresse du contrôleur de domaine (192.168.10.1). Un test d'écho ICMP a permis de valider la connectivité réseau de bas niveau.</p>
+            <p>J'ai ensuite rattaché le poste au domaine. La machine a utilisé des enregistrements DNS SRV pour interroger l'annuaire, validé les jetons d'administration et écrit son compte ordinateur de façon sécurisée sur le serveur.</p>
+            <p>Lors de l'ouverture de la session du domaine de Damien Zanatta, les composants système ont appliqué la GPO téléchargée. L'exécution de <code>cmd.exe</code> a été interceptée et le message d'erreur d'administration a validé avec succès l'étanchéité de ma politique de sécurité.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img6-ping.jpg" alt="Test de connectivité ICMP réussi depuis le client vers le serveur." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img7-jonction.jpg" alt="Boîte de dialogue confirmant la bienvenue dans le domaine sio.local." loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img8-session.jpg" alt="Ouverture du menu démarrer sur la session utilisateur du domaine." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img9-cmd-bloque.jpg" alt="Blocage réussi de l'invite de commandes par la GPO." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultats obtenus</h2>
+            <ul class="content-list">
+              <li>Mise en place d'un socle de virtualisation de test étanche.</li>
+              <li>Topologie d'adressage statique respectée (Client/Serveur).</li>
+              <li>Forêt d'entreprise <strong>sio.local</strong> pleinement fonctionnelle.</li>
+              <li>Annuaire NTDS sécurisé et structuré par Unités d'Organisation.</li>
+              <li>Canal de confiance (Kerberos/LDAP) validé entre le DC et le poste de travail.</li>
+              <li>Déploiement et héritage réussis d'une politique de sécurité (GPO).</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique (B1.1)</dt>
+                <dd>Nommage normalisé, adressage IP et structuration sémantique de l'annuaire.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Développer la présence en ligne (B1.3)</dt>
+                <dd>Documentation rigoureuse et publication de l'ingénierie système sur le portfolio web.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Concevoir une solution d'infrastructure réseau (B2.1)</dt>
+                <dd>Isolation d'un segment de réseau privé virtuel et dimensionnement des ressources.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Installer et déployer une infrastructure (B2.2)</dt>
+                <dd>Promotion d'un domaine Active Directory, intégration de station et résolution DNS.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Exploiter et sécuriser une infrastructure (B2.3)</dt>
+                <dd>Verrouillage des privilèges interactifs via le déploiement centralisé de Stratégies de Groupe (GPO).</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>Ce projet de déploiement marque une étape fondamentale dans mon apprentissage de l'administration des systèmes. Il m'a permis de comprendre empiriquement les mécanismes sous-jacents de la gouvernance informatique centralisée.</p>
+            <p>La capacité de gérer l'intégralité du cycle de vie des identités et de sécuriser un parc informatique sans avoir à intervenir localement sur chaque machine, démontre la puissance et la nécessité vitale d'Active Directory dans une infrastructure d'entreprise.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
