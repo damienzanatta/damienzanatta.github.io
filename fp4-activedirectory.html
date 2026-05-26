@@ -103,7 +103,7 @@
 
           <article class="timeline-content">
             <h2>Étape 1 – Préparation de l'environnement virtuel</h2>
-            <p>Afin de garantir l'étanchéité absolue de la maquette, j'ai isolé l'environnement virtuel sur un commutateur dédié (VMnet2) en mode Host-Only.</p>
+            <p>Afin de garantir l'étanchéité absolue de la maquette, j'ai isolé l'environnement virtuel sur un commutateur dédié en mode Host-Only.</p>
             <p>J'ai expressément désactivé le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse IP parasite lors du déploiement des machines virtuelles.</p>
             
             <figure class="summary-visual">
@@ -159,7 +159,7 @@
           <article class="timeline-content">
             <h2>Étape 6 – Déploiement d'une Stratégie de Groupe (GPO)</h2>
             <p>Pour industrialiser la sécurité, j'ai créé une GPO spécifique que j'ai liée à l'OU <strong>SOCIETE-SIO</strong> afin qu'elle s'applique par héritage aux utilisateurs ciblés.</p>
-            <p>Dans l'éditeur de la stratégie, j'ai activé la restriction empêchant l'accès à l'invite de commandes, une mesure courante pour limiter les actions des utilisateurs standards.</p>
+            <p>Dans l'éditeur de la strategy, j'ai activé la restriction empêchant l'accès à l'invite de commandes, une mesure courante pour limiter les actions des utilisateurs standards.</p>
             
             <div class="info-grid">
               <figure class="summary-visual">
@@ -187,9 +187,9 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 8 – Intégration au domaine et tests de recette</h2>
+            <h2>Étape 8 – Intégration et authentification au domaine</h2>
             <p>Après avoir joint le poste client au domaine <strong>sio.local</strong> et redémarré, je me suis authentifié avec les identifiants réseau de mon utilisateur de test (<strong>SIO\dzanatta</strong>).</p>
-            <p>Le Bureau s'est chargé correctement, confirmant l'identité du compte de domaine. Enfin, j'ai tenté d'ouvrir l'invite de commandes, qui a été immédiatement bloquée par le système, prouvant le succès de l'application de la GPO.</p>
+            <p>Le Bureau s'est chargé correctement, confirmant le montage du profil et l'identité du compte de domaine utilisé.</p>
             
             <div class="info-grid">
               <figure class="summary-visual">
@@ -199,6 +199,13 @@
                 <img class="summary-image" src="fp4-img12-session.jpg" alt="Ouverture de la session confirmant l'identité du compte de domaine." loading="lazy" decoding="async">
               </figure>
             </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 9 – Test de recette final (GPO)</h2>
+            <p>Afin de valider la parfaite conformité de la configuration, j'ai tenté d'ouvrir l'invite de commandes.</p>
+            <p>Celle-ci a été immédiatement bloquée par le système avec un message d'avertissement, prouvant le succès absolu de l'application de la GPO de restriction.</p>
+            
             <figure class="summary-visual">
               <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Test final : l'invite de commandes est bien bloquée par la GPO." loading="lazy" decoding="async">
             </figure>
