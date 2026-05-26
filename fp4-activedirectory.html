@@ -102,89 +102,119 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Bloc 1 – Le Socle de Virtualisation (Préparation de l'environnement)</h2>
-            <p>Afin de garantir l'étanchéité des tests de recette, j'ai isolé la maquette sur un commutateur virtuel personnalisé (VMnet2) en mode <em>Host-Only</em>.</p>
-            <p>Une action critique consistait à désactiver expressément le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse parasite durant le déploiement des machines virtuelles (SRV-AD01 et PC-CLIENT01).</p>
-            
+            <h2>Étape 1 – Isolation de l'environnement réseau virtuel</h2>
+            <p>Afin de garantir l'étanchéité absolue des futurs tests de recette, j'ai isolé la maquette sur un commutateur virtuel personnalisé (VMnet2) en mode <em>Host-Only</em>.</p>
+            <p>J'ai expressément décoché le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse IP parasite lors du boot et du provisionnement de mes machines virtuelles.</p>
             <figure class="summary-visual">
               <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
-            <h2>Bloc 2 – Déploiement du Noyau de Services (Configuration de SRV-AD01)</h2>
-            <p>Après l'installation de l'OS, j'ai configuré les propriétés du système pour définir le nommage normalisé (SRV-AD01) et j'ai configuré la carte réseau avec une IP statique stricte (192.168.10.1). Le serveur DNS primaire a été pointé sur la boucle locale (127.0.0.1) afin de préparer l'installation du rôle DNS intégré à l'annuaire.</p>
-            
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img02-sysdm-serveur.jpg" alt="Propriétés système montrant le nom du serveur SRV-AD01." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img03-ip-serveur.jpg" alt="Configuration IPv4 statique de la carte réseau de SRV-AD01." loading="lazy" decoding="async">
-              </figure>
-            </div>
-
-            <p>J'ai ensuite installé les services de domaine Active Directory via le Gestionnaire de serveur, puis promu la machine en tant que racine d'une nouvelle forêt d'entreprise nommée <strong>sio.local</strong>, générant ainsi la partition de domaine.</p>
-
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Gestionnaire de serveur confirmant l'installation des rôles AD DS et DNS." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'autorité du domaine SIO." loading="lazy" decoding="async">
-              </figure>
-            </div>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Bloc 3 – Gouvernance et Industrialisation de la Sécurité</h2>
-            <p>Pour assurer une gestion granulaire alignée sur l'organigramme, j'ai structuré l'annuaire en créant l'Unité d'Organisation (OU) parente <strong>SOCIETE-SIO</strong>, contenant les sous-OUs pour les postes et les utilisateurs. J'y ai intégré le compte de test <em>Damien Zanatta</em> au sein du groupe de sécurité <em>G_Informatique</em>.</p>
-            
+            <h2>Étape 2 – Nommage normalisé du serveur d'infrastructure</h2>
+            <p>Une fois le système d'exploitation Windows Server 2022 déployé, j'ai accédé aux propriétés système avancées via la commande <code>sysdm.cpl</code>.</p>
+            <p>J'ai modifié le nom d'hôte généré aléatoirement par Windows pour définir le nom unique et normalisé <strong>SRV-AD01</strong>, suivi d'un redémarrage de contrôle.</p>
             <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Utilisateurs et Ordinateurs AD montrant l'arborescence et les objets." loading="lazy" decoding="async">
+              <img class="summary-image" src="fp4-img02-sysdm-serveur.jpg" alt="Propriétés système montrant le nom normalisé du serveur SRV-AD01." loading="lazy" decoding="async">
             </figure>
-
-            <p>J'ai ensuite créé une GPO restrictive que j'ai liée directement sur cette arborescence parente. Via les modèles d'administration système, cette stratégie interdit l'accès interactif à l'invite de commandes pour tous les utilisateurs ciblés par héritage.</p>
-
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img07-gpmc-liaison.jpg" alt="Console GPMC montrant la GPO liée à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img08-gpo-edit.jpg" alt="Éditeur de GPO affichant le paramètre de restriction de l'invite de commandes activé." loading="lazy" decoding="async">
-              </figure>
-            </div>
           </article>
 
           <article class="timeline-content">
-            <h2>Bloc 4 – Intégration Client et Recette Technique</h2>
-            <p>Sur la station Windows 11, j'ai configuré l'adressage IP en forçant le serveur DNS préféré sur l'adresse du contrôleur de domaine (192.168.10.1). Cette étape est critique : elle permet au client de localiser les enregistrements SRV de l'annuaire. Un test d'écho ICMP a confirmé la connectivité réseau de bas niveau.</p>
+            <h2>Étape 3 – Configuration de l'adressage IP statique du serveur</h2>
+            <p>Via l'interface réseau classique accessible par `ncpa.cpl`, j'ai affecté des paramètres IP fixes stricts à la carte réseau Ethernet du serveur.</p>
+            <p>J'ai saisi l'adresse IP <strong>192.168.10.1</strong> et forcé le serveur DNS préféré sur la boucle locale (<strong>127.0.0.1</strong>) afin de préparer l'hébergement de la future zone de recherche directe de l'annuaire.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img03-ip-serveur.jpg" alt="Configuration IPv4 statique de la carte réseau de SRV-AD01." loading="lazy" decoding="async">
+            </figure>
+          </article>
 
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img09-ip-client.jpg" alt="Configuration IP du client pointant vers le serveur DNS du domaine." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img10-ping.jpg" alt="Test de connectivité ICMP réussi depuis le client vers le serveur." loading="lazy" decoding="async">
-              </figure>
-            </div>
+          <article class="timeline-content">
+            <h2>Étape 4 – Installation du rôle des services de domaine Active Directory</h2>
+            <p>Depuis le Gestionnaire de serveur, j'ai exécuté l'assistant d'ajout de rôles pour extraire et déployer les binaires logiques des services d'annuaire <strong>AD DS</strong>.</p>
+            <p>Cette action a automatiquement inclus l'installation conjointe des outils d'administration RSAT et du service de résolution de noms DNS intégré à Active Directory.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Gestionnaire de serveur confirmant l'état actif des rôles AD DS et DNS." loading="lazy" decoding="async">
+            </figure>
+          </article>
 
-            <p>J'ai ensuite rattaché le poste au domaine `sio.local` à l'aide des privilèges d'administration requis, puis procédé au redémarrage obligatoire de la station de travail.</p>
-            <p>Au redémarrage de la machine cliente, j'ai sélectionné l'option <strong>"Autre utilisateur"</strong> afin de soumettre la demande d'authentification directement auprès de l'autorité de domaine en spécifiant explicitement la syntaxe <strong>SIO\dzanatta</strong>.</p>
+          <article class="timeline-content">
+            <h2>Étape 5 – Promotion du serveur et authentification d'autorité</h2>
+            <p>J'ai configuré l'opération de déploiement en choisissant l'option "Ajouter une nouvelle forêt" pour initialiser le domaine racine <strong>sio.local</strong>.</p>
+            <p>Après l'exécution de l'assistant DCPromo et le reboot automatique, la mire de connexion s'est mise à jour, confirmant l'accès sécurisé sous l'identité de l'autorité du domaine : <strong>SIO\Administrateur</strong>.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'accès sous l'autorité du domaine SIO." loading="lazy" decoding="async">
+            </figure>
+          </article>
 
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img11-login-client.jpg" alt="Mire de connexion Windows 11 renseignant le compte utilisateur de domaine SIO\dzanatta." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img12-session.jpg" alt="Ouverture de session et initialisation du profil utilisateur Damien Zanatta." loading="lazy" decoding="async">
-              </figure>
-            </div>
+          <article class="timeline-content">
+            <h2>Étape 6 – Structuration de l'annuaire et création des objets de sécurité</h2>
+            <p>À l'aide de la console d'administration `dsa.msc`, j'ai créé une Unité d'Organisation (OU) de premier niveau nommée <strong>SOCIETE-SIO</strong> afin de structurer logiquement les ressources de l'entreprise.</p>
+            <p>Au sein de la sous-OU <code>OU_Utilisateurs</code>, j'ai généré le groupe global de sécurité <strong>G_Informatique</strong> et y ai associé le compte utilisateur de test <strong>dzanatta</strong> (Damien Zanatta).</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Utilisateurs et Ordinateurs Active Directory montrant les objets créés." loading="lazy" decoding="async">
+            </figure>
+          </article>
 
-            <p>Une fois le profil monté et les directives de sécurité téléchargées depuis le dossier centralisé <strong>SYSVOL</strong>, j'ai procédé au test de conformité final. La tentative d'appel au binaire <code>cmd.exe</code> est immédiatement interceptée par le système, validant le succès absolu de la GPO.</p>
+          <article class="timeline-content">
+            <h2>Étape 7 – Création et liaison de la stratégie de groupe (GPO)</h2>
+            <p>Depuis la console de gestion `gpmc.msc`, j'ai industrialisé la sécurité du parc en créant un objet d'infrastructure nommé <strong>GPO_Restrictions_Utilisateurs</strong>.</p>
+            <p>J'ai lié cet objet directement à l'OU parente <strong>SOCIETE-SIO</strong> afin de garantir l'application uniforme des futures directives par héritage sur l'ensemble des comptes enfants.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img07-gpmc-liaison.jpg" alt="Console de gestion des stratégies de groupe montrant l'objet lié à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
+            </figure>
+          </article>
 
-            <figure class="summary-visual" style="max-width: 750px; margin: 0 auto;">
-              <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Blocage réussi de l'invite de commandes par la GPO sous la session utilisateur." loading="lazy" decoding="async">
+          <article class="timeline-content">
+            <h2>Étape 8 – Durcissement de la configuration dans l'éditeur de stratégie</h2>
+            <p>J'ai édité la GPO en suivant le chemin sémantique : <code>Configuration utilisateur > Stratégies > Modèles d'administration > Système</code>.</p>
+            <p>J'ai configuré le paramètre <strong>"Empêcher l'accès à l'invite de commandes"</strong> sur l'état **Activé**, tout en maintenant le traitement des scripts à l'état non restrictif pour préserver l'exécution transparente des scripts de session légitimes.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img08-gpo-edit.jpg" alt="Fenêtre de configuration du modèle d'administration système avec le blocage activé." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 9 – Configuration IP logique de la station cliente Windows 11</h2>
+            <p>Sur la station de travail <code>PC-CLIENT01</code>, j'ai ouvert les propriétés TCP/IPv4 de la carte réseau afin d'aligner ses paramètres logiques sur notre architecture.</p>
+            <p>J'ai assigné l'IP statique <strong>192.168.10.10</strong> et renseigné de façon **impérative** l'adresse IP du contrôleur de domaine (<strong>192.168.10.1</strong>) comme serveur DNS unique de confiance.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img09-ip-client.jpg" alt="Configuration des paramètres IPv4 et du DNS de confiance sur la station cliente." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 10 – Validation de la connectivité réseau de bas niveau</h2>
+            <p>Avant de solliciter l'annuaire, j'ai validé la parfaite communication entre les deux hôtes virtuels isolés sur le commutateur VMnet2.</p>
+            <p>Un test d'écho ICMP (`ping`) exécuté sous un profil d'administration local confirme une liaison de couche 3 fonctionnelle, rapide (latence inférieure à 1ms) et exempte de perte de paquets.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img10-ping.jpg" alt="Invite de commandes Windows 11 validant le succès du ping vers le DC." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 11 – Authentification de la session utilisateur auprès du domaine</h2>
+            <p>Après avoir rattaché avec succès l'ordinateur au domaine via la localisation DNS de l'enregistrement SRV LDAP et opéré un redémarrage, j'ai accédé à la mire de sécurité.</p>
+            <p>J'ai sélectionné l'option de sécurité <strong>"Autre utilisateur"</strong> afin d'aiguiller la demande d'authentification vers l'autorité du domaine en saisissant les identifiants réseau du compte de test : <strong>SIO\dzanatta</strong>.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img11-login-client.jpg" alt="Mire d'authentification réseau Windows 11 ciblant le compte SIO\dzanatta." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 12 – Chargement du profil et initialisation de l'environnement utilisateur</h2>
+            <p>Le protocole **Kerberos** a validé les jetons de sécurité et le service client a monté le profil utilisateur en téléchargeant les directives de stratégies stockées dans le dossier central **SYSVOL**.</p>
+            <p>L'ouverture complète du Bureau et la vérification du menu Démarrer attestent de l'identité nominale du compte de domaine actif : <strong>Damien Zanatta</strong>.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img12-session.jpg" alt="Vérification visuelle de l'identité nominale du compte de domaine sur le bureau." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 13 – Test de recette final et blocage de l'invite de commandes</h2>
+            <p>Afin de valider la parfaite conformité de la recette technique par rapport au cahier des charges, j'ai provoqué l'ouverture d'un terminal en exécutant la commande `cmd`.</p>
+            <p>Les CSE (*Client-Side Extensions*) du système ont intercepté l'appel système et renvoyé le message de restriction attendu, matérialisant le succès absolu du déploiement de ma GPO.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Preuve finale de concept affichant l'interdiction administrative d'exécuter le binaire cmd.exe." loading="lazy" decoding="async">
             </figure>
           </article>
 
