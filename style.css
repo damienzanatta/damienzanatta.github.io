@@ -956,3 +956,18 @@ a.project-card:active {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
 }
+
+/* Alignement et dimensionnement des images uniques pour correspondre à la grille 2 colonnes */
+.single-image {
+  width: calc(50% - 9px);
+  margin: 0 auto;
+}
+.single-image--mb {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 900px) {
+  .single-image {
+    width: 100%;
+  }
+}
