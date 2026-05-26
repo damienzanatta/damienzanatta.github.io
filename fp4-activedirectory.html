@@ -169,22 +169,23 @@
               </figure>
             </div>
 
-            <p>J'ai ensuite rattaché le poste au domaine. Après validation des jetons d'administration, le serveur a écrit le compte ordinateur de façon sécurisée dans la base NTDS, confirmant la liaison d'approbation par un message de bienvenue.</p>
-
-            <figure class="summary-visual" style="max-width: 700px; margin: 0 auto 22px;">
-              <img class="summary-image" src="fp4-img11-jonction.jpg" alt="Boîte de dialogue confirmant la bienvenue dans le domaine sio.local." loading="lazy" decoding="async">
-            </figure>
-
-            <p>Lors de l'ouverture de la session du domaine de Damien Zanatta, les composants système ont appliqué la GPO téléchargée. L'exécution de <code>cmd.exe</code> a été interceptée et le message d'erreur d'administration a validé avec succès l'étanchéité de ma politique de sécurité.</p>
+            <p>J'ai ensuite rattaché le poste au domaine `sio.local` à l'aide des privilèges d'administration requis, puis procédé au redémarrage obligatoire de la station de travail.</p>
+            <p>Au redémarrage de la machine cliente, j'ai sélectionné l'option <strong>"Autre utilisateur"</strong> afin de soumettre la demande d'authentification directement auprès de l'autorité de domaine en spécifiant explicitement la syntaxe <strong>SIO\dzanatta</strong>.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img12-session.jpg" alt="Ouverture du menu démarrer sur la session utilisateur du domaine." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img11-login-client.jpg" alt="Mire de connexion Windows 11 renseignant le compte utilisateur de domaine SIO\dzanatta." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Blocage réussi de l'invite de commandes par la GPO." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img12-session.jpg" alt="Ouverture de session et initialisation du profil utilisateur Damien Zanatta." loading="lazy" decoding="async">
               </figure>
             </div>
+
+            <p>Une fois le profil monté et les directives de sécurité téléchargées depuis le dossier centralisé <strong>SYSVOL</strong>, j'ai procédé au test de conformité final. La tentative d'appel au binaire <code>cmd.exe</code> est immédiatement interceptée par le système, validant le succès absolu de la GPO.</p>
+
+            <figure class="summary-visual" style="max-width: 750px; margin: 0 auto;">
+              <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Blocage réussi de l'invite de commandes par la GPO sous la session utilisateur." loading="lazy" decoding="async">
+            </figure>
           </article>
 
           <article class="timeline-content">
