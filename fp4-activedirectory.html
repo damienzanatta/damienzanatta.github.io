@@ -107,60 +107,82 @@
             <p>Une action critique consistait à désactiver expressément le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse parasite durant le déploiement des machines virtuelles (SRV-AD01 et PC-CLIENT01).</p>
             
             <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img1-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
+              <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Bloc 2 – Déploiement du Noyau de Services (Configuration de SRV-AD01)</h2>
-            <p>Après l'installation de l'OS, j'ai configuré le système (nommage normalisé SRV-AD01) et la carte réseau avec une IP statique stricte (192.168.10.1). Le serveur DNS primaire a été pointé sur la boucle locale (127.0.0.1) afin de préparer l'installation du rôle DNS intégré.</p>
-            <p>J'ai ensuite installé les services de domaine Active Directory via l'assistant de rôles, puis promu le serveur en tant que racine d'une nouvelle forêt d'entreprise nommée <strong>sio.local</strong>, validant ainsi la création de la base de sécurité centralisée.</p>
+            <p>Après l'installation de l'OS, j'ai configuré les propriétés du système pour définir le nommage normalisé (SRV-AD01) et j'ai configuré la carte réseau avec une IP statique stricte (192.168.10.1). Le serveur DNS primaire a été pointé sur la boucle locale (127.0.0.1) afin de préparer l'installation du rôle DNS intégré à l'annuaire.</p>
+            
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img02-sysdm-serveur.jpg" alt="Propriétés système montrant le nom du serveur SRV-AD01." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img03-ip-serveur.jpg" alt="Configuration IPv4 statique de la carte réseau de SRV-AD01." loading="lazy" decoding="async">
+              </figure>
+            </div>
+
+            <p>J'ai ensuite installé les services de domaine Active Directory via le Gestionnaire de serveur, puis promu la machine en tant que racine d'une nouvelle forêt d'entreprise nommée <strong>sio.local</strong>, générant ainsi la partition de domaine.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img2-ip-serveur.jpg" alt="Configuration IPv4 statique de la carte réseau de SRV-AD01." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Gestionnaire de serveur confirmant l'installation des rôles AD DS et DNS." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img3-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'autorité du domaine SIO." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'autorité du domaine SIO." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Bloc 3 – Gouvernance et Industrialisation de la Sécurité</h2>
-            <p>Pour assurer une gestion granulaire, j'ai structuré l'annuaire en créant l'Unité d'Organisation (OU) parente <strong>SOCIETE-SIO</strong>, contenant les sous-OUs pour les postes et les utilisateurs, ainsi que le compte de test <em>Damien Zanatta</em> et le groupe <em>G_Informatique</em>.</p>
-            <p>J'ai ensuite créé et lié une GPO restrictive directement sur cette arborescence. Cette stratégie de groupe (via les modèles d'administration système) est configurée pour bloquer l'accès interactif à l'invite de commandes pour tous les utilisateurs ciblés par héritage.</p>
+            <p>Pour assurer une gestion granulaire alignée sur l'organigramme, j'ai structuré l'annuaire en créant l'Unité d'Organisation (OU) parente <strong>SOCIETE-SIO</strong>, contenant les sous-OUs pour les postes et les utilisateurs. J'y ai intégré le compte de test <em>Damien Zanatta</em> au sein du groupe de sécurité <em>G_Informatique</em>.</p>
+            
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Utilisateurs et Ordinateurs AD montrant l'arborescence et les objets." loading="lazy" decoding="async">
+            </figure>
+
+            <p>J'ai ensuite créé une GPO restrictive que j'ai liée directement sur cette arborescence parente. Via les modèles d'administration système, cette stratégie interdit l'accès interactif à l'invite de commandes pour tous les utilisateurs ciblés par héritage.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img4-aduc.jpg" alt="Console Utilisateurs et Ordinateurs AD montrant l'arborescence et les objets." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img07-gpmc-liaison.jpg" alt="Console GPMC montrant la GPO liée à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img5-gpo.jpg" alt="Éditeur de GPO affichant le paramètre de restriction de l'invite de commandes activé." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img08-gpo-edit.jpg" alt="Éditeur de GPO affichant le paramètre de restriction de l'invite de commandes activé." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
             <h2>Bloc 4 – Intégration Client et Recette Technique</h2>
-            <p>Sur la station Windows 11, j'ai configuré l'adressage IP en forçant le serveur DNS préféré sur l'adresse du contrôleur de domaine (192.168.10.1). Un test d'écho ICMP a permis de valider la connectivité réseau de bas niveau.</p>
-            <p>J'ai ensuite rattaché le poste au domaine. La machine a utilisé des enregistrements DNS SRV pour interroger l'annuaire, validé les jetons d'administration et écrit son compte ordinateur de façon sécurisée sur le serveur.</p>
+            <p>Sur la station Windows 11, j'ai configuré l'adressage IP en forçant le serveur DNS préféré sur l'adresse du contrôleur de domaine (192.168.10.1). Cette étape est critique : elle permet au client de localiser les enregistrements SRV de l'annuaire. Un test d'écho ICMP a confirmé la connectivité réseau de bas niveau.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img09-ip-client.jpg" alt="Configuration IP du client pointant vers le serveur DNS du domaine." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img10-ping.jpg" alt="Test de connectivité ICMP réussi depuis le client vers le serveur." loading="lazy" decoding="async">
+              </figure>
+            </div>
+
+            <p>J'ai ensuite rattaché le poste au domaine. Après validation des jetons d'administration, le serveur a écrit le compte ordinateur de façon sécurisée dans la base NTDS, confirmant la liaison d'approbation par un message de bienvenue.</p>
+
+            <figure class="summary-visual" style="max-width: 700px; margin: 0 auto 22px;">
+              <img class="summary-image" src="fp4-img11-jonction.jpg" alt="Boîte de dialogue confirmant la bienvenue dans le domaine sio.local." loading="lazy" decoding="async">
+            </figure>
+
             <p>Lors de l'ouverture de la session du domaine de Damien Zanatta, les composants système ont appliqué la GPO téléchargée. L'exécution de <code>cmd.exe</code> a été interceptée et le message d'erreur d'administration a validé avec succès l'étanchéité de ma politique de sécurité.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img6-ping.jpg" alt="Test de connectivité ICMP réussi depuis le client vers le serveur." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img12-session.jpg" alt="Ouverture du menu démarrer sur la session utilisateur du domaine." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img7-jonction.jpg" alt="Boîte de dialogue confirmant la bienvenue dans le domaine sio.local." loading="lazy" decoding="async">
-              </figure>
-            </div>
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img8-session.jpg" alt="Ouverture du menu démarrer sur la session utilisateur du domaine." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img9-cmd-bloque.jpg" alt="Blocage réussi de l'invite de commandes par la GPO." loading="lazy" decoding="async">
+                <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Blocage réussi de l'invite de commandes par la GPO." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
