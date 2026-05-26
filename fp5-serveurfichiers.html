@@ -131,7 +131,7 @@
             <p>Dans l'éditeur, j'ai créé un "Lecteur mappé" pointant vers le chemin UNC <strong>\\SRV-AD01\Partages_SOCIETE</strong> avec la lettre <strong>Z</strong>.</p>
             <p>J'ai pris soin de cocher l'option <strong>Exécuter dans le contexte de sécurité de l'utilisateur connecté</strong> afin de garantir que le montage respecte les droits de la session active.</p>
 
-            <figure class="summary-visual" style="margin-bottom: 18px;">
+            <figure class="summary-visual single-image single-image--mb">
               <img class="summary-image" src="fp5-img05-gpo-liaison.jpg" alt="Console gpmc.msc montrant la GPO liée à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
             </figure>
             <div class="info-grid">
@@ -149,10 +149,10 @@
             <p>Sur la station Windows 11, je me suis authentifié avec mon compte de test <strong>SIO\dzanatta</strong>.</p>
             <p>Pour forcer l'application immédiate de ma nouvelle GPO, j'ai ouvert la boîte <strong>Exécuter</strong> et lancé la commande <strong>gpupdate /force</strong>, suivie d'une reconnexion.</p>
 
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="fp5-img08-client-session.jpg" alt="PC Windows 11 déverrouillé, session SIO\dzanatta visible." loading="lazy" decoding="async">
+            </figure>
             <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp5-img08-client-session.jpg" alt="PC Windows 11 déverrouillé, session SIO\dzanatta visible." loading="lazy" decoding="async">
-              </figure>
               <figure class="summary-visual">
                 <img class="summary-image" src="fp5-img09-client-gpupdate-saisie.jpg" alt="Boîte Exécuter avec la commande gpupdate /force saisie." loading="lazy" decoding="async">
               </figure>
@@ -167,10 +167,10 @@
             <p>Dans l'Explorateur de fichiers, j'ai pu constater la présence du volume <strong>Partage Informatique (Z:)</strong>.</p>
             <p>J'ai navigué à l'intérieur et créé avec succès un fichier <strong>test.txt</strong>, validant à la fois la GPO et mes autorisations NTFS.</p>
 
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="fp5-img11-client-lecteur-z.jpg" alt="Explorateur affichant le volume Partage Informatique (Z:)." loading="lazy" decoding="async">
+            </figure>
             <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp5-img11-client-lecteur-z.jpg" alt="Explorateur affichant le volume Partage Informatique (Z:)." loading="lazy" decoding="async">
-              </figure>
               <figure class="summary-visual">
                 <img class="summary-image" src="fp5-img12-client-nouveau-fichier.jpg" alt="Intérieur du lecteur Z: montrant le clic droit Nouveau Document." loading="lazy" decoding="async">
               </figure>
