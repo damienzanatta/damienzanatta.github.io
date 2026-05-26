@@ -141,7 +141,7 @@
             <p>J’ai appliqué l’encapsulation <strong>dot1Q</strong> sur chaque sous-interface afin d’associer chaque interface logique au VLAN correspondant.</p>
             <p>J’ai attribué les adresses IP <strong>172.17.10.1</strong> et <strong>172.17.30.1</strong> aux sous-interfaces afin qu’elles servent de passerelles par défaut pour les postes clients.</p>
             <p>J’ai terminé en activant l’interface physique <strong>G0/0</strong> avec la commande <strong>no shutdown</strong>, ce qui a permis d’activer les sous-interfaces.</p>
-            <figure class="summary-visual">
+            <figure class="summary-visual single-image">
               <img class="summary-image" src="fp2-img5-configuration-sous-interfaces.jpg" alt="Configuration des sous-interfaces G0/0.10 et G0/0.30 du routeur R1 avec encapsulation dot1Q et adresses IP." loading="lazy" decoding="async">
             </figure>
           </article>
@@ -152,7 +152,7 @@
             <p>Cette configuration est indispensable dans la méthode router-on-a-stick, car un seul lien physique transporte plusieurs réseaux logiques.</p>
             <p>J’ai vérifié le trunking avec la commande <strong>show interfaces trunk</strong>.</p>
             <p>La sortie de commande confirme que le port <strong>Gig0/1</strong> est en mode trunk, utilise l’encapsulation <strong>802.1Q</strong> et autorise le passage des VLAN nécessaires.</p>
-            <figure class="summary-visual">
+            <figure class="summary-visual single-image">
               <img class="summary-image" src="fp2-img6-activation-trunking.jpg" alt="Activation et vérification du trunking sur l’interface Gig0/1 du commutateur S1." loading="lazy" decoding="async">
             </figure>
           </article>
