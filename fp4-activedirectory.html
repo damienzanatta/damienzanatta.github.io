@@ -1,55 +1,275 @@
-<section class="realisation-ad">
-    <h2>Mise en place d'un annuaire Active Directory</h2>
-    <p>Déploiement, configuration et sécurisation d'un contrôleur de domaine sous Windows Server pour centraliser la gestion des utilisateurs et des postes de l'entreprise.</p>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet de formation de Damien Zanatta : Déploiement et sécurisation d'un domaine Active Directory.">
+  <meta name="theme-color" content="#020813">
+  <title>Déploiement d'un domaine Active Directory | Damien Zanatta</title>
 
-    <hr>
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
-    <div class="etape">
-        <h3>Étape 1 : Installation du rôle AD DS</h3>
-        <p>Préparation du serveur local (nommage, IP fixe) et ajout du rôle Active Directory Domain Services via le Gestionnaire de serveur.</p>
-        <div class="galerie-images">
-            <img src="image1.jpg" alt="Configuration IP et nom du serveur" width="300">
-            <img src="image2.jpg" alt="Assistant d'ajout de rôles" width="300">
-            <img src="image3.jpg" alt="Installation AD DS terminée" width="300">
-        </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
+        <a href="projects.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <a href="fp1-commutateur.html" class="project-top-link">Projet 1</a>
+        <a href="fp2-routage.html" class="project-top-link">Projet 2</a>
+        <a href="fp3-dhcp.html" class="project-top-link">Projet 3</a>
+        <a href="fp4-activedirectory.html" class="project-top-link active" aria-current="page">Projet 4</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
     </div>
+  </header>
 
-    <div class="etape">
-        <h3>Étape 2 : Promotion en contrôleur de domaine</h3>
-        <p>Création de la nouvelle forêt, configuration du serveur DNS intégré et définition du mot de passe de restauration (DSRM).</p>
-        <div class="galerie-images">
-            <img src="image4.jpg" alt="Promotion du serveur" width="300">
-            <img src="image5.jpg" alt="Configuration de la forêt" width="300">
-            <img src="image6.jpg" alt="Vérification des prérequis" width="300">
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-page-title">
+          <img src="fp4-activedirectory-logo.jpg" alt="Icône Active Directory" class="project-page-logo" width="96" height="96">
+          <div class="project-page-heading">
+            <div class="project-number">Projet 4</div>
+            <h1 id="project-title">Déploiement d'un domaine Active Directory</h1>
+          </div>
         </div>
-    </div>
 
-    <div class="etape">
-        <h3>Étape 3 : Création de l'arborescence et des comptes</h3>
-        <p>Structuration de l'annuaire avec des Unités d'Organisation (OU) par services, et création des comptes utilisateurs et groupes de sécurité.</p>
-        <div class="galerie-images">
-            <img src="image7.jpg" alt="Console Utilisateurs et ordinateurs AD" width="300">
-            <img src="image8.jpg" alt="Création d'une Unité d'Organisation" width="300">
-            <img src="image9.jpg" alt="Propriétés d'un compte utilisateur" width="300">
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>Présentation</h2>
+            <p>Dans le cadre de l'évolution du système d'information, j'ai conçu, déployé et sécurisé une infrastructure d'annuaire centralisée basée sur <strong>Active Directory Domain Services (AD DS)</strong> sous Windows Server 2022.</p>
+            <p>L'objectif était de remplacer l'administration locale décentralisée (modèle Workgroup) par une gestion centralisée des identités, des accès et des politiques de sécurité (GPO) pour l'ensemble du parc informatique.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Objectifs</h2>
+            <ul class="content-list">
+              <li>Préparer et isoler l'environnement de virtualisation réseau.</li>
+              <li>Configurer l'adressage statique et le nommage du serveur.</li>
+              <li>Installer AD DS et promouvoir le contrôleur de domaine racine (sio.local).</li>
+              <li>Structurer la base NTDS (Unités d'Organisation, Groupes, Utilisateurs).</li>
+              <li>Déployer une Stratégie de Groupe (GPO) pour restreindre l'environnement de travail.</li>
+              <li>Intégrer une station Windows 11 au domaine et valider la recette technique.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique</h2>
+            <ul class="content-list">
+              <li><strong>Hyperviseur :</strong> VMware Workstation Pro (Réseau Host-Only)</li>
+              <li><strong>Serveur DC :</strong> Windows Server 2022 Standard (SRV-AD01)</li>
+              <li><strong>Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
+              <li><strong>Technologies :</strong> AD DS, DNS, Stratégies de groupe (GPO), Kerberos, LDAP</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 1 – Isolation de l'environnement réseau virtuel</h2>
+            <p>Afin de garantir l'étanchéité absolue des futurs tests de recette, j'ai isolé la maquette sur un commutateur virtuel personnalisé (VMnet2) en mode <em>Host-Only</em>.</p>
+            <p>J'ai expressément décoché le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse IP parasite lors du boot et du provisionnement de mes machines virtuelles.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 2 – Nommage normalisé du serveur d'infrastructure</h2>
+            <p>Une fois le système d'exploitation Windows Server 2022 déployé, j'ai accédé aux propriétés système avancées via la commande <code>sysdm.cpl</code>.</p>
+            <p>J'ai modifié le nom d'hôte généré aléatoirement par Windows pour définir le nom unique et normalisé <strong>SRV-AD01</strong>, suivi d'un redémarrage de contrôle.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img02-sysdm-serveur.jpg" alt="Propriétés système montrant le nom normalisé du serveur SRV-AD01." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 3 – Configuration de l'adressage IP statique du serveur</h2>
+            <p>Via l'interface réseau classique accessible par `ncpa.cpl`, j'ai affecté des paramètres IP fixes stricts à la carte réseau Ethernet du serveur.</p>
+            <p>J'ai saisi l'adresse IP <strong>192.168.10.1</strong> et forcé le serveur DNS préféré sur la boucle locale (<strong>127.0.0.1</strong>) afin de préparer l'hébergement de la future zone de recherche directe de l'annuaire.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img03-ip-serveur.jpg" alt="Configuration IPv4 statique de la carte réseau de SRV-AD01." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 4 – Installation du rôle des services de domaine Active Directory</h2>
+            <p>Depuis le Gestionnaire de serveur, j'ai exécuté l'assistant d'ajout de rôles pour extraire et déployer les binaires logiques des services d'annuaire <strong>AD DS</strong>.</p>
+            <p>Cette action a automatiquement inclus l'installation conjointe des outils d'administration RSAT et du service de résolution de noms DNS intégré à Active Directory.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Gestionnaire de serveur confirmant l'état actif des rôles AD DS et DNS." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 5 – Promotion du serveur et authentification d'autorité</h2>
+            <p>J'ai configuré l'opération de déploiement en choisissant l'option "Ajouter une nouvelle forêt" pour initialiser le domaine racine <strong>sio.local</strong>.</p>
+            <p>Après l'exécution de l'assistant DCPromo et le reboot automatique, la mire de connexion s'est mise à jour, confirmant l'accès sécurisé sous l'identité de l'autorité du domaine : <strong>SIO\Administrateur</strong>.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'accès sous l'autorité du domaine SIO." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 6 – Structuration de l'annuaire et création des objets de sécurité</h2>
+            <p>À l'aide de la console d'administration `dsa.msc`, j'ai créé une Unité d'Organisation (OU) de premier niveau nommée <strong>SOCIETE-SIO</strong> afin de structurer logiquement les ressources de l'entreprise.</p>
+            <p>Au sein de la sous-OU <code>OU_Utilisateurs</code>, j'ai généré le groupe global de sécurité <strong>G_Informatique</strong> et y ai associé le compte utilisateur de test <strong>dzanatta</strong> (Damien Zanatta).</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Utilisateurs et Ordinateurs Active Directory montrant les objets créés." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 7 – Création et liaison de la stratégie de groupe (GPO)</h2>
+            <p>Depuis la console de gestion `gpmc.msc`, j'ai industrialisé la sécurité du parc en créant un objet d'infrastructure nommé <strong>GPO_Restrictions_Utilisateurs</strong>.</p>
+            <p>J'ai lié cet objet directement à l'OU parente <strong>SOCIETE-SIO</strong> afin de garantir l'application uniforme des futures directives par héritage sur l'ensemble des comptes enfants.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img07-gpmc-liaison.jpg" alt="Console de gestion des stratégies de groupe montrant l'objet lié à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 8 – Durcissement de la configuration dans l'éditeur de stratégie</h2>
+            <p>J'ai édité la GPO en suivant le chemin sémantique : <code>Configuration utilisateur > Stratégies > Modèles d'administration > Système</code>.</p>
+            <p>J'ai configuré le paramètre <strong>"Empêcher l'accès à l'invite de commandes"</strong> sur l'état **Activé**, tout en maintenant le traitement des scripts à l'état non restrictif pour préserver l'exécution transparente des scripts de session légitimes.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img08-gpo-edit.jpg" alt="Fenêtre de configuration du modèle d'administration système avec le blocage activé." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 9 – Configuration IP logique de la station cliente Windows 11</h2>
+            <p>Sur la station de travail <code>PC-CLIENT01</code>, j'ai ouvert les propriétés TCP/IPv4 de la carte réseau afin d'aligner ses paramètres logiques sur notre architecture.</p>
+            <p>J'ai assigné l'IP statique <strong>192.168.10.10</strong> et renseigné de façon **impérative** l'adresse IP du contrôleur de domaine (<strong>192.168.10.1</strong>) comme serveur DNS unique de confiance.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img09-ip-client.jpg" alt="Configuration des paramètres IPv4 et du DNS de confiance sur la station cliente." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 10 – Validation de la connectivité réseau de bas niveau</h2>
+            <p>Avant de solliciter l'annuaire, j'ai validé la parfaite communication entre les deux hôtes virtuels isolés sur le commutateur VMnet2.</p>
+            <p>Un test d'écho ICMP (`ping`) exécuté sous un profil d'administration local confirme une liaison de couche 3 fonctionnelle, rapide (latence inférieure à 1ms) et exempte de perte de paquets.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img10-ping.jpg" alt="Invite de commandes Windows 11 validant le succès du ping vers le DC." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 11 – Authentification de la session utilisateur auprès du domaine</h2>
+            <p>Après avoir rattaché avec succès l'ordinateur au domaine via la localisation DNS de l'enregistrement SRV LDAP et opéré un redémarrage, j'ai accédé à la mire de sécurité.</p>
+            <p>J'ai sélectionné l'option de sécurité <strong>"Autre utilisateur"</strong> afin d'aiguiller la demande d'authentification vers l'autorité du domaine en saisissant les identifiants réseau du compte de test : <strong>SIO\dzanatta</strong>.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img11-login-client.jpg" alt="Mire d'authentification réseau Windows 11 ciblant le compte SIO\dzanatta." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 12 – Chargement du profil et initialisation de l'environnement utilisateur</h2>
+            <p>Le protocole **Kerberos** a validé les jetons de sécurité et le service client a monté le profil utilisateur en téléchargeant les directives de stratégies stockées dans le dossier central **SYSVOL**.</p>
+            <p>L'ouverture complète du Bureau et la vérification du menu Démarrer attestent de l'identité nominale du compte de domaine actif : <strong>Damien Zanatta</strong>.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img12-session.jpg" alt="Vérification visuelle de l'identité nominale du compte de domaine sur le bureau." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 13 – Test de recette final et blocage de l'invite de commandes</h2>
+            <p>Afin de valider la parfaite conformité de la recette technique par rapport au cahier des charges, j'ai provoqué l'ouverture d'un terminal en exécutant la commande `cmd`.</p>
+            <p>Les CSE (*Client-Side Extensions*) du système ont intercepté l'appel système et renvoyé le message de restriction attendu, matérialisant le succès absolu du déploiement de ma GPO.</p>
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Preuve finale de concept affichant l'interdiction administrative d'exécuter le binaire cmd.exe." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultats obtenus</h2>
+            <ul class="content-list">
+              <li>Mise en place d'un socle de virtualisation de test étanche.</li>
+              <li>Topologie d'adressage statique respectée (Client/Serveur).</li>
+              <li>Forêt d'entreprise <strong>sio.local</strong> pleinement fonctionnelle.</li>
+              <li>Annuaire NTDS sécurisé et structuré par Unités d'Organisation.</li>
+              <li>Canal de confiance (Kerberos/LDAP) validé entre le DC et le poste de travail.</li>
+              <li>Déploiement et héritage réussis d'une politique de sécurité (GPO).</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique (B1.1)</dt>
+                <dd>Nommage normalisé, adressage IP et structuration sémantique de l'annuaire.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Développer la présence en ligne (B1.3)</dt>
+                <dd>Documentation rigoureuse et publication de l'ingénierie système sur le portfolio web.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Concevoir une solution d'infrastructure réseau (B2.1)</dt>
+                <dd>Isolation d'un segment de réseau privé virtuel et dimensionnement des ressources.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Installer et déployer une infrastructure (B2.2)</dt>
+                <dd>Promotion d'un domaine Active Directory, intégration de station et résolution DNS.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Exploiter et sécuriser une infrastructure (B2.3)</dt>
+                <dd>Verrouillage des privilèges interactifs via le déploiement centralisé de Stratégies de Groupe (GPO).</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>Ce projet de déploiement marque une étape fondamentale dans mon apprentissage de l'administration des systèmes. Il m'a permis de comprendre empiriquement les mécanismes sous-jacents de la gouvernance informatique centralisée.</p>
+            <p>La capacité de gérer l'intégralité du cycle de vie des identités et de sécuriser un parc informatique sans avoir à intervenir localement sur chaque machine, démontre la puissance et la nécessité vitale d'Active Directory dans une infrastructure d'entreprise.</p>
+          </article>
         </div>
+      </section>
     </div>
+  </main>
 
-    <div class="etape">
-        <h3>Étape 4 : Déploiement des stratégies de groupe (GPO)</h3>
-        <p>Mise en place de règles de sécurité : restrictions d'accès au panneau de configuration et mappage automatique des lecteurs réseaux.</p>
-        <div class="galerie-images">
-            <img src="image10.jpg" alt="Console de gestion des stratégies de groupe" width="450">
-            <img src="image11.jpg" alt="Édition d'une GPO spécifique" width="450">
-        </div>
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
     </div>
-
-    <div class="etape">
-        <h3>Étape 5 : Jonction du poste client et tests de validation</h3>
-        <p>Intégration d'un poste Windows 10/11 au domaine, connexion avec un compte utilisateur standard et vérification de l'application des GPO.</p>
-        <div class="galerie-images">
-            <img src="image12.jpg" alt="Jonction du PC client au domaine" width="450">
-            <img src="image13.jpg" alt="Test de connexion et vérification des droits" width="450">
-        </div>
-    </div>
-
-</section>
+  </footer>
+</body>
+</html>
