@@ -128,7 +128,8 @@
           <article class="timeline-content">
             <h2>Étape 3 – Création de la GPO de mappage réseau</h2>
             <p>Dans la console de Gestion des stratégies de groupe (gpmc.msc), j'ai créé et lié une nouvelle GPO nommée <strong>GPO_Lecteurs_Reseaux</strong> directement sur l'Unité d'Organisation <strong>SOCIETE-SIO</strong>.</p>
-            <p>Dans l'éditeur, j'ai créé un "Lecteur mappé" pointant vers le chemin UNC <strong>\\SRV-AD01\Partages_SOCIETE</strong> avec la lettre <strong>Z</strong>. J'ai pris soin de cocher l'option <strong>Exécuter dans le contexte de sécurité de l'utilisateur connecté</strong> afin de garantir que le montage respecte les droits de la session active.</p>
+            <p>Dans l'éditeur, j'ai créé un "Lecteur mappé" pointant vers le chemin UNC <strong>\\SRV-AD01\Partages_SOCIETE</strong> avec la lettre <strong>Z</strong>.</p>
+			<p>J'ai pris soin de cocher l'option <strong>Exécuter dans le contexte de sécurité de l'utilisateur connecté</strong> afin de garantir que le montage respecte les droits de la session active.</p>
 
             <figure class="summary-visual">
               <img class="summary-image" src="fp5-img05-gpo-liaison.jpg" alt="Console gpmc.msc montrant la GPO liée à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
@@ -146,8 +147,9 @@
           <article class="timeline-content">
             <h2>Étape 4 – Actualisation des stratégies et recette technique</h2>
             <p>Sur la station Windows 11, je me suis authentifié avec mon compte de test <strong>SIO\dzanatta</strong>.</p>
-			<p>Pour forcer l'application immédiate de ma nouvelle GPO, j'ai ouvert la boîte Exécuter et lancé la commande <strong>gpupdate /force</strong>, suivie d'une reconnexion.</p>
-            <p>Dans l'Explorateur de fichiers, j'ai pu constater la présence du volume <strong>Partage Informatique (Z:)</strong>. J'ai navigué à l'intérieur et créé avec succès un fichier <strong>test.txt</strong>, validant à la fois la GPO et mes autorisations NTFS.</p>
+			<p>Pour forcer l'application immédiate de ma nouvelle GPO, j'ai ouvert la boîte <strong>Exécuter</strong> et lancé la commande <strong>gpupdate /force</strong>, suivie d'une reconnexion.</p>
+            <p>Dans l'Explorateur de fichiers, j'ai pu constater la présence du volume <strong>Partage Informatique (Z:)</strong>.</p>
+			<p>J'ai navigué à l'intérieur et créé avec succès un fichier <strong>test.txt</strong>, validant à la fois la GPO et mes autorisations NTFS.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
