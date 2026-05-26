@@ -95,8 +95,8 @@
           <article class="timeline-content">
             <h2>Environnement technique</h2>
             <ul class="content-list">
-              <li><strong>Hyperviseur :</strong> VMware Workstation Pro</li>
-              <li><strong>Serveur :</strong> Windows Server 2022 (SRV-AD01)</li>
+              <li><strong>Hyperviseur :</strong> VMware Workstation Pro (Réseau Host-Only)</li>
+              <li><strong>Serveur :</strong> Windows Server 2022 Standard (SRV-AD01)</li>
               <li><strong>Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
               <li><strong>Technologies :</strong> AD DS, DNS, Stratégies de groupe (GPO), Kerberos, LDAP</li>
             </ul>
@@ -107,7 +107,7 @@
             <p>Afin de garantir l'étanchéité absolue de la maquette, j'ai isolé l'environnement virtuel sur un commutateur dédié en mode Host-Only.</p>
             <p>J'ai expressément désactivé le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse IP parasite lors du déploiement des machines virtuelles.</p>
             
-            <figure class="summary-visual">
+            <figure class="summary-visual single-image">
               <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
             </figure>
           </article>
@@ -132,7 +132,7 @@
             <p>Depuis le Gestionnaire de serveur, j'ai exécuté l'assistant d'ajout de rôles pour installer les services de domaine Active Directory (AD DS).</p>
             <p>Cette action a également inclus l'installation du service DNS, indispensable au bon fonctionnement de l'annuaire et à la résolution des noms dans le domaine.</p>
             
-            <figure class="summary-visual">
+            <figure class="summary-visual single-image">
               <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Installation du rôle AD DS depuis le Gestionnaire de serveur." loading="lazy" decoding="async">
             </figure>
           </article>
@@ -142,7 +142,7 @@
             <p>Une fois les binaires installés, j'ai lancé l'assistant de configuration pour promouvoir le serveur, en choisissant de créer une nouvelle forêt avec le domaine racine <strong>sio.local</strong>.</p>
             <p>Après le redémarrage, j'ai pu vérifier sur la mire de connexion que l'authentification s'effectuait bien sous l'autorité du nouveau domaine (<strong>SIO\Administrateur</strong>).</p>
             
-            <figure class="summary-visual">
+            <figure class="summary-visual single-image">
               <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'accès sous le domaine SIO." loading="lazy" decoding="async">
             </figure>
           </article>
@@ -152,7 +152,7 @@
             <p>À l’aide de la console Utilisateurs et ordinateurs Active Directory, j’ai structuré la base de données de l'annuaire pour la rendre exploitable.</p>
             <p>J'ai créé une Unité d'Organisation (OU) nommée <strong>SOCIETE-SIO</strong>, dans laquelle j'ai généré un groupe de sécurité (<strong>G_Informatique</strong>) et un compte utilisateur nominatif (<strong>dzanatta</strong>).</p>
             
-            <figure class="summary-visual">
+            <figure class="summary-visual single-image">
               <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Active Directory montrant l'arborescence, les groupes et les utilisateurs créés." loading="lazy" decoding="async">
             </figure>
           </article>
@@ -207,7 +207,7 @@
             <p>Afin de valider la parfaite conformité de la configuration, j'ai tenté d'ouvrir l'invite de commandes.</p>
             <p>Celle-ci a été immédiatement bloquée par le système avec un message d'avertissement, prouvant le succès de l'application de la GPO.</p>
             
-            <figure class="summary-visual">
+            <figure class="summary-visual single-image">
               <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Test final : l'invite de commandes est bien bloquée par la GPO." loading="lazy" decoding="async">
             </figure>
           </article>
