@@ -102,57 +102,65 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 1 – Préparation du serveur et installation d'AD DS</h2>
-            <p>J'ai d'abord isolé ma maquette sur un commutateur virtuel dédié (VMnet2) en désactivant le DHCP de l'hyperviseur pour éviter toute perturbation réseau.</p>
-            <p>Ensuite, j'ai configuré le serveur avec un nom d'hôte normalisé (<strong>SRV-AD01</strong>) et je lui ai attribué une adresse IP statique (<strong>192.168.10.1</strong>), en forçant son DNS sur la boucle locale (127.0.0.1).</p>
-            <p>Enfin, j'ai utilisé le Gestionnaire de serveur pour ajouter le rôle Active Directory Domain Services (AD DS) ainsi que les outils d'administration associés.</p>
+            <h2>Étape 1 – Préparation de l'environnement virtuel</h2>
+            <p>Afin de garantir l'étanchéité absolue de la maquette, j'ai isolé l'environnement virtuel sur un commutateur dédié (VMnet2) en mode Host-Only.</p>
+            <p>J'ai expressément désactivé le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse IP parasite lors du déploiement des machines virtuelles.</p>
+            
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
+            </figure>
+          </article>
 
+          <article class="timeline-content">
+            <h2>Étape 2 – Nommage et adressage IP du serveur</h2>
+            <p>Sur le serveur Windows Server 2022, j'ai défini un nom d'hôte normalisé (<strong>SRV-AD01</strong>) pour l'identifier clairement sur le réseau d'entreprise.</p>
+            <p>J'ai ensuite configuré la carte réseau avec une adresse IPv4 statique (<strong>192.168.10.1</strong>) et j'ai forcé le serveur DNS préféré sur la boucle locale (127.0.0.1) pour préparer l'hébergement de la zone de recherche.</p>
+            
             <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware." loading="lazy" decoding="async">
-              </figure>
               <figure class="summary-visual">
                 <img class="summary-image" src="fp4-img02-sysdm-serveur.jpg" alt="Modification du nom du serveur dans les propriétés système." loading="lazy" decoding="async">
               </figure>
-            </div>
-            <div class="info-grid">
               <figure class="summary-visual">
                 <img class="summary-image" src="fp4-img03-ip-serveur.jpg" alt="Configuration de l'adresse IP statique du serveur." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Installation du rôle AD DS depuis le Gestionnaire de serveur." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 2 – Promotion en contrôleur de domaine</h2>
-            <p>Une fois les binaires installés, j'ai lancé l'assistant de configuration pour promouvoir le serveur en contrôleur de domaine.</p>
-            <p>J'ai choisi l'option de créer une nouvelle forêt en définissant le domaine racine <strong>sio.local</strong>.</p>
-            <p>Après le redémarrage du serveur, j'ai pu vérifier sur la mire de connexion que l'authentification se faisait bien sous l'autorité du domaine (<strong>SIO\Administrateur</strong>).</p>
+            <h2>Étape 3 – Installation du rôle AD DS</h2>
+            <p>Depuis le Gestionnaire de serveur, j'ai exécuté l'assistant d'ajout de rôles pour installer les services de domaine Active Directory (AD DS).</p>
+            <p>Cette action a également inclus l'installation du service DNS, indispensable au bon fonctionnement de l'annuaire et à la résolution des noms dans le domaine.</p>
+            
+            <figure class="summary-visual">
+              <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Installation du rôle AD DS depuis le Gestionnaire de serveur." loading="lazy" decoding="async">
+            </figure>
+          </article>
 
+          <article class="timeline-content">
+            <h2>Étape 4 – Promotion en contrôleur de domaine</h2>
+            <p>Une fois les binaires installés, j'ai lancé l'assistant de configuration pour promouvoir le serveur, en choisissant de créer une nouvelle forêt avec le domaine racine <strong>sio.local</strong>.</p>
+            <p>Après le redémarrage, j'ai pu vérifier sur la mire de connexion que l'authentification s'effectuait bien sous l'autorité du nouveau domaine (<strong>SIO\Administrateur</strong>).</p>
+            
             <figure class="summary-visual">
               <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'accès sous le domaine SIO." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 3 – Structuration de l'annuaire</h2>
-            <p>À l’aide de la console Utilisateurs et ordinateurs Active Directory, j’ai structuré la base de données de l'annuaire.</p>
-            <p>J'ai créé une Unité d'Organisation (OU) principale nommée <strong>SOCIETE-SIO</strong>, contenant une sous-OU dédiée aux utilisateurs.</p>
-            <p>À l'intérieur de celle-ci, j'ai généré un groupe de sécurité global (<strong>G_Informatique</strong>) et créé un compte utilisateur nominatif pour les futurs tests.</p>
-
+            <h2>Étape 5 – Structuration de l'annuaire Active Directory</h2>
+            <p>À l’aide de la console Utilisateurs et ordinateurs Active Directory, j’ai structuré la base de données de l'annuaire pour la rendre exploitable.</p>
+            <p>J'ai créé une Unité d'Organisation (OU) nommée <strong>SOCIETE-SIO</strong>, dans laquelle j'ai généré un groupe de sécurité (<strong>G_Informatique</strong>) et un compte utilisateur nominatif (<strong>dzanatta</strong>).</p>
+            
             <figure class="summary-visual">
               <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Active Directory montrant l'arborescence, les groupes et les utilisateurs créés." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 4 – Déploiement d'une Stratégie de Groupe (GPO)</h2>
-            <p>J'ai ouvert la console de gestion des stratégies de groupe pour appliquer des restrictions de sécurité centralisées.</p>
-            <p>J'ai créé une GPO spécifique que j'ai liée à l'OU <strong>SOCIETE-SIO</strong> afin que les règles s'appliquent en cascade aux utilisateurs ciblés.</p>
-            <p>Dans l'éditeur de la stratégie, j'ai activé le paramètre empêchant l'accès à l'invite de commandes, tout en autorisant l'exécution des scripts de connexion en arrière-plan.</p>
-
+            <h2>Étape 6 – Déploiement d'une Stratégie de Groupe (GPO)</h2>
+            <p>Pour industrialiser la sécurité, j'ai créé une GPO spécifique que j'ai liée à l'OU <strong>SOCIETE-SIO</strong> afin qu'elle s'applique par héritage aux utilisateurs ciblés.</p>
+            <p>Dans l'éditeur de la stratégie, j'ai activé la restriction empêchant l'accès à l'invite de commandes, une mesure courante pour limiter les actions des utilisateurs standards.</p>
+            
             <div class="info-grid">
               <figure class="summary-visual">
                 <img class="summary-image" src="fp4-img07-gpmc-liaison.jpg" alt="Liaison de la GPO à l'Unité d'Organisation dans la console de gestion." loading="lazy" decoding="async">
@@ -164,12 +172,10 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 5 – Intégration du client et tests de recette</h2>
-            <p>Sur le poste client Windows 11, j'ai configuré l'adresse IP statique en indiquant impérativement l'adresse du serveur (192.168.10.1) comme unique serveur DNS.</p>
-            <p>Après un test de ping réussi vers le serveur, j'ai joint l'ordinateur au domaine <strong>sio.local</strong>, puis j'ai redémarré la machine.</p>
-            <p>Sur la mire de connexion, je me suis authentifié avec les identifiants réseau de mon utilisateur de test (<strong>SIO\dzanatta</strong>).</p>
-            <p>Pour valider l'application de ma politique de sécurité, j'ai tenté d'ouvrir l'invite de commandes. Celle-ci a été immédiatement bloquée par le système, confirmant le succès de la GPO.</p>
-
+            <h2>Étape 7 – Configuration réseau du poste client</h2>
+            <p>Sur le poste client Windows 11, j'ai configuré l'adresse IP statique en indiquant impérativement l'adresse du serveur (192.168.10.1) comme unique serveur DNS de confiance.</p>
+            <p>Avant d'aller plus loin, j'ai validé la communication de couche 3 en effectuant un test de ping réussi vers le contrôleur de domaine.</p>
+            
             <div class="info-grid">
               <figure class="summary-visual">
                 <img class="summary-image" src="fp4-img09-ip-client.jpg" alt="Configuration IP du client pointant vers le DNS du contrôleur de domaine." loading="lazy" decoding="async">
@@ -178,6 +184,13 @@
                 <img class="summary-image" src="fp4-img10-ping.jpg" alt="Test de ping réussi entre le client et le serveur." loading="lazy" decoding="async">
               </figure>
             </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 8 – Intégration au domaine et tests de recette</h2>
+            <p>Après avoir joint le poste client au domaine <strong>sio.local</strong> et redémarré, je me suis authentifié avec les identifiants réseau de mon utilisateur de test (<strong>SIO\dzanatta</strong>).</p>
+            <p>Le Bureau s'est chargé correctement, confirmant l'identité du compte de domaine. Enfin, j'ai tenté d'ouvrir l'invite de commandes, qui a été immédiatement bloquée par le système, prouvant le succès de l'application de la GPO.</p>
+            
             <div class="info-grid">
               <figure class="summary-visual">
                 <img class="summary-image" src="fp4-img11-login-client.jpg" alt="Connexion au domaine avec le compte utilisateur sur le client Windows 11." loading="lazy" decoding="async">
@@ -216,7 +229,7 @@
               </div>
               <div class="info-item">
                 <dt>Mettre à disposition des utilisateurs un service informatique</dt>
-                <dd>Déploiement d'un service d'authentification centralisé etintégration d'un poste client.</dd>
+                <dd>Déploiement d'un service d'authentification centralisé et intégration d'un poste client.</dd>
               </div>
               <div class="info-item">
                 <dt>Organiser son développement professionnel</dt>
