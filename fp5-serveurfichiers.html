@@ -94,7 +94,7 @@
             <h2>Étape 1 – Création et configuration du partage réseau</h2>
             <p>Je me suis connecté sur <strong>SRV-AD01</strong> en tant qu'Administrateur du domaine.</p>
 			<p>J'ai ouvert l'Explorateur de fichiers, je me suis rendu à la racine du disque local <code>C:\</code> et j'ai créé un dossier nommé : <strong>Partages_SOCIETE</strong>.</p>
-            <p>Dans les propriétés du dossier (onglet "Partage"), j'ai activé le partage avancé. Côté autorisations, j'ai appliqué la bonne pratique de Microsoft en donnant le "Contrôle total" au groupe "Tout le monde" sur la couche réseau, laissant ainsi la couche NTFS gérer la sécurité réelle.</p>
+            <p>Dans les propriétés du dossier (onglet <strong>Partage"</strong>), j'ai activé le partage avancé. Côté autorisations, j'ai appliqué la bonne pratique de Microsoft en donnant le <strong>Contrôle total</strong> au groupe <strong>Tout le monde</strong> sur la couche réseau, laissant ainsi la couche NTFS gérer la sécurité réelle.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
@@ -108,7 +108,7 @@
 
           <article class="timeline-content">
             <h2>Étape 2 – Sécurisation et verrouillage des droits NTFS</h2>
-            <p>Toujours sur le serveur, j'ai basculé sur l'onglet "Sécurité" pour configurer finement les accès. J'ai d'abord désactivé l'héritage afin de détacher les droits du dossier de ceux du disque racine.</p>
+            <p>Toujours sur le serveur, j'ai basculé sur l'onglet <strong>Sécurité</strong> pour configurer finement les accès. J'ai d'abord désactivé l'héritage afin de détacher les droits du dossier de ceux du disque racine.</p>
             <p>J'ai supprimé les utilisateurs standards pour ne conserver que les entités systèmes (Administrateurs, SYSTEM, CREATEUR PROPRIETAIRE). Enfin, j'ai ajouté spécifiquement le groupe <strong>G_Informatique</strong> en lui accordant uniquement le droit de <strong>Modification</strong> (White listing).</p>
 
             <div class="info-grid">
