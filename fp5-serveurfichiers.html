@@ -86,7 +86,7 @@
               <li><strong>Hyperviseur :</strong> VMware Workstation Pro</li>
               <li><strong>VM serveur :</strong> Windows Server 2022 (SRV-AD01)</li>
               <li><strong>Poste Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
-			  <li><strong>Domaine :</strong> sio.local</li>
+              <li><strong>Domaine :</strong> sio.local</li>
               <li><strong>Utilisateur de test :</strong> SIO\dzanatta (Membre du groupe "G_Informatique", OU "SOCIETE-SIO")</li>
             </ul>
           </article>
@@ -94,9 +94,9 @@
           <article class="timeline-content">
             <h2>Étape 1 – Création et configuration du partage réseau</h2>
             <p>Je me suis connecté sur <strong>SRV-AD01</strong> en tant qu'Administrateur du domaine.</p>
-			<p>J'ai ouvert l'Explorateur de fichiers, je me suis rendu à la racine du disque local <strong>C:\</strong> et j'ai créé un dossier nommé : <strong>Partages_SOCIETE</strong>.</p>
+            <p>J'ai ouvert l'Explorateur de fichiers, je me suis rendu à la racine du disque local <strong>C:\</strong> et j'ai créé un dossier nommé : <strong>Partages_SOCIETE</strong>.</p>
             <p>Dans les propriétés du dossier (onglet <strong>Partage</strong>), j'ai activé le partage avancé.</p>
-			<p>Côté autorisations, j'ai appliqué la bonne pratique de Microsoft en donnant le <strong>Contrôle total</strong> au groupe <strong>Tout le monde</strong> sur la couche réseau, laissant ainsi la couche NTFS gérer la sécurité réelle.</p>
+            <p>Côté autorisations, j'ai appliqué la bonne pratique de Microsoft en donnant le <strong>Contrôle total</strong> au groupe <strong>Tout le monde</strong> sur la couche réseau, laissant ainsi la couche NTFS gérer la sécurité réelle.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
@@ -111,9 +111,9 @@
           <article class="timeline-content">
             <h2>Étape 2 – Sécurisation et verrouillage des droits NTFS</h2>
             <p>Toujours sur le serveur, j'ai basculé sur l'onglet <strong>Sécurité</strong> pour configurer finement les accès.</p>
-			<p>J'ai d'abord désactivé l'héritage afin de détacher les droits du dossier de ceux du disque racine.</p>
+            <p>J'ai d'abord désactivé l'héritage afin de détacher les droits du dossier de ceux du disque racine.</p>
             <p>J'ai supprimé les utilisateurs standards pour ne conserver que les entités systèmes (<strong>Administrateurs</strong>, <strong>SYSTEM</strong>, <strong>CREATEUR PROPRIETAIRE</strong>).</p>
-			<p>Enfin, j'ai ajouté spécifiquement le groupe <strong>G_Informatique</strong> en lui accordant uniquement le droit de <strong>Modification</strong> (White listing).</p>
+            <p>Enfin, j'ai ajouté spécifiquement le groupe <strong>G_Informatique</strong> en lui accordant uniquement le droit de <strong>Modification</strong> (White listing).</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
@@ -129,9 +129,9 @@
             <h2>Étape 3 – Création de la GPO de mappage réseau</h2>
             <p>Dans la console de Gestion des stratégies de groupe (gpmc.msc), j'ai créé et lié une nouvelle GPO nommée <strong>GPO_Lecteurs_Reseaux</strong> directement sur l'Unité d'Organisation <strong>SOCIETE-SIO</strong>.</p>
             <p>Dans l'éditeur, j'ai créé un "Lecteur mappé" pointant vers le chemin UNC <strong>\\SRV-AD01\Partages_SOCIETE</strong> avec la lettre <strong>Z</strong>.</p>
-			<p>J'ai pris soin de cocher l'option <strong>Exécuter dans le contexte de sécurité de l'utilisateur connecté</strong> afin de garantir que le montage respecte les droits de la session active.</p>
+            <p>J'ai pris soin de cocher l'option <strong>Exécuter dans le contexte de sécurité de l'utilisateur connecté</strong> afin de garantir que le montage respecte les droits de la session active.</p>
 
-            <figure class="summary-visual">
+            <figure class="summary-visual" style="margin-bottom: 18px;">
               <img class="summary-image" src="fp5-img05-gpo-liaison.jpg" alt="Console gpmc.msc montrant la GPO liée à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
             </figure>
             <div class="info-grid">
@@ -147,9 +147,9 @@
           <article class="timeline-content">
             <h2>Étape 4 – Actualisation des stratégies et recette technique</h2>
             <p>Sur la station Windows 11, je me suis authentifié avec mon compte de test <strong>SIO\dzanatta</strong>.</p>
-			<p>Pour forcer l'application immédiate de ma nouvelle GPO, j'ai ouvert la boîte <strong>Exécuter</strong> et lancé la commande <strong>gpupdate /force</strong>, suivie d'une reconnexion.</p>
+            <p>Pour forcer l'application immédiate de ma nouvelle GPO, j'ai ouvert la boîte <strong>Exécuter</strong> et lancé la commande <strong>gpupdate /force</strong>, suivie d'une reconnexion.</p>
             <p>Dans l'Explorateur de fichiers, j'ai pu constater la présence du volume <strong>Partage Informatique (Z:)</strong>.</p>
-			<p>J'ai navigué à l'intérieur et créé avec succès un fichier <strong>test.txt</strong>, validant à la fois la GPO et mes autorisations NTFS.</p>
+            <p>J'ai navigué à l'intérieur et créé avec succès un fichier <strong>test.txt</strong>, validant à la fois la GPO et mes autorisations NTFS.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
@@ -158,16 +158,12 @@
               <figure class="summary-visual">
                 <img class="summary-image" src="fp5-img09-client-gpupdate-saisie.jpg" alt="Boîte Exécuter avec la commande gpupdate /force saisie." loading="lazy" decoding="async">
               </figure>
-            </div>
-            <div class="info-grid">
               <figure class="summary-visual">
                 <img class="summary-image" src="fp5-img10-client-gpupdate-succes.jpg" alt="Fenêtre d'exécution avec mise à jour de la stratégie terminée." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
                 <img class="summary-image" src="fp5-img11-client-lecteur-z.jpg" alt="Explorateur affichant le volume Partage Informatique (Z:)." loading="lazy" decoding="async">
               </figure>
-            </div>
-            <div class="info-grid">
               <figure class="summary-visual">
                 <img class="summary-image" src="fp5-img12-client-nouveau-fichier.jpg" alt="Intérieur du lecteur Z: montrant le clic droit Nouveau Document." loading="lazy" decoding="async">
               </figure>
