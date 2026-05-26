@@ -75,19 +75,19 @@
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>Dans le cadre de l'évolution du système d'information, j'ai conçu, déployé et sécurisé une infrastructure d'annuaire centralisée basée sur <strong>Active Directory Domain Services (AD DS)</strong> sous Windows Server 2022.</p>
-            <p>L'objectif était de remplacer l'administration locale décentralisée (modèle Workgroup) par une gestion centralisée des identités, des accès et des politiques de sécurité (GPO) pour l'ensemble du parc informatique.</p>
+            <p>Dans le cadre de ma formation, j’ai réalisé le déploiement et la sécurisation d’une infrastructure d'annuaire basée sur Active Directory Domain Services (AD DS) sous Windows Server 2022.</p>
+            <p>L’objectif était de remplacer une administration locale décentralisée par une gestion centralisée des identités, des accès et des politiques de sécurité (GPO) pour l'ensemble d'un parc informatique.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
             <ul class="content-list">
-              <li>Préparer et isoler l'environnement de virtualisation réseau.</li>
-              <li>Configurer l'adressage statique et le nommage du serveur.</li>
-              <li>Installer AD DS et promouvoir le contrôleur de domaine racine (sio.local).</li>
-              <li>Structurer la base NTDS (Unités d'Organisation, Groupes, Utilisateurs).</li>
-              <li>Déployer une Stratégie de Groupe (GPO) pour restreindre l'environnement de travail.</li>
-              <li>Intégrer une station Windows 11 au domaine et valider la recette technique.</li>
+              <li>Isoler l'environnement virtuel et préparer le serveur.</li>
+              <li>Installer le rôle AD DS et configurer le DNS.</li>
+              <li>Promouvoir le serveur en contrôleur de domaine racine.</li>
+              <li>Structurer l'annuaire (OU, Groupes, Utilisateurs).</li>
+              <li>Déployer une Stratégie de Groupe (GPO) de restriction.</li>
+              <li>Intégrer un poste client Windows 11 et valider la configuration.</li>
             </ul>
           </article>
 
@@ -95,93 +95,111 @@
             <h2>Environnement technique</h2>
             <ul class="content-list">
               <li><strong>Hyperviseur :</strong> VMware Workstation Pro (Réseau Host-Only)</li>
-              <li><strong>Serveur DC :</strong> Windows Server 2022 Standard (SRV-AD01)</li>
+              <li><strong>Serveur :</strong> Windows Server 2022 Standard (SRV-AD01)</li>
               <li><strong>Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
               <li><strong>Technologies :</strong> AD DS, DNS, Stratégies de groupe (GPO), Kerberos, LDAP</li>
             </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 1 – Préparation de l'environnement et installation d'AD DS</h2>
-            <p>Afin de garantir l'étanchéité absolue de la maquette, l'environnement virtuel a été isolé sur un commutateur personnalisé (VMnet2) en mode <em>Host-Only</em>, en désactivant le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse parasite.</p>
-            <p>Le système Windows Server 2022 a ensuite été configuré avec un nommage normalisé (<strong>SRV-AD01</strong> via <code>sysdm.cpl</code>) ainsi qu'un adressage IPv4 fixe strict (<strong>192.168.10.1</strong> via <code>ncpa.cpl</code>) orientant son DNS sur sa propre boucle locale (127.0.0.1). Enfin, les binaires logiques du rôle <strong>AD DS</strong> et du service DNS intégré ont été déployés depuis le Gestionnaire de serveur.</p>
-            
+            <h2>Étape 1 – Préparation du serveur et installation d'AD DS</h2>
+            <p>J'ai d'abord isolé ma maquette sur un commutateur virtuel dédié (VMnet2) en désactivant le DHCP de l'hyperviseur pour éviter toute perturbation réseau.</p>
+            <p>Ensuite, j'ai configuré le serveur avec un nom d'hôte normalisé (<strong>SRV-AD01</strong>) et je lui ai attribué une adresse IP statique (<strong>192.168.10.1</strong>), en forçant son DNS sur la boucle locale (127.0.0.1).</p>
+            <p>Enfin, j'ai utilisé le Gestionnaire de serveur pour ajouter le rôle Active Directory Domain Services (AD DS) ainsi que les outils d'administration associés.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img02-sysdm-serveur.jpg" alt="Modification du nom du serveur dans les propriétés système." loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img03-ip-serveur.jpg" alt="Configuration de l'adresse IP statique du serveur." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Installation du rôle AD DS depuis le Gestionnaire de serveur." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Étape 2 – Promotion en contrôleur de domaine</h2>
+            <p>Une fois les binaires installés, j'ai lancé l'assistant de configuration pour promouvoir le serveur en contrôleur de domaine.</p>
+            <p>J'ai choisi l'option de créer une nouvelle forêt en définissant le domaine racine <strong>sio.local</strong>.</p>
+            <p>Après le redémarrage du serveur, j'ai pu vérifier sur la mire de connexion que l'authentification se faisait bien sous l'autorité du domaine (<strong>SIO\Administrateur</strong>).</p>
+
             <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img01-vmware.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img02-sysdm-serveur.jpg" alt="Propriétés système montrant le nom normalisé du serveur SRV-AD01." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img03-ip-serveur.jpg" alt="Configuration IPv4 statique de la carte réseau de SRV-AD01." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img04-server-manager.jpg" alt="Gestionnaire de serveur confirmant l'état actif des rôles AD DS et DNS." loading="lazy" decoding="async">
+              <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'accès sous le domaine SIO." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 2 – Promotion du serveur en contrôleur de domaine</h2>
-            <p>L'opération de configuration finale a été exécutée en choisissant l'option "Ajouter une nouvelle forêt" afin d'initialiser le domaine racine de confiance <strong>sio.local</strong>.</p>
-            <p>Après le traitement de l'assistant DCPromo et le redémarrage automatique du système, la mire de sécurité s'est mise à jour, validant officiellement l'authentification et l'ouverture de session sous l'autorité absolue du domaine : <strong>SIO\Administrateur</strong>.</p>
+            <h2>Étape 3 – Structuration de l'annuaire</h2>
+            <p>À l’aide de la console Utilisateurs et ordinateurs Active Directory, j’ai structuré la base de données de l'annuaire.</p>
+            <p>J'ai créé une Unité d'Organisation (OU) principale nommée <strong>SOCIETE-SIO</strong>, contenant une sous-OU dédiée aux utilisateurs.</p>
+            <p>À l'intérieur de celle-ci, j'ai généré un groupe de sécurité global (<strong>G_Informatique</strong>) et créé un compte utilisateur nominatif pour les futurs tests.</p>
+
             <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img05-mire-ad.jpg" alt="Mire de connexion Windows Server affichant l'accès sous l'autorité du domaine SIO." loading="lazy" decoding="async">
+              <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Active Directory montrant l'arborescence, les groupes et les utilisateurs créés." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 3 – Structuration de l'annuaire et création des objets</h2>
-            <p>À l'aide de la console d'administration des Utilisateurs et ordinateurs Active Directory (`dsa.msc`), j'ai structuré la base de données NTDS en créant une Unité d'Organisation (OU) principale nommée <strong>SOCIETE-SIO</strong>.</p>
-            <p>Afin de segmenter les ressources, une sous-OU <code>OU_Utilisateurs</code> a été configurée pour accueillir le groupe global de sécurité <strong>G_Informatique</strong> ainsi que le compte utilisateur nominatif de test de l'infrastructure : <strong>dzanatta</strong> (Damien Zanatta).</p>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img06-aduc.jpg" alt="Console Utilisateurs et Ordinateurs Active Directory montrant les objets créés." loading="lazy" decoding="async">
-            </figure>
+            <h2>Étape 4 – Déploiement d'une Stratégie de Groupe (GPO)</h2>
+            <p>J'ai ouvert la console de gestion des stratégies de groupe pour appliquer des restrictions de sécurité centralisées.</p>
+            <p>J'ai créé une GPO spécifique que j'ai liée à l'OU <strong>SOCIETE-SIO</strong> afin que les règles s'appliquent en cascade aux utilisateurs ciblés.</p>
+            <p>Dans l'éditeur de la stratégie, j'ai activé le paramètre empêchant l'accès à l'invite de commandes, tout en autorisant l'exécution des scripts de connexion en arrière-plan.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img07-gpmc-liaison.jpg" alt="Liaison de la GPO à l'Unité d'Organisation dans la console de gestion." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img08-gpo-edit.jpg" alt="Activation du blocage de l'invite de commandes dans l'éditeur de stratégie." loading="lazy" decoding="async">
+              </figure>
+            </div>
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 4 – Configuration et déploiement de la stratégie de groupe (GPO)</h2>
-            <p>Depuis la console de gestion des stratégies de groupe (`gpmc.msc`), j'ai industrialisé la sécurité des postes de travail en créant un objet d'infrastructure nommé <strong>GPO_Restrictions_Utilisateurs</strong>, lié directement à l'OU parente <strong>SOCIETE-SIO</strong> pour une application descendante par héritage.</p>
-            <p>En éditant l'objet de stratégie (chemin : <code>Configuration utilisateur > Stratégies > Modèles d'administration > Système</code>), j'ai appliqué un durcissement ciblé en basculant le paramètre <strong>"Empêcher l'accès à l'invite de commandes"</strong> sur l'état <strong>Activé</strong>, tout en préservant l'exécution transparente des scripts de session légitimes.</p>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img07-gpmc-liaison.jpg" alt="Console de gestion des stratégies de groupe montrant l'objet lié à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img08-gpo-edit.jpg" alt="Fenêtre de configuration du modèle d'administration système avec le blocage activé." loading="lazy" decoding="async">
-            </figure>
-          </article>
+            <h2>Étape 5 – Intégration du client et tests de recette</h2>
+            <p>Sur le poste client Windows 11, j'ai configuré l'adresse IP statique en indiquant impérativement l'adresse du serveur (192.168.10.1) comme unique serveur DNS.</p>
+            <p>Après un test de ping réussi vers le serveur, j'ai joint l'ordinateur au domaine <strong>sio.local</strong>, puis j'ai redémarré la machine.</p>
+            <p>Sur la mire de connexion, je me suis authentifié avec les identifiants réseau de mon utilisateur de test (<strong>SIO\dzanatta</strong>).</p>
+            <p>Pour valider l'application de ma politique de sécurité, j'ai tenté d'ouvrir l'invite de commandes. Celle-ci a été immédiatement bloquée par le système, confirmant le succès de la GPO.</p>
 
-          <article class="timeline-content">
-            <h2>Étape 5 – Jonction du poste client Windows 11 et phase de recette</h2>
-            <p>Sur la station de travail <code>PC-CLIENT01</code>, l'adressage IPv4 a été fixé sur l'adresse <strong>192.168.10.10</strong> en désignant de façon impérative le contrôleur de domaine (<strong>192.168.10.1</strong>) comme unique serveur DNS de confiance. La communication de couche 3 a été préalablement validée avec succès via un test d'écho ICMP (`ping`).</p>
-            <p>Une fois le raccordement au domaine validé par la localisation des enregistrements SRV LDAP et la machine redémarrée, la mire d'authentification a permis d'aiguiller la session vers l'autorité du domaine sous l'identité <strong>SIO\dzanatta</strong>. Le protocole <strong>Kerberos</strong> a validé les jetons d'accès et téléchargé les directives de sécurité stockées dans le partage central **SYSVOL**.</p>
-            <p>Le test de recette final a prouvé la conformité du déploiement : lors d'une tentative d'ouverture du terminal (`cmd`), les extensions CSE (*Client-Side Extensions*) du système ont intercepté l'appel et appliqué la restriction administrative de la GPO.</p>
-            
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img09-ip-client.jpg" alt="Configuration IP du client pointant vers le DNS du contrôleur de domaine." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img10-ping.jpg" alt="Test de ping réussi entre le client et le serveur." loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img11-login-client.jpg" alt="Connexion au domaine avec le compte utilisateur sur le client Windows 11." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="fp4-img12-session.jpg" alt="Ouverture de la session confirmant l'identité du compte de domaine." loading="lazy" decoding="async">
+              </figure>
+            </div>
             <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img09-ip-client.jpg" alt="Configuration des paramètres IPv4 et du DNS de confiance sur la station cliente." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img10-ping.jpg" alt="Invite de commandes Windows 11 validant le succès du ping vers le DC." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img11-login-client.jpg" alt="Mire d'authentification réseau Windows 11 ciblant le compte SIO\dzanatta." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img12-session.jpg" alt="Vérification visuelle de l'identité nominale du compte de domaine sur le bureau." loading="lazy" decoding="async">
-            </figure>
-            <figure class="summary-visual">
-              <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Preuve finale de concept affichant l'interdiction administrative d'exécuter le binaire cmd.exe." loading="lazy" decoding="async">
+              <img class="summary-image" src="fp4-img13-cmd-bloque.jpg" alt="Test final : l'invite de commandes est bien bloquée par la GPO." loading="lazy" decoding="async">
             </figure>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
             <ul class="content-list">
-              <li>Mise en place d'un socle de virtualisation de test étanche.</li>
-              <li>Topologie d'adressage statique respectée (Client/Serveur).</li>
-              <li>Forêt d'entreprise <strong>sio.local</strong> pleinement fonctionnelle.</li>
-              <li>Annuaire NTDS sécurisé et structuré par Unités d'Organisation.</li>
-              <li>Canal de confiance (Kerberos/LDAP) validé entre le DC et le poste de travail.</li>
-              <li>Déploiement et héritage réussis d'une politique de sécurité (GPO).</li>
+              <li>Serveur Windows Server promu en contrôleur de domaine fonctionnel.</li>
+              <li>Réseau virtuel isolé avec un adressage IP cohérent (Client/Serveur).</li>
+              <li>Annuaire structuré par Unités d'Organisation avec gestion des groupes.</li>
+              <li>Poste client Windows 11 rattaché avec succès au domaine.</li>
+              <li>Authentification réseau validée via le protocole Kerberos.</li>
+              <li>Stratégie de Groupe (GPO) de restriction déployée et fonctionnelle.</li>
             </ul>
           </article>
 
@@ -189,32 +207,29 @@
             <h2>Compétences mobilisées</h2>
             <dl class="info-grid">
               <div class="info-item">
-                <dt>Gérer le patrimoine informatique (B1.1)</dt>
-                <dd>Nommage normalisé, adressage IP et structuration sémantique de l'annuaire.</dd>
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Identification, paramétrage et structuration d'un système d'annuaire d'entreprise.</dd>
               </div>
               <div class="info-item">
-                <dt>Développer la présence en ligne (B1.3)</dt>
-                <dd>Documentation rigoureuse et publication de l'ingénierie système sur le portfolio web.</dd>
+                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
+                <dd>Mise en place d'une politique de sécurité (GPO) répondant à un besoin de durcissement de l'environnement de travail.</dd>
               </div>
               <div class="info-item">
-                <dt>Concevoir une solution d'infrastructure réseau (B2.1)</dt>
-                <dd>Isolation d'un segment de réseau privé virtuel et dimensionnement des ressources.</dd>
+                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
+                <dd>Déploiement d'un service d'authentification centralisé etintégration d'un poste client.</dd>
               </div>
               <div class="info-item">
-                <dt>Installer et déployer une infrastructure (B2.2)</dt>
-                <dd>Promotion d'un domaine Active Directory, intégration de station et résolution DNS.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Exploiter et sécuriser une infrastructure (B2.3)</dt>
-                <dd>Verrouillage des privilèges interactifs via le déploiement centralisé de Stratégies de Groupe (GPO).</dd>
+                <dt>Organiser son développement professionnel</dt>
+                <dd>Développement de compétences en administration système (Windows Server, AD DS, GPO) et documentation dans le portfolio.</dd>
               </div>
             </dl>
           </article>
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Ce projet de déploiement marque une étape fondamentale dans mon apprentissage de l'administration des systèmes. Il m'a permis de comprendre empiriquement les mécanismes sous-jacents de la gouvernance informatique centralisée.</p>
-            <p>La capacité de gérer l'intégralité du cycle de vie des identités et de sécuriser un parc informatique sans avoir à intervenir localement sur chaque machine, démontre la puissance et la nécessité vitale d'Active Directory dans une infrastructure d'entreprise.</p>
+            <p>Ce projet m’a permis de comprendre le fonctionnement centralisé d'Active Directory et les avantages considérables qu'il apporte dans la gestion d'un parc informatique.</p>
+            <p>J’ai appris à installer un contrôleur de domaine, à structurer logiquement les ressources dans l'annuaire, et à industrialiser la sécurité des postes grâce aux Stratégies de Groupe (GPO).</p>
+            <p>Cette réalisation est très importante car elle représente le socle de l'administration système en entreprise, offrant une vision claire de la gouvernance des accès réseau.</p>
           </article>
         </div>
       </section>
