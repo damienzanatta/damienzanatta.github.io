@@ -154,7 +154,7 @@
           <article class="timeline-content">
             <h2>Étape 3 – Modification du script de déploiement VBS</h2>
             <p>Le script officiel a nécessité des adaptations pour s'intégrer à mon architecture réseau locale et éviter des erreurs de connexion.</p>
-			<p>J'ai édité le fichier VBS à l'aide du Bloc-notes pour y modifier trois variables clés :</p>
+			<p>J'ai édité le fichier <strong>VBS</strong> à l'aide du Bloc-notes pour y modifier trois variables clés :</p>
             <ul class="content-list">
               <li><strong>SetupVersion = "1.9" :</strong> Pour correspondre exactement à la version de l'installateur téléchargé.</li>
               <li><strong>SetupLocation = "\\SRV-AD01\Deploiement_GLPI$" :</strong> Pour forcer l'installation en local via le chemin réseau, évitant un téléchargement lourd depuis Internet.</li>
@@ -165,8 +165,7 @@
           <article class="timeline-content">
             <h2>Étape 4 – Création de la Stratégie de Groupe (GPO)</h2>
             <p>Pour industrialiser le déploiement de l'agent, j'ai ouvert la console de <strong>Gestion des stratégies de groupe</strong> afin de créer une nouvelle <strong>GPO</strong> nommée <strong>GPO_Inventaire_GLPI</strong>, que j'ai liée à l'<strong>Unité d'Organisation</strong> (<strong>OU</strong>) cible.</p>
-            <p>J'ai édité la stratégie pour ajouter mon script de démarrage en renseignant son chemin UNC complet.</p>
-			<p>J'ai également activé la politique exigeant d'attendre l'initialisation du réseau au démarrage, afin d'empêcher que le démarrage rapide de Windows 11 ne fasse exécuter le script dans le vide.</p>
+            <p>J'ai édité la stratégie pour ajouter mon script de démarrage en renseignant son chemin <strong>UNC</strong> complet.</p>
 
             <figure class="summary-visual single-image single-image--mb">
               <img class="summary-image" src="ep1-img08-gpo-creation.jpg" alt="Console de gestion montrant la création et la liaison de l'objet GPO sur l'OU appropriée." loading="lazy" decoding="async">
@@ -183,8 +182,9 @@
 
           <article class="timeline-content">
             <h2>Étape 5 – Recette technique côté client</h2>
-            <p>Pour valider le fonctionnement de la stratégie de manière transparente (Zero Touch), j'ai redémarré le poste client Windows 11. Le script s'est exécuté au boot avec les privilèges d'administration système.</p>
-            <p>Une fois la session ouverte, j'ai lancé la console des services locaux. J'ai pu constater que la GPO avait correctement travaillé en arrière-plan : l'agent GLPI a été installé silencieusement, son type de démarrage est configuré en <strong>Automatique</strong> et son état est bien <strong>En cours d'exécution</strong>.</p>
+            <p>Pour valider le fonctionnement de la stratégie de manière transparente, j'ai redémarré le poste client Windows 11 (<strong>PC-CLIENT01</strong>).<p>
+            <p>Une fois la session ouverte, j'ai lancé la console des services locaux (<strong>services.msc</strong>).</p>
+			<p>J'ai pu constater que la GPO avait correctement travaillé en arrière-plan : l'agent GLPI a été installé silencieusement, son type de démarrage est configuré en <strong>Automatique</strong> et son état est bien <strong>En cours d'exécution</strong>.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
@@ -199,7 +199,8 @@
           <article class="timeline-content">
             <h2>Étape 6 – Validation de la remontée d'inventaire</h2>
             <p>Pour clôturer la recette technique de ma maquette, je suis retourné sur l'interface web du serveur GLPI dans la vue des ordinateurs.</p>
-            <p>Le poste <strong>PC-CLIENT01</strong> est instantanément apparu dans la base de données. En analysant sa fiche technique, j'ai validé que l'agent avait parfaitement extrait et transmis l'ensemble des caractéristiques réelles de la machine : le système d'exploitation exact, le modèle virtuel, ainsi que le processeur physique de l'hôte (AMD Ryzen 9).</p>
+            <p>Le poste <strong>PC-CLIENT01</strong> est instantanément apparu dans la base de données.</p>
+			<p>En analysant sa fiche technique, j'ai validé que l'agent avait parfaitement extrait et transmis l'ensemble des caractéristiques réelles de la machine : le système d'exploitation exact, le modèle virtuel, ainsi que le processeur physique de l'hôte (<strong>AMD Ryzen 9</strong>).</p>
 
             <figure class="summary-visual single-image">
               <img class="summary-image" src="ep1-img13-glpi-computer-list.jpg" alt="Vue de la table Parc des ordinateurs sur GLPI affichant la fiche d'inventaire complète et détaillée du client." loading="lazy" decoding="async">
