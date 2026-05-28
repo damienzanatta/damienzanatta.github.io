@@ -93,7 +93,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 1 – Création et configuration du partage réseau</h2>
+            <h2>Création et configuration du partage réseau</h2>
             <p>Je me suis connecté sur <strong>SRV-AD01</strong> en tant qu'Administrateur du domaine.</p>
             <p>J'ai ouvert l'Explorateur de fichiers, je me suis rendu à la racine du disque local <strong>C:\</strong> et j'ai créé un dossier nommé : <strong>Partages_SOCIETE</strong>.</p>
             <p>Dans les propriétés du dossier (onglet <strong>Partage</strong>), j'ai activé le partage avancé.</p>
@@ -110,7 +110,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 2 – Sécurisation et verrouillage des droits NTFS</h2>
+            <h2>Sécurisation et verrouillage des droits NTFS</h2>
             <p>Toujours sur le serveur, j'ai basculé sur l'onglet <strong>Sécurité</strong> pour configurer finement les accès.</p>
             <p>J'ai d'abord désactivé l'héritage afin de détacher les droits du dossier de ceux du disque racine.</p>
             <p>J'ai supprimé les utilisateurs standards pour ne conserver que les entités systèmes (<strong>Administrateurs</strong>, <strong>SYSTEM</strong>, <strong>CREATEUR PROPRIETAIRE</strong>).</p>
@@ -127,7 +127,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 3 – Création de la GPO de mappage réseau</h2>
+            <h2>Création de la GPO de mappage réseau</h2>
             <p>Dans la console de Gestion des stratégies de groupe (gpmc.msc), j'ai créé et lié une nouvelle GPO nommée <strong>GPO_Lecteurs_Reseaux</strong> directement sur l'Unité d'Organisation <strong>SOCIETE-SIO</strong>.</p>
             <p>Dans l'éditeur, j'ai créé un "Lecteur mappé" pointant vers le chemin UNC <strong>\\SRV-AD01\Partages_SOCIETE</strong> avec la lettre <strong>Z</strong>.</p>
             <p>J'ai pris soin de cocher l'option <strong>Exécuter dans le contexte de sécurité de l'utilisateur connecté</strong> afin de garantir que le montage respecte les droits de la session active.</p>
@@ -146,7 +146,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 4 – Authentification et actualisation des stratégies</h2>
+            <h2>Authentification et actualisation des stratégies</h2>
             <p>Sur la station Windows 11, je me suis authentifié avec mon compte de test <strong>SIO\dzanatta</strong>.</p>
             <p>Pour forcer l'application immédiate de ma nouvelle GPO, j'ai ouvert la boîte <strong>Exécuter</strong> et lancé la commande <strong>gpupdate /force</strong>, suivie d'une reconnexion.</p>
 
@@ -164,7 +164,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 5 – Recette technique et vérification des droits</h2>
+            <h2>Recette technique et vérification des droits</h2>
             <p>Dans l'Explorateur de fichiers, j'ai pu constater la présence du volume <strong>Partage Informatique (Z:)</strong>.</p>
             <p>J'ai navigué à l'intérieur et créé avec succès un fichier <strong>test.txt</strong>, validant à la fois la GPO et mes autorisations NTFS.</p>
 
