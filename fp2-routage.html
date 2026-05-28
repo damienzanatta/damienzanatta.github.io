@@ -119,7 +119,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 1 – Création des VLAN sur le commutateur</h2>
+            <h2>Création des VLAN sur le commutateur</h2>
             <p>Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.</p>
             <p>J’ai créé le <strong>VLAN 10</strong> et le <strong>VLAN 30</strong> afin de séparer logiquement les postes clients dans deux réseaux distincts.</p>
             <p>J’ai ensuite configuré les ports d’accès : le port <strong>Fa0/11</strong> a été associé au VLAN 10 et le port <strong>Fa0/6</strong> au VLAN 30.</p>
@@ -136,7 +136,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 2 – Configuration des sous-interfaces du routeur</h2>
+            <h2>Configuration des sous-interfaces du routeur</h2>
             <p>Je suis ensuite entré dans le routeur R1 afin de configurer le routage inter-VLAN.</p>
             <p>J’ai créé la sous-interface <strong>G0/0.10</strong> pour le VLAN 10 et la sous-interface <strong>G0/0.30</strong> pour le VLAN 30.</p>
             <p>J’ai appliqué l’encapsulation <strong>dot1Q</strong> sur chaque sous-interface afin d’associer chaque interface logique au VLAN correspondant.</p>
@@ -148,7 +148,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 3 – Activation du trunking</h2>
+            <h2>Activation du trunking</h2>
             <p>J’ai configuré l’interface <strong>Gig0/1</strong> du commutateur S1 en mode trunk afin de transporter le trafic des VLAN 10 et 30 vers le routeur R1.</p>
             <p>Cette configuration est indispensable dans la méthode router-on-a-stick, car un seul lien physique transporte plusieurs réseaux logiques.</p>
             <p>J’ai vérifié le trunking avec la commande <strong>show interfaces trunk</strong>.</p>
@@ -159,7 +159,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 4 – Tests de connectivité inter-VLAN</h2>
+            <h2>Tests de connectivité inter-VLAN</h2>
             <p>J’ai réalisé des tests de connectivité entre les postes situés dans des VLAN différents.</p>
             <p>Depuis PC1, j’ai envoyé une requête ping vers l’adresse IP du poste situé dans le VLAN 30.</p>
             <p>Le premier paquet a été perdu, puis les réponses suivantes ont été reçues, ce qui confirme que la communication inter-VLAN est fonctionnelle.</p>
