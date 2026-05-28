@@ -37,6 +37,7 @@
         <span class="project-top-separator" aria-hidden="true"></span>
         <a href="ep1-glpi.html" class="project-top-link active" aria-current="page">Projet 1</a>
         <a href="ep2-sharepoint.html" class="project-top-link">Projet 2</a>
+        <a href="ep3-renouvellement-pc.html" class="project-top-link">Projet 3</a>
         <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -75,7 +76,7 @@
             <h2>Présentation</h2>
             <p>Dans le cadre d'une demande de mon responsable informatique, j'ai réalisé une maquette de pré-production (<strong>POC</strong>) visant à automatiser la gestion du parc informatique de l'entreprise.</p>
             <p>L'objectif était de remplacer un inventaire manuel fastidieux par une solution centralisée basée sur <strong>GLPI</strong>.</p>
-			<p>Afin de ne pas perturber la production, ce projet a été mené dans un environnement virtualisé isolé. Le cœur de la mission consistait à configurer l'outil d'inventaire et à déployer silencieusement son agent sur les postes clients via les Stratégies de Groupe (GPO) de l'Active Directory.</p>
+            <p>Afin de ne pas perturber la production, ce projet a été mené dans un environnement virtualisé isolé. Le cœur de la mission consistait à configurer l'outil d'inventaire et à déployer silencieusement son agent sur les postes clients via les Stratégies de Groupe (GPO) de l'Active Directory.</p>
           </article>
 
           <article class="timeline-content">
@@ -103,7 +104,7 @@
           <article class="timeline-content">
             <h2>Préparation de la maquette (Prérequis)</h2>
             <p>Avant d'entamer les objectifs principaux de la mission, j'ai préparé l'environnement de test (<strong>POC</strong>).</p>
-			<p>J'ai déployé une machine virtuelle sous <strong>Debian 13</strong> avec une pile LAMP opérationnelle disposant d'une adresse IP statique (<strong>192.168.10.20</strong>).</p>
+            <p>J'ai déployé une machine virtuelle sous <strong>Debian 13</strong> avec une pile LAMP opérationnelle disposant d'une adresse IP statique (<strong>192.168.10.20</strong>).</p>
             <p>J'y ai ensuite installé <strong>GLPI 11.0.7</strong> en prenant soin de configurer le serveur web <strong>Apache</strong> pour qu'il pointe directement vers le sous-répertoire sécurisé <strong>/public/</strong> afin de respecter les prérequis stricts de l'éditeur.</p>
 
             <div class="info-grid">
@@ -117,7 +118,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 1 – Activation de l'inventaire natif</h2>
+            <h2>Activation de l'inventaire natif</h2>
             <p>Le socle technique étant prêt, j'ai pu démarrer la mission.</p>
             <p>Depuis l'<strong>interface d'administration</strong>, j'ai activé la réception des données et autorisé l'importation automatique de l'ensemble des composants de la machine (matériels, logiciels, volumes, périphériques) avec une fréquence de rafraîchissement fixée à 24 heures.</p>
 
@@ -132,11 +133,11 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 2 – Préparation du point de distribution réseau</h2>
+            <h2>Préparation du point de distribution réseau</h2>
             <p>Pour déployer l'<strong>Agent GLPI</strong> sans saturer la bande passante Internet de l'entreprise lors du déploiement en masse, j'ai mis en place un point de distribution local sur le contrôleur de domaine Windows Server (<strong>SRV-AD01</strong>).</p>
             <p>J'ai créé un dossier local à la racine du disque <strong>C:</strong> que j'ai partagé en mode avancé sous le nom <strong>Deploiement_GLPI$</strong>.</p>
-			<p>L'ajout du symbole <strong>$</strong> à la fin du nom permet de masquer le partage sur le réseau pour les utilisateurs standards.</p>
-			<p>J'y ai ensuite déposé l'installateur officiel <strong>MSI</strong> de l'agent (<strong>v1.9</strong>) ainsi que le script <strong>VBS</strong>.</p>
+            <p>L'ajout du symbole <strong>$</strong> à la fin du nom permet de masquer le partage sur le réseau pour les utilisateurs standards.</p>
+            <p>J'y ai ensuite déposé l'installateur officiel <strong>MSI</strong> de l'agent (<strong>v1.9</strong>) ainsi que le script <strong>VBS</strong>.</p>
 
             <figure class="summary-visual single-image single-image--mb">
               <img class="summary-image" src="ep1-img05-folder-creation.jpg" alt="Création du répertoire de destination à la racine du volume C: du serveur de domaine." loading="lazy" decoding="async">
@@ -152,9 +153,9 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 3 – Modification du script de déploiement VBS</h2>
+            <h2>Modification du script de déploiement VBS</h2>
             <p>Le script officiel a nécessité des adaptations pour s'intégrer à mon architecture réseau locale et éviter des erreurs de connexion.</p>
-			<p>J'ai édité le fichier <strong>VBS</strong> à l'aide du Bloc-notes pour y modifier trois variables clés :</p>
+            <p>J'ai édité le fichier <strong>VBS</strong> à l'aide du Bloc-notes pour y modifier trois variables clés :</p>
             <ul class="content-list">
               <li><strong>SetupVersion = "1.9" :</strong> Pour correspondre exactement à la version de l'installateur téléchargé.</li>
               <li><strong>SetupLocation = "\\SRV-AD01\Deploiement_GLPI$" :</strong> Pour forcer l'installation en local via le chemin réseau, évitant un téléchargement lourd depuis Internet.</li>
@@ -163,7 +164,7 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 4 – Création de la Stratégie de Groupe (GPO)</h2>
+            <h2>Création de la Stratégie de Groupe (GPO)</h2>
             <p>Pour industrialiser le déploiement de l'agent, j'ai ouvert la console de <strong>Gestion des stratégies de groupe</strong> afin de créer une nouvelle <strong>GPO</strong> nommée <strong>GPO_Inventaire_GLPI</strong>, que j'ai liée à l'<strong>Unité d'Organisation</strong> (<strong>OU</strong>) cible.</p>
             <p>J'ai édité la stratégie pour ajouter mon script de démarrage en renseignant son chemin <strong>UNC</strong> complet.</p>
 
@@ -181,10 +182,10 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 5 – Recette technique côté client</h2>
-            <p>Pour valider le fonctionnement de la stratégie de manière transparente, j'ai redémarré le poste client Windows 11 (<strong>PC-CLIENT01</strong>).<p>
+            <h2>Recette technique côté client</h2>
+            <p>Pour valider le fonctionnement de la stratégie de manière transparente, j'ai redémarré le poste client Windows 11 (<strong>PC-CLIENT01</strong>).</p>
             <p>Une fois la session ouverte, j'ai lancé la console des services locaux (<strong>services.msc</strong>).</p>
-			<p>J'ai pu constater que la GPO avait correctement travaillé en arrière-plan : l'agent GLPI a été installé silencieusement, son type de démarrage est configuré en <strong>Automatique</strong> et son état est bien <strong>En cours d'exécution</strong>.</p>
+            <p>J'ai pu constater que la GPO avait correctement travaillé en arrière-plan : l'agent GLPI a été installé silencieusement, son type de démarrage est configuré en <strong>Automatique</strong> et son état est bien <strong>En cours d'exécution</strong>.</p>
 
             <div class="info-grid">
               <figure class="summary-visual">
@@ -197,10 +198,10 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Étape 6 – Validation de la remontée d'inventaire</h2>
+            <h2>Validation de la remontée d'inventaire</h2>
             <p>Pour clôturer la recette technique de ma maquette, je suis retourné sur l'interface web du serveur GLPI dans la vue des ordinateurs.</p>
             <p>Le poste <strong>PC-CLIENT01</strong> est instantanément apparu dans la base de données.</p>
-			<p>En analysant sa fiche technique, j'ai validé que l'agent avait parfaitement extrait et transmis l'ensemble des caractéristiques réelles de la machine : le système d'exploitation exact, le modèle virtuel, ainsi que le processeur physique de l'hôte (<strong>AMD Ryzen 9</strong>).</p>
+            <p>En analysant sa fiche technique, j'ai validé que l'agent avait parfaitement extrait et transmis l'ensemble des caractéristiques réelles de la machine : le système d'exploitation exact, le modèle virtuel, ainsi que le processeur physique de l'hôte (<strong>AMD Ryzen 9</strong>).</p>
 
             <figure class="summary-visual single-image">
               <img class="summary-image" src="ep1-img13-glpi-computer-list.jpg" alt="Vue de la table Parc des ordinateurs sur GLPI affichant la fiche d'inventaire complète et détaillée du client." loading="lazy" decoding="async">
