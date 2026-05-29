@@ -972,39 +972,69 @@ a.project-card:active {
   }
 }
 
-/* --- DIMENSIONS UNIFORMES DU MENU SUPÉRIEUR --- */
+/* --- MENU SUPÉRIEUR : DIMENSIONS ET POSITIONNEMENT HARMONISÉS --- */
 
 :root {
   --top-nav-button-width: 132px;
   --top-nav-button-height: 46px;
+  --top-nav-theme-width: 76px;
+  --top-nav-separator-width: 1px;
+  --top-nav-gap: 10px;
 }
 
-/* Boutons du menu principal : Accueil, Présentation, Projets, Veille */
-.nav-links > a {
-  width: var(--top-nav-button-width);
-  min-width: var(--top-nav-button-width);
-  max-width: var(--top-nav-button-width);
+/*
+  Structure commune du menu :
+  1. Accueil
+  2. Séparateur
+  3. Présentation
+  4. Projets
+  5. Veille / ← Retour
+  6. Séparateur
+  7. Bouton de thème
 
-  height: var(--top-nav-button-height);
-  min-height: var(--top-nav-button-height);
-  max-height: var(--top-nav-button-height);
-
-  padding: 0 12px;
-  box-sizing: border-box;
-
-  display: inline-flex;
+  Sur les pages projet, le bouton ← Retour est volontairement placé
+  sur la même colonne que le bouton Veille des pages racine.
+*/
+.nav-links,
+.project-top-nav {
+  display: grid;
+  grid-template-columns:
+    var(--top-nav-button-width)
+    var(--top-nav-separator-width)
+    var(--top-nav-button-width)
+    var(--top-nav-button-width)
+    var(--top-nav-button-width)
+    var(--top-nav-separator-width)
+    var(--top-nav-theme-width);
   align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  flex: 0 0 var(--top-nav-button-width);
+  justify-content: end;
+  gap: var(--top-nav-gap);
+  margin-left: auto;
+  width: max-content;
+  flex-wrap: nowrap;
 }
 
-/* Bouton retour des pages projets : même format que les boutons du menu principal */
+/* Placement explicite des éléments du menu principal */
+.nav-links > a:nth-of-type(1) { grid-column: 1; }
+.nav-links > .nav-main-separator:nth-of-type(1) { grid-column: 2; }
+.nav-links > a:nth-of-type(2) { grid-column: 3; }
+.nav-links > a:nth-of-type(3) { grid-column: 4; }
+.nav-links > a:nth-of-type(4) { grid-column: 5; }
+.nav-links > .nav-main-separator:nth-of-type(2) { grid-column: 6; }
+.nav-links > .theme-switch { grid-column: 7; }
+
+/*
+  Placement du menu projet.
+  Seul ← Retour reste visible et prend exactement l'emplacement horizontal du bouton Veille.
+*/
+.project-top-nav > .project-top-link.project-top-return { grid-column: 5; }
+.project-top-nav > .project-top-link:not(.project-top-return) { display: none; }
+.project-top-nav > .project-top-separator { grid-column: 6; }
+.project-top-nav > .project-top-separator + .project-top-separator { display: none; }
+.project-top-nav > .theme-switch { grid-column: 7; }
+
+/* Dimensions strictement identiques des boutons textuels */
+.nav-links > a,
 .project-top-link.project-top-return {
   width: var(--top-nav-button-width);
   min-width: var(--top-nav-button-width);
@@ -1025,16 +1055,34 @@ a.project-card:active {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  flex: 0 0 var(--top-nav-button-width);
 }
 
-/* Adaptation mobile : les boutons prennent toute la largeur disponible */
-@media (max-width: 560px) {
+/* Dimensions verrouillées du bouton thème pour conserver une grille identique */
+.nav-links > .theme-switch,
+.project-top-nav > .theme-switch {
+  width: var(--top-nav-theme-width);
+  min-width: var(--top-nav-theme-width);
+  max-width: var(--top-nav-theme-width);
+}
+
+/* Séparateurs strictement identiques */
+.nav-main-separator,
+.project-top-separator {
+  width: var(--top-nav-separator-width);
+  min-width: var(--top-nav-separator-width);
+  max-width: var(--top-nav-separator-width);
+}
+
+/* Adaptation tablette/mobile : la grille fixe redevient une colonne souple */
+@media (max-width: 760px) {
   .nav-links,
   .project-top-nav {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   .nav-links > a,
@@ -1045,7 +1093,11 @@ a.project-card:active {
     height: auto;
     min-height: var(--top-nav-button-height);
     max-height: none;
-    flex: 1 1 100%;
+  }
+
+  .nav-links > .theme-switch,
+  .project-top-nav > .theme-switch {
+    align-self: flex-start;
   }
 
   .nav-main-separator,
