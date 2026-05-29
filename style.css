@@ -971,3 +971,85 @@ a.project-card:active {
     width: 100%;
   }
 }
+
+/* --- DIMENSIONS UNIFORMES DU MENU SUPÉRIEUR --- */
+
+:root {
+  --top-nav-button-width: 132px;
+  --top-nav-button-height: 46px;
+}
+
+/* Boutons du menu principal : Accueil, Présentation, Projets, Veille */
+.nav-links > a {
+  width: var(--top-nav-button-width);
+  min-width: var(--top-nav-button-width);
+  max-width: var(--top-nav-button-width);
+
+  height: var(--top-nav-button-height);
+  min-height: var(--top-nav-button-height);
+  max-height: var(--top-nav-button-height);
+
+  padding: 0 12px;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  flex: 0 0 var(--top-nav-button-width);
+}
+
+/* Bouton retour des pages projets : même format que les boutons du menu principal */
+.project-top-link.project-top-return {
+  width: var(--top-nav-button-width);
+  min-width: var(--top-nav-button-width);
+  max-width: var(--top-nav-button-width);
+
+  height: var(--top-nav-button-height);
+  min-height: var(--top-nav-button-height);
+  max-height: var(--top-nav-button-height);
+
+  padding: 0 12px;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  flex: 0 0 var(--top-nav-button-width);
+}
+
+/* Adaptation mobile : les boutons prennent toute la largeur disponible */
+@media (max-width: 560px) {
+  .nav-links,
+  .project-top-nav {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .nav-links > a,
+  .project-top-link.project-top-return {
+    width: 100%;
+    min-width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: var(--top-nav-button-height);
+    max-height: none;
+    flex: 1 1 100%;
+  }
+
+  .nav-main-separator,
+  .project-top-separator {
+    display: none;
+  }
+}
