@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet de formation de Damien Zanatta : Déploiement et sécurisation d'un domaine Active Directory.">
+  <meta name="theme-color" content="#020813">
+  <title>Déploiement d'un domaine Active Directory (Windows Server / GPO) | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="../../index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
+        <a href="../../projets.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-page-title">
+          <img src="deploiement-dun-environnement-active-directory-windows-server-gpo/icone.jpg" alt="Icône Active Directory" class="project-page-logo" width="96" height="96">
+          <div class="project-page-heading">
+            <h1 id="project-title">Déploiement d'un domaine Active Directory (Windows Server / GPO)</h1>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>Présentation</h2>
+            <p>Dans le cadre de ma formation, j’ai réalisé le déploiement et la sécurisation d’une infrastructure d'annuaire basée sur Active Directory Domain Services (AD DS) sous Windows Server 2022.</p>
+            <p>L’objectif était de remplacer une administration locale décentralisée par une gestion centralisée des identités, des accès et des politiques de sécurité (GPO) pour l'ensemble d'un parc informatique.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Objectifs</h2>
+            <ul class="content-list">
+              <li>Isoler l'environnement virtuel et préparer le serveur.</li>
+              <li>Installer le rôle AD DS et configurer le DNS.</li>
+              <li>Promouvoir le serveur en contrôleur de domaine racine.</li>
+              <li>Structurer l'annuaire (OU, Groupes, Utilisateurs).</li>
+              <li>Déployer une Stratégie de Groupe (GPO) de restriction.</li>
+              <li>Intégrer un poste client Windows 11 et valider la configuration.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique</h2>
+            <ul class="content-list">
+              <li><strong>Hyperviseur :</strong> VMware Workstation Pro (Réseau Host-Only)</li>
+              <li><strong>Serveur :</strong> Windows Server 2022 Standard (SRV-AD01)</li>
+              <li><strong>Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
+              <li><strong>Technologies :</strong> AD DS, DNS, Stratégies de groupe (GPO), Kerberos, LDAP</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Préparation de l'environnement virtuel</h2>
+            <p>Afin de garantir l'étanchéité absolue de la maquette, j'ai isolé l'environnement virtuel sur un commutateur dédié en mode Host-Only.</p>
+            <p>J'ai expressément désactivé le service DHCP natif de l'hyperviseur pour éviter toute attribution d'adresse IP parasite lors du déploiement des machines virtuelles.</p>
+            
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-01.jpg" alt="Configuration du commutateur virtuel VMware avec désactivation du DHCP." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Nommage et adressage IP du serveur</h2>
+            <p>Sur le serveur Windows Server 2022, j'ai défini un nom d'hôte normalisé (<strong>SRV-AD01</strong>) pour l'identifier clairement sur le réseau d'entreprise.</p>
+            <p>J'ai ensuite configuré la carte réseau avec une adresse IPv4 statique (<strong>192.168.10.1</strong>) et j'ai forcé le serveur DNS préféré sur la boucle locale (127.0.0.1) pour préparer l'hébergement de la zone de recherche.</p>
+            
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-02.jpg" alt="Modification du nom du serveur dans les propriétés système." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-03.jpg" alt="Configuration de l'adresse IP statique du serveur." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Installation du rôle AD DS</h2>
+            <p>Depuis le Gestionnaire de serveur, j'ai exécuté l'assistant d'ajout de rôles pour installer les services de domaine Active Directory (AD DS).</p>
+            <p>Cette action a également inclus l'installation du service DNS, indispensable au bon fonctionnement de l'annuaire et à la résolution des noms dans le domaine.</p>
+            
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-04.jpg" alt="Installation du rôle AD DS depuis le Gestionnaire de serveur." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Promotion en contrôleur de domaine</h2>
+            <p>Une fois les binaires installés, j'ai lancé l'assistant de configuration pour promouvoir le serveur, en choisissant de créer une nouvelle forêt avec le domaine racine <strong>sio.local</strong>.</p>
+            <p>Après le redémarrage, j'ai pu vérifier sur la mire de connexion que l'authentification s'effectuait bien sous l'autorité du nouveau domaine (<strong>SIO\Administrateur</strong>).</p>
+            
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-05.jpg" alt="Mire de connexion Windows Server affichant l'accès sous le domaine SIO." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Structuration de l'annuaire Active Directory</h2>
+            <p>À l’aide de la console Utilisateurs et ordinateurs Active Directory, j’ai structuré la base de données de l'annuaire pour la rendre exploitable.</p>
+            <p>J'ai créé une Unité d'Organisation (OU) nommée <strong>SOCIETE-SIO</strong>, dans laquelle j'ai généré un groupe de sécurité (<strong>G_Informatique</strong>) et un compte utilisateur nominatif (<strong>dzanatta</strong>).</p>
+            
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-06.jpg" alt="Console Active Directory montrant l'arborescence, les groupes et les utilisateurs créés." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Déploiement d'une Stratégie de Groupe (GPO)</h2>
+            <p>Pour industrialiser la sécurité, j'ai créé une GPO spécifique que j'ai liée à l'OU <strong>SOCIETE-SIO</strong> afin qu'elle s'applique par héritage aux utilisateurs ciblés.</p>
+            <p>Dans l'éditeur de la strategy, j'ai activé la restriction empêchant l'accès à l'invite de commandes, une mesure courante pour limiter les actions des utilisateurs standards.</p>
+            
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-07.jpg" alt="Liaison de la GPO à l'Unité d'Organisation dans la console de gestion." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-08.jpg" alt="Activation du blocage de l'invite de commandes dans l'éditeur de stratégie." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Configuration réseau du poste client</h2>
+            <p>Sur le poste client Windows 11, j'ai configuré l'adresse IP statique en indiquant impérativement l'adresse du serveur (192.168.10.1) comme unique serveur DNS de confiance.</p>
+            <p>Avant d'aller plus loin, j'ai validé la communication de couche 3 en effectuant un test de ping réussi vers le contrôleur de domaine.</p>
+            
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-09.jpg" alt="Configuration IP du client pointant vers le DNS du contrôleur de domaine." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-10.jpg" alt="Test de ping réussi entre le client et le serveur." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Intégration et authentification au domaine</h2>
+            <p>Après avoir joint le poste client au domaine <strong>sio.local</strong> et redémarré, je me suis authentifié avec les identifiants réseau de mon utilisateur de test (<strong>SIO\dzanatta</strong>).</p>
+            <p>Le Bureau s'est chargé correctement, confirmant le montage du profil et l'identité du compte de domaine utilisé.</p>
+            
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-11.jpg" alt="Connexion au domaine avec le compte utilisateur sur le client Windows 11." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-12.jpg" alt="Ouverture de la session confirmant l'identité du compte de domaine." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Test de recette final (GPO)</h2>
+            <p>Afin de valider la parfaite conformité de la configuration, j'ai tenté d'ouvrir l'invite de commandes.</p>
+            <p>Celle-ci a été immédiatement bloquée par le système avec un message d'avertissement, prouvant le succès de l'application de la GPO.</p>
+            
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="deploiement-dun-environnement-active-directory-windows-server-gpo/image-13.jpg" alt="Test final : l'invite de commandes est bien bloquée par la GPO." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultats obtenus</h2>
+            <ul class="content-list">
+              <li>Serveur Windows Server promu en contrôleur de domaine fonctionnel.</li>
+              <li>Réseau virtuel isolé avec un adressage IP cohérent (Client/Serveur).</li>
+              <li>Annuaire structuré par Unités d'Organisation avec gestion des groupes.</li>
+              <li>Poste client Windows 11 rattaché avec succès au domaine.</li>
+              <li>Authentification réseau validée via le protocole Kerberos.</li>
+              <li>Stratégie de Groupe (GPO) de restriction déployée et fonctionnelle.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Identification, paramétrage et structuration d'un système d'annuaire d'entreprise.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
+                <dd>Mise en place d'une politique de sécurité (GPO) répondant à un besoin de durcissement de l'environnement de travail.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
+                <dd>Déploiement d'un service d'authentification centralisé et intégration d'un poste client.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Organiser son développement professionnel</dt>
+                <dd>Développement de compétences en administration système (Windows Server, AD DS, GPO) et documentation dans le portfolio.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>Ce projet m’a permis de comprendre le fonctionnement centralisé d'Active Directory et les avantages considérables qu'il apporte dans la gestion d'un parc informatique.</p>
+            <p>J’ai appris à installer un contrôleur de domaine, à structurer logiquement les ressources dans l'annuaire, et à industrialiser la sécurité des postes grâce aux Stratégies de Groupe (GPO).</p>
+            <p>Cette réalisation est très importante car elle représente le socle de l'administration système en entreprise, offrant une vision claire de la gouvernance des accès réseau.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
