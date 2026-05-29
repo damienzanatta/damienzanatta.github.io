@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet de formation de Damien Zanatta : Plan de sauvegarde et continuité d'activité (PRA) avec Windows Server Backup.">
+  <meta name="theme-color" content="#020813">
+  <title>Mise en place d'une stratégie de sauvegarde automatisée (Windows Server Backup) | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="../../index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
+        <a href="../../projets.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-page-title">
+          <img src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/icone.jpg" alt="Icône Plan de sauvegarde" class="project-page-logo" width="96" height="96">
+          <div class="project-page-heading">
+            <h1 id="project-title">Mise en place d'une stratégie de sauvegarde automatisée (Windows Server Backup)</h1>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>Présentation</h2>
+            <p>Afin de finaliser le durcissement de mon infrastructure virtuelle, j'ai mis en œuvre un Plan de Reprise d'Activité (PRA) pour le serveur hébergeant mon annuaire Active Directory et mon serveur de fichiers.</p>
+            <p>L'objectif de cette réalisation était d'assurer la résilience de l'entreprise face aux risques (crash matériel, ransomware) en provisionnant un stockage physique indépendant et en automatisant la sauvegarde de l'état du système.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique et Architecture</h2>
+            <ul class="content-list">
+              <li><strong>Hyperviseur :</strong> VMware Workstation Pro</li>
+              <li><strong>VM serveur :</strong> Windows Server 2022 (SRV-AD01)</li>
+              <li><strong>Rôles protégés :</strong> AD DS, DNS, Serveur de fichiers centralisé</li>
+              <li><strong>Outil utilisé :</strong> Windows Server Backup (Fonctionnalité native)</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Expansion et provisionnement du stockage physique</h2>
+            <p>J'ai procédé à l'arrêt propre du contrôleur de domaine <strong>SRV-AD01</strong> afin de modifier ses ressources matérielles au niveau de l'hyperviseur VMware.</p>
+            <p>Dans les paramètres de la machine virtuelle, j'ai ajouté un second disque dur virtuel indépendant (<strong>NVMe</strong>) avec une allocation de <strong>20 Go</strong>, dédié exclusivement aux archives de sauvegarde. J'ai ensuite redémarré le serveur pour que ce volume soit détecté par l'OS.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-01.jpg" alt="Fenêtre Settings de VMware montrant l'ajout matériel." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-02.jpg" alt="Configuration du nouveau disque dur virtuel de 20 Go." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Déploiement de la fonctionnalité sécuritaire</h2>
+            <p>J'ai ouvert une session d'administration sur le serveur SRV-AD01 et j'ai démarré le <strong>Gestionnaire de serveur</strong>.</p>
+            <p>Via l'assistant d'<strong>ajout de rôles et de fonctionnalités</strong>, j'ai localisé et installé la fonctionnalité native <strong>Sauvegarde Windows Server</strong> (Windows Server Backup). J'ai validé le déploiement et attendu la confirmation de succès.</p>
+
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-03.jpg" alt="Menu pour ajouter des rôles et fonctionnalités dans le Gestionnaire de serveur." loading="lazy" decoding="async">
+            </figure>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-04.jpg" alt="Sélection de la fonctionnalité Sauvegarde Windows Server." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-05.jpg" alt="Confirmation de la réussite de l'installation de la fonctionnalité." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Architecture et planification de l'automatisation</h2>
+            <p>Dans le Gestionnaire de serveur, j'ai cliqué sur <strong>Outils</strong> pour lancer la console d'administration <strong>Sauvegarde Windows Server</strong>.</p>
+            <p>J'ai configuré une <strong>planification personnalisée quotidienne</strong> à 22h00 incluant l'état du système (System State) et mon répertoire partagé, puis j'ai désigné le second disque virtuel de 20 Go comme destination exclusive.</p>
+
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-06.jpg" alt="Lancement de Sauvegarde Windows Server via les outils d'administration." loading="lazy" decoding="async">
+            </figure>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-07.jpg" alt="Résumé de la planification avec le volume ciblé et l'état du système." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-08.jpg" alt="Validation finale confirmant la création de la tâche planifiée." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Exécution du test de recette technique et validation</h2>
+            <p>Afin de valider immédiatement la conformité technique de ma configuration sans attendre l'exécution planifiée du soir, j'ai initié un <strong>test de recette</strong> à chaud.</p>
+            <p>J'ai forcé le lancement d'une tâche manuelle unique basée sur les paramètres planifiés et j'ai suivi l'avancement jusqu'à l'obtention du statut de réussite général.</p>
+
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-09.jpg" alt="Lancement forcé d'une tâche manuelle unique." loading="lazy" decoding="async">
+            </figure>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-10.jpg" alt="Processus terminé affichant 7,52 Go de données d'état transférées." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/image-11.jpg" alt="Console principale affichant le statut de réussite globale." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultats obtenus et validés</h2>
+            <ul class="content-list">
+              <li>Maquette virtuelle durcie et protégée par l'isolation physique des archives de sauvegarde (Séparation stricte OS / Données / Sauvegardes).</li>
+              <li>Automatisation et industrialisation complètes de la protection de l'infrastructure Active Directory et du serveur de fichiers.</li>
+              <li>Maîtrise des protocoles de secours de l'état du système (System State), clé de voûte de l'administration sous Windows Server.</li>
+              <li>Succès complet de la recette technique validant le Plan de Reprise d'Activité.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Identification des ressources critiques et allocation de disques physiques dédiés aux infrastructures de secours.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’évolution</dt>
+                <dd>Mise en œuvre d'une solution de continuité et de reprise d'activité répondant aux impératifs de sécurité.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Exploiter et sécuriser une infrastructure</dt>
+                <dd>Configuration de clichés instantanés (VSS) et automatisation des sauvegardes de bases Active Directory.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Développer la présence en ligne</dt>
+                <dd>Documentation technique exhaustive des mécanismes de sécurité et publication sur le portfolio.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>Cette réalisation a été une opportunité idéale pour aborder la notion cruciale de Plan de Reprise d'Activité (PRA). J'ai compris qu'un déploiement de services d'infrastructure n'est jamais complet sans l'intégration d'une couche de sauvegarde rigoureuse.</p>
+            <p>La manipulation de clichés instantanés VSS et la sauvegarde de l'état du système (System State) m'ont permis de manipuler les bases complexes de la restauration Active Directory, une compétence fondamentale et rassurante à valoriser en entreprise.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
