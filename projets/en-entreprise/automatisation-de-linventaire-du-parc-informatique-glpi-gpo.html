@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet GLPI de Damien Zanatta : remplacement de FusionInventory par GLPI Inventory dans un contexte professionnel.">
+  <meta name="theme-color" content="#020813">
+  <title>Automatisation de l'inventaire du parc informatique (GLPI / GPO)| Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="../../index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
+        <a href="../../projets.html#company" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-page-title">
+          <img src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/icone.jpg" alt="Logo GLPI" class="project-page-logo" width="96" height="96">
+          <div class="project-page-heading">
+            <h1 id="project-title">Automatisation de l'inventaire du parc informatique (GLPI / GPO)</h1>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>Présentation</h2>
+            <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, j’ai participé à la réflexion autour du remplacement de FusionInventory par GLPI Inventory.</p>
+            <p>FusionInventory était encore utilisé pour la remontée d’inventaire du parc informatique, mais cette solution n’est plus maintenue. L’objectif était donc d’étudier une solution plus récente, directement intégrée à GLPI, afin de garantir la continuité de l’inventaire matériel.</p>
+            <p>Cette réalisation a d’abord été menée en environnement de test afin d’éviter tout impact sur le serveur GLPI de production.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Objectifs</h2>
+            <ul class="content-list">
+              <li>Étudier le remplacement de FusionInventory par GLPI Inventory.</li>
+              <li>Tester la solution sur une machine de préparation avant toute intervention en production.</li>
+              <li>Vérifier le bon fonctionnement de la remontée d’inventaire.</li>
+              <li>Comprendre le fonctionnement de l’agent GLPI et de sa communication avec le serveur.</li>
+              <li>Préparer une procédure exploitable pour une future mise en production.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique</h2>
+            <ul class="content-list">
+              <li><strong>Solution cible :</strong> GLPI Inventory</li>
+              <li><strong>Solution remplacée :</strong> FusionInventory</li>
+              <li><strong>Application concernée :</strong> GLPI</li>
+              <li><strong>Environnement :</strong> serveur GLPI de test</li>
+              <li><strong>Machine de test :</strong> poste Windows</li>
+              <li><strong>Composant installé :</strong> GLPI Agent</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Préparation de la maquette</h2>
+            <p>Avant de manipuler l’environnement de production, j’ai travaillé sur une maquette afin de tester le fonctionnement de GLPI Inventory dans des conditions maîtrisées.</p>
+            <p>Cette étape permettait de vérifier que le serveur GLPI était correctement configuré pour recevoir les inventaires et que l’agent installé sur un poste client pouvait transmettre les informations attendues.</p>
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-01.jpg" alt="Interface GLPI utilisée dans l'environnement de test." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Activation de l’inventaire natif</h2>
+            <p>J’ai activé la fonctionnalité d’inventaire natif dans GLPI afin de permettre au serveur de recevoir les remontées provenant du GLPI Agent.</p>
+            <p>Cette configuration constitue une étape indispensable avant l’installation de l’agent sur les postes clients, car elle prépare GLPI à centraliser les informations matérielles et logicielles.</p>
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-02.jpg" alt="Activation de l'inventaire natif dans GLPI." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Installation du GLPI Agent</h2>
+            <p>J’ai ensuite installé le GLPI Agent sur une machine Windows de test.</p>
+            <p>Lors de l’installation, j’ai renseigné l’adresse du serveur GLPI afin que l’agent puisse communiquer avec celui-ci et transmettre automatiquement les données d’inventaire.</p>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-03.jpg" alt="Assistant d'installation du GLPI Agent." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-04.jpg" alt="Configuration de l'URL du serveur GLPI pendant l'installation de l'agent." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Vérification de la remontée d’inventaire</h2>
+            <p>Après l’installation, j’ai contrôlé dans GLPI que le poste de test remontait correctement dans l’inventaire.</p>
+            <p>Cette vérification a permis de confirmer que la communication entre l’agent et le serveur fonctionnait correctement et que les informations du poste étaient bien collectées.</p>
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-05.jpg" alt="Poste remonté dans l'inventaire GLPI après installation du GLPI Agent." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Contrôle des informations collectées</h2>
+            <p>J’ai consulté la fiche du poste remonté dans GLPI afin de vérifier les informations collectées : matériel, système d’exploitation, composants et données d’inventaire.</p>
+            <p>Ce contrôle permettait de s’assurer que la solution répondait bien au besoin de suivi du parc informatique.</p>
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-06.jpg" alt="Fiche d'un ordinateur inventorié dans GLPI." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultats obtenus</h2>
+            <ul class="content-list">
+              <li>GLPI Inventory a été activé sur l’environnement de test.</li>
+              <li>Le GLPI Agent a été installé et configuré sur un poste Windows.</li>
+              <li>La remontée d’inventaire vers GLPI a été validée.</li>
+              <li>Les informations matérielles et logicielles du poste ont été consultables dans GLPI.</li>
+              <li>La solution a été identifiée comme une alternative pertinente à FusionInventory.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Étude d’une solution d’inventaire permettant de maintenir une vision à jour du parc informatique.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
+                <dd>Préparation d’une évolution technique visant à remplacer une solution obsolète par un outil maintenu.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Travailler en mode projet</dt>
+                <dd>Réalisation de tests dans un environnement maîtrisé avant une éventuelle mise en production.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
+                <dd>Contribution à la fiabilité de l’inventaire, utile au support et à la gestion du parc.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>Cette réalisation m’a permis de mieux comprendre le fonctionnement d’un outil d’inventaire informatique et l’intérêt de tester une évolution technique avant son déploiement en production.</p>
+            <p>J’ai également pris conscience de l’importance de maintenir les outils du système d’information à jour, notamment lorsqu’une solution n’est plus maintenue.</p>
+            <p>Ce projet m’a permis de progresser sur GLPI, sur la configuration d’un agent d’inventaire et sur la validation technique d’une solution avant son intégration dans un environnement professionnel.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
