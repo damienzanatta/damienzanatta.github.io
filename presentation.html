@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Présentation de Damien Zanatta, de son parcours, de sa formation BTS SIO SISR et de son entreprise d'accueil.">
+  <meta name="theme-color" content="#020813">
+  <title>Présentation | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .presentation-box .presentation-tab-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .presentation-box #panel-parcours .timeline-item { align-items: stretch; }
+    .presentation-box #panel-parcours .timeline-date { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; height: 100%; }
+    .presentation-box #panel-parcours .timeline-date-start, .presentation-box #panel-parcours .timeline-date-end { display: block; }
+    .presentation-box #panel-parcours .timeline-date-dots { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: auto 0; }
+    .presentation-box #panel-parcours .timeline-date-dots span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(158, 238, 255, 0.4); box-shadow: 0 0 10px rgba(158, 238, 255, 0.18);
+    }
+    [data-theme="light"] .presentation-box #panel-parcours .timeline-date-dots span {
+      background: rgba(2, 132, 199, 0.4); box-shadow: none;
+    }
+    .presentation-box #panel-parcours .timeline-content { display: flex; flex-direction: column; justify-content: center; }
+  </style>
+
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="accueil.html" class="nav-home-link">Accueil</a>
+        <span class="nav-main-separator" aria-hidden="true"></span>
+        <a href="presentation.html" class="active" aria-current="page">Présentation</a>
+        <a href="projets.html">Projets</a>
+        <a href="veille.html">Veille</a>
+        <span class="nav-main-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="presentation-title">
+        <h1 id="presentation-title">Présentation</h1>
+
+        <div data-tabs>
+          <div class="tab-grid presentation-tab-grid" role="tablist" aria-label="Contenu de présentation">
+            <button class="tab-card active" id="tab-situation" role="tab" type="button" aria-selected="true" aria-controls="panel-situation" tabindex="0">Situation</button>
+            <button class="tab-card" id="tab-parcours" role="tab" type="button" aria-selected="false" aria-controls="panel-parcours" tabindex="-1">Parcours</button>
+            <button class="tab-card" id="tab-entreprise" role="tab" type="button" aria-selected="false" aria-controls="panel-entreprise" tabindex="-1">Entreprise</button>
+          </div>
+
+          <div class="tab-panels">
+            <section class="tab-panel active" id="panel-situation" role="tabpanel" aria-labelledby="tab-situation" tabindex="0">
+              <dl class="info-grid">
+                <div class="info-item">
+                  <dt>Période</dt>
+                  <dd>Septembre 2024 - Août 2026</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Statut</dt>
+                  <dd>Étudiant en alternance</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Formation</dt>
+                  <dd>BTS Services Informatiques aux Organisations</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Option</dt>
+                  <dd>Solutions d'Infrastructure, Systèmes et Réseaux</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Structure de formation</dt>
+                  <dd>H3 Campus (78300, Poissy)</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Structure d'accueil</dt>
+                  <dd>École de Biologie Industrielle (95800, Cergy)</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="tab-panel" id="panel-parcours" role="tabpanel" aria-labelledby="tab-parcours" tabindex="0" hidden>
+              <ol class="timeline">
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time class="timeline-date-start" datetime="2017-09">Septembre 2017</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2020-08">Août 2020</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Bac Professionnel Systèmes Numériques</h3>
+                    <p><strong>Option :</strong> Réseaux Informatiques et Systèmes Communicants</p>
+                    <p><strong>Structure de formation :</strong> CFA Orléans Métropole (45000, Orléans)</p>
+                    <p><strong>Structure d'accueil :</strong> Netfective Technology (92250, La Garenne-Colombes)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time class="timeline-date-start" datetime="2020-09">Septembre 2020</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2022-08">Août 2022</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Validation du projet professionnel</h3>
+                    <p><strong>Structures d'accompagnement :</strong> Pôle Emploi et Cité des Métiers (60000, Beauvais)</p>
+                    <p><strong>Modalités :</strong> Ateliers, stages et missions d'intérim</p>
+                    <p><strong>Domaines explorés :</strong> Vente, logistique, gestion administrative</p>
+                    <p><strong>Structures d'accueil :</strong> Sport 2000, Stago, Lycée professionnel, etc.</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time class="timeline-date-start" datetime="2022-09">Septembre 2022</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2024-08">Août 2024</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>BTS Comptabilité et Gestion</h3>
+                    <p><strong>Structure de formation :</strong> H3 Campus (95310, Saint-Ouen-l'Aumône)</p>
+                    <p><strong>Structure d'accueil :</strong> Consultants Associés Européens (95310, Saint-Ouen-l'Aumône)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time class="timeline-date-start" datetime="2024-09">Septembre 2024</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2026-08">Août 2026</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>BTS Services Informatiques aux Organisations</h3>
+                    <p><strong>Option :</strong> Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                    <p><strong>Structure de formation :</strong> H3 Campus (78300, Poissy)</p>
+                    <p><strong>Structure d'accueil :</strong> École de Biologie Industrielle (95800, Cergy)</p>
+                  </article>
+                </li>
+
+                <li class="timeline-item">
+                  <p class="timeline-date">
+                    <time class="timeline-date-start" datetime="2026-09">Septembre 2026</time>
+                    <span class="timeline-date-dots" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </span>
+                    <time class="timeline-date-end" datetime="2027-08">Août 2027</time>
+                  </p>
+                  <article class="timeline-content">
+                    <h3>Bachelor Data et IA</h3>
+                    <p><strong>Structure de formation :</strong> H3 Hitema (75015, Paris)</p>
+                  </article>
+                </li>
+              </ol>
+            </section>
+
+            <section class="tab-panel" id="panel-entreprise" role="tabpanel" aria-labelledby="tab-entreprise" tabindex="0" hidden>
+              <div class="timeline">
+                <article class="timeline-content">
+                  <h3>EBI (École de Biologie Industrielle)</h3>
+                  <p><strong>Type :</strong> École d'ingénieurs en biologie</p>
+                  <p><strong>Fondation :</strong> 1992</p>
+                  <p><strong>Localisation :</strong> Cergy (95800)</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Formations :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Bachelor Biotechnologie (Bac+3)</li>
+                      <li>Programme Ingénieur Grande École (Bac+5)</li>
+                      <li>Mastères Spécialisés® (Bac+6)</li>
+                    </ul>
+                  </div>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Secteurs :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Pharmaceutique</li>
+                      <li>Cosmétique</li>
+                      <li>Agro-alimentaire</li>
+                      <li>Environnement</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-content">
+                  <h3>Service informatique</h3>
+                  <p><strong>Effectif :</strong> 3 personnes (responsable informatique, prestataire présent sur site, alternant)</p>
+                  <p><strong>Rôle :</strong> Assurer le bon fonctionnement des équipements et services informatiques de l'école</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Public accompagné :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>840 étudiants</li>
+                      <li>34 professeurs et enseignants-chercheurs permanents</li>
+                      <li>136 experts et professionnels vacataires</li>
+                      <li>7 techniciens de laboratoires</li>
+                      <li>24 collaborateurs administratifs</li>
+                    </ul>
+                  </div>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Prestataires :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>DEiiS : systèmes et réseaux</li>
+                      <li>AISI : cybersécurité</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-content">
+                  <h3>Fonction</h3>
+                  <p><strong>Statut :</strong> Alternant au sein du service informatique</p>
+                  <p><strong>Type de contrat :</strong> Contrat d'apprentissage (2 ans)</p>
+                  <p><strong>Poste :</strong> Technicien systèmes d'information et support IT</p>
+
+                  <div class="hanging-block">
+                    <p class="hanging-label">Missions quotidiennes :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li>Recherche de nouveaux matériels et solutions pour l'établissement</li>
+                      <li>Tests, installation et mise en service des équipements informatiques</li>
+                      <li>Assistance aux utilisateurs et support de niveau 1</li>
+                      <li>Rédaction de procédures d'utilisation du matériel informatique</li>
+                      <li>Diffusion de messages d'information et de sensibilisation</li>
+                      <li>Participation aux comités informatiques mensuels</li>
+                      <li>Suivi de sujets cybersécurité avec l'assureur Stoïk</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
