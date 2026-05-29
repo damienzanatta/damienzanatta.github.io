@@ -1,11 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Redirection en cours...</title>
-    <meta http-equiv="refresh" content="0; url=accueil.html">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Redirection vers le portfolio de Damien Zanatta.">
+  <meta name="theme-color" content="#020813">
+  <title>Chargement | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <meta http-equiv="refresh" content="2; url=accueil.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <style>
+    .cyber-loader {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      margin: 0 auto;
+    }
+    
+    /* Anneau de fond subtil */
+    .cyber-loader::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--surface-border-active);
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    
+    /* Arc lumineux animé */
+    .cyber-loader::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border: 2px solid transparent;
+      border-top-color: var(--accent);
+      border-right-color: var(--accent);
+      border-radius: 50%;
+      animation: spin-loader 1.2s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
+      filter: drop-shadow(0 0 8px var(--accent));
+    }
+    
+    @keyframes spin-loader {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        window.location.replace("accueil.html");
+      }, 2000);
+    });
+  </script>
 </head>
 <body>
-    <p>Si vous n'êtes pas redirigé automatiquement, <a href="accueil.html">cliquez ici</a>.</p>
+  <main id="main-content" class="home-main reveal-init is-revealed" style="min-height: 100vh; justify-content: center;">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+      
+      <div class="site-title" style="font-size: 1.4rem; margin-bottom: 32px;">
+        <a href="accueil.html" style="pointer-events: none;">Damien Zanatta</a>
+      </div>
+
+      <div class="info-item" style="max-width: 420px; width: 100%; padding: 32px 22px;">
+        <h2 style="font-size: 1.2rem; margin: 0 0 26px 0;">Initialisation du portfolio...</h2>
+        
+        <div class="cyber-loader"></div>
+      </div>
+
+    </div>
+  </main>
 </body>
 </html>
