@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet de formation de Damien Zanatta : Déploiement d'un serveur de fichiers sécurisé et mappage de lecteur réseau par GPO.">
+  <meta name="theme-color" content="#020813">
+  <title>Mise en place d'un serveur de fichiers et gestion des droits d'accès (NTFS / GPO) | Damien Zanatta</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="site-title">
+        <a href="../../index.html">Damien Zanatta</a>
+      </div>
+
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
+        <a href="../../projets.html" class="project-top-link project-top-return">← Retour</a>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <span class="project-top-separator" aria-hidden="true"></span>
+        <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="page-box presentation-box" aria-labelledby="project-title">
+        <div class="project-page-title">
+          <img src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/icone.jpg" alt="Icône Serveur de fichiers" class="project-page-logo" width="96" height="96">
+          <div class="project-page-heading">
+            <h1 id="project-title">Mise en place d'un serveur de fichiers et gestion des droits d'accès (NTFS / GPO)</h1>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-content">
+            <h2>Présentation</h2>
+            <p>Dans le cadre de l'évolution de l'infrastructure réseau de ma maquette de formation, j'ai mis en place un serveur de fichiers centralisé sous Windows Server 2022.</p>
+            <p>L'objectif de cette réalisation était de concevoir un espace de stockage réseau hautement sécurisé via des droits NTFS, et d'automatiser son déploiement sur les postes clients sous la forme d'un lecteur réseau (Z:) grâce aux Stratégies de Groupe (GPO) de l'Active Directory.</p>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Environnement technique et Architecture</h2>
+            <ul class="content-list">
+              <li><strong>Hyperviseur :</strong> VMware Workstation Pro</li>
+              <li><strong>VM serveur :</strong> Windows Server 2022 (SRV-AD01)</li>
+              <li><strong>Poste Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
+              <li><strong>Domaine :</strong> sio.local</li>
+              <li><strong>Utilisateur de test :</strong> SIO\dzanatta (Membre du groupe "G_Informatique", OU "SOCIETE-SIO")</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Création et configuration du partage réseau</h2>
+            <p>Je me suis connecté sur <strong>SRV-AD01</strong> en tant qu'Administrateur du domaine.</p>
+            <p>J'ai ouvert l'Explorateur de fichiers, je me suis rendu à la racine du disque local <strong>C:\</strong> et j'ai créé un dossier nommé : <strong>Partages_SOCIETE</strong>.</p>
+            <p>Dans les propriétés du dossier (onglet <strong>Partage</strong>), j'ai activé le partage avancé.</p>
+            <p>Côté autorisations, j'ai appliqué la bonne pratique de Microsoft en donnant le <strong>Contrôle total</strong> au groupe <strong>Tout le monde</strong> sur la couche réseau, laissant ainsi la couche NTFS gérer la sécurité réelle.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-01.jpg" alt="Fenêtre Partage avancé avec la case Partager ce dossier cochée." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-02.jpg" alt="Fenêtre des autorisations avec Tout le monde en Contrôle total." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Sécurisation et verrouillage des droits NTFS</h2>
+            <p>Toujours sur le serveur, j'ai basculé sur l'onglet <strong>Sécurité</strong> pour configurer finement les accès.</p>
+            <p>J'ai d'abord désactivé l'héritage afin de détacher les droits du dossier de ceux du disque racine.</p>
+            <p>J'ai supprimé les utilisateurs standards pour ne conserver que les entités systèmes (<strong>Administrateurs</strong>, <strong>SYSTEM</strong>, <strong>CREATEUR PROPRIETAIRE</strong>).</p>
+            <p>Enfin, j'ai ajouté spécifiquement le groupe <strong>G_Informatique</strong> en lui accordant uniquement le droit de <strong>Modification</strong> (White listing).</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-03.jpg" alt="Fenêtre des paramètres de sécurité avancés épurée sans héritage." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-04.jpg" alt="Entrée d'autorisation avec G_Informatique coché en Modification." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Création de la GPO de mappage réseau</h2>
+            <p>Dans la console de Gestion des stratégies de groupe (gpmc.msc), j'ai créé et lié une nouvelle GPO nommée <strong>GPO_Lecteurs_Reseaux</strong> directement sur l'Unité d'Organisation <strong>SOCIETE-SIO</strong>.</p>
+            <p>Dans l'éditeur, j'ai créé un "Lecteur mappé" pointant vers le chemin UNC <strong>\\SRV-AD01\Partages_SOCIETE</strong> avec la lettre <strong>Z</strong>.</p>
+            <p>J'ai pris soin de cocher l'option <strong>Exécuter dans le contexte de sécurité de l'utilisateur connecté</strong> afin de garantir que le montage respecte les droits de la session active.</p>
+
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-05.jpg" alt="Console gpmc.msc montrant la GPO liée à l'OU SOCIETE-SIO." loading="lazy" decoding="async">
+            </figure>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-06.jpg" alt="Configuration de l'onglet Général avec le chemin UNC et la lettre Z." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-07.jpg" alt="Onglet Commun avec la case du contexte utilisateur activée." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Authentification et actualisation des stratégies</h2>
+            <p>Sur la station Windows 11, je me suis authentifié avec mon compte de test <strong>SIO\dzanatta</strong>.</p>
+            <p>Pour forcer l'application immédiate de ma nouvelle GPO, j'ai ouvert la boîte <strong>Exécuter</strong> et lancé la commande <strong>gpupdate /force</strong>, suivie d'une reconnexion.</p>
+
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-08.jpg" alt="PC Windows 11 déverrouillé, session SIO\dzanatta visible." loading="lazy" decoding="async">
+            </figure>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-09.jpg" alt="Boîte Exécuter avec la commande gpupdate /force saisie." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-10.jpg" alt="Fenêtre d'exécution avec mise à jour de la stratégie terminée." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Recette technique et vérification des droits</h2>
+            <p>Dans l'Explorateur de fichiers, j'ai pu constater la présence du volume <strong>Partage Informatique (Z:)</strong>.</p>
+            <p>J'ai navigué à l'intérieur et créé avec succès un fichier <strong>test.txt</strong>, validant à la fois la GPO et mes autorisations NTFS.</p>
+
+            <figure class="summary-visual single-image single-image--mb">
+              <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-11.jpg" alt="Explorateur affichant le volume Partage Informatique (Z:)." loading="lazy" decoding="async">
+            </figure>
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-12.jpg" alt="Intérieur du lecteur Z: montrant le clic droit Nouveau Document." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/image-13.jpg" alt="Fichier test_recette.txt créé avec succès." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Résultats obtenus et validés</h2>
+            <ul class="content-list">
+              <li>L'isolation réseau a été parfaitement gérée au niveau de l'hyperviseur (résolution de conflit d'IP).</li>
+              <li>L'espace de stockage a été provisionné et partagé sur le réseau de manière optimale.</li>
+              <li>Le principe du moindre privilège a été strictement appliqué grâce au verrouillage des autorisations NTFS (White listing).</li>
+              <li>L'environnement de travail de l'utilisateur a été automatisé avec succès via les préférences de GPO.</li>
+              <li>La recette technique sur le client a confirmé le montage transparent du lecteur et l'exactitude des droits d'écriture.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Compétences mobilisées</h2>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Mise en place d'un espace de stockage réseau et identification des ressources d'infrastructure.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’évolution</dt>
+                <dd>Création d'un espace collaboratif sécurisé répondant à un besoin fonctionnel de l'entreprise.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Exploiter et sécuriser une infrastructure</dt>
+                <dd>Verrouillage des autorisations NTFS et industrialisation du déploiement via les Stratégies de Groupe (GPO).</dd>
+              </div>
+              <div class="info-item">
+                <dt>Développer la présence en ligne</dt>
+                <dd>Documentation technique rigoureuse et publication de la réalisation sur le portfolio web.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Bilan personnel</h2>
+            <p>Ce projet m'a permis de mettre en pratique l'un des besoins les plus courants et fondamentaux en entreprise : la gestion sécurisée des données utilisateurs.</p>
+            <p>J'ai compris l'importance de bien séparer les droits de Partage (réseau) des droits NTFS (système de fichiers) pour garantir la sécurité. L'utilisation des préférences de GPO pour automatiser le montage du lecteur m'a prouvé à quel point l'Active Directory permet de fluidifier l'expérience des utilisateurs tout en conservant un contrôle d'administration total.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Damien Zanatta - Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
