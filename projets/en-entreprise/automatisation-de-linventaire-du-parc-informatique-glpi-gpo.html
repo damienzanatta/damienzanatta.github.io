@@ -176,9 +176,13 @@
           </article>
 
           <article class="timeline-content">
-            <h2>Installation du GLPI Agent</h2>
-            <p>J’ai ensuite installé le GLPI Agent sur une machine Windows de test.</p>
-            <p>Lors de l’installation, j’ai renseigné l’adresse du serveur GLPI afin que l’agent puisse communiquer avec celui-ci et transmettre automatiquement les données d’inventaire.</p>
+            <h2>Ajout du script de déploiement VBS au démarrage via GPO</h2>
+            <p>Dans l’Éditeur de gestion des stratégies de groupe, j’ai ouvert la GPO dédiée à l’inventaire GLPI, puis je suis allé dans :</p>
+			<p><strong>Configuration ordinateur</strong> > <strong>Stratégies</strong> > <strong>Paramètres Windows</strong> > <strong>Scripts (démarrage/arrêt)</strong></p>
+            <p>J’ai ensuite sélectionné Démarrage, afin de configurer un script qui s’exécutera automatiquement au lancement des machines concernées par cette stratégie.</p>
+			<p>Dans la fenêtre Propriétés de : Démarrage, j’ai ajouté le script de déploiement de l’agent GLPI en indiquant le chemin réseau suivant :</p>
+			<p><strong>\\SRV-AD01\Deploiement_GLPI$\glpi-agent-deployment.vbs</strong></p>
+			<p>Ce chemin UNC pointe vers le partage réseau contenant le script. Grâce à cette configuration, les postes ciblés par la GPO pourront exécuter le script au démarrage pour lancer le déploiement de l’agent GLPI.</p>
             <div class="info-grid">
               <figure class="summary-visual">
                 <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-09.jpg" alt="Arborescence de l'éditeur de stratégie ciblant les paramètres de scripts de démarrage de l'ordinateur." loading="lazy" decoding="async">
