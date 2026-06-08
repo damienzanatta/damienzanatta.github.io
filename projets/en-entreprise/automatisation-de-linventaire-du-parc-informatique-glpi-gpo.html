@@ -113,7 +113,7 @@
 
           <article class="timeline-content">
             <h2>Préparation de la maquette (Prérequis)</h2>
-            <p>Avant d'entamer les objectifs principaux de la mission, j'ai préparé l'environnement de test (<strong>POC</strong>).</p>
+            <p>Avant d'entamer les objectifs principaux de la mission, j'ai préparé l'environnement de test (<strong>POC</strong>) sur <strong>VMware Workstation</strong>.</p>
             <p>J'ai déployé une machine virtuelle sous <strong>Debian 13</strong> avec une pile LAMP opérationnelle disposant d'une adresse IP statique (<strong>192.168.10.20</strong>).</p>
             <p>J'y ai ensuite installé <strong>GLPI 11.0.7</strong> en prenant soin de configurer le serveur web <strong>Apache</strong> pour qu'il pointe directement vers le sous-répertoire sécurisé <strong>/public/</strong> afin de respecter les prérequis stricts de l'éditeur.</p>
 
@@ -163,6 +163,9 @@
               <li><strong>SetupLocation = "\\SRV-AD01\Deploiement_GLPI$" :</strong> Pour forcer l'installation en local via le chemin réseau, évitant un téléchargement lourd depuis Internet.</li>
               <li><strong>SetupOptions = "/quiet RUNNOW=1 SERVER='http://192.168.10.20/'" :</strong> Ajout du mode silencieux (/quiet), exécution immédiate de l'inventaire (RUNNOW), et ciblage de l'IP du serveur GLPI sécurisé.</li>
             </ul>
+          </article>
+
+          <article class="timeline-content">
             <h2>Activation de l’inventaire natif</h2>
             <p>J’ai activé la fonctionnalité d’inventaire natif dans GLPI afin de permettre au serveur de recevoir les remontées provenant du GLPI Agent.</p>
             <p>Cette configuration constitue une étape indispensable avant l’installation de l’agent sur les postes clients, car elle prépare GLPI à centraliser les informations matérielles et logicielles.</p>
