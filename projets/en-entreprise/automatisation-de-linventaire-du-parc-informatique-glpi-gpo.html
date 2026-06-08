@@ -119,10 +119,10 @@
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-01.jpg" alt="Vérification en ligne de commande de l'état actif des services apache2 et mariadb, des versions de MariaDB et PHP, et des droits du répertoire web." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img01-lamp-cli.jpg" alt="Vérification en ligne de commande de l'état actif des services apache2 et mariadb, des versions de MariaDB et PHP, et des droits du répertoire web." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-02.jpg" alt="Accès initial à l'interface graphique de GLPI 11 à l'adresse 192.168.10.20 montrant le nouveau tableau de bord." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img02-glpi-dashboard.jpg" alt="Accès initial à l'interface graphique de GLPI 11 à l'adresse 192.168.10.20 montrant le nouveau tableau de bord." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
@@ -134,10 +134,10 @@
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-03.jpg" alt="Menu Administration de GLPI montrant l'état initial du paramètre d'inventaire positionné sur désactivé." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img03-inventory-disabled.jpg" alt="Menu Administration de GLPI montrant l'état initial du paramètre d'inventaire positionné sur désactivé." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-04.jpg" alt="Paramètres d'inventaire mis à jour avec la case d'activation cochée et la liste des options d'importation." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img04-inventory-enabled.jpg" alt="Paramètres d'inventaire mis à jour avec la case d'activation cochée et la liste des options d'importation." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
@@ -150,20 +150,8 @@
             <p>J'y ai ensuite déposé l'installateur officiel <strong>MSI</strong> de l'agent (<strong>v1.9</strong>) ainsi que le script <strong>VBS</strong>.</p>
 
             <figure class="summary-visual single-image single-image--mb">
-              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-05.jpg" alt="Création du répertoire de destination à la racine du volume C: du serveur de domaine." loading="lazy" decoding="async">
-            <h2>Préparation de la maquette</h2>
-            <p>Avant de manipuler l’environnement de production, j’ai travaillé sur une maquette afin de tester le fonctionnement de GLPI Inventory dans des conditions maîtrisées.</p>
-            <p>Cette étape permettait de vérifier que le serveur GLPI était correctement configuré pour recevoir les inventaires et que l’agent installé sur un poste client pouvait transmettre les informations attendues.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-01.jpg" alt="Interface GLPI utilisée dans l'environnement de test." loading="lazy" decoding="async">
+              <img class="summary-image" src="ep1-img05-folder-creation.jpg" alt="Création du répertoire de destination à la racine du volume C: du serveur de domaine." loading="lazy" decoding="async">
             </figure>
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-06.jpg" alt="Fenêtre de configuration du partage avancé montrant l'attribution du nom de partage masqué avec un dollar." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-07.jpg" alt="Contenu du répertoire partagé affichant le package d'installation MSI et le script de déploiement." loading="lazy" decoding="async">
-              </figure>
             </div>
           </article>
 
@@ -180,7 +168,7 @@
             <p>J’ai activé la fonctionnalité d’inventaire natif dans GLPI afin de permettre au serveur de recevoir les remontées provenant du GLPI Agent.</p>
             <p>Cette configuration constitue une étape indispensable avant l’installation de l’agent sur les postes clients, car elle prépare GLPI à centraliser les informations matérielles et logicielles.</p>
             <figure class="summary-visual single-image">
-              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-02.jpg" alt="Activation de l'inventaire natif dans GLPI." loading="lazy" decoding="async">
+              <img class="summary-image" src="ep1-img02-activation-inventaire.jpg" alt="Activation de l'inventaire natif dans GLPI." loading="lazy" decoding="async">
             </figure>
           </article>
 
@@ -190,19 +178,19 @@
             <p>J'ai édité la stratégie pour ajouter mon script de démarrage en renseignant son chemin <strong>UNC</strong> complet.</p>
 
             <figure class="summary-visual single-image single-image--mb">
-              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-08.jpg" alt="Console de gestion montrant la création et la liaison de l'objet GPO sur l'OU appropriée." loading="lazy" decoding="async">
+              <img class="summary-image" src="ep1-img08-gpo-creation.jpg" alt="Console de gestion montrant la création et la liaison de l'objet GPO sur l'OU appropriée." loading="lazy" decoding="async">
             </figure>
             <h2>Installation du GLPI Agent</h2>
             <p>J’ai ensuite installé le GLPI Agent sur une machine Windows de test.</p>
             <p>Lors de l’installation, j’ai renseigné l’adresse du serveur GLPI afin que l’agent puisse communiquer avec celui-ci et transmettre automatiquement les données d’inventaire.</p>
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-09.jpg" alt="Arborescence de l'éditeur de stratégie ciblant les paramètres de scripts de démarrage de l'ordinateur." loading="lazy" decoding="async">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-03.jpg" alt="Assistant d'installation du GLPI Agent." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img09-gpo-scripts.jpg" alt="Arborescence de l'éditeur de stratégie ciblant les paramètres de scripts de démarrage de l'ordinateur." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img03-install-agent.jpg" alt="Assistant d'installation du GLPI Agent." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-10.jpg" alt="Propriétés du script de démarrage affichant l'ajout du chemin d'accès universel réseau." loading="lazy" decoding="async">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-04.jpg" alt="Configuration de l'URL du serveur GLPI pendant l'installation de l'agent." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img10-gpo-path.jpg" alt="Propriétés du script de démarrage affichant l'ajout du chemin d'accès universel réseau." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img04-url-serveur.jpg" alt="Configuration de l'URL du serveur GLPI pendant l'installation de l'agent." loading="lazy" decoding="async">
               </figure>
             </div>
           </article>
@@ -215,17 +203,17 @@
 
             <div class="info-grid">
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-11.jpg" alt="Boîte de dialogue Exécuter sur le poste client avec la commande services.msc." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img11-client-services.jpg" alt="Boîte de dialogue Exécuter sur le poste client avec la commande services.msc." loading="lazy" decoding="async">
               </figure>
               <figure class="summary-visual">
-                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-12.jpg" alt="Liste des services Windows mettant en évidence le service GLPI Agent avec le statut En cours d'exécution." loading="lazy" decoding="async">
+                <img class="summary-image" src="ep1-img12-client-agent-active.jpg" alt="Liste des services Windows mettant en évidence le service GLPI Agent avec le statut En cours d'exécution." loading="lazy" decoding="async">
               </figure>
             </div>
             <h2>Vérification de la remontée d’inventaire</h2>
             <p>Après l’installation, j’ai contrôlé dans GLPI que le poste de test remontait correctement dans l’inventaire.</p>
             <p>Cette vérification a permis de confirmer que la communication entre l’agent et le serveur fonctionnait correctement et que les informations du poste étaient bien collectées.</p>
             <figure class="summary-visual single-image">
-              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-05.jpg" alt="Poste remonté dans l'inventaire GLPI après installation du GLPI Agent." loading="lazy" decoding="async">
+              <img class="summary-image" src="ep1-img05-remontee-inventaire.jpg" alt="Poste remonté dans l'inventaire GLPI après installation du GLPI Agent." loading="lazy" decoding="async">
             </figure>
           </article>
 
@@ -239,8 +227,8 @@
             <p>J’ai consulté la fiche du poste remonté dans GLPI afin de vérifier les informations collectées : matériel, système d’exploitation, composants et données d’inventaire.</p>
             <p>Ce contrôle permettait de s’assurer que la solution répondait bien au besoin de suivi du parc informatique.</p>
             <figure class="summary-visual single-image">
-              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-13.jpg" alt="Vue de la table Parc des ordinateurs sur GLPI affichant la fiche d'inventaire complète et détaillée du client." loading="lazy" decoding="async">
-              <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-06.jpg" alt="Fiche d'un ordinateur inventorié dans GLPI." loading="lazy" decoding="async">
+              <img class="summary-image" src="ep1-img13-glpi-computer-list.jpg" alt="Vue de la table Parc des ordinateurs sur GLPI affichant la fiche d'inventaire complète et détaillée du client." loading="lazy" decoding="async">
+              <img class="summary-image" src="ep1-img06-fiche-poste.jpg" alt="Fiche d'un ordinateur inventorié dans GLPI." loading="lazy" decoding="async">
             </figure>
           </article>
 
