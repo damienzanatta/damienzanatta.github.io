@@ -3,15 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projet SharePoint de Damien Zanatta : conception d'une base de connaissances Intranet pour centraliser la documentation technique.">
+  <meta name="description" content="Projet SharePoint de Damien Zanatta : conception d’une base de connaissances Intranet pour centraliser la documentation technique.">
   <meta name="theme-color" content="#020813">
-  <title>Centralisation de la documentation informatique (Sharepoint) | Damien Zanatta</title>
+  <meta name="color-scheme" content="dark light">
+  <title>Centralisation de la documentation informatique (SharePoint) | Damien Zanatta</title>
 
   <script>
     (function() {
-      var theme = localStorage.getItem('theme-preference');
-      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        var storedTheme = localStorage.getItem('theme-preference');
+        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = storedTheme || systemTheme || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
+      } catch (error) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
     })();
   </script>
 
@@ -19,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-
+  <link rel="canonical" href="https://damienzanatta.github.io/projets/en-entreprise/centralisation-de-la-documentation-informatique-sharepoint.html">
   <link rel="stylesheet" href="../../style.css">
   <script src="../../script.js" defer></script>
 </head>
@@ -32,12 +40,11 @@
         <a href="../../index.html">Damien Zanatta</a>
       </div>
 
-      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
+      <nav class="project-top-nav" aria-label="Navigation de la réalisation professionnelle">
         <a href="../../projets.html#company" class="project-top-link project-top-return">← Retour</a>
         <span class="project-top-separator" aria-hidden="true"></span>
-        <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -48,8 +55,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span class="theme-switch-slider"></span>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="theme-switch-slider" aria-hidden="true"></span>
+          <svg class="icon-moon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -63,7 +70,7 @@
         <div class="project-page-title">
           <img src="centralisation-de-la-documentation-informatique-sharepoint/icone.jpg" alt="Logo SharePoint" class="project-page-logo" width="96" height="96">
           <div class="project-page-heading">
-            <h1 id="project-title">Centralisation de la documentation informatique (Sharepoint)</h1>
+            <h1 id="project-title">Centralisation de la documentation informatique (SharePoint)</h1>
           </div>
         </div>
 
@@ -71,196 +78,79 @@
           <article class="timeline-content">
             <h2>Présentation</h2>
             <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, j’ai participé à la mise en place d’une base de connaissances Intranet sur SharePoint.</p>
-            <p>L’objectif de cette réalisation était de centraliser la documentation informatique de l’établissement afin de faciliter l’accès aux procédures, aux tutoriels et aux informations techniques utiles aux utilisateurs et au service informatique.</p>
-            <p>Cette base documentaire constitue une première version fonctionnelle du site. Elle servira de socle pour les futures évolutions, notamment l’amélioration de l’interface et l’adaptation des contenus selon les profils d’utilisateurs.</p>
+            <p>L’objectif était de centraliser la documentation informatique de l’établissement afin de faciliter l’accès aux procédures, aux tutoriels et aux informations techniques utiles aux utilisateurs et au service informatique.</p>
+            <p>Cette première version fonctionnelle sert de socle pour les futures évolutions : enrichissement des contenus, amélioration de l’interface et adaptation progressive selon les profils d’utilisateurs.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
-            <ul class="content-list">
-              <li>Mettre en place un espace SharePoint dédié à la documentation informatique interne.</li>
-              <li>Structurer une bibliothèque documentaire claire et exploitable.</li>
-              <li>Classer les documents par dossiers afin de faciliter la recherche d’informations.</li>
-              <li>Valoriser les procédures déjà rédigées au sein du service informatique.</li>
-              <li>Créer une page d’accueil simple avec des liens rapides vers les outils courants de l’EBI.</li>
-              <li>Préparer une base de connaissances évolutive, destinée à être enrichie progressivement.</li>
-            </ul>
+            <ul class="content-list"><li>Mettre en place un espace SharePoint dédié à la documentation informatique interne.</li><li>Structurer une bibliothèque documentaire claire et exploitable.</li><li>Classer les documents par dossiers pour faciliter la recherche d’informations.</li><li>Valoriser les procédures déjà rédigées au sein du service informatique.</li><li>Créer une page d’accueil simple avec des liens rapides vers les outils courants de l’EBI.</li><li>Préparer une base de connaissances évolutive.</li></ul>
           </article>
 
           <article class="timeline-content">
             <h2>Environnement technique</h2>
-            <ul class="content-list">
-              <li><strong>Plateforme :</strong> Microsoft SharePoint Online</li>
-              <li><strong>Environnement :</strong> Microsoft 365</li>
-              <li><strong>Interface :</strong> navigateur web</li>
-              <li><strong>Type de site :</strong> site SharePoint Intranet</li>
-              <li><strong>Rôle attribué :</strong> propriétaire du site pour la configuration et l’organisation des contenus</li>
-              <li><strong>Intervenants :</strong> service informatique de l’EBI et prestataire réseau DEiiS</li>
-              <li><strong>Documents intégrés :</strong> procédures, tutoriels, bonnes pratiques et documentations techniques</li>
-            </ul>
+            <ul class="content-list"><li><strong>Plateforme :</strong> Microsoft SharePoint Online</li><li><strong>Environnement :</strong> Microsoft 365</li><li><strong>Interface :</strong> navigateur web</li><li><strong>Type de site :</strong> site SharePoint Intranet</li><li><strong>Rôle attribué :</strong> propriétaire du site pour la configuration et l’organisation des contenus</li><li><strong>Intervenants :</strong> service informatique de l’EBI et prestataire réseau DEiiS</li><li><strong>Documents intégrés :</strong> procédures, tutoriels, bonnes pratiques et documentations techniques</li></ul>
           </article>
 
           <article class="timeline-content">
             <h2>Exemples de procédures</h2>
             <p>Avant la mise en place de la base de connaissances, j’avais déjà rédigé plusieurs procédures destinées à accompagner les utilisateurs dans l’utilisation du matériel et des outils numériques de l’établissement.</p>
-            <p>Ces documents ont servi d’exemples concrets pour alimenter le futur espace documentaire. Ils montrent le type de contenu attendu dans la base de connaissances : des procédures visuelles, structurées et directement exploitables par les utilisateurs.</p>
-
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-01.jpg" alt="Première page d'une procédure rédigée concernant l'utilisation d'une caméra pod." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-02.jpg" alt="Deuxième page d'une procédure rédigée concernant l'utilisation d'une caméra pod." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-03.jpg" alt="Procédure rédigée expliquant la connexion à un projecteur." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-04.jpg" alt="Procédure rédigée expliquant le transfert d'informations ou de fichiers avec Microsoft Teams." loading="lazy" decoding="async">
-              </figure>
-            </div>
+            <p>Ces documents ont servi d’exemples concrets pour alimenter le futur espace documentaire.</p>
+            <div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-01.jpg" alt="Première page d’une procédure concernant l’utilisation d’une caméra pod." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-02.jpg" alt="Deuxième page d’une procédure concernant l’utilisation d’une caméra pod." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-03.jpg" alt="Procédure expliquant la connexion à un projecteur." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-04.jpg" alt="Procédure expliquant le transfert d’informations ou de fichiers avec Microsoft Teams." loading="lazy" decoding="async"></figure></div>
           </article>
 
           <article class="timeline-content">
             <h2>Cadrage du projet</h2>
-            <p>Mon responsable informatique m’a fourni un document de cadrage afin de définir les attentes du projet, les contenus à intégrer et les évolutions envisagées pour le futur site Intranet.</p>
-            <p>Ce cadrage m’a permis d’identifier le périmètre de mon intervention : organiser l’espace documentaire, préparer la page d’accueil, intégrer les documents et construire une première version exploitable du site.</p>
-            <p>La configuration avancée de la sécurité et l’ajout des groupes d’utilisateurs en lecture seule seront ensuite pris en charge par le prestataire DEiiS.</p>
-
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-05.jpg" alt="Première page du document de cadrage du projet SharePoint." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-06.jpg" alt="Deuxième page du document de cadrage du projet SharePoint." loading="lazy" decoding="async">
-              </figure>
-            </div>
+            <p>Mon responsable informatique m’a fourni un document de cadrage afin de définir les attentes du projet, les contenus à intégrer et les évolutions envisagées.</p>
+            <p>Ce cadrage m’a permis d’identifier mon périmètre : organiser l’espace documentaire, préparer la page d’accueil, intégrer les documents et construire une première version exploitable. La configuration avancée des droits devait ensuite être traitée avec le prestataire DEiiS.</p>
+            <div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-05.jpg" alt="Première page du document de cadrage du projet SharePoint." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-06.jpg" alt="Deuxième page du document de cadrage du projet SharePoint." loading="lazy" decoding="async"></figure></div>
           </article>
 
           <article class="timeline-content">
             <h2>Point de départ : site SharePoint vide</h2>
             <p>Le prestataire réseau DEiiS a créé le site SharePoint et m’a attribué le rôle de propriétaire afin que je puisse effectuer les premières configurations.</p>
-            <p>La capture du site vide permet de montrer l’état initial de l’espace avant mon intervention. À ce stade, aucune page personnalisée, aucun lien rapide et aucune bibliothèque documentaire structurée n’étaient encore en place.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-07.jpg" alt="Capture d'écran du site SharePoint vide avant configuration." loading="lazy" decoding="async">
-            </figure>
+            <figure class="summary-visual single-image"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-07.jpg" alt="Site SharePoint vide avant configuration." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Édition de la page d’accueil</h2>
-            <p>J’ai commencé par éditer la page d’accueil du site afin de lui donner une structure claire et identifiable.</p>
-            <p>J’ai ajouté un titre, deux phrases d’introduction et des liens rapides vers les outils courants utilisés à l’EBI. Cette étape permet aux utilisateurs d’identifier immédiatement l’objectif du site et d’accéder plus facilement aux ressources principales.</p>
-
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-08.jpg" alt="Édition de la page d'accueil du site SharePoint avec ajout d'un titre et d'un texte d'introduction." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-09.jpg" alt="Ajout de liens rapides vers les outils courants de l'EBI sur la page d'accueil SharePoint." loading="lazy" decoding="async">
-              </figure>
-            </div>
+            <p>J’ai commencé par structurer la page d’accueil avec un titre, une courte introduction et des liens rapides vers les outils courants utilisés à l’EBI.</p>
+            <div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-08.jpg" alt="Édition de la page d’accueil du site SharePoint." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-09.jpg" alt="Ajout de liens rapides vers les outils courants de l’EBI." loading="lazy" decoding="async"></figure></div>
           </article>
 
           <article class="timeline-content">
             <h2>Création de la bibliothèque documentaire</h2>
-            <p>J’ai ensuite créé une bibliothèque documentaire dédiée à la base de connaissances.</p>
-            <p>Dans cette bibliothèque, j’ai créé plusieurs dossiers afin de classer les documents par thème. Cette organisation permet de séparer les procédures, les tutoriels, les bonnes pratiques et les documentations techniques.</p>
-            <p>L’objectif était d’obtenir une arborescence simple, compréhensible et suffisamment évolutive pour accueillir de nouveaux documents au fil du temps.</p>
-
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-10.jpg" alt="Création de la bibliothèque documentaire dans SharePoint." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-11.jpg" alt="Création des dossiers de classement dans la bibliothèque documentaire SharePoint." loading="lazy" decoding="async">
-              </figure>
-            </div>
+            <p>J’ai créé une bibliothèque documentaire dédiée à la base de connaissances, puis plusieurs dossiers afin de classer les documents par thème : procédures, tutoriels, bonnes pratiques et documentation technique.</p>
+            <div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-10.jpg" alt="Création de la bibliothèque documentaire dans SharePoint." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-11.jpg" alt="Création des dossiers de classement dans la bibliothèque documentaire." loading="lazy" decoding="async"></figure></div>
           </article>
 
           <article class="timeline-content">
             <h2>Ajout de la bibliothèque sur la page d’accueil</h2>
-            <p>Après la création de la bibliothèque documentaire, je suis retourné dans l’édition de la page d’accueil afin de l’intégrer directement sous les liens rapides.</p>
-            <p>Cette intégration permet aux utilisateurs d’accéder aux dossiers documentaires sans avoir à rechercher manuellement la bibliothèque dans SharePoint.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-12.jpg" alt="Ajout de la bibliothèque documentaire sur la page d'accueil du site SharePoint." loading="lazy" decoding="async">
-            </figure>
+            <p>Après la création de la bibliothèque, je l’ai intégrée directement sous les liens rapides pour éviter aux utilisateurs de devoir rechercher manuellement l’espace documentaire.</p>
+            <figure class="summary-visual single-image"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-12.jpg" alt="Ajout de la bibliothèque documentaire sur la page d’accueil du site SharePoint." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Importation des documents</h2>
-            <p>Une fois la structure de la page d’accueil finalisée, j’ai importé les documents dans les dossiers correspondants.</p>
-            <p>J’ai veillé à classer les fichiers de façon cohérente afin que chaque document soit retrouvé rapidement par le service informatique ou par les utilisateurs concernés.</p>
-            <p>Pour éviter de surcharger la présentation, seules quatre captures sont intégrées ci-dessous afin d’illustrer l’importation de documents dans plusieurs dossiers de la bibliothèque.</p>
-
-            <div class="info-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-13.jpg" alt="Exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-14.jpg" alt="Deuxième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-15.jpg" alt="Troisième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-16.jpg" alt="Quatrième exemple d'importation de documents dans un dossier de la bibliothèque SharePoint." loading="lazy" decoding="async">
-              </figure>
-            </div>
+            <p>Une fois la structure finalisée, j’ai importé les documents dans les dossiers correspondants et vérifié la cohérence du classement.</p>
+            <div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-13.jpg" alt="Importation de documents dans un dossier SharePoint." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-14.jpg" alt="Deuxième exemple d’importation de documents dans SharePoint." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-15.jpg" alt="Troisième exemple d’importation de documents dans SharePoint." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-16.jpg" alt="Quatrième exemple d’importation de documents dans SharePoint." loading="lazy" decoding="async"></figure></div>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
-            <p>La première version de la base de connaissances Intranet a été mise en place conformément aux attentes définies avec mon responsable.</p>
-            <ul class="content-list">
-              <li>Page d’accueil personnalisée avec un titre, une introduction et des liens rapides.</li>
-              <li>Bibliothèque documentaire créée dans SharePoint.</li>
-              <li>Dossiers de classement structurés pour organiser les contenus.</li>
-              <li>Documents importés et triés dans les dossiers correspondants.</li>
-              <li>Procédures internes valorisées dans un espace centralisé.</li>
-              <li>Socle documentaire prêt pour la mise en place des droits d’accès par le prestataire DEiiS.</li>
-            </ul>
-            <p>Le site sera amélioré par la suite, notamment avec une interface plus dynamique et une expérience adaptée aux différents profils d’utilisateurs. Pour cette première étape, le site reste commun à l’ensemble des utilisateurs concernés.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-17.jpg" alt="Capture d'écran de la page d'accueil finale du site SharePoint avec les liens rapides et la bibliothèque documentaire." loading="lazy" decoding="async">
-            </figure>
+            <p>La première version de la base de connaissances Intranet a été mise en place conformément au cadrage.</p>
+            <ul class="content-list"><li>Page d’accueil personnalisée.</li><li>Bibliothèque documentaire créée dans SharePoint.</li><li>Dossiers structurés pour organiser les contenus.</li><li>Documents importés et classés.</li><li>Procédures internes valorisées dans un espace centralisé.</li><li>Socle documentaire prêt pour la mise en place des droits d’accès.</li></ul>
+            <figure class="summary-visual single-image"><img class="summary-image" src="centralisation-de-la-documentation-informatique-sharepoint/image-17.jpg" alt="Page d’accueil finale du site SharePoint avec liens rapides et bibliothèque documentaire." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Compétences mobilisées</h2>
-            <dl class="info-grid">
-              <div class="info-item">
-                <dt>Gérer le patrimoine informatique</dt>
-                <dd>Organisation et valorisation de la documentation informatique interne dans une bibliothèque SharePoint structurée.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
-                <dd>Mise à disposition de procédures permettant de faciliter le support utilisateur et de répondre plus rapidement aux demandes récurrentes.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Développer la présence en ligne de l’organisation</dt>
-                <dd>Contribution à la création d’un espace Intranet SharePoint destiné à centraliser les ressources informatiques de l’établissement.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Travailler en mode projet</dt>
-                <dd>Prise en compte d’un document de cadrage, respect du périmètre défini et coordination avec le responsable informatique et le prestataire DEiiS.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
-                <dd>Création d’un point d’accès centralisé permettant aux utilisateurs de consulter les procédures et documentations utiles.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Organiser son développement professionnel</dt>
-                <dd>Développement de compétences sur SharePoint, la structuration documentaire, la rédaction de procédures et la valorisation d’une réalisation professionnelle dans le portfolio.</dd>
-              </div>
-            </dl>
+            <dl class="info-grid"><div class="info-item"><dt>Gérer le patrimoine informatique</dt><dd>Organisation et valorisation de la documentation informatique interne.</dd></div><div class="info-item"><dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt><dd>Mise à disposition de procédures facilitant le support utilisateur.</dd></div><div class="info-item"><dt>Développer la présence en ligne de l’organisation</dt><dd>Contribution à un espace Intranet structurant la présence numérique interne de l’établissement.</dd></div><div class="info-item"><dt>Travailler en mode projet</dt><dd>Prise en compte d’un cadrage, respect du périmètre et coordination avec les intervenants.</dd></div><div class="info-item"><dt>Mettre à disposition des utilisateurs un service informatique</dt><dd>Création d’un point d’accès centralisé aux procédures et documentations utiles.</dd></div><div class="info-item"><dt>Organiser son développement professionnel</dt><dd>Développement de compétences sur SharePoint, la structuration documentaire et la rédaction de procédures.</dd></div></dl>
           </article>
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Cette réalisation m’a permis de mieux comprendre l’importance d’une documentation centralisée dans le fonctionnement quotidien d’un service informatique.</p>
-            <p>J’ai appris à structurer un espace SharePoint, à organiser une bibliothèque documentaire et à rendre les contenus plus accessibles pour les utilisateurs.</p>
-            <p>Ce projet m’a également permis de travailler à partir d’un cadrage professionnel, en tenant compte des besoins exprimés par mon responsable et des interventions prévues par un prestataire externe.</p>
-            <p>Cette base de connaissances constitue une première étape importante. Elle pourra être enrichie progressivement et devenir un véritable outil de support, de capitalisation des connaissances et d’amélioration continue pour l’EBI.</p>
+            <p>Cette réalisation m’a permis de mieux comprendre l’importance d’une documentation centralisée dans le fonctionnement quotidien d’un service informatique.</p><p>J’ai appris à structurer un espace SharePoint, à organiser une bibliothèque documentaire et à rendre les contenus plus accessibles aux utilisateurs.</p>
           </article>
         </div>
       </section>
