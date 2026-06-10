@@ -3,15 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projet de suivi d’une campagne de simulation de phishing : consultation des résultats, sensibilisation des utilisateurs concernés et traçabilité des actions réalisées.">
+  <meta name="description" content="Projet de suivi d’une campagne de simulation de phishing : consultation des résultats, sensibilisation des utilisateurs concernés et traçabilité.">
   <meta name="theme-color" content="#020813">
+  <meta name="color-scheme" content="dark light">
   <title>Suivi de la campagne de simulation de phishing (Stoïk Protect) | Damien Zanatta</title>
 
   <script>
     (function() {
-      var theme = localStorage.getItem('theme-preference');
-      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        var storedTheme = localStorage.getItem('theme-preference');
+        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = storedTheme || systemTheme || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
+      } catch (error) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
     })();
   </script>
 
@@ -19,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-
+  <link rel="canonical" href="https://damienzanatta.github.io/projets/en-entreprise/suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect.html">
   <link rel="stylesheet" href="../../style.css">
   <script src="../../script.js" defer></script>
 </head>
@@ -32,12 +40,11 @@
         <a href="../../index.html">Damien Zanatta</a>
       </div>
 
-      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en entreprise">
+      <nav class="project-top-nav" aria-label="Navigation de la réalisation professionnelle">
         <a href="../../projets.html#company" class="project-top-link project-top-return">← Retour</a>
         <span class="project-top-separator" aria-hidden="true"></span>
-        <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -48,8 +55,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span class="theme-switch-slider"></span>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="theme-switch-slider" aria-hidden="true"></span>
+          <svg class="icon-moon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -70,126 +77,52 @@
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, je participe au suivi d’une campagne continue de simulation de phishing menée avec la plateforme Stoïk Protect.</p>
-            <p>Cette campagne ne correspond pas à une attaque réelle. Il s’agit d’un exercice de sensibilisation permettant d’évaluer les comportements des utilisateurs face à des e-mails frauduleux simulés et d’identifier les personnes nécessitant un rappel des bonnes pratiques.</p>
-            <p>Mon rôle consiste à consulter les résultats de la campagne, identifier les utilisateurs ayant soumis leurs identifiants lors d’une simulation, leur envoyer un message de sensibilisation, puis assurer la traçabilité du suivi réalisé.</p>
+            <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, je participe au suivi d’une campagne continue de simulation de phishing menée avec la plateforme Stoïk Protect.</p><p>Cette campagne est un exercice de sensibilisation. Elle permet d’évaluer les comportements des utilisateurs face à des e-mails frauduleux simulés et d’identifier les personnes nécessitant un rappel des bonnes pratiques.</p><p>Mon rôle consiste à consulter les résultats, identifier les utilisateurs ayant soumis leurs identifiants lors d’une simulation, envoyer un message de sensibilisation, puis assurer la traçabilité du suivi.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
-            <ul class="content-list">
-              <li>Accéder à la plateforme Stoïk Protect afin de consulter les indicateurs de cybersécurité.</li>
-              <li>Suivre les résultats de la campagne continue de simulation de phishing.</li>
-              <li>Identifier les utilisateurs ayant été hameçonnés lors d’un exercice.</li>
-              <li>Envoyer un message de sensibilisation aux personnes concernées.</li>
-              <li>Rappeler les bonnes pratiques de vigilance face aux e-mails suspects.</li>
-              <li>Mettre à jour un tableau de suivi afin de conserver une trace des actions réalisées.</li>
-              <li>Respecter la confidentialité des données personnelles dans les preuves intégrées au portfolio.</li>
-            </ul>
+            <ul class="content-list"><li>Accéder à Stoïk Protect pour consulter les indicateurs de cybersécurité.</li><li>Suivre les résultats de la campagne continue de simulation de phishing.</li><li>Identifier les utilisateurs ayant été hameçonnés lors d’un exercice.</li><li>Envoyer un message de sensibilisation aux personnes concernées.</li><li>Rappeler les bonnes pratiques face aux e-mails suspects.</li><li>Mettre à jour un tableau de suivi.</li><li>Respecter la confidentialité des données personnelles dans les preuves intégrées au portfolio.</li></ul>
           </article>
 
           <article class="timeline-content">
             <h2>Environnement de travail</h2>
-            <ul class="content-list">
-              <li><strong>Structure d'accueil :</strong> EBI (École de Biologie Industrielle)</li>
-              <li><strong>Service concerné :</strong> service informatique</li>
-              <li><strong>Plateforme utilisée :</strong> Stoïk Protect</li>
-              <li><strong>Outils complémentaires :</strong> Outlook, Microsoft Excel</li>
-              <li><strong>Type d’action :</strong> suivi cybersécurité et sensibilisation utilisateur</li>
-              <li><strong>Public concerné :</strong> utilisateurs ayant échoué à une simulation de phishing</li>
-              <li><strong>Données suivies :</strong> destinataire, scénario, modèle de simulation, date de soumission et date de contact</li>
-            </ul>
+            <ul class="content-list"><li><strong>Structure d’accueil :</strong> EBI (École de Biologie Industrielle)</li><li><strong>Service concerné :</strong> service informatique</li><li><strong>Plateforme utilisée :</strong> Stoïk Protect</li><li><strong>Outils complémentaires :</strong> Outlook, Microsoft Excel</li><li><strong>Type d’action :</strong> suivi cybersécurité et sensibilisation utilisateur</li><li><strong>Public concerné :</strong> utilisateurs ayant échoué à une simulation de phishing</li></ul>
           </article>
 
           <article class="timeline-content">
             <h2>Accès à la plateforme Stoïk Protect</h2>
-            <p>La première étape consiste à me connecter à Stoïk Protect afin d’accéder au tableau de bord de cybersécurité de l’établissement.</p>
-            <p>L’interface fournit une vue d’ensemble de la posture de sécurité, notamment à travers différents modules comme les scans externes, le scan Active Directory, le scan cloud et les simulations.</p>
-            <p>Cette vue globale permet de vérifier rapidement l’état des principaux indicateurs avant d’accéder au suivi détaillé des campagnes de phishing simulé.</p>
-
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-01.jpg" alt="Tableau de bord Stoïk Protect présentant la posture de cybersécurité de l’établissement." loading="lazy" decoding="async">
-            </figure>
+            <p>La première étape consiste à me connecter à Stoïk Protect afin d’accéder au tableau de bord de cybersécurité de l’établissement.</p><figure class="summary-visual single-image"><img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-01.jpg" alt="Tableau de bord Stoïk Protect présentant la posture de cybersécurité." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Consultation des résultats de la campagne</h2>
-            <p>Depuis la plateforme, je consulte la campagne continue de simulation de phishing afin d’analyser les résultats des exercices envoyés aux utilisateurs.</p>
-            <p>J’applique ensuite un filtre sur le statut <strong>Hameçonné</strong> afin d’afficher uniquement les utilisateurs ayant soumis leurs identifiants lors d’une simulation.</p>
-            <p>Cette étape permet d’identifier précisément les personnes à contacter pour leur rappeler les bons réflexes à adopter face à un e-mail suspect.</p>
-
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-02.jpg" alt="Résultats de la campagne continue de simulation de phishing avec filtre sur les utilisateurs hameçonnés." loading="lazy" decoding="async">
-            </figure>
+            <p>Depuis la plateforme, je consulte la campagne continue de simulation de phishing. J’applique un filtre sur le statut <strong>Hameçonné</strong> afin d’afficher uniquement les utilisateurs ayant soumis leurs identifiants lors d’une simulation.</p><figure class="summary-visual single-image"><img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-02.jpg" alt="Résultats de la campagne de simulation de phishing avec filtre sur les utilisateurs hameçonnés." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Envoi d’un message de sensibilisation</h2>
-            <p>Après avoir identifié les personnes concernées, j’envoie un message de sensibilisation individuel depuis Outlook.</p>
-            <p>Le message précise qu’il s’agit d’une simulation sécurisée et que les identifiants n’ont pas été compromis. Il rappelle néanmoins qu’une telle action aurait pu exposer le compte et les données de l’établissement dans le cadre d’une attaque réelle.</p>
-            <p>Le mail rappelle également plusieurs bonnes pratiques : vérifier l’adresse complète de l’expéditeur, examiner les liens avant de cliquer, repérer les signaux d’alerte et ne jamais saisir ses identifiants sur une page dont l’authenticité n’a pas été vérifiée.</p>
-
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-03.jpg" alt="Mail de sensibilisation envoyé à une personne ayant soumis ses identifiants lors d’une simulation de phishing." loading="lazy" decoding="async">
-            </figure>
+            <p>Après identification des personnes concernées, j’envoie un message individuel de sensibilisation depuis Outlook. Le message précise qu’il s’agit d’une simulation sécurisée, rappelle les risques d’une attaque réelle et donne des conseils de vigilance.</p><figure class="summary-visual single-image"><img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-03.jpg" alt="Mail de sensibilisation envoyé après une simulation de phishing." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Mise à jour du tableau de suivi</h2>
-            <p>Après l’envoi du message, je mets à jour un tableau Excel de suivi afin de conserver une trace des utilisateurs contactés.</p>
-            <p>Ce tableau permet de suivre les informations nécessaires au pilotage de la campagne : adresse e-mail, prénom, nom, modèle utilisé, scénario de simulation, date de soumission des identifiants et date de contact.</p>
-            <p>Les données personnelles présentes dans les captures utilisées pour le portfolio ont été masquées afin de préserver la confidentialité des utilisateurs concernés.</p>
-
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-04.jpg" alt="Tableau Excel de suivi des utilisateurs contactés après une simulation de phishing." loading="lazy" decoding="async">
-            </figure>
+            <p>Après l’envoi du message, je mets à jour un tableau Excel de suivi afin de conserver une trace des utilisateurs contactés. Les données personnelles présentes dans les captures utilisées pour le portfolio ont été masquées.</p><figure class="summary-visual single-image"><img class="summary-image" src="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/image-04.jpg" alt="Tableau Excel de suivi des utilisateurs contactés après une simulation de phishing." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
-            <ul class="content-list">
-              <li>Accès au tableau de bord Stoïk Protect et consultation des indicateurs de cybersécurité.</li>
-              <li>Résultats de la campagne continue de simulation de phishing analysés.</li>
-              <li>Utilisateurs ayant soumis leurs identifiants identifiés à l’aide d’un filtre dédié.</li>
-              <li>Messages de sensibilisation envoyés aux personnes concernées.</li>
-              <li>Bonnes pratiques de vigilance rappelées aux utilisateurs.</li>
-              <li>Tableau de suivi mis à jour pour assurer la traçabilité des actions réalisées.</li>
-              <li>Données personnelles anonymisées dans les captures intégrées au portfolio.</li>
-            </ul>
+            <ul class="content-list"><li>Accès au tableau de bord Stoïk Protect et consultation des indicateurs.</li><li>Résultats de la campagne analysés.</li><li>Utilisateurs ayant soumis leurs identifiants identifiés à l’aide d’un filtre.</li><li>Messages de sensibilisation envoyés.</li><li>Bonnes pratiques de vigilance rappelées.</li><li>Tableau de suivi mis à jour.</li><li>Données personnelles anonymisées dans les captures intégrées au portfolio.</li></ul>
           </article>
 
           <article class="timeline-content">
             <h2>Compétences mobilisées</h2>
-            <dl class="info-grid">
-              <div class="info-item">
-                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
-                <dd>Suivi des utilisateurs ayant échoué à une simulation de phishing et envoi d’un message de sensibilisation adapté.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
-                <dd>Accompagnement des utilisateurs dans l’adoption de bonnes pratiques de sécurité liées à l’usage de la messagerie.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Gérer le patrimoine informatique</dt>
-                <dd>Contribution à la protection des comptes, des accès et des ressources numériques de l’établissement.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Travailler en mode projet</dt>
-                <dd>Suivi régulier d’une campagne continue, traitement des résultats, communication aux utilisateurs et mise à jour d’un tableau de suivi.</dd>
-              </div>
-              <div class="info-item">
-                <dt>Organiser son développement professionnel</dt>
-                <dd>Développement de compétences en prévention cyber, sensibilisation au phishing et exploitation d’une plateforme de gestion des risques.</dd>
-              </div>
-            </dl>
+            <dl class="info-grid"><div class="info-item"><dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt><dd>Suivi des utilisateurs ayant échoué à une simulation et envoi d’un message adapté.</dd></div><div class="info-item"><dt>Mettre à disposition des utilisateurs un service informatique</dt><dd>Accompagnement des utilisateurs dans l’adoption de bonnes pratiques de messagerie.</dd></div><div class="info-item"><dt>Gérer le patrimoine informatique</dt><dd>Contribution à la protection des comptes, des accès et des ressources numériques de l’établissement.</dd></div><div class="info-item"><dt>Travailler en mode projet</dt><dd>Suivi régulier d’une campagne continue, traitement des résultats, communication et traçabilité.</dd></div><div class="info-item"><dt>Organiser son développement professionnel</dt><dd>Développement de compétences en prévention cyber, sensibilisation au phishing et exploitation d’une plateforme de gestion des risques.</dd></div></dl>
           </article>
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Cette réalisation m’a permis de participer à une action concrète de sensibilisation à la cybersécurité au sein de l’établissement.</p>
-            <p>J’ai mieux compris l’intérêt des campagnes de phishing simulé : elles permettent d’évaluer les comportements des utilisateurs, d’identifier les situations à risque et de renforcer progressivement les réflexes de vigilance.</p>
-            <p>Cette mission m’a également permis de travailler sur la communication avec les utilisateurs. Il est important de sensibiliser sans stigmatiser, en expliquant les risques et en donnant des conseils simples, concrets et applicables au quotidien.</p>
-            <p>Enfin, la mise à jour du tableau de suivi m’a montré l’importance de la traçabilité dans les actions de cybersécurité, tout en respectant la confidentialité des données personnelles manipulées.</p>
+            <p>Cette réalisation m’a permis de participer à une action concrète de sensibilisation à la cybersécurité. J’ai mieux compris l’intérêt des campagnes de phishing simulé : évaluer les comportements, identifier les situations à risque et renforcer progressivement les réflexes de vigilance.</p><p>La mise à jour du tableau de suivi m’a également montré l’importance de la traçabilité, tout en respectant la confidentialité des données personnelles manipulées.</p>
           </article>
         </div>
       </section>
