@@ -1,6 +1,11 @@
-const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-const supportsViewTransitions = "startViewTransition" in document;
+const STORAGE_KEY = "theme-preference";
+const DARK_THEME_COLOR = "#020813";
+const LIGHT_THEME_COLOR = "#f4f7fa";
 const TRANSITION_EXIT_DURATION = 180;
+
+const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const supportsViewTransitions = "startViewTransition" in document;
 
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = motionQuery.matches;
@@ -15,42 +20,41 @@ document.addEventListener("DOMContentLoaded", () => {
   animateVisibleElements(document, { reduceMotion });
 });
 
-function safeLocalStorageGet(key) {
-  try { return localStorage.getItem(key); } catch (error) { return null; }
+function syncThemeColor(theme) {
+  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+  if (!metaThemeColor) return;
+  metaThemeColor.setAttribute("content", theme === "dark" ? DARK_THEME_COLOR : LIGHT_THEME_COLOR);
 }
 
-function safeLocalStorageSet(key, value) {
-  try { localStorage.setItem(key, value); } catch (error) { /* localStorage can be blocked */ }
+function updateThemeUI(theme) {
+  const isDark = theme === "dark";
+  const toggleBtns = document.querySelectorAll(".theme-switch");
+
+  toggleBtns.forEach((btn) => {
+    btn.setAttribute("aria-checked", String(isDark));
+    btn.setAttribute("aria-label", "Thème sombre");
+    btn.setAttribute("title", isDark ? "Passer au thème clair" : "Passer au thème sombre");
+  });
+
+  syncThemeColor(theme);
+}
+
+function setTheme(theme, { persist = true } = {}) {
+  document.documentElement.setAttribute("data-theme", theme);
+  if (persist) {
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+  updateThemeUI(theme);
 }
 
 function initThemeToggle() {
-  const toggleBtns = document.querySelectorAll(".theme-switch");
-  const storageKey = "theme-preference";
-  const systemQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const currentTheme =
+    document.documentElement.getAttribute("data-theme") ||
+    (colorSchemeQuery.matches ? "dark" : "light");
 
-  const updateThemeUI = (theme) => {
-    const isDark = theme === "dark";
-    toggleBtns.forEach((btn) => {
-      btn.setAttribute("aria-checked", isDark ? "true" : "false");
-      btn.setAttribute("aria-label", isDark ? "Activer le thème clair" : "Activer le thème sombre");
-    });
-
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute("content", isDark ? "#020813" : "#f4f7fa");
-    }
-  };
-
-  const setTheme = (theme, persist = true) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    if (persist) safeLocalStorageSet(storageKey, theme);
-    updateThemeUI(theme);
-  };
-
-  const currentTheme = document.documentElement.getAttribute("data-theme") || (systemQuery.matches ? "dark" : "light");
   updateThemeUI(currentTheme);
 
-  toggleBtns.forEach((btn) => {
+  document.querySelectorAll(".theme-switch").forEach((btn) => {
     btn.addEventListener("click", (event) => {
       event.preventDefault();
       const current = document.documentElement.getAttribute("data-theme") || "dark";
@@ -58,14 +62,16 @@ function initThemeToggle() {
     });
   });
 
-  const syncSystemTheme = (event) => {
-    if (!safeLocalStorageGet(storageKey)) setTheme(event.matches ? "dark" : "light", false);
+  const handleSystemThemeChange = (event) => {
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      setTheme(event.matches ? "dark" : "light", { persist: false });
+    }
   };
 
-  if (typeof systemQuery.addEventListener === "function") {
-    systemQuery.addEventListener("change", syncSystemTheme);
-  } else if (typeof systemQuery.addListener === "function") {
-    systemQuery.addListener(syncSystemTheme);
+  if (typeof colorSchemeQuery.addEventListener === "function") {
+    colorSchemeQuery.addEventListener("change", handleSystemThemeChange);
+  } else if (typeof colorSchemeQuery.addListener === "function") {
+    colorSchemeQuery.addListener(handleSystemThemeChange);
   }
 }
 
@@ -74,42 +80,59 @@ function initPageTransitions(reduceMotion) {
 
   document.querySelectorAll("a[href]").forEach((link) => {
     link.addEventListener("click", (event) => {
-      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      if (
+        event.defaultPrevented ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button !== 0
+      ) return;
+
       if (link.target && link.target !== "_self") return;
       if (link.hasAttribute("download")) return;
 
       const href = link.getAttribute("href");
-      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      if (!href || href.startsWith("#")) return;
 
       const targetUrl = new URL(link.href, window.location.href);
       const currentUrl = new URL(window.location.href);
+
       if (targetUrl.origin !== currentUrl.origin) return;
 
-      const isSameDocumentHashLink = targetUrl.pathname === currentUrl.pathname && targetUrl.search === currentUrl.search && targetUrl.hash;
+      const isSameDocumentHashLink =
+        targetUrl.pathname === currentUrl.pathname &&
+        targetUrl.search === currentUrl.search &&
+        targetUrl.hash;
+
       if (isSameDocumentHashLink) return;
 
       event.preventDefault();
       document.body.classList.add("is-leaving");
-      window.setTimeout(() => { window.location.href = targetUrl.href; }, TRANSITION_EXIT_DURATION);
+
+      window.setTimeout(() => {
+        window.location.href = targetUrl.href;
+      }, TRANSITION_EXIT_DURATION);
     });
   });
 }
 
 function getAnimatedTargets(root) {
   return Array.from(
-    root.querySelectorAll([
-      ".home-hero",
-      ".tab-grid",
-      ".timeline-date",
-      ".info-item",
-      ".timeline-content",
-      ".project-card",
-      ".summary-image",
-      ".pdf-actions",
-      ".project-pager",
-      ".project-pager-wrapper",
-      ".loader-card"
-    ].join(","))
+    root.querySelectorAll(
+      [
+        ".home-hero",
+        ".tab-grid",
+        ".timeline-date",
+        ".info-item",
+        ".timeline-content",
+        ".project-card",
+        ".summary-image",
+        ".pdf-actions",
+        ".project-pager",
+        ".project-pager-wrapper"
+      ].join(",")
+    )
   );
 }
 
@@ -132,11 +155,14 @@ function animateVisibleElements(root, { restart = false, reduceMotion = motionQu
       element.classList.remove("reveal-init", "is-revealed");
       element.style.removeProperty("--reveal-delay");
     });
-    if (root instanceof HTMLElement) void root.offsetWidth;
+    void root.offsetWidth;
   }
 
   targets.forEach((element, index) => {
-    if (!restart && element.dataset.entranceReady === "true" && element.classList.contains("is-revealed")) return;
+    if (!restart && element.dataset.entranceReady === "true" && element.classList.contains("is-revealed")) {
+      return;
+    }
+
     element.dataset.entranceReady = "true";
     element.classList.add("reveal-init");
     element.classList.remove("is-revealed");
@@ -144,7 +170,9 @@ function animateVisibleElements(root, { restart = false, reduceMotion = motionQu
   });
 
   requestAnimationFrame(() => {
-    targets.forEach((element) => element.classList.add("is-revealed"));
+    targets.forEach((element) => {
+      element.classList.add("is-revealed");
+    });
   });
 }
 
@@ -155,7 +183,9 @@ function runScopeEntrance(scope, reduceMotion) {
     scope.classList.remove("is-entering");
     void scope.offsetWidth;
     scope.classList.add("is-entering");
-    scope.addEventListener("animationend", () => { scope.classList.remove("is-entering"); }, { once: true });
+    scope.addEventListener("animationend", () => {
+      scope.classList.remove("is-entering");
+    }, { once: true });
   }
 
   animateVisibleElements(scope, { restart: true, reduceMotion });
@@ -173,17 +203,24 @@ function initTabs(root, reduceMotion) {
     return panelId ? document.getElementById(panelId) : null;
   });
 
-  const getHashIndex = () => {
-    const hash = window.location.hash.replace(/^#/, "");
-    if (!hash) return -1;
-    return tabs.findIndex((tab, index) => {
-      const panel = panels[index];
-      return tab.id === hash || tab.getAttribute("aria-controls") === hash || hash === tab.id.replace(/^tab-/, "") || (panel && hash === panel.id.replace(/^panel-/, ""));
-    });
-  };
+  let activeIndex = tabs.findIndex(
+    (tab) => tab.getAttribute("aria-selected") === "true" || tab.classList.contains("active")
+  );
 
-  let activeIndex = getHashIndex();
-  if (activeIndex < 0) activeIndex = tabs.findIndex((tab) => tab.getAttribute("aria-selected") === "true" || tab.classList.contains("active"));
+  const initialHash = window.location.hash.replace(/^#/, "");
+  if (initialHash) {
+    const hashIndex = tabs.findIndex((tab, index) => {
+      const panel = panels[index];
+      return (
+        tab.id === initialHash ||
+        tab.getAttribute("aria-controls") === initialHash ||
+        initialHash === tab.id.replace(/^tab-/, "") ||
+        (panel && initialHash === panel.id.replace(/^panel-/, ""))
+      );
+    });
+    if (hashIndex >= 0) activeIndex = hashIndex;
+  }
+
   if (activeIndex < 0) activeIndex = 0;
 
   let isTransitioning = false;
@@ -203,23 +240,21 @@ function initTabs(root, reduceMotion) {
       const isActive = panelIndex === index;
       panel.classList.toggle("active", isActive);
       panel.hidden = !isActive;
-      panel.setAttribute("aria-hidden", String(!isActive));
       if (!isActive) panel.classList.remove("is-entering", "is-leaving");
     });
   };
 
-  const updateHash = (index) => {
-    const shortHash = tabs[index].id.replace(/^tab-/, "");
-    if (!shortHash) return;
-    const nextUrl = `${window.location.pathname}${window.location.search}#${shortHash}`;
-    history.replaceState(null, "", nextUrl);
+  const updateLocationHash = (index) => {
+    const panel = panels[index];
+    if (!panel) return;
+    const hash = panel.id.replace(/^panel-/, "");
+    history.replaceState(null, "", `#${hash}`);
   };
 
-  const activateTab = (index, moveFocus = false, isInitial = false, writeHash = false) => {
+  const activateTab = (index, moveFocus = false, isInitial = false) => {
     if (index < 0 || index >= tabs.length) return;
     if (!isInitial && index === activeIndex) {
       if (moveFocus) tabs[index].focus();
-      if (writeHash) updateHash(index);
       return;
     }
     if (!isInitial && isTransitioning) return;
@@ -227,34 +262,43 @@ function initTabs(root, reduceMotion) {
     const currentPanel = panels[activeIndex];
     const nextPanel = panels[index];
     if (!nextPanel) return;
+
     if (moveFocus) tabs[index].focus();
 
-    const commitSwitch = () => {
+    if (isInitial) {
       setTabButtonsState(index);
       showOnlyPanel(index);
       activeIndex = index;
-      if (writeHash) updateHash(index);
+      return;
+    }
+
+    const finalize = () => {
+      setTabButtonsState(index);
+      showOnlyPanel(index);
+      activeIndex = index;
+      updateLocationHash(index);
       runScopeEntrance(nextPanel, reduceMotion);
     };
 
-    if (isInitial || reduceMotion) {
-      setTabButtonsState(index);
-      showOnlyPanel(index);
-      activeIndex = index;
-      if (!isInitial) runScopeEntrance(nextPanel, reduceMotion);
+    if (reduceMotion) {
+      finalize();
       return;
     }
 
     isTransitioning = true;
+
     if (supportsViewTransitions) {
       const transition = document.startViewTransition(() => {
-        showOnlyPanel(index);
         setTabButtonsState(index);
+        showOnlyPanel(index);
         activeIndex = index;
-        if (writeHash) updateHash(index);
+        updateLocationHash(index);
       });
+
       transition.ready.then(() => runScopeEntrance(nextPanel, reduceMotion));
-      transition.finished.finally(() => { isTransitioning = false; });
+      transition.finished.finally(() => {
+        isTransitioning = false;
+      });
       return;
     }
 
@@ -265,15 +309,17 @@ function initTabs(root, reduceMotion) {
 
     window.setTimeout(() => {
       if (currentPanel) currentPanel.classList.remove("is-leaving");
-      commitSwitch();
+      finalize();
       isTransitioning = false;
     }, TRANSITION_EXIT_DURATION);
   };
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTab(index, false, false, true));
+    tab.addEventListener("click", () => activateTab(index, false, false));
+
     tab.addEventListener("keydown", (event) => {
       let nextIndex = null;
+
       switch (event.key) {
         case "ArrowRight":
         case "ArrowDown":
@@ -290,17 +336,13 @@ function initTabs(root, reduceMotion) {
           nextIndex = tabs.length - 1;
           break;
       }
+
       if (nextIndex !== null) {
         event.preventDefault();
-        activateTab(nextIndex, true, false, true);
+        activateTab(nextIndex, true, false);
       }
     });
   });
 
-  window.addEventListener("hashchange", () => {
-    const hashIndex = getHashIndex();
-    if (hashIndex >= 0) activateTab(hashIndex, false, false, false);
-  });
-
-  activateTab(activeIndex, false, true, false);
+  activateTab(activeIndex, false, true);
 }
