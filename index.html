@@ -3,88 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Redirection vers le portfolio de Damien Zanatta.">
+  <meta name="description" content="Redirection vers le portfolio numérique de Damien Zanatta.">
   <meta name="theme-color" content="#020813">
+  <meta name="color-scheme" content="dark light">
   <title>Chargement | Damien Zanatta</title>
 
   <script>
     (function() {
-      var theme = localStorage.getItem('theme-preference');
-      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        var storedTheme = localStorage.getItem('theme-preference');
+        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = storedTheme || systemTheme || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
+      } catch (error) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
     })();
   </script>
-
-  <meta http-equiv="refresh" content="2; url=accueil.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-
+  <link rel="canonical" href="https://damienzanatta.github.io/">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
-
-  <style>
-    .cyber-loader {
-      position: relative;
-      width: 46px;
-      height: 46px;
-      margin: 0 auto;
-    }
-    
-    /* Anneau de fond subtil */
-    .cyber-loader::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 2px solid var(--surface-border-active);
-      border-radius: 50%;
-      opacity: 0.4;
-    }
-    
-    /* Arc lumineux animé */
-    .cyber-loader::after {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border: 2px solid transparent;
-      border-top-color: var(--accent);
-      border-right-color: var(--accent);
-      border-radius: 50%;
-      animation: spin-loader 1.2s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
-      filter: drop-shadow(0 0 8px var(--accent));
-    }
-    
-    @keyframes spin-loader {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        window.location.replace("accueil.html");
-      }, 2000);
-    });
-  </script>
 </head>
 <body>
-  <main id="main-content" class="home-main reveal-init is-revealed" style="min-height: 100vh; justify-content: center;">
-    <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-      
-      <div class="site-title" style="font-size: 1.4rem; margin-bottom: 32px;">
-        <a href="accueil.html" style="pointer-events: none;">Damien Zanatta</a>
+  <main id="main-content" class="redirect-main">
+    <div class="container redirect-content">
+      <div class="site-title redirect-title">
+        <a href="accueil.html" aria-label="Damien Zanatta - Accueil">Damien Zanatta</a>
       </div>
 
-      <div class="info-item" style="max-width: 420px; width: 100%; padding: 32px 22px;">
-        <h2 style="font-size: 1.2rem; margin: 0 0 26px 0;">Chargement du portfolio...</h2>
-        
-        <div class="cyber-loader"></div>
-      </div>
-
+      <section class="loader-card" aria-labelledby="loading-title" aria-live="polite">
+        <h1 id="loading-title">Chargement du portfolio...</h1>
+        <div class="cyber-loader" aria-hidden="true"></div>
+        <noscript>
+          <p>La redirection automatique nécessite JavaScript. <a href="accueil.html">Accéder au portfolio</a>.</p>
+        </noscript>
+      </section>
     </div>
   </main>
+
+  <script>
+    window.setTimeout(function() { window.location.replace('accueil.html'); }, 1200);
+  </script>
 </body>
 </html>
