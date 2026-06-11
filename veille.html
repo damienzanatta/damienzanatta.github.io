@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Veille informatique de Damien Zanatta sur l’AIOps appliqué à la supervision d’infrastructure.">
+  <meta name="description" content="Veille informatique de Damien Zanatta sur l'AIOps appliqué à la supervision d'infrastructure.">
   <meta name="theme-color" content="#020813">
   <title>Veille informatique | Damien Zanatta</title>
 
@@ -19,8 +19,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+
+  <style>
+    .biblio-ref {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: flex-end;
+      text-align: right;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .biblio-ref strong {
+      color: var(--text-main);
+      font-weight: 600;
+      margin: 0 4px;
+    }
+    .biblio-ref em {
+      font-style: normal;
+      color: var(--accent);
+      margin-left: 4px;
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Aller au contenu principal</a>
@@ -32,14 +57,14 @@
       </div>
 
       <nav class="nav-links" aria-label="Navigation principale">
-                <a href="accueil.html">Accueil</a>
+        <a href="accueil.html" class="nav-home-link">Accueil</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <a href="presentation.html">Présentation</a>
         <a href="projets.html">Projets</a>
         <a href="veille.html" class="active" aria-current="page">Veille</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -51,7 +76,7 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
           <span class="theme-switch-slider"></span>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -66,27 +91,30 @@
 
         <div data-tabs>
           <div class="tab-grid" role="tablist" aria-label="Contenu de la veille technologique">
-            <button class="tab-card active" id="tab-intro" data-slug="intro" role="tab" type="button" aria-selected="true" aria-controls="panel-intro" tabindex="0">Introduction</button>
-            <button class="tab-card" id="tab-methodology" data-slug="methodology" role="tab" type="button" aria-selected="false" aria-controls="panel-methodology" tabindex="-1">Méthodologie</button>
-            <button class="tab-card" id="tab-results" data-slug="results" role="tab" type="button" aria-selected="false" aria-controls="panel-results" tabindex="-1">Bilan</button>
-            <button class="tab-card" id="tab-articles" data-slug="articles" role="tab" type="button" aria-selected="false" aria-controls="panel-articles" tabindex="-1">Revue d’articles</button>
+            <button class="tab-card active" id="tab-intro" role="tab" type="button" aria-selected="true" aria-controls="panel-intro" tabindex="0">Introduction</button>
+            <button class="tab-card" id="tab-methodology" role="tab" type="button" aria-selected="false" aria-controls="panel-methodology" tabindex="-1">Méthodologie</button>
+            <button class="tab-card" id="tab-results" role="tab" type="button" aria-selected="false" aria-controls="panel-results" tabindex="-1">Bilan</button>
+            <button class="tab-card" id="tab-articles" role="tab" type="button" aria-selected="false" aria-controls="panel-articles" tabindex="-1">Revue d'articles</button>
           </div>
 
           <div class="tab-panels">
             <section class="tab-panel active" id="panel-intro" role="tabpanel" aria-labelledby="tab-intro" tabindex="0">
               <div class="timeline">
                 <article class="timeline-content">
-                  <h2>Sujet : l’AIOps au service de la supervision d’infrastructure</h2>
-                  <p><strong>Problématique :</strong> comment l’AIOps transforme-t-il la supervision classique en automatisant la détection des anomalies et en accélérant l’identification des causes d’incident réseau ?</p>
+                  <h2>Sujet : L’AIOps au service de la supervision d’infrastructure</h2>
+                  <p><strong>Problématique :</strong> Comment l’AIOps transforme-t-il la supervision classique en automatisant la détection des anomalies et en accélérant l’identification des causes d'incident réseau ?</p>
                 </article>
+
                 <article class="timeline-content">
-                  <h2>Contexte</h2>
-                  <p>Les infrastructures modernes combinent cloud hybride, virtualisation, services distribués et dépendances réseau nombreuses. Les outils de supervision classiques produisent donc une quantité importante de métriques, journaux et alertes.</p>
-                  <p>L’enjeu n’est plus seulement de collecter l’information, mais de la corréler afin de réduire le bruit, prioriser les incidents et identifier plus rapidement la cause racine.</p>
+                  <h2>Le contexte de départ</h2>
+                  <p>Avec l'essor du Cloud hybride, de la virtualisation et des architectures distribuées, les infrastructures informatiques sont devenues extrêmement complexes. Les outils de supervision classiques (ITOM) génèrent une quantité massive de logs et de métriques au quotidien.</p>
+                  <p>Cette surabondance d'informations provoque une <strong>"fatigue des alertes"</strong> pour les techniciens et administrateurs d'exploitation. Lors d'une panne majeure, l'apparition de centaines d'alertes en cascade masque bien souvent la cause racine du problème, allongeant le délai de diagnostic.</p>
                 </article>
+
                 <article class="timeline-content">
-                  <h2>Définition</h2>
-                  <p>L’AIOps désigne l’utilisation de l’intelligence artificielle, du Machine Learning et de l’analyse de données pour améliorer les opérations informatiques. Dans un contexte SISR, il s’agit d’un complément aux outils de supervision, capable de détecter des comportements anormaux et de faciliter le diagnostic.</p>
+                  <h2>Définition de l'AIOps</h2>
+                  <p>L'<strong>AIOps</strong> (Artificial Intelligence for IT Operations) désigne l'intégration du Big Data et du Machine Learning au cœur de la gestion des opérations IT. Cette couche d'intelligence analytique vient s'interfacer avec les solutions de supervision en place (telles que Centreon ou Zabbix).</p>
+                  <p>En analysant les flux de données en continu, les algorithmes apprennent le comportement normal de l'infrastructure informatique (combinaisons CPU, RAM, trafic réseau). Ils sont ainsi capables de détecter de manière autonome les comportements anormaux, sans nécessiter la définition manuelle et rigide de seuils d'alerte statiques.</p>
                 </article>
               </div>
             </section>
@@ -94,26 +122,29 @@
             <section class="tab-panel" id="panel-methodology" role="tabpanel" aria-labelledby="tab-methodology" tabindex="0" hidden>
               <div class="timeline">
                 <article class="timeline-content">
-                  <h2>Démarche de veille</h2>
-                  <p>La veille repose sur une approche hybride associant collecte automatisée, suivi de sources spécialisées et sélection manuelle des contenus les plus pertinents.</p>
+                  <h2>Une démarche d'information automatisée et hybride</h2>
+                  <p>Pour mener à bien cette veille technologique tout au long de mon parcours, j'ai structuré une démarche s'appuyant sur le <strong>modèle Push</strong> (l'information est poussée vers moi). J'ai opté pour une approche hybride afin d'exploiter efficacement les outils du marché.</p>
                 </article>
+
                 <article class="timeline-content">
-                  <h2>Collecte ciblée</h2>
-                  <p>Des alertes Google sont configurées avec des requêtes précises, par exemple <strong>“AIOps” AND “infrastructure”</strong> et <strong>“AIOps” AND “supervision”</strong>, afin de limiter le bruit informationnel.</p>
+                  <h2>1. Collecte ciblée (Google Alerts)</h2>
+                  <p>Afin de capter les publications ciblées sur le Web, j'ai configuré des alertes automatisées utilisant des opérateurs booléens précis pour filtrer le bruit (ex : <strong>"AIOps" AND "infrastructure"</strong> et <strong>"AIOps" AND "supervision"</strong>). Ces requêtes analysent le web en continu pour isoler l'actualité de mon sujet.</p>
                   <figure class="summary-visual single-image">
-                    <img class="summary-image" src="veille/methodologie/image-01.jpg" alt="Configuration des requêtes de veille dans Google Alerts" loading="lazy" decoding="async">
+                    <img class="summary-image" src="veille/methodologie/image-01.jpg" alt="Capture d'écran de la configuration de mes requêtes sur Google Alerts" loading="lazy" decoding="async">
                   </figure>
                 </article>
+
                 <article class="timeline-content">
-                  <h2>Agrégation des sources</h2>
-                  <p>Feedly permet de centraliser les flux de presse spécialisée et les publications d’éditeurs ou d’acteurs du secteur de la supervision.</p>
+                  <h2>2. Agrégation de la presse et des éditeurs (Feedly)</h2>
+                  <p>En parallèle, j'utilise l'agrégateur de flux RSS Feedly pour suivre l'actualité de la presse informatique spécialisée (LeMagIT, Silicon.fr, Journal du Net) ainsi que les blogs d'ingénierie officiels des leaders technologiques du secteur (Datadog, Dynatrace). Les flux sont centralisés au sein d'un dossier dédié aux solutions de supervision.</p>
                   <figure class="summary-visual single-image">
-                    <img class="summary-image" src="veille/methodologie/image-02.jpg" alt="Espace Feedly utilisé pour agréger les sources de veille technologique" loading="lazy" decoding="async">
+                    <img class="summary-image" src="veille/methodologie/image-02.jpg" alt="Capture d'écran de mon espace Feedly et des flux technologiques associés" loading="lazy" decoding="async">
                   </figure>
                 </article>
+
                 <article class="timeline-content">
-                  <h2>Sélection et restitution</h2>
-                  <p>Les articles retenus sont sélectionnés pour leur lien direct avec l’option SISR : supervision, réduction du bruit d’alertes, analyse de cause racine, automatisation, exploitation et continuité de service.</p>
+                  <h2>3. Traitement, sélection et diffusion</h2>
+                  <p>À partir du flux d'informations collecté par mes outils, j'effectue un tri qualitatif pour ne retenir que les articles apportant une réelle valeur ajoutée à l'option SISR. Les analyses techniques, les cas d'usage concrets et les synthèses critiques de ces articles phares sont directement formalisés et diffusés dans l'onglet <strong>"Revue d'articles"</strong> de ce portfolio numérique, offrant un historique transparent et directement consultable.</p>
                 </article>
               </div>
             </section>
@@ -121,66 +152,124 @@
             <section class="tab-panel" id="panel-results" role="tabpanel" aria-labelledby="tab-results" tabindex="0" hidden>
               <div class="timeline">
                 <article class="timeline-content">
-                  <h2>Apports techniques identifiés</h2>
-                  <ul class="content-list">
-                    <li><strong>Corrélation des alertes :</strong> regroupement d’événements liés afin de réduire le bruit.</li>
-                    <li><strong>Analyse de cause racine :</strong> aide à l’identification du composant ou service à l’origine d’un incident.</li>
-                    <li><strong>Détection d’anomalies :</strong> repérage de comportements inhabituels au-delà des seuils statiques.</li>
-                    <li><strong>Réduction du MTTR :</strong> diminution du temps moyen de résolution grâce à un diagnostic plus rapide.</li>
-                  </ul>
+                  <h2>Réponses à la problématique (Apports techniques)</h2>
+                  <p>L'étude de mes différentes sources m'a permis d'identifier les quatre bénéfices majeurs qu'apporte l'AIOps aux administrateurs d'infrastructures :</p>
+                  <div class="hanging-block">
+                    <p class="hanging-label">Avantages constatés :</p>
+                    <ul class="content-list content-list--plain hanging-content">
+                      <li><strong>Corrélation et réduction du bruit :</strong> Regroupement automatique de dizaines d'alertes liées à un même incident pour clarifier la console de supervision.</li>
+                      <li><strong>Analyse de la cause racine (RCA) :</strong> Identification instantanée de l'équipement ou du service défectueux à l'origine de la panne en cascade.</li>
+                      <li><strong>Analyse prédictive :</strong> Détection avancée des signes précurseurs de dysfonctionnement (ex : dégradation progressive de la bande passante) avant l'impact utilisateur.</li>
+                      <li><strong>Baisse du MTTR :</strong> Réduction drastique du temps moyen de réparation (Mean Time To Repair).</li>
+                    </ul>
+                  </div>
                 </article>
+
                 <article class="timeline-content">
-                  <h2>Bilan professionnel</h2>
-                  <p>L’AIOps ne remplace pas l’administrateur système ou réseau. Il agit comme un outil d’aide à l’exploitation, utile lorsque la volumétrie des données dépasse les capacités d’analyse manuelle immédiate.</p>
-                  <p>Cette veille montre aussi que la qualité des données reste essentielle : une supervision mal structurée, des actifs mal référencés ou des journaux incomplets limitent fortement l’efficacité de l’automatisation.</p>
+                  <h2>Bilan professionnel (Évolution du métier SISR)</h2>
+                  <p>Au-delà des aspects purement techniques, cette veille m'a permis de prendre du recul sur l'évolution de mon futur métier :</p>
+                  <ul class="content-list">
+                    <li><strong>De réactif à proactif :</strong> L'AIOps libère le technicien réseau des tâches chronophages (tri des fausses alertes). Son rôle évolue vers l'optimisation de l'architecture plutôt que la simple correction d'incidents.</li>
+                    <li><strong>La donnée comme prérequis absolu :</strong> L'intelligence artificielle n'a rien de "magique". Elle ne produit des résultats fiables que si l'infrastructure est proprement cartographiée et que les outils de supervision envoient des logs structurés.</li>
+                    <li><strong>Complémentarité avec l'humain :</strong> Bien que puissante, l'IA ne remplace pas une bonne conception réseau. L'amélioration des niveaux de service (SLA) repose sur une synergie indispensable entre l'algorithme qui alerte et l'expertise humaine qui valide et corrige.</li>
+                  </ul>
                 </article>
               </div>
             </section>
 
             <section class="tab-panel" id="panel-articles" role="tabpanel" aria-labelledby="tab-articles" tabindex="0" hidden>
               <ul class="project-list">
+                
                 <li>
-                  <a class="project-card" href="https://itsocial.fr/contenus/actualites/centreon-23-04-une-plateforme-de-supervision-basee-sur-lia-ml-et-axee-sur-les-operations-cloud-et-laiops/" target="_blank" rel="noopener noreferrer">
-                    <div class="project-card-header project-card-header--textonly"><div class="project-title-block"><div class="project-number">IT Social</div><h3>Centreon 23.04 : une plateforme de supervision axée sur l’AIOps</h3></div></div>
-                    <p>Exemple concret d’intégration de capacités prédictives et d’analyse dans une solution de supervision.</p>
-                    <p><strong>Référence :</strong> Mourad Krim, 20 juin 2023.</p>
+                  <a class="project-card" href="https://itsocial.fr/contenus/actualites/centreon-23-04-une-plateforme-de-supervision-basee-sur-lia-ml-et-axee-sur-les-operations-cloud-et-laiops/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article d'IT Social (nouvelle fenêtre)">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">IT Social</div>
+                        <h3>Centreon 23.04 : une plateforme de supervision axée sur l'AIOps</h3>
+                      </div>
+                    </div>
+                    <p>Une mise en application concrète avec Centreon, une solution de supervision de référence en SISR. L'article détaille comment l'éditeur intègre des capacités prédictives basées sur le Machine Learning pour anticiper les baisses de performance réseau avant l'impact sur les utilisateurs.</p>
+                    <div class="biblio-ref">
+                      <span>Par <strong>Mourad Krim</strong> &bull; Publié le <strong>20 juin 2023</strong> &bull; <em>IT Social</em></span>
+                    </div>
                   </a>
                 </li>
+
                 <li>
-                  <a class="project-card" href="https://www.lemagit.fr/conseil/Les-nouvelles-tendances-de-la-production-IT-pour-optimiser-le-controle-et-lagilite-des-actifs" target="_blank" rel="noopener noreferrer">
-                    <div class="project-card-header project-card-header--textonly"><div class="project-title-block"><div class="project-number">LeMagIT</div><h3>Les nouvelles tendances de la production IT pour optimiser le contrôle</h3></div></div>
-                    <p>Article utile pour comprendre l’évolution de l’ITOM et le besoin de contrôle dans des environnements distribués.</p>
-                    <p><strong>Référence :</strong> Antoine Olivier, 2 juillet 2024.</p>
+                  <a class="project-card" href="https://www.lemagit.fr/conseil/Les-nouvelles-tendances-de-la-production-IT-pour-optimiser-le-controle-et-lagilite-des-actifs" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article de LeMagIT (nouvelle fenêtre)">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Le Mag IT</div>
+                        <h3>Les nouvelles tendances de la production IT pour optimiser le contrôle</h3>
+                      </div>
+                    </div>
+                    <p>Cet article se concentre sur l'évolution du métier de l'exploitation informatique (ITOM). Il met en évidence la nécessité pour les équipes de s'appuyer sur l'AIOps afin de gérer la volumétrie exponentielle des données d'infrastructure et d'améliorer l'agilité des services.</p>
+                    <div class="biblio-ref">
+                      <span>Par <strong>Antoine Olivier</strong> &bull; Publié le <strong>2 juillet 2024</strong> &bull; <em>Le Mag IT</em></span>
+                    </div>
                   </a>
                 </li>
+
                 <li>
-                  <a class="project-card" href="https://www.lemagit.fr/conseil/AIOps-comment-epauler-correctement-ladministration-IT-avec-lIA" target="_blank" rel="noopener noreferrer">
-                    <div class="project-card-header project-card-header--textonly"><div class="project-title-block"><div class="project-number">LeMagIT</div><h3>AIOps : comment épauler correctement l’administration IT avec l’IA</h3></div></div>
-                    <p>Lecture méthodologique sur la manière d’intégrer l’IA aux opérations IT sans négliger l’expertise humaine.</p>
-                    <p><strong>Référence :</strong> Wisdom Ekpotu, 23 avril 2026.</p>
+                  <a class="project-card" href="https://www.lemagit.fr/conseil/AIOps-comment-epauler-correctement-ladministration-IT-avec-lIA" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article méthodologique de LeMagIT (nouvelle fenêtre)">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Le Mag IT</div>
+                        <h3>AIOps : comment épauler correctement l'administration IT avec l'IA</h3>
+                      </div>
+                    </div>
+                    <p>Une lecture méthodologique indispensable expliquant comment bien implémenter une solution AIOps. L'article rappelle que l'IA ne remplace pas l'administrateur système, mais complète son expertise technique pour réduire efficacement le MTTR (Mean Time To Repair).</p>
+                    <div class="biblio-ref">
+                      <span>Par <strong>Stephen J. Bigelow</strong> &bull; Publié le <strong>15 octobre 2024</strong> &bull; <em>Le Mag IT</em></span>
+                    </div>
                   </a>
                 </li>
+
                 <li>
-                  <a class="project-card" href="https://www.oracle.com/fr/artificial-intelligence/aiops/" target="_blank" rel="noopener noreferrer">
-                    <div class="project-card-header project-card-header--textonly"><div class="project-title-block"><div class="project-number">Oracle</div><h3>Qu’est-ce que l’AIOps ?</h3></div></div>
-                    <p>Ressource de référence pour définir l’AIOps, ses usages et ses bénéfices dans les opérations informatiques.</p>
-                    <p><strong>Référence :</strong> Alan Zeichick, 4 novembre 2025.</p>
+                  <a class="project-card" href="https://www.oracle.com/fr/artificial-intelligence/aiops/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir la ressource Oracle (nouvelle fenêtre)">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Oracle</div>
+                        <h3>Qu'est-ce que l'AIOps ? (L'IA pour les opérations informatiques)</h3>
+                      </div>
+                    </div>
+                    <p>Une ressource d'éditeur complète sur les fondamentaux de l'AIOps. Le document explique techniquement comment les algorithmes corrèlent des milliers d'alertes réseau pour identifier la cause fondamentale d'un incident et automatiser sa remédiation.</p>
+                    <div class="biblio-ref">
+                      <span>Par <strong>Équipe Oracle</strong> &bull; Mis à jour en <strong>novembre 2025</strong> &bull; <em>Oracle</em></span>
+                    </div>
                   </a>
                 </li>
+
                 <li>
-                  <a class="project-card" href="https://www.journaldunet.com/cloud/1548027-aiops-quand-l-intelligence-artificielle-prend-les-commandes-des-operations-it/" target="_blank" rel="noopener noreferrer">
-                    <div class="project-card-header project-card-header--textonly"><div class="project-title-block"><div class="project-number">Journal du Net</div><h3>AIOps : quand l’IA prend les commandes des opérations IT</h3></div></div>
-                    <p>Article de vulgarisation sur l’automatisation des opérations IT et le passage d’une posture réactive à une posture plus proactive.</p>
-                    <p><strong>Référence :</strong> 20 février 2026.</p>
+                  <a class="project-card" href="https://www.journaldunet.com/cloud/1548027-aiops-quand-l-intelligence-artificielle-prend-les-commandes-des-operations-it/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article du Journal du Net (nouvelle fenêtre)">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Journal du Net</div>
+                        <h3>AIOps : Quand l'IA prend les commandes des opérations IT</h3>
+                      </div>
+                    </div>
+                    <p>Un état des lieux de l'adoption de l'IA dans les centres de services. Cette analyse démontre que l'automatisation de l'analyse des logs permet de transformer la gestion d'incidents réactive en maintenance véritablement proactive.</p>
+                    <div class="biblio-ref">
+                      <span>Par <strong>Rédaction JDN</strong> &bull; Publié le <strong>20 février 2026</strong> &bull; <em>Journal du Net</em></span>
+                    </div>
                   </a>
                 </li>
+
                 <li>
-                  <a class="project-card" href="https://www.silicon.fr/business-1367/services-reseau-magic-quadrant-2026-226753" target="_blank" rel="noopener noreferrer">
-                    <div class="project-card-header project-card-header--textonly"><div class="project-title-block"><div class="project-number">Silicon.fr</div><h3>Services réseau : évolution du marché</h3></div></div>
-                    <p>Article permettant de nuancer les promesses de l’automatisation : les SLA et la qualité de service restent liés à l’ingénierie et au pilotage humain.</p>
-                    <p><strong>Référence :</strong> Clément Bohic, 20 avril 2026.</p>
+                  <a class="project-card" href="https://www.silicon.fr/business-1367/services-reseau-magic-quadrant-2026-226753" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'article de Silicon.fr (nouvelle fenêtre)">
+                    <div class="project-card-header project-card-header--textonly">
+                      <div class="project-title-block">
+                        <div class="project-number">Silicon.fr</div>
+                        <h3>Services réseau : évolution du marché (Magic Quadrant 2026)</h3>
+                      </div>
+                    </div>
+                    <p>Un rapport apportant une prise de recul critique sur le marché. Il met en lumière que, malgré les avancées en intelligence artificielle pour les opérations IT, le respect des niveaux de services (SLA) dépend encore fortement de l'ingénierie humaine.</p>
+                    <div class="biblio-ref">
+                      <span>Par <strong>Clément Bohic</strong> &bull; Publié le <strong>20 avril 2026</strong> &bull; <em>Silicon.fr</em></span>
+                    </div>
                   </a>
                 </li>
+
               </ul>
             </section>
           </div>
