@@ -3,23 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projets de Damien Zanatta dans le cadre du BTS SIO SISR, en formation et en entreprise.">
+  <meta name="description" content="Réalisations de Damien Zanatta dans le cadre du BTS SIO SISR, en entreprise et en formation.">
   <meta name="theme-color" content="#020813">
-  <meta name="color-scheme" content="dark light">
   <title>Projets | Damien Zanatta</title>
 
   <script>
     (function() {
-      try {
-        var storedTheme = localStorage.getItem('theme-preference');
-        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        var theme = storedTheme || systemTheme || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
-      } catch (error) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 
@@ -27,7 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://damienzanatta.github.io/projets.html">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -41,14 +32,14 @@
       </div>
 
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="accueil.html">Accueil</a>
+                <a href="accueil.html">Accueil</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <a href="presentation.html">Présentation</a>
         <a href="projets.html" class="active" aria-current="page">Projets</a>
         <a href="veille.html">Veille</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -59,8 +50,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span class="theme-switch-slider" aria-hidden="true"></span>
-          <svg class="icon-moon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -75,52 +66,67 @@
 
         <div data-tabs>
           <div class="tab-grid projects-tab-grid" role="tablist" aria-label="Contenu des projets">
-            <button class="tab-card active" id="tab-company" role="tab" type="button" aria-selected="true" aria-controls="panel-company" tabindex="0">En entreprise</button>
-            <button class="tab-card" id="tab-training" role="tab" type="button" aria-selected="false" aria-controls="panel-training" tabindex="-1">En formation</button>
-            <button class="tab-card" id="tab-summary" role="tab" type="button" aria-selected="false" aria-controls="panel-summary" tabindex="-1">Tableau de synthèse</button>
+            <button class="tab-card active" id="tab-company" data-slug="company" role="tab" type="button" aria-selected="true" aria-controls="panel-company" tabindex="0">En entreprise</button>
+            <button class="tab-card" id="tab-training" data-slug="training" role="tab" type="button" aria-selected="false" aria-controls="panel-training" tabindex="-1">En formation</button>
+            <button class="tab-card" id="tab-summary" data-slug="summary" role="tab" type="button" aria-selected="false" aria-controls="panel-summary" tabindex="-1">Tableau de synthèse</button>
           </div>
 
           <div class="tab-panels">
             <section class="tab-panel active" id="panel-company" role="tabpanel" aria-labelledby="tab-company" tabindex="0">
               <ul class="project-list">
                 <li>
-                  <a class="project-card" href="projets/en-entreprise/automatisation-de-linventaire-du-parc-informatique-glpi-gpo.html" aria-label="Ouvrir le projet : Automatisation de l’inventaire du parc informatique (GLPI / GPO)">
+                  <a class="project-card" href="projets/en-entreprise/automatisation-de-linventaire-du-parc-informatique-glpi-gpo.html" aria-label="Ouvrir la réalisation : Automatisation de l’inventaire du parc informatique (GLPI / GPO)">
                     <div class="project-card-header">
-                      <img src="projets/en-entreprise/automatisation-de-linventaire-du-parc-informatique-glpi-gpo/icone.jpg" alt="Logo GLPI" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Automatisation de l’inventaire du parc informatique (GLPI / GPO)</h3></div>
+                      <img src="projets/en-entreprise/automatisation-de-linventaire-du-parc-informatique-glpi-gpo/icone.jpg" alt="Logo GLPI" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Automatisation de l’inventaire du parc informatique (GLPI / GPO)</h3>
+                      </div>
                     </div>
+                    <p>Mise en place d’une maquette de préproduction pour remplacer FusionInventory par GLPI Inventory et automatiser le déploiement de l’agent par GPO.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-entreprise/centralisation-de-la-documentation-informatique-sharepoint.html" aria-label="Ouvrir le projet : Centralisation de la documentation informatique (SharePoint)">
+                  <a class="project-card" href="projets/en-entreprise/centralisation-de-la-documentation-informatique-sharepoint.html" aria-label="Ouvrir la réalisation : Centralisation de la documentation informatique (SharePoint)">
                     <div class="project-card-header">
-                      <img src="projets/en-entreprise/centralisation-de-la-documentation-informatique-sharepoint/icone.jpg" alt="Logo SharePoint" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Centralisation de la documentation informatique (SharePoint)</h3></div>
+                      <img src="projets/en-entreprise/centralisation-de-la-documentation-informatique-sharepoint/icone.jpg" alt="Logo SharePoint" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Centralisation de la documentation informatique (SharePoint)</h3>
+                      </div>
                     </div>
+                    <p>Création d’une première base de connaissances Intranet pour centraliser les procédures, tutoriels et informations techniques utiles.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-entreprise/preparation-au-renouvellement-du-materiel-it-sourcing-benchmark.html" aria-label="Ouvrir le projet : Préparation au renouvellement du matériel IT (Sourcing / Benchmark)">
+                  <a class="project-card" href="projets/en-entreprise/preparation-au-renouvellement-du-materiel-it-sourcing-benchmark.html" aria-label="Ouvrir la réalisation : Préparation au renouvellement du matériel IT (sourcing / benchmark)">
                     <div class="project-card-header">
-                      <img src="projets/en-entreprise/preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/icone.jpg" alt="Icône ordinateur portable 2-en-1" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Préparation au renouvellement du matériel IT (Sourcing / Benchmark)</h3></div>
+                      <img src="projets/en-entreprise/preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/icone.jpg" alt="Icône ordinateur portable 2-en-1" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Préparation au renouvellement du matériel IT (sourcing / benchmark)</h3>
+                      </div>
                     </div>
+                    <p>Recherche, comparaison et aide à la décision pour le renouvellement d’ordinateurs 2-en-1 destinés au panel sensoriel.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-entreprise/sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa.html" aria-label="Ouvrir le projet : Sensibilisation des utilisateurs à l’authentification multifacteur (MFA)">
+                  <a class="project-card" href="projets/en-entreprise/sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa.html" aria-label="Ouvrir la réalisation : Sensibilisation à l’activation de l’authentification multifacteur (MFA)">
                     <div class="project-card-header">
-                      <img src="projets/en-entreprise/sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/icone.jpg" alt="Icône authentification multifacteur" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Sensibilisation des utilisateurs à l’authentification multifacteur (MFA)</h3></div>
+                      <img src="projets/en-entreprise/sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/icone.jpg" alt="Icône authentification multifacteur" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Sensibilisation à l’activation de l’authentification multifacteur (MFA)</h3>
+                      </div>
                     </div>
+                    <p>Rédaction, validation et diffusion d’un message de sensibilisation destiné aux étudiants pour renforcer la sécurité des comptes.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-entreprise/suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect.html" aria-label="Ouvrir le projet : Suivi de la campagne de simulation de phishing (Stoïk Protect)">
+                  <a class="project-card" href="projets/en-entreprise/suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect.html" aria-label="Ouvrir la réalisation : Suivi de la campagne de simulation de phishing (Stoïk Protect)">
                     <div class="project-card-header">
-                      <img src="projets/en-entreprise/suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/icone.jpg" alt="Icône campagne de simulation de phishing" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Suivi de la campagne de simulation de phishing (Stoïk Protect)</h3></div>
+                      <img src="projets/en-entreprise/suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect/icone.jpg" alt="Icône campagne de simulation de phishing" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Suivi de la campagne de simulation de phishing (Stoïk Protect)</h3>
+                      </div>
                     </div>
+                    <p>Consultation des résultats, sensibilisation des utilisateurs concernés et traçabilité des actions réalisées.</p>
                   </a>
                 </li>
               </ul>
@@ -129,51 +135,69 @@
             <section class="tab-panel" id="panel-training" role="tabpanel" aria-labelledby="tab-training" tabindex="0" hidden>
               <ul class="project-list">
                 <li>
-                  <a class="project-card" href="projets/en-formation/configuration-initiales-dun-commutateur-cisco-packet-tracer.html" aria-label="Ouvrir le projet : Configurations initiales d’un commutateur Cisco (Packet Tracer)">
+                  <a class="project-card" href="projets/en-formation/configurations-initiales-dun-commutateur-cisco-packet-tracer.html" aria-label="Ouvrir la réalisation : Configurations initiales d’un commutateur Cisco (Packet Tracer)">
                     <div class="project-card-header">
-                      <img src="projets/en-formation/configuration-initiales-dun-commutateur-cisco-packet-tracer/icone.jpg" alt="Icône commutateur" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Configurations initiales d’un commutateur Cisco (Packet Tracer)</h3></div>
+                      <img src="projets/en-formation/configurations-initiales-dun-commutateur-cisco-packet-tracer/icone.jpg" alt="Icône commutateur" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Configurations initiales d’un commutateur Cisco (Packet Tracer)</h3>
+                      </div>
                     </div>
+                    <p>Configuration de base d’un commutateur Cisco : nom d’hôte, accès console, mots de passe, bannière et sauvegarde.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-formation/configuration-du-routage-inter-vlan-packet-tracer.html" aria-label="Ouvrir le projet : Configuration du routage inter-VLAN (Packet Tracer)">
+                  <a class="project-card" href="projets/en-formation/configuration-du-routage-inter-vlan-packet-tracer.html" aria-label="Ouvrir la réalisation : Configuration du routage inter-VLAN (Packet Tracer)">
                     <div class="project-card-header">
-                      <img src="projets/en-formation/configuration-du-routage-inter-vlan-packet-tracer/icone.jpg" alt="Icône routage inter-VLAN" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Configuration du routage inter-VLAN (Packet Tracer)</h3></div>
+                      <img src="projets/en-formation/configuration-du-routage-inter-vlan-packet-tracer/icone.jpg" alt="Icône routage inter-VLAN" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Configuration du routage inter-VLAN (Packet Tracer)</h3>
+                      </div>
                     </div>
+                    <p>Mise en place du routage inter-VLAN avec la méthode router-on-a-stick et l’encapsulation 802.1Q.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-formation/configuration-du-dhcpv4-packet-tracer.html" aria-label="Ouvrir le projet : Configuration du DHCPv4 (Packet Tracer)">
+                  <a class="project-card" href="projets/en-formation/configuration-du-dhcpv4-packet-tracer.html" aria-label="Ouvrir la réalisation : Configuration du DHCPv4 (Packet Tracer)">
                     <div class="project-card-header">
-                      <img src="projets/en-formation/configuration-du-dhcpv4/icone.jpg" alt="Icône DHCPv4" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Configuration du DHCPv4 (Packet Tracer)</h3></div>
+                      <img src="projets/en-formation/configuration-du-dhcpv4/icone.jpg" alt="Icône DHCPv4" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Configuration du DHCPv4 (Packet Tracer)</h3>
+                      </div>
                     </div>
+                    <p>Configuration d’un serveur DHCPv4, de relais DHCP et d’une interface cliente DHCP dans une topologie Cisco.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-formation/deploiement-dun-environnement-active-directory-windows-server-gpo.html" aria-label="Ouvrir le projet : Déploiement d’un environnement Active Directory (Windows Server / GPO)">
+                  <a class="project-card" href="projets/en-formation/deploiement-dun-environnement-active-directory-windows-server-gpo.html" aria-label="Ouvrir la réalisation : Déploiement d’un environnement Active Directory (Windows Server / GPO)">
                     <div class="project-card-header">
-                      <img src="projets/en-formation/deploiement-dun-environnement-active-directory-windows-server-gpo/icone.jpg" alt="Icône Active Directory" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Déploiement d’un environnement Active Directory (Windows Server / GPO)</h3></div>
+                      <img src="projets/en-formation/deploiement-dun-environnement-active-directory-windows-server-gpo/icone.jpg" alt="Icône Active Directory" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Déploiement d’un environnement Active Directory (Windows Server / GPO)</h3>
+                      </div>
                     </div>
+                    <p>Installation d’un contrôleur de domaine, structuration de l’annuaire, intégration d’un poste client et application d’une GPO.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-formation/mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo.html" aria-label="Ouvrir le projet : Mise en place d’un serveur de fichiers et gestion des droits d’accès (NTFS / GPO)">
+                  <a class="project-card" href="projets/en-formation/mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo.html" aria-label="Ouvrir la réalisation : Mise en place d’un serveur de fichiers et gestion des droits d’accès (NTFS / GPO)">
                     <div class="project-card-header">
-                      <img src="projets/en-formation/mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/icone.jpg" alt="Icône serveur de fichiers" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Mise en place d’un serveur de fichiers et gestion des droits d’accès (NTFS / GPO)</h3></div>
+                      <img src="projets/en-formation/mise-en-place-dun-serveur-de-fichiers-et-gestion-des-droits-dacces-ntfs-gpo/icone.jpg" alt="Icône serveur de fichiers" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Mise en place d’un serveur de fichiers et gestion des droits d’accès (NTFS / GPO)</h3>
+                      </div>
                     </div>
+                    <p>Création d’un partage réseau sécurisé et mappage automatique d’un lecteur réseau par GPO.</p>
                   </a>
                 </li>
                 <li>
-                  <a class="project-card" href="projets/en-formation/mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup.html" aria-label="Ouvrir le projet : Mise en place d’une stratégie de sauvegarde automatisée (Windows Server Backup)">
+                  <a class="project-card" href="projets/en-formation/mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup.html" aria-label="Ouvrir la réalisation : Mise en place d’une stratégie de sauvegarde automatisée (Windows Server Backup)">
                     <div class="project-card-header">
-                      <img src="projets/en-formation/mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/icone.jpg" alt="Icône plan de sauvegarde" class="project-logo" width="68" height="68" loading="lazy" decoding="async">
-                      <div class="project-title-block"><h3>Mise en place d’une stratégie de sauvegarde automatisée (Windows Server Backup)</h3></div>
+                      <img src="projets/en-formation/mise-en-place-dune-stratégie-de-sauvegarde-automatisée-windows-server-backup/icone.jpg" alt="Icône plan de sauvegarde" class="project-logo" width="72" height="72" loading="lazy" decoding="async">
+                      <div class="project-title-block">
+                        <h3>Mise en place d’une stratégie de sauvegarde automatisée (Windows Server Backup)</h3>
+                      </div>
                     </div>
+                    <p>Déploiement d’une sauvegarde planifiée pour protéger l’état système et les données critiques du serveur.</p>
                   </a>
                 </li>
               </ul>
@@ -182,11 +206,12 @@
             <section class="tab-panel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary" tabindex="0" hidden>
               <div class="timeline">
                 <article class="timeline-content summary-card">
-                  <p>Le tableau de synthèse récapitule les réalisations professionnelles présentées dans le portfolio et les compétences du bloc « Support et mise à disposition de services informatiques » mobilisées.</p>
+                  <h2>Tableau de synthèse des compétences</h2>
+                  <p>Ce document synthétise les réalisations présentées et leur correspondance avec les compétences mobilisées dans le cadre du BTS SIO.</p>
                   <figure class="summary-visual single-image">
                     <img class="summary-image" src="projets/tableau-de-synthese/tableau-de-synthese.jpg" alt="Aperçu du tableau de synthèse BTS SIO 2026 de Damien Zanatta" loading="lazy" decoding="async">
                   </figure>
-                  <div class="pdf-actions pdf-actions--below">
+                  <div class="pdf-actions">
                     <a class="pdf-button" href="projets/tableau-de-synthese/tableau-de-synthese.pdf" target="_blank" rel="noopener noreferrer">Ouvrir le PDF</a>
                     <a class="pdf-button" href="projets/tableau-de-synthese/tableau-de-synthese.pdf" download="tableau-de-synthese.pdf">Télécharger le PDF</a>
                   </div>
