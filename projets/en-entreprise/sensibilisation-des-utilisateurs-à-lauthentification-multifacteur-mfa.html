@@ -3,23 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projet de sensibilisation à l’activation du MFA : rédaction, validation et diffusion d’un message aux étudiants depuis la boîte du service informatique.">
+  <meta name="description" content="Réalisation BTS SIO SISR : Sensibilisation à l’activation de l’authentification multifacteur (MFA).">
   <meta name="theme-color" content="#020813">
-  <meta name="color-scheme" content="dark light">
-  <title>Sensibilisation des utilisateurs à l’authentification multifacteur (MFA) | Damien Zanatta</title>
+  <title>Sensibilisation à l’activation de l’authentification multifacteur (MFA) | Damien Zanatta</title>
 
   <script>
     (function() {
-      try {
-        var storedTheme = localStorage.getItem('theme-preference');
-        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        var theme = storedTheme || systemTheme || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
-      } catch (error) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 
@@ -27,7 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://damienzanatta.github.io/projets/en-entreprise/sensibilisation-des-utilisateurs-%C3%A0-lauthentification-multifacteur-mfa.html">
   <link rel="stylesheet" href="../../style.css">
   <script src="../../script.js" defer></script>
 </head>
@@ -40,11 +31,12 @@
         <a href="../../index.html">Damien Zanatta</a>
       </div>
 
-      <nav class="project-top-nav" aria-label="Navigation de la réalisation professionnelle">
+      <nav class="project-top-nav" aria-label="Navigation de la réalisation">
         <a href="../../projets.html#company" class="project-top-link project-top-return">← Retour</a>
         <span class="project-top-separator" aria-hidden="true"></span>
+        <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -55,8 +47,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span class="theme-switch-slider" aria-hidden="true"></span>
-          <svg class="icon-moon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -68,63 +60,128 @@
     <div class="container">
       <section class="page-box presentation-box" aria-labelledby="project-title">
         <div class="project-page-title">
-          <img src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/icone.jpg" alt="Icône authentification multifacteur" class="project-page-logo" width="96" height="96">
+          <img src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/icone.jpg" alt="Icône authentification multifacteur" class="project-page-logo" width="100" height="100">
           <div class="project-page-heading">
-            <h1 id="project-title">Sensibilisation des utilisateurs à l’authentification multifacteur (MFA)</h1>
+            <h1 id="project-title">Sensibilisation à l’activation de l’authentification multifacteur (MFA)</h1>
           </div>
         </div>
 
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, j’ai participé à une action de communication interne liée à la sécurisation des comptes utilisateurs.</p><p>Mon responsable m’a demandé de préparer puis de diffuser un message à destination des étudiants afin de les informer de l’obligation d’activer l’authentification multifacteur, également appelée MFA.</p>
+            <p>Rédaction, validation et diffusion d’un message de sensibilisation destiné aux étudiants pour renforcer la sécurité des comptes.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
-            <ul class="content-list"><li>Rédiger un message clair à destination des étudiants.</li><li>Expliquer l’intérêt du MFA dans la protection des comptes.</li><li>Fournir une procédure courte d’activation.</li><li>Faire valider le contenu par le responsable informatique.</li><li>Envoyer la communication depuis la boîte du service informatique.</li><li>Diffuser le message aux promotions concernées.</li></ul>
+            <ul class="content-list">
+              <li>Rédiger un message clair pour un public non technique.</li>
+              <li>Expliquer l’intérêt du MFA.</li>
+              <li>Fournir une procédure courte d’activation.</li>
+              <li>Faire valider le contenu avant diffusion.</li>
+              <li>Envoyer la communication depuis la boîte officielle.</li>
+              <li>Conserver une trace de l’envoi.</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Environnement de travail</h2>
-            <ul class="content-list"><li><strong>Structure d’accueil :</strong> EBI (École de Biologie Industrielle)</li><li><strong>Service concerné :</strong> service informatique</li><li><strong>Public cible :</strong> étudiants de l’établissement</li><li><strong>Outils utilisés :</strong> Microsoft Word, Microsoft Teams, Outlook</li><li><strong>Compte d’envoi :</strong> boîte mail du service informatique</li><li><strong>Objet de la communication :</strong> activation de l’authentification multifacteur</li></ul>
+            <h2>Environnement technique</h2>
+            <ul class="content-list">
+              <li>Structure : EBI</li>
+              <li>Service : informatique</li>
+              <li>Public cible : étudiants</li>
+              <li>Outils : Microsoft Word, Microsoft Teams, Outlook</li>
+              <li>Compte d’envoi : boîte officielle du service informatique</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Rédaction du message</h2>
-            <p>J’ai rédigé le contenu dans Microsoft Word afin de préparer une communication structurée. Le message devait rester compréhensible pour un public non technique tout en expliquant clairement l’intérêt du MFA et les actions à réaliser.</p><div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-01.jpg" alt="Rédaction du message de sensibilisation MFA dans Microsoft Word." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-02.jpg" alt="Aperçu du document finalisé présentant le message d’activation du MFA." loading="lazy" decoding="async"></figure></div>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Validation avant diffusion</h2>
-            <p>Avant l’envoi, j’ai transmis le message à mon responsable afin d’obtenir sa validation. Cette étape permet de contrôler le fond, la forme et la conformité de la communication avec le cadre institutionnel.</p><figure class="summary-visual single-image"><img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-03.jpg" alt="Validation du message MFA par le responsable avant diffusion." loading="lazy" decoding="async"></figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Préparation et envoi du mail</h2>
-            <p>Une fois le contenu validé, j’ai préparé le message dans Outlook avec la boîte mail du service informatique comme expéditeur. Les groupes de promotions concernés ont été ajoutés en destinataires et la boîte du service informatique en copie cachée afin de conserver une trace de l’envoi.</p><figure class="summary-visual single-image"><img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-04.jpg" alt="Préparation du mail MFA dans Outlook." loading="lazy" decoding="async"></figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Vérification de l’envoi</h2>
-            <p>Après l’envoi, j’ai vérifié la présence du message dans les éléments envoyés d’Outlook pour confirmer la diffusion et conserver une preuve de l’action réalisée.</p><figure class="summary-visual single-image"><img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-05.jpg" alt="Mail de sensibilisation MFA affiché dans les éléments envoyés d’Outlook." loading="lazy" decoding="async"></figure>
+            <h2>Démarche réalisée</h2>
+            <ul class="content-list">
+              <li>Rédaction du message dans Microsoft Word pour structurer le fond avant diffusion.</li>
+              <li>Adaptation du vocabulaire afin de rendre la consigne compréhensible par l’ensemble des étudiants.</li>
+              <li>Transmission au responsable informatique pour validation.</li>
+              <li>Préparation du mail dans Outlook, vérification de l’objet, des destinataires et de la signature.</li>
+              <li>Envoi depuis la boîte du service informatique puis contrôle dans les éléments envoyés.</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
-            <ul class="content-list"><li>Message de sensibilisation rédigé dans un format clair.</li><li>Contenu relu et validé par le responsable informatique.</li><li>Communication envoyée depuis la boîte officielle du service informatique.</li><li>Promotions étudiantes informées de l’obligation d’activer le MFA.</li><li>Procédure d’activation et canal de support communiqués.</li><li>Trace de l’envoi conservée dans Outlook.</li></ul>
+            <ul class="content-list">
+              <li>Message de sensibilisation validé.</li>
+              <li>Communication envoyée aux promotions concernées.</li>
+              <li>Procédure d’activation du MFA transmise.</li>
+              <li>Canal de support rappelé.</li>
+              <li>Trace de l’envoi conservée.</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
             <h2>Compétences mobilisées</h2>
-            <dl class="info-grid"><div class="info-item"><dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt><dd>Contribution à une demande liée au renforcement de la sécurité des comptes utilisateurs.</dd></div><div class="info-item"><dt>Mettre à disposition des utilisateurs un service informatique</dt><dd>Diffusion d’une procédure permettant aux étudiants d’activer un service de sécurité.</dd></div><div class="info-item"><dt>Développer la présence en ligne de l’organisation</dt><dd>Utilisation des outils numériques internes pour diffuser une communication institutionnelle.</dd></div><div class="info-item"><dt>Travailler en mode projet</dt><dd>Rédaction, validation, préparation de l’envoi, diffusion et vérification de la communication.</dd></div><div class="info-item"><dt>Organiser son développement professionnel</dt><dd>Développement de compétences en communication informatique, sensibilisation cybersécurité et rédaction pour un public non technique.</dd></div></dl>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
+                <dd>Contribution à une demande de renforcement de la sécurité des comptes.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Développer la présence en ligne de l’organisation</dt>
+                <dd>Utilisation des outils numériques internes pour diffuser une communication institutionnelle.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Travailler en mode projet</dt>
+                <dd>Rédaction, validation, préparation, diffusion et vérification.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
+                <dd>Transmission d’une procédure permettant d’activer un service de sécurité.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Organiser son développement professionnel</dt>
+                <dd>Développement de compétences en communication IT et sensibilisation cybersécurité.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Captures justificatives</h2>
+            <p>Les captures ci-dessous constituent les éléments de preuve associés à la réalisation. Elles sont conservées dans le dépôt afin de documenter la démarche et les résultats.</p>
+            <div class="image-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-01.jpg" alt="Sensibilisation à l’activation de l’authentification multifacteur (MFA) — capture justificative n°01" loading="lazy" decoding="async">
+                <figcaption>Capture n°01</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-02.jpg" alt="Sensibilisation à l’activation de l’authentification multifacteur (MFA) — capture justificative n°02" loading="lazy" decoding="async">
+                <figcaption>Capture n°02</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-03.jpg" alt="Sensibilisation à l’activation de l’authentification multifacteur (MFA) — capture justificative n°03" loading="lazy" decoding="async">
+                <figcaption>Capture n°03</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-04.jpg" alt="Sensibilisation à l’activation de l’authentification multifacteur (MFA) — capture justificative n°04" loading="lazy" decoding="async">
+                <figcaption>Capture n°04</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa/image-05.jpg" alt="Sensibilisation à l’activation de l’authentification multifacteur (MFA) — capture justificative n°05" loading="lazy" decoding="async">
+                <figcaption>Capture n°05</figcaption>
+              </figure>
+            </div>
           </article>
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Cette réalisation m’a permis de participer à une action concrète de sensibilisation à la sécurité informatique. J’ai compris l’importance de rédiger un message clair, synthétique et adapté à un public non technique.</p><p>Cette mission m’a également montré la rigueur nécessaire lors d’un envoi à grande échelle : validation préalable, choix du bon expéditeur, vérification des destinataires et conservation d’une trace.</p>
+            <p>Cette action m’a montré l’importance de rédiger clairement lorsqu’une mesure de sécurité doit être comprise et appliquée rapidement.</p>
+            <p>J’ai également pris conscience de la rigueur nécessaire lors d’un envoi à grande échelle.</p>
           </article>
         </div>
+          <div class="project-pager-wrapper">
+            <nav class="project-pager" aria-label="Navigation entre les réalisations">
+              <a class="pager-button" href="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark.html">← Projet précédent</a>
+              <a class="pager-button" href="suivi-de-la-campagne-de-simulation-de-phishing-stoik-protect.html">Projet suivant →</a>
+            </nav>
+          </div>
       </section>
     </div>
   </main>
