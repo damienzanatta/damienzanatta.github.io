@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projet de formation de Damien Zanatta : configurations initiales d'un commutateur.">
+  <meta name="description" content="Réalisation BTS SIO SISR : Configurations initiales d’un commutateur Cisco (Packet Tracer).">
   <meta name="theme-color" content="#020813">
-  <title>Configurations initiales d'un commutateur Cisco (Packet Tracer) | Damien Zanatta</title>
+  <title>Configurations initiales d’un commutateur Cisco (Packet Tracer) | Damien Zanatta</title>
 
   <script>
     (function() {
@@ -19,7 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-
   <link rel="stylesheet" href="../../style.css">
   <script src="../../script.js" defer></script>
 </head>
@@ -32,12 +31,12 @@
         <a href="../../index.html">Damien Zanatta</a>
       </div>
 
-      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
+      <nav class="project-top-nav" aria-label="Navigation de la réalisation">
         <a href="../../projets.html#training" class="project-top-link project-top-return">← Retour</a>
         <span class="project-top-separator" aria-hidden="true"></span>
         <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -49,7 +48,7 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
           <span class="theme-switch-slider"></span>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -61,25 +60,24 @@
     <div class="container">
       <section class="page-box presentation-box" aria-labelledby="project-title">
         <div class="project-page-title">
-          <img src="configuration-initiales-dun-commutateur-cisco-packet-tracer/icone.jpg" alt="Icône commutateur" class="project-page-logo" width="96" height="96">
+          <img src="configurations-initiales-dun-commutateur-cisco-packet-tracer/icone.jpg" alt="Icône commutateur" class="project-page-logo" width="100" height="100">
           <div class="project-page-heading">
-            <h1 id="project-title">Configurations initiales d'un commutateur Cisco (Packet Tracer)</h1>
+            <h1 id="project-title">Configurations initiales d’un commutateur Cisco (Packet Tracer)</h1>
           </div>
         </div>
 
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>Dans le cadre de ma formation, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration initiale d’un commutateur.</p>
-            <p>L’objectif était de préparer un commutateur Cisco à son utilisation dans une infrastructure réseau en configurant les paramètres de base.</p>
+            <p>Configuration de base d’un commutateur Cisco : nom d’hôte, accès console, mots de passe, bannière et sauvegarde.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
             <ul class="content-list">
               <li>Renommer le commutateur.</li>
-              <li>Sécuriser l’accès à la console.</li>
-              <li>Protéger l’accès au mode privilégié.</li>
+              <li>Sécuriser l’accès console.</li>
+              <li>Protéger le mode privilégié.</li>
               <li>Chiffrer les mots de passe.</li>
               <li>Ajouter une bannière MOTD.</li>
               <li>Sauvegarder la configuration.</li>
@@ -89,68 +87,28 @@
           <article class="timeline-content">
             <h2>Environnement technique</h2>
             <ul class="content-list">
-              <li><strong>Logiciel :</strong> Cisco Packet Tracer</li>
-              <li><strong>Équipements :</strong> commutateurs Cisco</li>
-              <li><strong>Interface :</strong> CLI Cisco IOS</li>
+              <li>Logiciel : Cisco Packet Tracer</li>
+              <li>Équipements : commutateurs Cisco</li>
+              <li>Interface : CLI Cisco IOS</li>
             </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Topologie</h2>
-            <p>La topologie est composée de deux commutateurs, S1 et S2, reliés à deux postes clients.</p>
-            <p>Cette architecture permet de simuler une configuration de base d’équipements réseau Cisco.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="configuration-initiales-dun-commutateur-cisco-packet-tracer/image-01.jpg" alt="Topologie Packet Tracer composée de deux commutateurs Cisco S1 et S2 reliés à deux postes clients." loading="lazy" decoding="async">
-            </figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Vérification de la configuration initiale</h2>
-            <p>Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.</p>
-            <p>J’ai commencé par afficher la configuration active du commutateur avec la commande <strong>show running-config</strong>.</p>
-            <p>Cette consultation m’a permis de vérifier l’état initial de l’équipement, d’identifier les paramètres déjà présents et de disposer d’un point de comparaison avant d’appliquer les modifications.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="configuration-initiales-dun-commutateur-cisco-packet-tracer/image-02.jpg" alt="Affichage de la configuration initiale du commutateur avec la commande show running-config." loading="lazy" decoding="async">
-            </figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Configuration du commutateur</h2>
-            <p>J’ai renommé le commutateur avec la commande <strong>hostname S1</strong> afin d’identifier clairement l’équipement dans la topologie.</p>
-            <p>J’ai sécurisé l’accès à la console avec les commandes <strong>line console 0</strong>, <strong>password [mot_de_passe]</strong> et <strong>login</strong> afin d’imposer une authentification lors de l’ouverture de la CLI.</p>
-            <p>J’ai configuré un premier mot de passe pour l’accès au mode privilégié avec la commande <strong>enable password [mot_de_passe]</strong>, puis j’ai activé la commande <strong>service password-encryption</strong> afin de chiffrer les mots de passe visibles dans la configuration.</p>
-            <p>J’ai ensuite renforcé la protection du mode privilégié avec la commande <strong>enable secret [mot_de_passe_secret]</strong>, qui permet de définir un mot de passe secret chiffré pour l’accès administrateur.</p>
-            <p>Enfin, j’ai ajouté une bannière d’avertissement avec la commande <strong>banner motd</strong> afin d’informer que l’accès au système est réservé aux personnes autorisées.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="configuration-initiales-dun-commutateur-cisco-packet-tracer/image-03.jpg" alt="Commandes Cisco IOS utilisées pour configurer les paramètres initiaux du commutateur." loading="lazy" decoding="async">
-            </figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Vérification de l’accès sécurisé</h2>
-            <p>Après la configuration, j’ai fermé puis rouvert l’interface CLI du commutateur S1 afin de tester l’accès comme lors d’une nouvelle connexion.</p>
-            <p>J’ai pu constater que la bannière MOTD s’affichait correctement avant l’accès à l’équipement.</p>
-            <p>J’ai également vérifié que les mots de passe étaient bien demandés et, après essai, qu’ils permettaient d’accéder aux niveaux d’administration attendus.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="configuration-initiales-dun-commutateur-cisco-packet-tracer/image-04.jpg" alt="Vérification de la demande de mot de passe et de l’affichage de la bannière MOTD sur le commutateur." loading="lazy" decoding="async">
-            </figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Vérification finale et sauvegarde</h2>
-            <p>J’ai de nouveau affiché la configuration active du commutateur avec la commande <strong>show running-config</strong>.</p>
-            <p>J’ai pu constater que plusieurs paramètres configurés étaient bien présents : le nom d’hôte <strong>S1</strong>, l’activation du chiffrement des mots de passe, ainsi que les mots de passe du mode privilégié configurés avec <strong>enable password</strong> et <strong>enable secret</strong>.</p>
-            <p>J’ai donc sauvegardé la configuration avec la commande <strong>write memory</strong> afin qu’elle soit conservée après redémarrage du commutateur.</p>
-            <figure class="summary-visual single-image">
-              <img class="summary-image" src="configuration-initiales-dun-commutateur-cisco-packet-tracer/image-05.jpg" alt="Affichage de la configuration finale du commutateur après paramétrage et sauvegarde." loading="lazy" decoding="async">
-            </figure>
+            <h2>Démarche réalisée</h2>
+            <ul class="content-list">
+              <li>Consultation de la configuration initiale avec show running-config.</li>
+              <li>Configuration du nom d’hôte et des accès d’administration.</li>
+              <li>Activation du chiffrement des mots de passe et ajout d’une bannière d’avertissement.</li>
+              <li>Vérification de la demande de mot de passe à la reconnexion.</li>
+              <li>Sauvegarde de la configuration pour la rendre persistante.</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
             <ul class="content-list">
               <li>Nom d’hôte configuré.</li>
-              <li>Accès à la console protégé.</li>
+              <li>Accès console protégé.</li>
               <li>Mode privilégié sécurisé.</li>
               <li>Mots de passe chiffrés.</li>
               <li>Bannière MOTD affichée.</li>
@@ -167,26 +125,57 @@
               </div>
               <div class="info-item">
                 <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
-                <dd>Sécurisation de l’accès d’administration d’un commutateur.</dd>
+                <dd>Sécurisation des accès d’administration.</dd>
               </div>
               <div class="info-item">
                 <dt>Mettre à disposition des utilisateurs un service informatique</dt>
-                <dd>Préparation et vérification d’un commutateur avant son intégration dans une infrastructure réseau.</dd>
+                <dd>Préparation d’un commutateur avant intégration dans une infrastructure.</dd>
               </div>
               <div class="info-item">
                 <dt>Organiser son développement professionnel</dt>
-                <dd>Développement de compétences en administration réseau Cisco et documentation de la réalisation dans le portfolio.</dd>
+                <dd>Développement de compétences en administration réseau Cisco.</dd>
               </div>
             </dl>
           </article>
 
           <article class="timeline-content">
+            <h2>Captures justificatives</h2>
+            <p>Les captures ci-dessous constituent les éléments de preuve associés à la réalisation. Elles sont conservées dans le dépôt afin de documenter la démarche et les résultats.</p>
+            <div class="image-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="configurations-initiales-dun-commutateur-cisco-packet-tracer/image-01.jpg" alt="Configurations initiales d’un commutateur Cisco (Packet Tracer) — capture justificative n°01" loading="lazy" decoding="async">
+                <figcaption>Capture n°01</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="configurations-initiales-dun-commutateur-cisco-packet-tracer/image-02.jpg" alt="Configurations initiales d’un commutateur Cisco (Packet Tracer) — capture justificative n°02" loading="lazy" decoding="async">
+                <figcaption>Capture n°02</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="configurations-initiales-dun-commutateur-cisco-packet-tracer/image-03.jpg" alt="Configurations initiales d’un commutateur Cisco (Packet Tracer) — capture justificative n°03" loading="lazy" decoding="async">
+                <figcaption>Capture n°03</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="configurations-initiales-dun-commutateur-cisco-packet-tracer/image-04.jpg" alt="Configurations initiales d’un commutateur Cisco (Packet Tracer) — capture justificative n°04" loading="lazy" decoding="async">
+                <figcaption>Capture n°04</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="configurations-initiales-dun-commutateur-cisco-packet-tracer/image-05.jpg" alt="Configurations initiales d’un commutateur Cisco (Packet Tracer) — capture justificative n°05" loading="lazy" decoding="async">
+                <figcaption>Capture n°05</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Ce TP m’a permis de mieux comprendre les bases de l’administration d’un commutateur Cisco.</p>
-            <p>J’ai appris à utiliser les principaux modes de configuration IOS, à sécuriser les accès d’administration et à vérifier les paramètres appliqués.</p>
-            <p>Cette réalisation est importante car la configuration initiale d’un équipement réseau est une étape essentielle avant sa mise en production.</p>
+            <p>Ce TP m’a permis de maîtriser les bases de l’administration d’un commutateur Cisco et les premiers réflexes de sécurisation.</p>
           </article>
         </div>
+          <div class="project-pager-wrapper">
+            <nav class="project-pager" aria-label="Navigation entre les réalisations">
+              <span class="pager-button is-disabled" aria-disabled="true">← Projet précédent</span>
+              <a class="pager-button" href="configuration-du-routage-inter-vlan-packet-tracer.html">Projet suivant →</a>
+            </nav>
+          </div>
       </section>
     </div>
   </main>
