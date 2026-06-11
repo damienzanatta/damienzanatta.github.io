@@ -3,23 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projet de renouvellement des postes 2-en-1 : recherche, comparaison et aide à la décision pour le service informatique de l’EBI.">
+  <meta name="description" content="Réalisation BTS SIO SISR : Préparation au renouvellement du matériel IT (sourcing / benchmark).">
   <meta name="theme-color" content="#020813">
-  <meta name="color-scheme" content="dark light">
-  <title>Préparation au renouvellement du matériel IT (Sourcing / Benchmark) | Damien Zanatta</title>
+  <title>Préparation au renouvellement du matériel IT (sourcing / benchmark) | Damien Zanatta</title>
 
   <script>
     (function() {
-      try {
-        var storedTheme = localStorage.getItem('theme-preference');
-        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        var theme = storedTheme || systemTheme || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
-      } catch (error) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 
@@ -27,7 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://damienzanatta.github.io/projets/en-entreprise/preparation-au-renouvellement-du-materiel-it-sourcing-benchmark.html">
   <link rel="stylesheet" href="../../style.css">
   <script src="../../script.js" defer></script>
 </head>
@@ -40,11 +31,12 @@
         <a href="../../index.html">Damien Zanatta</a>
       </div>
 
-      <nav class="project-top-nav" aria-label="Navigation de la réalisation professionnelle">
+      <nav class="project-top-nav" aria-label="Navigation de la réalisation">
         <a href="../../projets.html#company" class="project-top-link project-top-return">← Retour</a>
         <span class="project-top-separator" aria-hidden="true"></span>
+        <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -55,8 +47,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span class="theme-switch-slider" aria-hidden="true"></span>
-          <svg class="icon-moon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -68,63 +60,136 @@
     <div class="container">
       <section class="page-box presentation-box" aria-labelledby="project-title">
         <div class="project-page-title">
-          <img src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/icone.jpg" alt="Icône ordinateur portable 2-en-1" class="project-page-logo" width="96" height="96">
+          <img src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/icone.jpg" alt="Icône ordinateur portable 2-en-1" class="project-page-logo" width="100" height="100">
           <div class="project-page-heading">
-            <h1 id="project-title">Préparation au renouvellement du matériel IT (Sourcing / Benchmark)</h1>
+            <h1 id="project-title">Préparation au renouvellement du matériel IT (sourcing / benchmark)</h1>
           </div>
         </div>
 
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, j’ai participé à une étude de renouvellement d’équipements destinés au panel sensoriel.</p><p>Les postes utilisés présentaient des signes d’obsolescence, notamment des lenteurs et une perte de confort d’utilisation. Mon intervention a consisté à rechercher des modèles compatibles avec les attentes du service, puis à formaliser les résultats dans un support de comparaison exploitable.</p>
+            <p>Recherche, comparaison et aide à la décision pour le renouvellement d’ordinateurs 2-en-1 destinés au panel sensoriel.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
-            <ul class="content-list"><li>Analyser le besoin exprimé par le responsable informatique.</li><li>Identifier les critères techniques et budgétaires à respecter.</li><li>Rechercher des ordinateurs portables 2-en-1 ou convertibles adaptés à l’usage du panel sensoriel.</li><li>Vérifier les caractéristiques techniques des modèles présélectionnés.</li><li>Comparer les références retenues dans un tableau synthétique.</li><li>Produire un support d’aide à la décision.</li></ul>
+            <ul class="content-list">
+              <li>Analyser le besoin exprimé par le responsable informatique.</li>
+              <li>Identifier les critères techniques et budgétaires.</li>
+              <li>Rechercher des modèles 2-en-1 compatibles.</li>
+              <li>Vérifier les caractéristiques techniques.</li>
+              <li>Comparer les références retenues.</li>
+              <li>Produire un support d’aide à la décision.</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Environnement de travail</h2>
-            <ul class="content-list"><li><strong>Structure d’accueil :</strong> EBI (École de Biologie Industrielle)</li><li><strong>Service concerné :</strong> service informatique</li><li><strong>Usage cible :</strong> panel sensoriel</li><li><strong>Outils utilisés :</strong> navigateur web, sites constructeurs, Microsoft Excel</li><li><strong>Constructeurs consultés :</strong> Dell, HP, Lenovo, Microsoft, Acer, Asus</li><li><strong>Livrable produit :</strong> tableau comparatif d’une sélection de modèles</li></ul>
+            <h2>Environnement technique</h2>
+            <ul class="content-list">
+              <li>Structure : EBI</li>
+              <li>Service : informatique</li>
+              <li>Usage cible : panel sensoriel</li>
+              <li>Outils : navigateur web, sites constructeurs, Microsoft Excel</li>
+              <li>Constructeurs consultés : Dell, HP, Lenovo, Microsoft, Acer, Asus</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Cadrage de la demande</h2>
-            <p>La mission a débuté par la présentation du besoin par mon responsable informatique. Les équipements recherchés devaient respecter plusieurs critères minimaux : Windows 11, 16 Go de mémoire vive, 512 Go de stockage, écran d’au moins 14 pouces et budget maximal de 1000 € par poste.</p><figure class="summary-visual single-image"><img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-01.jpg" alt="Document de cadrage du renouvellement des postes 2-en-1 du panel sensoriel." loading="lazy" decoding="async"></figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Recherche de modèles compatibles</h2>
-            <p>J’ai consulté les sites de plusieurs constructeurs afin d’identifier des ordinateurs portables 2-en-1 ou convertibles répondant au besoin. Les filtres disponibles ont permis de cibler la taille d’écran, la mémoire vive, le stockage, le système d’exploitation, le format tactile ou convertible et le prix.</p><div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-02.jpg" alt="Recherche filtrée sur le site Dell." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-03.jpg" alt="Recherche filtrée sur le site HP." loading="lazy" decoding="async"></figure></div><figure class="summary-visual single-image"><img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-04.jpg" alt="Consultation de la page Microsoft Surface pour les entreprises." loading="lazy" decoding="async"></figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Vérification des caractéristiques techniques</h2>
-            <p>Après une première sélection, j’ai consulté les fiches techniques des modèles afin de vérifier la conformité réelle des configurations : processeur, mémoire vive, stockage, écran, type de dalle, référence constructeur, garantie et prix.</p><div class="info-grid"><figure class="summary-visual"><img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-05.jpg" alt="Fiche technique Lenovo IdeaPad 5i 2-en-1." loading="lazy" decoding="async"></figure><figure class="summary-visual"><img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-06.jpg" alt="Fiche technique Acer Aspire Go Spin 14." loading="lazy" decoding="async"></figure></div>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Tableau comparatif et restitution</h2>
-            <p>Quatre modèles ont été retenus : Dell Inspiron 14, Lenovo IdeaPad 5i 14, HP OmniBook X Flip 14 et Acer Aspire Go Spin 14. J’ai regroupé les informations essentielles dans un tableau Excel afin de faciliter la comparaison.</p><p>Le modèle <strong>HP OmniBook X Flip 14</strong> a été privilégié, notamment pour son prix inférieur aux autres références et l’existence d’un contrat-cadre entre l’EBI et HP.</p><figure class="summary-visual single-image"><img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-07.jpg" alt="Tableau comparatif final des quatre modèles retenus." loading="lazy" decoding="async"></figure>
+            <h2>Démarche réalisée</h2>
+            <ul class="content-list">
+              <li>Formalisation des critères : Windows 11, 16 Go de RAM, 512 Go de stockage, écran 14 pouces minimum et budget maximal défini.</li>
+              <li>Consultation de plusieurs constructeurs pour obtenir une sélection représentative.</li>
+              <li>Vérification des fiches techniques afin d’éviter les erreurs liées aux informations commerciales résumées.</li>
+              <li>Construction d’un tableau comparatif Excel avec les caractéristiques principales.</li>
+              <li>Restitution au responsable informatique en tenant compte du prix, de la garantie et des accords fournisseurs.</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
-            <ul class="content-list"><li>Besoin formalisé à partir du document de cadrage.</li><li>Recherche menée auprès de plusieurs constructeurs.</li><li>Modèles non conformes écartés.</li><li>Fiches techniques vérifiées.</li><li>Quatre modèles conformes retenus et comparés.</li><li>Tableau comparatif transmis au responsable informatique.</li><li>Choix final orienté vers un modèle compatible avec les contraintes de prix et les accords fournisseurs.</li></ul>
+            <ul class="content-list">
+              <li>Critères de choix clarifiés.</li>
+              <li>Modèles non conformes écartés.</li>
+              <li>Quatre modèles retenus et comparés.</li>
+              <li>Tableau comparatif transmis au responsable.</li>
+              <li>Décision orientée vers une référence compatible avec le budget et les accords fournisseurs.</li>
+            </ul>
           </article>
 
           <article class="timeline-content">
             <h2>Compétences mobilisées</h2>
-            <dl class="info-grid"><div class="info-item"><dt>Gérer le patrimoine informatique</dt><dd>Identification de ressources matérielles adaptées au renouvellement d’une partie du parc.</dd></div><div class="info-item"><dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt><dd>Prise en charge d’une demande d’évolution liée à l’obsolescence des postes existants.</dd></div><div class="info-item"><dt>Travailler en mode projet</dt><dd>Analyse du besoin, recherche de solutions, comparaison, restitution et contribution à la décision.</dd></div><div class="info-item"><dt>Mettre à disposition des utilisateurs un service informatique</dt><dd>Contribution au choix d’équipements destinés à améliorer les conditions d’utilisation du panel sensoriel.</dd></div><div class="info-item"><dt>Organiser son développement professionnel</dt><dd>Développement d’une démarche de comparaison technique, de veille matérielle et de formalisation d’un livrable professionnel.</dd></div></dl>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Identification de matériels adaptés au renouvellement d’une partie du parc.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
+                <dd>Réponse à une demande d’évolution liée à l’obsolescence des postes.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Travailler en mode projet</dt>
+                <dd>Analyse du besoin, recherche, comparaison, restitution et contribution à la décision.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
+                <dd>Contribution au choix d’équipements destinés à améliorer les conditions d’utilisation.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Organiser son développement professionnel</dt>
+                <dd>Développement d’une démarche de veille matérielle et de comparaison technique.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Captures justificatives</h2>
+            <p>Les captures ci-dessous constituent les éléments de preuve associés à la réalisation. Elles sont conservées dans le dépôt afin de documenter la démarche et les résultats.</p>
+            <div class="image-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-01.jpg" alt="Préparation au renouvellement du matériel IT (sourcing / benchmark) — capture justificative n°01" loading="lazy" decoding="async">
+                <figcaption>Capture n°01</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-02.jpg" alt="Préparation au renouvellement du matériel IT (sourcing / benchmark) — capture justificative n°02" loading="lazy" decoding="async">
+                <figcaption>Capture n°02</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-03.jpg" alt="Préparation au renouvellement du matériel IT (sourcing / benchmark) — capture justificative n°03" loading="lazy" decoding="async">
+                <figcaption>Capture n°03</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-04.jpg" alt="Préparation au renouvellement du matériel IT (sourcing / benchmark) — capture justificative n°04" loading="lazy" decoding="async">
+                <figcaption>Capture n°04</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-05.jpg" alt="Préparation au renouvellement du matériel IT (sourcing / benchmark) — capture justificative n°05" loading="lazy" decoding="async">
+                <figcaption>Capture n°05</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-06.jpg" alt="Préparation au renouvellement du matériel IT (sourcing / benchmark) — capture justificative n°06" loading="lazy" decoding="async">
+                <figcaption>Capture n°06</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="preparation-au-renouvellement-du-materiel-it-sourcing-benchmark/image-07.jpg" alt="Préparation au renouvellement du matériel IT (sourcing / benchmark) — capture justificative n°07" loading="lazy" decoding="async">
+                <figcaption>Capture n°07</figcaption>
+              </figure>
+            </div>
           </article>
 
           <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Cette réalisation m’a permis de travailler sur une problématique concrète de renouvellement d’équipements en entreprise. J’ai appris à transformer un besoin exprimé en critères de recherche, à comparer plusieurs solutions de manière structurée et à produire un document synthétique d’aide à la décision.</p><p>J’ai également constaté que le choix d’un équipement ne repose pas uniquement sur ses caractéristiques techniques : budget, garantie, disponibilité, fournisseurs référencés et contrats-cadres sont aussi déterminants.</p>
+            <p>Cette mission m’a appris qu’un choix matériel professionnel ne repose pas uniquement sur la fiche technique.</p>
+            <p>Le budget, les fournisseurs référencés, la garantie, la disponibilité et les contraintes internes sont déterminants dans la décision finale.</p>
           </article>
         </div>
+          <div class="project-pager-wrapper">
+            <nav class="project-pager" aria-label="Navigation entre les réalisations">
+              <a class="pager-button" href="centralisation-de-la-documentation-informatique-sharepoint.html">← Projet précédent</a>
+              <a class="pager-button" href="sensibilisation-des-utilisateurs-à-lauthentification-multifacteur-mfa.html">Projet suivant →</a>
+            </nav>
+          </div>
       </section>
     </div>
   </main>
