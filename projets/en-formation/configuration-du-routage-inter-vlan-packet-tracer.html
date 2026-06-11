@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Réalisation BTS SIO SISR : Configuration du routage inter-VLAN (Packet Tracer).">
+  <meta name="description" content="Projet de formation de Damien Zanatta : configuration du routage inter-VLAN avec la méthode router-on-a-stick.">
   <meta name="theme-color" content="#020813">
   <title>Configuration du routage inter-VLAN (Packet Tracer) | Damien Zanatta</title>
 
@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
   <link rel="stylesheet" href="../../style.css">
   <script src="../../script.js" defer></script>
 </head>
@@ -31,12 +32,12 @@
         <a href="../../index.html">Damien Zanatta</a>
       </div>
 
-      <nav class="project-top-nav" aria-label="Navigation de la réalisation">
+      <nav class="project-top-nav" aria-label="Navigation des réalisations professionnelles en formation">
         <a href="../../projets.html#training" class="project-top-link project-top-return">← Retour</a>
         <span class="project-top-separator" aria-hidden="true"></span>
         <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -48,7 +49,7 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
           <span class="theme-switch-slider"></span>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -60,7 +61,7 @@
     <div class="container">
       <section class="page-box presentation-box" aria-labelledby="project-title">
         <div class="project-page-title">
-          <img src="configuration-du-routage-inter-vlan-packet-tracer/icone.jpg" alt="Icône routage inter-VLAN" class="project-page-logo" width="100" height="100">
+          <img src="configuration-du-routage-inter-vlan-packet-tracer/icone.jpg" alt="Icône routage inter-VLAN" class="project-page-logo" width="96" height="96">
           <div class="project-page-heading">
             <h1 id="project-title">Configuration du routage inter-VLAN (Packet Tracer)</h1>
           </div>
@@ -69,17 +70,18 @@
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>Mise en place du routage inter-VLAN avec la méthode router-on-a-stick et l’encapsulation 802.1Q.</p>
+            <p>Dans le cadre de ma formation, j’ai réalisé un TP Cisco Packet Tracer portant sur la configuration du routage inter-VLAN avec la méthode router-on-a-stick.</p>
+            <p>L’objectif était de permettre la communication entre plusieurs VLAN à partir d’un seul lien physique entre un commutateur et un routeur, en utilisant des sous-interfaces et l’encapsulation 802.1Q.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
             <ul class="content-list">
               <li>Créer les VLAN 10 et 30.</li>
-              <li>Attribuer les ports d’accès.</li>
+              <li>Attribuer les ports d’accès aux VLAN correspondants.</li>
               <li>Configurer les sous-interfaces du routeur.</li>
               <li>Activer l’encapsulation 802.1Q.</li>
-              <li>Configurer le lien trunk.</li>
+              <li>Configurer le lien trunk entre le commutateur et le routeur.</li>
               <li>Vérifier la connectivité inter-VLAN.</li>
             </ul>
           </article>
@@ -87,29 +89,96 @@
           <article class="timeline-content">
             <h2>Environnement technique</h2>
             <ul class="content-list">
-              <li>Logiciel : Cisco Packet Tracer</li>
-              <li>Équipements : routeur Cisco, commutateur Cisco, postes clients</li>
-              <li>Technologies : VLAN, trunk 802.1Q, sous-interfaces</li>
+              <li><strong>Logiciel :</strong> Cisco Packet Tracer</li>
+              <li><strong>Équipements :</strong> routeur Cisco, commutateur Cisco et postes clients</li>
+              <li><strong>Interface :</strong> CLI Cisco IOS</li>
+              <li><strong>Technologies :</strong> VLAN, trunk 802.1Q et sous-interfaces</li>
             </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Démarche réalisée</h2>
-            <ul class="content-list">
-              <li>Création des VLAN sur le commutateur et attribution des ports d’accès.</li>
-              <li>Configuration des sous-interfaces du routeur avec les passerelles de chaque VLAN.</li>
-              <li>Activation du trunk entre le commutateur et le routeur.</li>
-              <li>Vérification des VLAN, du trunking et des tests de ping entre postes.</li>
-            </ul>
+            <h2>Topologie réseau et table d'adressage</h2>
+            <p>La topologie est composée d’un routeur R1, d’un commutateur S1 et de deux postes clients placés dans des VLAN distincts.</p>
+            <p>La table d’adressage permet d’identifier les sous-réseaux utilisés, les adresses IP des postes clients et les passerelles configurées sur le routeur.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-01.jpg" alt="Topologie Packet Tracer composée d’un routeur R1, d’un commutateur S1 et de deux postes clients dans des VLAN distincts." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-02.jpg" alt="Table d’adressage du TP de routage inter-VLAN indiquant les adresses IP des équipements et des passerelles." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Création des VLAN sur le commutateur</h2>
+            <p>Je suis d’abord entré dans le commutateur S1 en ouvrant son interface CLI afin d’accéder à l’environnement de commandes Cisco IOS.</p>
+            <p>J’ai créé le <strong>VLAN 10</strong> et le <strong>VLAN 30</strong> afin de séparer logiquement les postes clients dans deux réseaux distincts.</p>
+            <p>J’ai ensuite configuré les ports d’accès : le port <strong>Fa0/11</strong> a été associé au VLAN 10 et le port <strong>Fa0/6</strong> au VLAN 30.</p>
+            <p>J’ai enfin vérifié la configuration avec la commande <strong>show vlan brief</strong>, ce qui m’a permis de confirmer la présence des VLAN et l’affectation correcte des ports.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-03.jpg" alt="Création des VLAN 10 et 30 puis affectation des ports Fa0/11 et Fa0/6 sur le commutateur S1." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-04.jpg" alt="Vérification des VLAN et des ports associés avec la commande show vlan brief." loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Configuration des sous-interfaces du routeur</h2>
+            <p>Je suis ensuite entré dans le routeur R1 afin de configurer le routage inter-VLAN.</p>
+            <p>J’ai créé la sous-interface <strong>G0/0.10</strong> pour le VLAN 10 et la sous-interface <strong>G0/0.30</strong> pour le VLAN 30.</p>
+            <p>J’ai appliqué l’encapsulation <strong>dot1Q</strong> sur chaque sous-interface afin d’associer chaque interface logique au VLAN correspondant.</p>
+            <p>J’ai attribué les adresses IP <strong>172.17.10.1</strong> et <strong>172.17.30.1</strong> aux sous-interfaces afin qu’elles servent de passerelles par défaut pour les postes clients.</p>
+            <p>J’ai terminé en activant l’interface physique <strong>G0/0</strong> avec la commande <strong>no shutdown</strong>, ce qui a permis d’activer les sous-interfaces.</p>
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-05.jpg" alt="Configuration des sous-interfaces G0/0.10 et G0/0.30 du routeur R1 avec encapsulation dot1Q et adresses IP." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Activation du trunking</h2>
+            <p>J’ai configuré l’interface <strong>Gig0/1</strong> du commutateur S1 en mode trunk afin de transporter le trafic des VLAN 10 et 30 vers le routeur R1.</p>
+            <p>Cette configuration est indispensable dans la méthode router-on-a-stick, car un seul lien physique transporte plusieurs réseaux logiques.</p>
+            <p>J’ai vérifié le trunking avec la commande <strong>show interfaces trunk</strong>.</p>
+            <p>La sortie de commande confirme que le port <strong>Gig0/1</strong> est en mode trunk, utilise l’encapsulation <strong>802.1Q</strong> et autorise le passage des VLAN nécessaires.</p>
+            <figure class="summary-visual single-image">
+              <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-06.jpg" alt="Activation et vérification du trunking sur l’interface Gig0/1 du commutateur S1." loading="lazy" decoding="async">
+            </figure>
+          </article>
+
+          <article class="timeline-content">
+            <h2>Tests de connectivité inter-VLAN</h2>
+            <p>J’ai réalisé des tests de connectivité entre les postes situés dans des VLAN différents.</p>
+            <p>Depuis PC1, j’ai envoyé une requête ping vers l’adresse IP du poste situé dans le VLAN 30.</p>
+            <p>Le premier paquet a été perdu, puis les réponses suivantes ont été reçues, ce qui confirme que la communication inter-VLAN est fonctionnelle.</p>
+            <p>Depuis le poste du VLAN 30, j’ai ensuite effectué un ping vers PC1 et les réponses ont toutes été reçues correctement.</p>
+            <p>Ces tests valident le fonctionnement du routage inter-VLAN et la cohérence de la configuration appliquée.</p>
+
+            <div class="info-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-07.jpg" alt="Test de connectivité depuis PC1 vers le poste du VLAN 30." loading="lazy" decoding="async">
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-08.jpg" alt="Test de connectivité depuis le poste du VLAN 30 vers PC1." loading="lazy" decoding="async">
+              </figure>
+            </div>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
             <ul class="content-list">
-              <li>VLAN créés et ports attribués.</li>
-              <li>Sous-interfaces configurées.</li>
-              <li>Trunk 802.1Q opérationnel.</li>
-              <li>Communication inter-VLAN validée.</li>
+              <li>Table d’adressage identifiée et exploitée.</li>
+              <li>VLAN 10 et VLAN 30 créés.</li>
+              <li>Ports d’accès attribués aux VLAN correspondants.</li>
+              <li>Sous-interfaces du routeur configurées.</li>
+              <li>Encapsulation 802.1Q appliquée.</li>
+              <li>Trunking activé entre le commutateur et le routeur.</li>
+              <li>Connectivité inter-VLAN validée par des tests de ping.</li>
             </ul>
           </article>
 
@@ -118,73 +187,30 @@
             <dl class="info-grid">
               <div class="info-item">
                 <dt>Gérer le patrimoine informatique</dt>
-                <dd>Identification et configuration d’équipements réseau segmentés.</dd>
+                <dd>Identification et configuration d’équipements réseau dans une infrastructure segmentée.</dd>
               </div>
               <div class="info-item">
                 <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
-                <dd>Mise en place d’une solution permettant la communication entre VLAN.</dd>
+                <dd>Mise en place d’une solution de routage inter-VLAN répondant à un besoin de communication entre réseaux.</dd>
               </div>
               <div class="info-item">
                 <dt>Mettre à disposition des utilisateurs un service informatique</dt>
-                <dd>Configuration et validation du service de communication inter-réseaux.</dd>
+                <dd>Configuration et vérification d’un service de communication entre VLAN.</dd>
               </div>
               <div class="info-item">
                 <dt>Organiser son développement professionnel</dt>
-                <dd>Développement de compétences en VLAN, trunking et routage inter-VLAN.</dd>
+                <dd>Développement de compétences en VLAN, trunking, routage inter-VLAN et documentation de la réalisation dans le portfolio.</dd>
               </div>
             </dl>
           </article>
 
           <article class="timeline-content">
-            <h2>Captures justificatives</h2>
-            <p>Les captures ci-dessous constituent les éléments de preuve associés à la réalisation. Elles sont conservées dans le dépôt afin de documenter la démarche et les résultats.</p>
-            <div class="image-grid">
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-01.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°01" loading="lazy" decoding="async">
-                <figcaption>Capture n°01</figcaption>
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-02.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°02" loading="lazy" decoding="async">
-                <figcaption>Capture n°02</figcaption>
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-03.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°03" loading="lazy" decoding="async">
-                <figcaption>Capture n°03</figcaption>
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-04.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°04" loading="lazy" decoding="async">
-                <figcaption>Capture n°04</figcaption>
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-05.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°05" loading="lazy" decoding="async">
-                <figcaption>Capture n°05</figcaption>
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-06.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°06" loading="lazy" decoding="async">
-                <figcaption>Capture n°06</figcaption>
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-07.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°07" loading="lazy" decoding="async">
-                <figcaption>Capture n°07</figcaption>
-              </figure>
-              <figure class="summary-visual">
-                <img class="summary-image" src="configuration-du-routage-inter-vlan-packet-tracer/image-08.jpg" alt="Configuration du routage inter-VLAN (Packet Tracer) — capture justificative n°08" loading="lazy" decoding="async">
-                <figcaption>Capture n°08</figcaption>
-              </figure>
-            </div>
-          </article>
-
-          <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Cette réalisation m’a aidé à comprendre concrètement la segmentation réseau et le rôle des sous-interfaces dans la méthode router-on-a-stick.</p>
+            <p>Ce TP m’a permis de mieux comprendre le principe du routage inter-VLAN et le rôle des VLAN dans la segmentation d’un réseau.</p>
+            <p>J’ai appris à créer des VLAN, à attribuer des ports d’accès, à configurer un lien trunk et à mettre en place des sous-interfaces avec encapsulation 802.1Q.</p>
+            <p>Cette réalisation est importante car la méthode router-on-a-stick permet de faire communiquer plusieurs VLAN tout en limitant le nombre d’interfaces physiques nécessaires sur le routeur.</p>
           </article>
         </div>
-          <div class="project-pager-wrapper">
-            <nav class="project-pager" aria-label="Navigation entre les réalisations">
-              <a class="pager-button" href="configurations-initiales-dun-commutateur-cisco-packet-tracer.html">← Projet précédent</a>
-              <a class="pager-button" href="configuration-du-dhcpv4-packet-tracer.html">Projet suivant →</a>
-            </nav>
-          </div>
       </section>
     </div>
   </main>
