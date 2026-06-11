@@ -1,144 +1,90 @@
-const STORAGE_KEY = "theme-preference";
-const DARK_THEME_COLOR = "#020813";
-const LIGHT_THEME_COLOR = "#f4f7fa";
-const TRANSITION_EXIT_DURATION = 180;
-
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-const supportsViewTransitions = "startViewTransition" in document;
+const TRANSITION_EXIT_DURATION = 180;
 
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = motionQuery.matches;
-
-  initPageTransitions(reduceMotion);
   initThemeToggle();
-
-  document.querySelectorAll("[data-tabs]").forEach((root) => {
-    initTabs(root, reduceMotion);
-  });
-
+  initPageTransitions(reduceMotion);
+  document.querySelectorAll("[data-tabs]").forEach((root) => initTabs(root, reduceMotion));
   animateVisibleElements(document, { reduceMotion });
 });
 
-function syncThemeColor(theme) {
-  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-  if (!metaThemeColor) return;
-  metaThemeColor.setAttribute("content", theme === "dark" ? DARK_THEME_COLOR : LIGHT_THEME_COLOR);
-}
-
-function updateThemeUI(theme) {
-  const isDark = theme === "dark";
-  const toggleBtns = document.querySelectorAll(".theme-switch");
-
-  toggleBtns.forEach((btn) => {
-    btn.setAttribute("aria-checked", String(isDark));
-    btn.setAttribute("aria-label", "Thème sombre");
-    btn.setAttribute("title", isDark ? "Passer au thème clair" : "Passer au thème sombre");
-  });
-
-  syncThemeColor(theme);
-}
-
-function setTheme(theme, { persist = true } = {}) {
-  document.documentElement.setAttribute("data-theme", theme);
-  if (persist) {
-    localStorage.setItem(STORAGE_KEY, theme);
-  }
-  updateThemeUI(theme);
-}
-
 function initThemeToggle() {
-  const currentTheme =
-    document.documentElement.getAttribute("data-theme") ||
-    (colorSchemeQuery.matches ? "dark" : "light");
+  const buttons = document.querySelectorAll(".theme-switch");
+  const storageKey = "theme-preference";
+  const systemQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-  updateThemeUI(currentTheme);
+  const getPreferredTheme = () => localStorage.getItem(storageKey) || (systemQuery.matches ? "dark" : "light");
 
-  document.querySelectorAll(".theme-switch").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault();
-      const current = document.documentElement.getAttribute("data-theme") || "dark";
-      setTheme(current === "dark" ? "light" : "dark");
+  const updateThemeUI = (theme) => {
+    const isDark = theme === "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+    buttons.forEach((button) => button.setAttribute("aria-checked", String(isDark)));
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) metaThemeColor.setAttribute("content", isDark ? "#020813" : "#f4f7fa");
+  };
+
+  const setTheme = (theme, persist = true) => {
+    updateThemeUI(theme);
+    if (persist) localStorage.setItem(storageKey, theme);
+  };
+
+  updateThemeUI(getPreferredTheme());
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") || getPreferredTheme();
+      setTheme(current === "dark" ? "light" : "dark", true);
     });
   });
 
-  const handleSystemThemeChange = (event) => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      setTheme(event.matches ? "dark" : "light", { persist: false });
-    }
+  const onSystemThemeChange = (event) => {
+    if (!localStorage.getItem(storageKey)) updateThemeUI(event.matches ? "dark" : "light");
   };
 
-  if (typeof colorSchemeQuery.addEventListener === "function") {
-    colorSchemeQuery.addEventListener("change", handleSystemThemeChange);
-  } else if (typeof colorSchemeQuery.addListener === "function") {
-    colorSchemeQuery.addListener(handleSystemThemeChange);
+  if (typeof systemQuery.addEventListener === "function") {
+    systemQuery.addEventListener("change", onSystemThemeChange);
+  } else if (typeof systemQuery.addListener === "function") {
+    systemQuery.addListener(onSystemThemeChange);
   }
 }
 
 function initPageTransitions(reduceMotion) {
-  if (reduceMotion || supportsViewTransitions) return;
+  if (reduceMotion || "startViewTransition" in document) return;
 
-  document.querySelectorAll("a[href]").forEach((link) => {
+  document.querySelectorAll('a[href]').forEach((link) => {
     link.addEventListener("click", (event) => {
-      if (
-        event.defaultPrevented ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey ||
-        event.button !== 0
-      ) return;
-
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       if (link.target && link.target !== "_self") return;
       if (link.hasAttribute("download")) return;
 
       const href = link.getAttribute("href");
-      if (!href || href.startsWith("#")) return;
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
 
       const targetUrl = new URL(link.href, window.location.href);
       const currentUrl = new URL(window.location.href);
-
       if (targetUrl.origin !== currentUrl.origin) return;
 
-      const isSameDocumentHashLink =
-        targetUrl.pathname === currentUrl.pathname &&
-        targetUrl.search === currentUrl.search &&
-        targetUrl.hash;
-
-      if (isSameDocumentHashLink) return;
+      const sameDocumentHash = targetUrl.pathname === currentUrl.pathname && targetUrl.search === currentUrl.search && targetUrl.hash;
+      if (sameDocumentHash) return;
 
       event.preventDefault();
       document.body.classList.add("is-leaving");
-
-      window.setTimeout(() => {
-        window.location.href = targetUrl.href;
-      }, TRANSITION_EXIT_DURATION);
+      window.setTimeout(() => { window.location.href = targetUrl.href; }, TRANSITION_EXIT_DURATION);
     });
   });
 }
 
 function getAnimatedTargets(root) {
-  return Array.from(
-    root.querySelectorAll(
-      [
-        ".home-hero",
-        ".tab-grid",
-        ".timeline-date",
-        ".info-item",
-        ".timeline-content",
-        ".project-card",
-        ".summary-image",
-        ".pdf-actions",
-        ".project-pager",
-        ".project-pager-wrapper"
-      ].join(",")
-    )
-  );
+  return Array.from(root.querySelectorAll([
+    ".home-hero", ".tab-grid", ".info-item", ".timeline-content", ".project-card",
+    ".summary-image", ".pdf-actions", ".project-pager-wrapper", ".audit-card"
+  ].join(",")));
 }
 
 function animateVisibleElements(root, { restart = false, reduceMotion = motionQuery.matches } = {}) {
   const targets = getAnimatedTargets(root).filter((element) => !element.closest("[hidden]"));
-  if (targets.length === 0) return;
+  if (!targets.length) return;
 
   if (reduceMotion) {
     targets.forEach((element) => {
@@ -159,35 +105,26 @@ function animateVisibleElements(root, { restart = false, reduceMotion = motionQu
   }
 
   targets.forEach((element, index) => {
-    if (!restart && element.dataset.entranceReady === "true" && element.classList.contains("is-revealed")) {
-      return;
-    }
-
+    if (!restart && element.dataset.entranceReady === "true" && element.classList.contains("is-revealed")) return;
     element.dataset.entranceReady = "true";
     element.classList.add("reveal-init");
     element.classList.remove("is-revealed");
-    element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 40}ms`);
+    element.style.setProperty("--reveal-delay", `${Math.min(index, 6) * 35}ms`);
   });
 
   requestAnimationFrame(() => {
-    targets.forEach((element) => {
-      element.classList.add("is-revealed");
-    });
+    targets.forEach((element) => element.classList.add("is-revealed"));
   });
 }
 
 function runScopeEntrance(scope, reduceMotion) {
   if (!scope) return;
-
   if (!reduceMotion) {
     scope.classList.remove("is-entering");
     void scope.offsetWidth;
     scope.classList.add("is-entering");
-    scope.addEventListener("animationend", () => {
-      scope.classList.remove("is-entering");
-    }, { once: true });
+    scope.addEventListener("animationend", () => scope.classList.remove("is-entering"), { once: true });
   }
-
   animateVisibleElements(scope, { restart: true, reduceMotion });
 }
 
@@ -196,31 +133,20 @@ function initTabs(root, reduceMotion) {
   if (!tablist) return;
 
   const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
-  if (tabs.length === 0) return;
+  const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+  if (!tabs.length || panels.some((panel) => !panel)) return;
 
-  const panels = tabs.map((tab) => {
-    const panelId = tab.getAttribute("aria-controls");
-    return panelId ? document.getElementById(panelId) : null;
+  const normaliseHash = (value) => value.replace(/^#/, "").replace(/^tab-/, "").replace(/^panel-/, "");
+  const hash = normaliseHash(window.location.hash);
+  let activeIndex = tabs.findIndex((tab, index) => {
+    const slug = normaliseHash(tab.id);
+    const panelSlug = normaliseHash(panels[index].id);
+    return hash && (hash === slug || hash === panelSlug || hash === tab.dataset.slug);
   });
 
-  let activeIndex = tabs.findIndex(
-    (tab) => tab.getAttribute("aria-selected") === "true" || tab.classList.contains("active")
-  );
-
-  const initialHash = window.location.hash.replace(/^#/, "");
-  if (initialHash) {
-    const hashIndex = tabs.findIndex((tab, index) => {
-      const panel = panels[index];
-      return (
-        tab.id === initialHash ||
-        tab.getAttribute("aria-controls") === initialHash ||
-        initialHash === tab.id.replace(/^tab-/, "") ||
-        (panel && initialHash === panel.id.replace(/^panel-/, ""))
-      );
-    });
-    if (hashIndex >= 0) activeIndex = hashIndex;
+  if (activeIndex < 0) {
+    activeIndex = tabs.findIndex((tab) => tab.getAttribute("aria-selected") === "true" || tab.classList.contains("active"));
   }
-
   if (activeIndex < 0) activeIndex = 0;
 
   let isTransitioning = false;
@@ -236,7 +162,6 @@ function initTabs(root, reduceMotion) {
 
   const showOnlyPanel = (index) => {
     panels.forEach((panel, panelIndex) => {
-      if (!panel) return;
       const isActive = panelIndex === index;
       panel.classList.toggle("active", isActive);
       panel.hidden = !isActive;
@@ -244,102 +169,68 @@ function initTabs(root, reduceMotion) {
     });
   };
 
-  const updateLocationHash = (index) => {
-    const panel = panels[index];
-    if (!panel) return;
-    const hash = panel.id.replace(/^panel-/, "");
-    history.replaceState(null, "", `#${hash}`);
+  const writeHash = (index) => {
+    const slug = tabs[index].dataset.slug || normaliseHash(tabs[index].id);
+    if (!slug) return;
+    const url = new URL(window.location.href);
+    url.hash = slug;
+    history.replaceState(null, "", url);
   };
 
-  const activateTab = (index, moveFocus = false, isInitial = false) => {
+  const activateTab = (index, moveFocus = false, initial = false) => {
     if (index < 0 || index >= tabs.length) return;
-    if (!isInitial && index === activeIndex) {
+    if (!initial && index === activeIndex) {
       if (moveFocus) tabs[index].focus();
+      writeHash(index);
       return;
     }
-    if (!isInitial && isTransitioning) return;
+    if (!initial && isTransitioning) return;
 
-    const currentPanel = panels[activeIndex];
     const nextPanel = panels[index];
+    const currentPanel = panels[activeIndex];
     if (!nextPanel) return;
 
     if (moveFocus) tabs[index].focus();
 
-    if (isInitial) {
+    const commit = () => {
       setTabButtonsState(index);
       showOnlyPanel(index);
       activeIndex = index;
-      return;
-    }
-
-    const finalize = () => {
-      setTabButtonsState(index);
-      showOnlyPanel(index);
-      activeIndex = index;
-      updateLocationHash(index);
+      if (!initial) writeHash(index);
       runScopeEntrance(nextPanel, reduceMotion);
     };
 
-    if (reduceMotion) {
-      finalize();
+    if (initial || reduceMotion) {
+      commit();
       return;
     }
 
     isTransitioning = true;
-
-    if (supportsViewTransitions) {
-      const transition = document.startViewTransition(() => {
-        setTabButtonsState(index);
-        showOnlyPanel(index);
-        activeIndex = index;
-        updateLocationHash(index);
-      });
-
-      transition.ready.then(() => runScopeEntrance(nextPanel, reduceMotion));
-      transition.finished.finally(() => {
-        isTransitioning = false;
-      });
+    if ("startViewTransition" in document) {
+      const transition = document.startViewTransition(commit);
+      transition.finished.finally(() => { isTransitioning = false; });
       return;
     }
 
-    if (currentPanel) {
-      currentPanel.classList.remove("is-entering");
-      currentPanel.classList.add("is-leaving");
-    }
-
+    if (currentPanel) currentPanel.classList.add("is-leaving");
     window.setTimeout(() => {
       if (currentPanel) currentPanel.classList.remove("is-leaving");
-      finalize();
+      commit();
       isTransitioning = false;
     }, TRANSITION_EXIT_DURATION);
   };
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTab(index, false, false));
-
+    tab.addEventListener("click", () => activateTab(index));
     tab.addEventListener("keydown", (event) => {
+      const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
       let nextIndex = null;
-
-      switch (event.key) {
-        case "ArrowRight":
-        case "ArrowDown":
-          nextIndex = (index + 1) % tabs.length;
-          break;
-        case "ArrowLeft":
-        case "ArrowUp":
-          nextIndex = (index - 1 + tabs.length) % tabs.length;
-          break;
-        case "Home":
-          nextIndex = 0;
-          break;
-        case "End":
-          nextIndex = tabs.length - 1;
-          break;
-      }
-
+      if (event.key in keys) nextIndex = (index + keys[event.key] + tabs.length) % tabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
       if (nextIndex !== null) {
         event.preventDefault();
-        activateTab(nextIndex, true, false);
+        activateTab(nextIndex, true);
       }
     });
   });
