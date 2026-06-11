@@ -3,23 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projet GLPI de Damien Zanatta : remplacement de FusionInventory par GLPI Inventory dans un contexte professionnel.">
+  <meta name="description" content="Réalisation BTS SIO SISR : Automatisation de l’inventaire du parc informatique (GLPI / GPO).">
   <meta name="theme-color" content="#020813">
-  <meta name="color-scheme" content="dark light">
   <title>Automatisation de l’inventaire du parc informatique (GLPI / GPO) | Damien Zanatta</title>
 
   <script>
     (function() {
-      try {
-        var storedTheme = localStorage.getItem('theme-preference');
-        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        var theme = storedTheme || systemTheme || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
-      } catch (error) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 
@@ -27,7 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://damienzanatta.github.io/projets/en-entreprise/automatisation-de-linventaire-du-parc-informatique-glpi-gpo.html">
   <link rel="stylesheet" href="../../style.css">
   <script src="../../script.js" defer></script>
 </head>
@@ -40,11 +31,12 @@
         <a href="../../index.html">Damien Zanatta</a>
       </div>
 
-      <nav class="project-top-nav" aria-label="Navigation de la réalisation professionnelle">
+      <nav class="project-top-nav" aria-label="Navigation de la réalisation">
         <a href="../../projets.html#company" class="project-top-link project-top-return">← Retour</a>
         <span class="project-top-separator" aria-hidden="true"></span>
+        <span class="project-top-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -55,8 +47,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span class="theme-switch-slider" aria-hidden="true"></span>
-          <svg class="icon-moon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -68,7 +60,7 @@
     <div class="container">
       <section class="page-box presentation-box" aria-labelledby="project-title">
         <div class="project-page-title">
-          <img src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/icone.jpg" alt="Logo GLPI" class="project-page-logo" width="96" height="96">
+          <img src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/icone.jpg" alt="Logo GLPI" class="project-page-logo" width="100" height="100">
           <div class="project-page-heading">
             <h1 id="project-title">Automatisation de l’inventaire du parc informatique (GLPI / GPO)</h1>
           </div>
@@ -77,136 +69,152 @@
         <div class="timeline">
           <article class="timeline-content">
             <h2>Présentation</h2>
-            <p>Dans le cadre de mon alternance au sein du service informatique de l’EBI, j’ai participé à l’étude du remplacement de FusionInventory par GLPI Inventory pour automatiser l’inventaire du parc informatique.</p>
-            <p>FusionInventory était encore utilisé pour la remontée d’inventaire, mais cette solution n’était plus maintenue. L’objectif était donc de tester une alternative plus récente, directement intégrée à GLPI, afin de fiabiliser la gestion du patrimoine informatique.</p>
-            <p>Pour éviter tout impact sur la production, j’ai réalisé un <strong>Proof of Concept</strong> dans un environnement virtualisé isolé. La mission consistait à activer l’inventaire natif GLPI, préparer le déploiement de l’agent et valider la remontée automatique d’un poste Windows.</p>
+            <p>Mise en place d’une maquette de préproduction pour remplacer FusionInventory par GLPI Inventory et automatiser le déploiement de l’agent par GPO.</p>
           </article>
 
           <article class="timeline-content">
             <h2>Objectifs</h2>
             <ul class="content-list">
-              <li>Configurer et activer GLPI Inventory sur un serveur GLPI de test.</li>
-              <li>Préparer un point de distribution réseau local pour l’agent GLPI.</li>
-              <li>Adapter un script de déploiement silencieux en environnement Active Directory.</li>
-              <li>Créer et lier une GPO de démarrage pour automatiser l’installation de l’agent.</li>
-              <li>Vérifier la remontée d’inventaire matérielle et logicielle dans GLPI.</li>
-              <li>Produire une base de procédure exploitable avant une éventuelle mise en production.</li>
+              <li>Remplacer une solution d’inventaire obsolète par GLPI Inventory.</li>
+              <li>Activer et valider l’inventaire natif dans un environnement de test.</li>
+              <li>Créer un point de distribution réseau masqué pour l’agent GLPI.</li>
+              <li>Adapter le script de déploiement afin d’installer l’agent silencieusement.</li>
+              <li>Déployer l’agent par GPO au démarrage des postes.</li>
+              <li>Vérifier la remontée automatique des informations matérielles et logicielles.</li>
             </ul>
           </article>
 
           <article class="timeline-content">
             <h2>Environnement technique</h2>
             <ul class="content-list">
-              <li><strong>Hyperviseur :</strong> VMware Workstation Pro (réseau Host-Only)</li>
-              <li><strong>Serveur d’inventaire :</strong> Debian 13.5.0 (SRV-GLPI)</li>
-              <li><strong>Contrôleur de domaine :</strong> Windows Server 2022 (SRV-AD01)</li>
-              <li><strong>Client :</strong> Windows 11 Professionnel (PC-CLIENT01)</li>
-              <li><strong>Technologies :</strong> GLPI 11.0.7, GLPI Agent 1.9, AD DS, GPO, VBS</li>
-              <li><strong>Solution cible :</strong> GLPI Inventory</li>
-              <li><strong>Solution remplacée :</strong> FusionInventory</li>
+              <li>Hyperviseur : VMware Workstation Pro, réseau Host-Only</li>
+              <li>Serveur d’inventaire : Debian, pile LAMP et GLPI</li>
+              <li>Contrôleur de domaine : Windows Server 2022</li>
+              <li>Client : Windows 11 Professionnel</li>
+              <li>Technologies : GLPI Inventory, GLPI Agent, AD DS, GPO, VBS</li>
             </ul>
           </article>
 
           <article class="timeline-content">
-            <h2>Préparation de la maquette</h2>
-            <p>J’ai préparé l’environnement de test sur VMware Workstation. Le serveur GLPI a été installé sur une machine Debian disposant d’une pile LAMP opérationnelle et d’une adresse IP statique.</p>
-            <p>J’ai également configuré Apache pour pointer vers le répertoire public de GLPI, conformément aux prérequis de l’éditeur.</p>
-            <div class="info-grid">
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-01.jpg" alt="Vérification des services Apache et MariaDB, des versions PHP et MariaDB, et des droits du répertoire web." loading="lazy" decoding="async"></figure>
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-02.jpg" alt="Accès initial à l’interface GLPI 11 à l’adresse du serveur de test." loading="lazy" decoding="async"></figure>
-            </div>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Activation de l’inventaire natif</h2>
-            <p>Depuis l’interface d’administration de GLPI, j’ai activé la réception des données d’inventaire et autorisé l’importation automatique des principaux composants : matériels, logiciels, volumes et périphériques.</p>
-            <div class="info-grid">
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-03.jpg" alt="Paramètre d’inventaire GLPI initialement désactivé." loading="lazy" decoding="async"></figure>
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-04.jpg" alt="Paramètres d’inventaire GLPI activés avec les options d’importation." loading="lazy" decoding="async"></figure>
-            </div>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Préparation du point de distribution réseau</h2>
-            <p>Pour éviter un téléchargement Internet depuis chaque poste, j’ai créé un point de distribution local sur le contrôleur de domaine Windows Server.</p>
-            <p>Le dossier a été partagé en mode avancé sous le nom <strong>Deploiement_GLPI$</strong>. Le symbole <strong>$</strong> permet de masquer le partage dans l’exploration réseau standard.</p>
-            <p>J’y ai déposé l’installateur MSI de l’agent GLPI ainsi que le script VBS de déploiement.</p>
-            <figure class="summary-visual single-image single-image--mb"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-05.jpg" alt="Création du répertoire de distribution à la racine du volume C: du serveur de domaine." loading="lazy" decoding="async"></figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Adaptation du script de déploiement VBS</h2>
-            <p>Le script officiel a été adapté afin de correspondre à mon architecture de test et d’utiliser le partage réseau local.</p>
+            <h2>Démarche réalisée</h2>
             <ul class="content-list">
-              <li><strong>SetupVersion = "1.9" :</strong> correspondance avec la version de l’installateur téléchargé.</li>
-              <li><strong>SetupLocation = "\\SRV-AD01\Deploiement_GLPI$" :</strong> installation depuis le point de distribution local.</li>
-              <li><strong>SetupOptions = "/quiet RUNNOW=1 SERVER='http://192.168.10.20/'" :</strong> installation silencieuse, lancement immédiat de l’inventaire et ciblage du serveur GLPI de test.</li>
+              <li>Préparation d’une maquette isolée afin d’éviter tout impact sur le serveur GLPI de production.</li>
+              <li>Installation de GLPI, activation de l’inventaire natif et paramétrage de la réception des données.</li>
+              <li>Création d’un partage réseau masqué contenant l’installateur MSI et le script VBS de déploiement.</li>
+              <li>Adaptation du script pour cibler le serveur GLPI de test et forcer une installation silencieuse avec inventaire immédiat.</li>
+              <li>Création et liaison d’une GPO de démarrage sur l’unité d’organisation contenant les postes concernés.</li>
+              <li>Contrôle côté client du service GLPI Agent, puis validation de la remontée d’inventaire dans GLPI.</li>
             </ul>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Création de la stratégie de groupe</h2>
-            <p>J’ai créé une GPO dédiée nommée <strong>GPO_Inventaire_GLPI</strong>, puis je l’ai liée à l’unité d’organisation contenant le poste client de test.</p>
-            <p>Dans l’éditeur de stratégie, j’ai ajouté le script au démarrage de l’ordinateur afin qu’il s’exécute automatiquement avant l’ouverture de session.</p>
-            <figure class="summary-visual single-image single-image--mb"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-08.jpg" alt="Console de gestion des stratégies de groupe montrant la création et la liaison de la GPO." loading="lazy" decoding="async"></figure>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Ajout du script au démarrage via GPO</h2>
-            <p>Dans la GPO, j’ai utilisé le chemin suivant :</p>
-            <p><strong>Configuration ordinateur &gt; Stratégies &gt; Paramètres Windows &gt; Scripts (démarrage/arrêt)</strong></p>
-            <p>Le script de démarrage pointe vers le chemin UNC <strong>\\SRV-AD01\Deploiement_GLPI$\glpi-agent-deployment.vbs</strong>. Les postes ciblés peuvent ainsi exécuter le déploiement automatiquement au démarrage.</p>
-            <div class="info-grid">
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-09.jpg" alt="Arborescence de l’éditeur de stratégie ciblant les scripts de démarrage de l’ordinateur." loading="lazy" decoding="async"></figure>
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-10.jpg" alt="Fenêtre de propriétés du script de démarrage avec ajout du chemin réseau." loading="lazy" decoding="async"></figure>
-            </div>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Recette technique côté client</h2>
-            <p>Pour valider le fonctionnement de la GPO, j’ai redémarré le poste Windows 11 de test. Après ouverture de session, j’ai vérifié les services locaux avec <strong>services.msc</strong>.</p>
-            <p>L’agent GLPI était installé, configuré en démarrage automatique et en cours d’exécution.</p>
-            <div class="info-grid">
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-11.jpg" alt="Boîte de dialogue Exécuter avec la commande services.msc." loading="lazy" decoding="async"></figure>
-              <figure class="summary-visual"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-12.jpg" alt="Liste des services Windows mettant en évidence le service GLPI Agent en cours d’exécution." loading="lazy" decoding="async"></figure>
-            </div>
-          </article>
-
-          <article class="timeline-content">
-            <h2>Validation de la remontée d’inventaire</h2>
-            <p>Dans GLPI, le poste <strong>PC-CLIENT01</strong> est apparu dans la liste des ordinateurs. La fiche d’inventaire contenait les informations matérielles et logicielles remontées par l’agent.</p>
-            <figure class="summary-visual single-image"><img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-13.jpg" alt="Vue GLPI affichant la fiche d’inventaire du poste client." loading="lazy" decoding="async"></figure>
           </article>
 
           <article class="timeline-content">
             <h2>Résultats obtenus</h2>
             <ul class="content-list">
-              <li>Point de distribution réseau masqué et fonctionnel sur le contrôleur de domaine.</li>
-              <li>Script de déploiement adapté pour une installation locale et silencieuse.</li>
-              <li>GPO de démarrage créée et testée.</li>
-              <li>Agent GLPI installé automatiquement sur le poste Windows de test.</li>
-              <li>Remontée d’inventaire validée dans GLPI.</li>
-              <li>GLPI Inventory identifié comme une alternative pertinente à FusionInventory.</li>
+              <li>Point de distribution réseau local opérationnel.</li>
+              <li>Installation silencieuse de l’agent GLPI validée sur poste Windows.</li>
+              <li>GPO de déploiement fonctionnelle.</li>
+              <li>Inventaire automatique visible dans GLPI.</li>
+              <li>Solution GLPI Inventory identifiée comme alternative pertinente à FusionInventory.</li>
             </ul>
           </article>
 
           <article class="timeline-content">
             <h2>Compétences mobilisées</h2>
             <dl class="info-grid">
-              <div class="info-item"><dt>Gérer le patrimoine informatique</dt><dd>Automatisation de l’inventaire matériel et logiciel afin de maintenir une vision à jour du parc.</dd></div>
-              <div class="info-item"><dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt><dd>Préparation d’une évolution technique visant à remplacer une solution obsolète par un outil maintenu.</dd></div>
-              <div class="info-item"><dt>Travailler en mode projet</dt><dd>Réalisation d’un POC isolé, validation technique et préparation d’une procédure avant production.</dd></div>
-              <div class="info-item"><dt>Mettre à disposition des utilisateurs un service informatique</dt><dd>Déploiement transparent de l’agent afin de fiabiliser un service d’inventaire sans intervention utilisateur.</dd></div>
-              <div class="info-item"><dt>Organiser son développement professionnel</dt><dd>Montée en compétences sur GLPI, l’agent GLPI, les GPO et l’intégration entre Linux et Active Directory.</dd></div>
+              <div class="info-item">
+                <dt>Gérer le patrimoine informatique</dt>
+                <dd>Mise en place d’un inventaire automatisé pour maintenir une vision fiable du parc.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Répondre aux incidents et aux demandes d’assistance et d’évolution</dt>
+                <dd>Étude d’une évolution technique destinée à remplacer un outil non maintenu.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Travailler en mode projet</dt>
+                <dd>Réalisation d’un POC isolé, tests, recette et préparation d’une procédure de mise en production.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Mettre à disposition des utilisateurs un service informatique</dt>
+                <dd>Déploiement transparent de l’agent sans action utilisateur.</dd>
+              </div>
+              <div class="info-item">
+                <dt>Organiser son développement professionnel</dt>
+                <dd>Montée en compétences sur GLPI, GPO, scripts de déploiement et inventaire automatisé.</dd>
+              </div>
             </dl>
           </article>
 
           <article class="timeline-content">
+            <h2>Captures justificatives</h2>
+            <p>Les captures ci-dessous constituent les éléments de preuve associés à la réalisation. Elles sont conservées dans le dépôt afin de documenter la démarche et les résultats.</p>
+            <div class="image-grid">
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-01.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°01" loading="lazy" decoding="async">
+                <figcaption>Capture n°01</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-02.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°02" loading="lazy" decoding="async">
+                <figcaption>Capture n°02</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-03.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°03" loading="lazy" decoding="async">
+                <figcaption>Capture n°03</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-04.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°04" loading="lazy" decoding="async">
+                <figcaption>Capture n°04</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-05.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°05" loading="lazy" decoding="async">
+                <figcaption>Capture n°05</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-06.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°06" loading="lazy" decoding="async">
+                <figcaption>Capture n°06</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-07.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°07" loading="lazy" decoding="async">
+                <figcaption>Capture n°07</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-08.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°08" loading="lazy" decoding="async">
+                <figcaption>Capture n°08</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-09.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°09" loading="lazy" decoding="async">
+                <figcaption>Capture n°09</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-10.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°10" loading="lazy" decoding="async">
+                <figcaption>Capture n°10</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-11.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°11" loading="lazy" decoding="async">
+                <figcaption>Capture n°11</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-12.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°12" loading="lazy" decoding="async">
+                <figcaption>Capture n°12</figcaption>
+              </figure>
+              <figure class="summary-visual">
+                <img class="summary-image" src="automatisation-de-linventaire-du-parc-informatique-glpi-gpo/image-13.jpg" alt="Automatisation de l’inventaire du parc informatique (GLPI / GPO) — capture justificative n°13" loading="lazy" decoding="async">
+                <figcaption>Capture n°13</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="timeline-content">
             <h2>Bilan personnel</h2>
-            <p>Cette réalisation m’a permis de traiter une problématique concrète de gestion de parc informatique. J’ai compris l’intérêt de valider une solution dans un environnement de test avant toute mise en production.</p>
-            <p>J’ai également progressé sur l’automatisation par GPO, l’adaptation de scripts et la vérification d’une chaîne complète : serveur GLPI, point de distribution, agent, poste client et remontée d’inventaire.</p>
+            <p>Cette réalisation m’a permis d’aborder une problématique professionnelle complète : tester une évolution technique, limiter les risques et valider la solution avant toute mise en production.</p>
+            <p>J’ai mieux compris l’intérêt d’un inventaire fiable pour le support, la gestion du parc et la préparation des décisions techniques.</p>
           </article>
         </div>
+          <div class="project-pager-wrapper">
+            <nav class="project-pager" aria-label="Navigation entre les réalisations">
+              <span class="pager-button is-disabled" aria-disabled="true">← Projet précédent</span>
+              <a class="pager-button" href="centralisation-de-la-documentation-informatique-sharepoint.html">Projet suivant →</a>
+            </nav>
+          </div>
       </section>
     </div>
   </main>
