@@ -5,21 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portfolio numérique de Damien Zanatta, étudiant en BTS SIO option SISR pour la session 2026.">
   <meta name="theme-color" content="#020813">
-  <meta name="color-scheme" content="dark light">
   <title>Accueil | Damien Zanatta</title>
 
   <script>
     (function() {
-      try {
-        var storedTheme = localStorage.getItem('theme-preference');
-        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        var theme = storedTheme || systemTheme || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'dark' ? '#020813' : '#f4f7fa');
-      } catch (error) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+      var theme = localStorage.getItem('theme-preference');
+      if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 
@@ -27,11 +19,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://damienzanatta.github.io/accueil.html">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="home-main">
   <a class="skip-link" href="#main-content">Aller au contenu principal</a>
 
   <header class="site-header">
@@ -41,14 +32,14 @@
       </div>
 
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="accueil.html" class="active" aria-current="page">Accueil</a>
+                <a href="accueil.html" class="active" aria-current="page">Accueil</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <a href="presentation.html">Présentation</a>
         <a href="projets.html">Projets</a>
         <a href="veille.html">Veille</a>
         <span class="nav-main-separator" aria-hidden="true"></span>
         <button type="button" class="theme-switch" aria-label="Changer de thème" role="switch" aria-checked="true">
-          <svg class="icon-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -59,8 +50,8 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span class="theme-switch-slider" aria-hidden="true"></span>
-          <svg class="icon-moon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="theme-switch-slider"></span>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -68,15 +59,32 @@
     </div>
   </header>
 
-  <main id="main-content" class="home-main">
+  <main id="main-content">
     <div class="container">
       <section class="page-box home-hero" aria-labelledby="home-title">
-        <p class="project-number">Portfolio BTS SIO SISR - Session 2026</p>
         <h1 id="home-title" class="home-name">Damien Zanatta</h1>
         <p class="home-subtitle">
-          <span>Étudiant en BTS Services informatiques aux organisations</span>
-          <span>Option Solutions d’infrastructure, systèmes et réseaux</span>
+          <span>Étudiant en BTS Services Informatiques aux Organisations</span>
+          <span>Option Solutions d’Infrastructure, Systèmes et Réseaux</span>
         </p>
+        <div class="audit-grid" aria-label="Accès rapides au portfolio">
+          <article class="audit-card">
+            <h3>Présentation</h3>
+            <p>Parcours, formation, entreprise d’accueil et missions réalisées en alternance.</p>
+          </article>
+          <article class="audit-card">
+            <h3>Réalisations professionnelles</h3>
+            <p>Projets réalisés en entreprise et en formation, accompagnés de preuves et d’un bilan.</p>
+          </article>
+          <article class="audit-card">
+            <h3>Tableau de synthèse</h3>
+            <p>Accès au tableau de synthèse des compétences du BTS SIO.</p>
+          </article>
+          <article class="audit-card">
+            <h3>Veille technologique</h3>
+            <p>Suivi de l’AIOps appliqué à la supervision d’infrastructure.</p>
+          </article>
+        </div>
       </section>
     </div>
   </main>
